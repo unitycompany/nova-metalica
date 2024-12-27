@@ -1,5 +1,9 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 import Header from "./layout/header/Header";
 import Footer from "./layout/footer/Footer";
@@ -20,7 +24,8 @@ const ArticlePage = lazy(() => import("./pages/Blog/Artigo"));
 
 function App() {
   return (
-    <Router>
+    // Ajuste principal: basename="/nova-metalica"
+    <Router basename="/">
       <AppRoutes />
     </Router>
   );
@@ -37,7 +42,7 @@ function AppRoutes() {
           <Route path="/produtos" element={<PaginaProdutos />} />
           <Route path="/parcerias" element={<PaginaParceria />} />
           <Route path="/blog" element={<PaginaBlog />} />
-          <Route path="/blog/:slug" element={<ArticlePage />} /> 
+          <Route path="/blog/:slug" element={<ArticlePage />} />
           <Route path="/lpparcerias" element={<LpPaginaParcerias />} />
         </Routes>
       </Suspense>
