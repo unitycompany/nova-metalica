@@ -1,0 +1,104 @@
+/* Reset CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, main, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote::before, blockquote::after,
+q::before, q::after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Remove input and button styles */
+input, button, textarea, select {
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+}
+
+/* Remove appearance styles for iOS and other mobile devices */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+}
+
+/* Remove tap highlight for mobile devices */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+/* Prevent focus outlines for accessibility */
+*:focus {
+    outline: none;
+}
+
+/* Prevent zoom on input focus on mobile devices */
+input, textarea {
+    -webkit-user-modify: read-write-plaintext-only;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    select, input, textarea {
+        font-size: 16px; /* Prevent zooming on focus */
+    }
+}

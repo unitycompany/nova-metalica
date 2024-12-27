@@ -1,0 +1,12 @@
+:root {
+    --color--black: #1e1d1b;
+    --color--white: #fbfbfb;
+    --color--gray: #c9c9c9;
+    --color--blue: #179cd6;
+    --color--dark--blue: #0d142b;
+    --color--orange: #ff5b00;
+    --color--green: #A4CD44;
+}
+
+/* import { IconName } from "react-icons/ci";
+import { IconName } from "react-icons/tfi"; */
