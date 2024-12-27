@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom"; // Importando useLocation
+import { NavLink, useLocation } from "react-router-dom"; 
 import styled from "styled-components";
 import Button04 from "../../components/buttons/Button04";
 
-import { BsTelephone, BsEnvelopeCheck, BsGeo, BsBook, BsCartCheck, BsHouse } from "react-icons/bs";
+import { 
+  BsTelephone, 
+  BsEnvelopeCheck, 
+  BsGeo, 
+  BsBook, 
+  BsCartCheck, 
+  BsHouse 
+} from "react-icons/bs";
 
-// Estilos do header
+/* ========== Estilos do Header ========== */
 const HeaderAll = styled.section`
   width: 100%;
   height: 15vh;
@@ -13,11 +20,11 @@ const HeaderAll = styled.section`
   max-width: 1140px;
   z-index: 10;
   left: 50%;
-  transform: translateX(-50%); /* Garantir que a navbar esteja centralizada */
+  transform: translateX(-50%);
   margin: 0 auto;
   display: block;
-  transition: top 1s ease; /* Apenas a transição da propriedade top */
-  top: 0; /* Posição inicial no topo */
+  transition: top 1s ease;
+  top: 0;
 `;
 
 const HeaderDivBlack = styled.div`
@@ -137,6 +144,7 @@ const HeaderWhite = styled.div`
     justify-content: center;
     gap: 10px;
 
+    /* Ajuste de NavLink no React Router v6 */
     & > a {
       font-size: 12px;
       padding: 8px 10px;
@@ -146,16 +154,17 @@ const HeaderWhite = styled.div`
       display: flex;
       align-items: center;
       border-radius: 8px;
+      text-decoration: none; /* Para remover sublinhado */
     }
 
-    & > .active {
+    /* Classe .active que definimos via isActive */
+    & > a.active {
       background-color: var(--color--dark--blue);
       color: var(--color--white);
     }
 
     & > a:hover {
       background-color: var(--color--dark--blue);
-      border-radius: 8px;
       color: var(--color--white);
     }
   }
@@ -182,12 +191,13 @@ const Header = () => {
     };
   }, []);
 
-  const isBlogPage = location.pathname === '/blog'; // Verifica se está na página do blog
+  // Exemplo de uso se precisarmos saber se estamos na rota /blog
+  const isBlogPage = location.pathname === "/blog";
 
   return (
     <HeaderAll
       style={{
-        top: scrollingDown ? "-15vh" : "0", // A navbar sai de cena para cima
+        top: scrollingDown ? "-15vh" : "0", // A navbar sai de cena para cima ao scrollar
       }}
     >
       <HeaderDivBlack>
@@ -206,15 +216,25 @@ const Header = () => {
           </div>
         </HeaderContact>
         <HeaderIcons>
-          <NavLink to="/blog" activeClassName="active">
+          {/* Ajuste de NavLink para React Router v6 */}
+          <NavLink
+            to="/blog"
+            className={({ isActive }) => (isActive ? "active" : undefined)}
+          >
             <BsBook color="var(--color--white)" />
             <span>Blog</span>
           </NavLink>
-          <NavLink to="/produtos" activeClassName="active">
+          <NavLink
+            to="/produtos"
+            className={({ isActive }) => (isActive ? "active" : undefined)}
+          >
             <BsCartCheck color="var(--color--white)" />
             <span>Loja</span>
           </NavLink>
-          <NavLink to="/" activeClassName="active">
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? "active" : undefined)}
+          >
             <BsHouse color="var(--color--white)" />
             <span>Home</span>
           </NavLink>
@@ -230,19 +250,35 @@ const Header = () => {
           />
         </div>
         <div>
-          <NavLink to="/" activeClassName="active">
+          {/* Menu principal */}
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? "active" : undefined)}
+          >
             Início
           </NavLink>
-          <NavLink to="/sobre" activeClassName="active">
+          <NavLink
+            to="/sobre"
+            className={({ isActive }) => (isActive ? "active" : undefined)}
+          >
             Sobre nós
           </NavLink>
-          <NavLink to="/produtos" activeClassName="active">
+          <NavLink
+            to="/produtos"
+            className={({ isActive }) => (isActive ? "active" : undefined)}
+          >
             Produtos
           </NavLink>
-          <NavLink to="/parcerias" activeClassName="active">
+          <NavLink
+            to="/parcerias"
+            className={({ isActive }) => (isActive ? "active" : undefined)}
+          >
             Parcerias
           </NavLink>
-          <NavLink to="/blog" activeClassName="active">
+          <NavLink
+            to="/blog"
+            className={({ isActive }) => (isActive ? "active" : undefined)}
+          >
             Blog
           </NavLink>
         </div>

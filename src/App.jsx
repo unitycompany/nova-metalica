@@ -23,7 +23,8 @@ const LpPaginaParcerias = lazy(() => import("./pages/Parcerias/LP/Inicial"));
 const ArticlePage = lazy(() => import("./pages/Blog/Artigo"));
 
 function App() {
-  // Define basename apenas em produção
+  // Se estiver em "production", basename será "/nova-metalica"
+  // Se estiver em "development", basename será ""
   const base = process.env.NODE_ENV === "production" ? "/nova-metalica" : "";
 
   return (
