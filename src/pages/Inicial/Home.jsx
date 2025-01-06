@@ -5,15 +5,24 @@ import Button02 from "../../components/buttons/Button02";
 const HomeAll = styled.section`
     width: 100%;
     height: 95vh;
-    max-width: 1140px;
+    max-width: 1280px;
     position: relative;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    padding-top: 15%;
+    padding-top: 10%;
     padding-bottom: 5%;
     display: flex;
     gap: 50px;
+
+    @media (max-width: 768px){
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column-reverse;
+        height: auto;
+        padding: 15% 5% 10% 5%;
+    }
 `
 
 const HomeText = styled.div`
@@ -25,6 +34,13 @@ const HomeText = styled.div`
     justify-content: center;
     align-items: flex-start;
     gap: 30px;
+
+    @media (max-width: 768px){
+        width: 100%;
+        gap: 20px;
+        padding-top: 15%;
+        padding-left: 0;
+    }
 
     & > span{
         display: flex;
@@ -47,6 +63,11 @@ const HomeText = styled.div`
         font-size: 40px;
         font-weight: 600;
         line-height: 110%;
+
+        @media (max-width: 768px){
+            font-size: 36px;
+            line-height: 100%;
+        }
 
         & > b{
             font-weight: 700;
@@ -73,6 +94,17 @@ const HomeImage = styled.div`
     height: 100%;
     position: relative;
 
+    @media (max-width: 768px){
+        width: 80%;
+        opacity: 0.05;
+        top: 0;
+        z-index: -1;
+        right: 0;
+        height: 350px;
+        position: absolute;
+        clip-path: polygon(25% 0%, 100% 0, 100% 100%, 75% 100%, 25% 100%, 0% 50%);
+    }
+
     & > img{
         width: 100%;
         height: 100%;
@@ -81,6 +113,11 @@ const HomeImage = styled.div`
         border-radius: 18px 0 0 18px;
         filter: contrast(110%) brightness(110%);
         box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.2);
+
+        @media (max-width: 768px){
+            border-radius: 0 0 0 50px;
+            box-shadow: none;
+        }
     }
 `
 

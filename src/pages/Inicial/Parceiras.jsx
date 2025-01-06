@@ -5,21 +5,26 @@ import Button02 from "../../components/buttons/Button02";
 import Button04 from "../../components/buttons/Button04";
 
 const ParceirosAll = styled.section`
-    width: 100%;
-    height: 65vh;
-    max-width: 1140px;
+    width: 97.5%;
+    height: auto;
+    max-width: 1280px;
     transform: translateX(-50%);
     left: 50%;
     top: 0;
     position: relative;
     display: flex;
     gap: 50px;
-    background-color: #00000010;
+    background-color: #e9e9e9;
     border-radius: 30px;
     margin-top: 25px;
     justify-content: center;
     align-items: center;
     padding: 10px;
+
+    @media (max-width: 768px){
+       flex-direction: column-reverse;
+       padding: 5% 5% 10% 5%;
+    }
 `
 
 const ParceirosTexts = styled.div`
@@ -33,10 +38,19 @@ const ParceirosTexts = styled.div`
     padding-left: 5%;
     margin-left: -10px;
 
+    @media (max-width: 768px){
+        width: 100%;
+        align-items: center;
+    }
+
     & > h1{
         font-size: 32px;
         font-weight: 500;
         color: var(--color--black);
+
+        @media (max-width: 768px){
+            font-size: 28px;
+        }
 
         & > b{
             color: var(--color--blue);
@@ -49,6 +63,10 @@ const ParceirosTexts = styled.div`
         font-weight: 400;
         opacity: .6;
         color: var(---color--black);
+
+        @media (max-width: 768px){
+            text-align: center;
+        }
     }
 
     & > div{
@@ -58,6 +76,7 @@ const ParceirosTexts = styled.div`
         justify-content: space-between;
         flex-wrap: nowrap;
         gap: 20px;
+
 
         & > div{
             width: 50%;
@@ -70,6 +89,11 @@ const ParceirosTexts = styled.div`
             background-color: var(--color--dark--blue);
             padding: 15px;
             border-radius: 12px;
+
+            @media (max-width: 768px){
+                height: 120px;
+                gap: 10px;
+            }
 
             & > span{
                 font-size: 30px;
@@ -93,6 +117,10 @@ const ParceirosImage = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 30px;
+
+    @media (max-width: 768px){
+        width: 100%;
+    }
 
     & > img {
         width: 100%;

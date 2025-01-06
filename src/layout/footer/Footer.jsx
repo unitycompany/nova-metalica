@@ -4,9 +4,9 @@ import styled from "styled-components";
 import { BsPlayFill } from "react-icons/bs";
 
 const FooterAll = styled.section`
-    width: 100%;
+    width: 97.5%;
     height: 45vh;
-    max-width: 1140px;
+    max-width: 1280px;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -19,6 +19,13 @@ const FooterAll = styled.section`
     flex-direction: column;
     background-color: var(--color--black);
     border-radius: 20px 20px 0 0;
+
+    @media (max-width: 768px){
+        height: auto;
+        align-items: flex-start;
+        padding: 5%;
+        gap: 50px;
+    }
 `
 
 const FooterContainer = styled.div`
@@ -28,6 +35,12 @@ const FooterContainer = styled.div`
     align-items: center;
     justify-content: space-between;
 
+    @media (max-width: 768px){
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+    }
+
     & > div{
         width: 25%;
         display: flex;
@@ -36,6 +49,10 @@ const FooterContainer = styled.div`
         justify-content: flex-start;
         height: 80%;
         gap: 10px;
+
+        @media (max-width: 768px){
+            width: 100%;
+        }
 
         & > img {
             width: 150px;
@@ -108,9 +125,21 @@ const FooterPolitica = styled.div`
         font-size: 12px;
         color: var(--color--white);
 
+        @media (max-width: 768px){
+            line-height: 120%;
+        }
+
         & > a {
             color: var(--color--blue);
             text-decoration: underline;
+
+            & > img {
+                width: 100px;
+
+                @media (max-width: 768px){
+                    width: 60px;
+                }
+            }
         }
     }
 `
@@ -195,7 +224,7 @@ const Footer = () => {
 
                 <FooterPolitica>
                     <p>© 2024 Nova Metálica | Todos os direitos reservados | <a href="#">Política de Privacidade</a></p>
-                    <p>Desenvolvido por <a href="#">Aleph</a></p>
+                    <p><a href="https://alephsramos.com.br/" target="_blank"><img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5360ae68-4678-4438-a170-893b230de700/public" /></a></p>
                 </FooterPolitica>
             </FooterAll>
         </>

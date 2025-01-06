@@ -8,18 +8,29 @@ const Card = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 10px;
+    gap: 15px;
     position: relative;
     z-index: 1;
     background-color: var(--color--white);
     padding: 5px 5px 20px 5px;
     border-radius: 12px;
 
+    @media (max-width: 768px){
+        width: 100%;
+        height: auto;
+        gap: 20px;
+        border-radius: 20px;
+    }
+
     & > img{
         width: 100%;
         height: 65%;
         object-fit: cover;
         border-radius: 12px;
+
+        @media (max-width: 768px){
+            border-radius: 15px;
+        }
     }
 
     & > h2{

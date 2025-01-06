@@ -3,17 +3,22 @@ import styled from "styled-components";
 
 const FormAll = styled.div`
     width: 100%;
-    height: 60vh;
-    max-width: 1140px;
+    height: auto;
+    max-width: 1280px;
     left: 50%;
     top: 0;
     transform: translateX(-50%);
     position: relative;
-    margin-top: 30px;
+    padding: 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 50px;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+        padding: 15% 5% 5% 5%;
+    }
 `
 
 const FormTexts = styled.div`
@@ -23,11 +28,19 @@ const FormTexts = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 20px;
-    padding-left: 5%;
+    gap: 25px;
+
+    @media (max-width: 768px){
+        width: 100%;
+        align-items: center;
+    }
 
     & > img {
-        width: 150px;
+        width: 150px;   
+        
+        @media (max-width: 768px){
+            width: 120px;
+        }
     }
 
     & > h1{
@@ -36,12 +49,26 @@ const FormTexts = styled.div`
         color: var(--color--dark--blue);
         width: 70%;
         white-space: nowrap;
+
+        @media (max-width: 768px){
+            white-space: wrap;
+            font-size: 28px;
+            width: 80%;
+            text-align: center;
+            line-height: 100%;
+        }
     }
 
     & > p {
         width: 85%;
-        font-size: 14px;
+        font-size: 16px;
         opacity: .6;
+
+        @media (max-width: 768px){
+            text-align: center;
+            opacity: 0.8;
+            width: 100%;
+        }
 
         & > a{
             color: var(--color--blue);
@@ -52,14 +79,18 @@ const FormTexts = styled.div`
 
 const ContactForm = styled.form`
     width: 45%;
-    height: 70%;
+    height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    border-radius: 30px 0 0 30px;
+    border-radius: 20px;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+
+    @media (max-width: 768px){
+        width: 100%;
+    }
 
     & > div {
         display: flex;
@@ -68,25 +99,34 @@ const ContactForm = styled.form`
         justify-content: center;
         gap: 20px;
         background: linear-gradient (45deg, var(--color--white), var(--color--black));
-        width: 80%;
+        width: 100%;
         height: 60%;
         padding: 25px;
         border-radius: 10px;
     }
 
-    & > div > input {
+    & > div > label {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    & > div > label > input {
         border: 1px solid #00000020;
-        border-radius: 10px;
+        border-radius: 5px;
         width: 100%;
         padding: 10px 15px;
         color: var(--color--dark--blue);
     }
 
-    & > div > input:focus{
+    & > div > label > input:focus{
         border: 1px solid var(--color--dark--blue);
     }
 
-    & > div > input::placeholder{
+    & > div > label > input::placeholder{
         font-size: 14px;
         opacity: .6;
         color: var(--color--dark--blue);
@@ -95,17 +135,15 @@ const ContactForm = styled.form`
     & > div > button {
     padding: 15px;
     background: linear-gradient(130deg, var(--color--blue), var(--color--dark--blue));
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     width: 100%;
-    border-radius: 15px;
+    border-radius: 5px;
     color: var(--color--white);
     cursor: pointer;
     transition: all .1s ease-in-out;
     }
 
     & > div > button:hover {
-        transform: scale(1.02);
-        box-shadow: 0 0 15px rgba(0, 0, 0, .3);
+        transform: scale(0.98);
     }
 
 
@@ -123,9 +161,18 @@ const Form = () => {
                 </FormTexts>
                 <ContactForm id="contactForm">
                     <div>
-                        <input type="text" id="name" placeholder="Nome" />
-                        <input type="email" id="email" placeholder="E-mail" />
-                        <input type="tel" id="tel" placeholder="WhatsApp" />
+                        <label>
+                            Nome
+                            <input type="text" id="name" placeholder="Anna Fernandes" />
+                        </label>
+                        <label>
+                            E-mail
+                            <input type="email" id="email" placeholder="annafernandes@gmail.com" />
+                        </label>
+                        <label>
+                            Seu WhatsApp
+                            <input type="tel" id="tel" placeholder="24981234567" />
+                        </label>
                         <button type="submit">Enviar</button>
                     </div>
                 </ContactForm>

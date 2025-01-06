@@ -13,6 +13,11 @@ const Card = styled.div`
     background-color: var(--color--blue);
     gap: 10px;
 
+    @media (max-width: 768px){
+        width: 100%;
+        padding: 10px;
+    }
+
     & > div:nth-child(1){
         width: 40%;
         height: 100%;
@@ -22,10 +27,20 @@ const Card = styled.div`
         align-items: center;
         justify-content: center;
 
+        @media (max-width: 768px){
+            width: 60%;
+            height: 140px;
+            padding: 10px;
+        }
+
         & > img{
             width: 60%;
             height: 100%;
             object-fit: contain;
+
+            @media (max-width: 768px){
+                width: 80%;
+            }
         }
     }
 
@@ -37,17 +52,35 @@ const Card = styled.div`
         gap: 20px;
         justify-content: center;
 
+        @media (max-width: 768px){
+            width: 100%;
+            padding: 5px;
+        }
+        
+
         & > h2{
             color: var(--color--white);
             font-weight: 500;
             font-size: 20px;
+
+            @media (max-width: 768px){
+                text-align: left;
+            }
         }
 
         & > p{
-            font-size: 12px;
+            font-size: 14px;
             color: var(--color--white);
             opacity: .6;
             width: 90%;
+
+            @media (max-width: 768px){
+                width: 100%;
+                font-size: 12px;
+                text-align: left;
+                opacity: 0.8;
+                line-height: 110%;
+            }
         }
     }
 `

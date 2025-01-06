@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom"; // Importando useLocation
+import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Button04 from "../../components/buttons/Button04";
-
-import { BsTelephone, BsEnvelopeCheck, BsGeo, BsBook, BsCartCheck, BsHouse } from "react-icons/bs";
+import { BsTelephone, BsEnvelopeCheck, BsGeo, BsBook, BsCartCheck, BsHouse, BsX, BsGrid3X3GapFill, BsArrowRight } from "react-icons/bs";
 
 // Estilos do header
 const HeaderAll = styled.section`
-  width: 100%;
+  width: 98.5%;
   height: 15vh;
   position: fixed;
-  max-width: 1140px;
+  max-width: 1280px;
   z-index: 10;
   left: 50%;
-  transform: translateX(-50%); /* Garantir que a navbar esteja centralizada */
+  transform: translateX(-50%);
   margin: 0 auto;
   display: block;
-  transition: top 1s ease; /* Apenas a transição da propriedade top */
-  top: 0; /* Posição inicial no topo */
+  transition: top 1s ease;
+  top: 0;
+
+  @media (max-width: 768px) {
+    height: 10vh;
+    width: 100%;
+  }
 `;
 
 const HeaderDivBlack = styled.div`
@@ -29,9 +33,17 @@ const HeaderDivBlack = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 1.5% 7.5%;
+  padding: 1.2% 7.5%;
   gap: 50px;
   border-radius: 0 0 20px 20px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+
+  @media (min-width: 768px) and (max-width: 1280px) {
+    padding: 1% 7.5%;
+  }
 `;
 
 const HeaderContact = styled.div`
@@ -117,6 +129,21 @@ const HeaderWhite = styled.div`
   box-shadow: 0 0 2.5px rgba(0, 0, 0, 0.4);
   background-color: var(--color--white);
 
+  @media (max-width: 768px) {
+    top: 1vh;
+    width: 95%;
+    left: 2.5%;
+    border-radius: 15px;
+    padding: 0 5% 0 5%;
+    height: 100%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  }
+
+  @media (min-width: 768px) and (max-width: 1280px) {
+    padding: 25px 2.5%;
+    border-radius: 15px;
+  }
+
   & > div:nth-child(1) {
     width: 10%;
     height: 100%;
@@ -124,9 +151,17 @@ const HeaderWhite = styled.div`
     align-items: center;
     justify-content: center;
 
+    @media (max-width: 768px) {
+      width: auto;
+    }
+
     & > img {
       width: 100%;
       height: auto;
+
+      @media (max-width: 768px) {
+        width: 100px;
+      }
     }
   }
 
@@ -136,6 +171,10 @@ const HeaderWhite = styled.div`
     align-items: center;
     justify-content: center;
     gap: 10px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
 
     & > a {
       font-size: 12px;
@@ -159,19 +198,230 @@ const HeaderWhite = styled.div`
       color: var(--color--white);
     }
   }
+
+  & > div:nth-child(3){
+    @media (max-width: 768px){
+      display: none;
+    }
+  }
+`;
+
+const MenuButton = styled.button`
+  background: none;
+  width: auto;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  display: none;
+
+  @media (max-width: 768px) {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    background-color: var(--color--black);
+    border-radius: 8px;
+    font-weight: 500;
+    color: var(--color--white);
+  }
+
+  & > svg{
+    font-size: 12px;
+  }
+`;
+
+const Sidebar = styled.div`
+  position: fixed;
+  top: 0;
+  right: ${(props) => (props.isOpen ? "0" : "-100%")};
+  width: 70%;
+  top: 2.5vh;
+  height: auto;
+  background-color: var(--color--white);
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  display: flex!important;
+  flex-direction: column!important;
+  align-items: center;
+  justify-content: space-between!important;
+  gap: 40px;
+  padding: 30px 20px;
+  transition: right 0.3s ease;
+  z-index: 1000;
+  border-radius: 20px 0 0 20px;
+  overflow: hidden;
+`;
+
+const SidebarTop = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & > img {
+    width: 100px;
+  }
+`
+
+const CloseButton = styled.button`
+  & > svg{
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--color--dark--blue);
+    color: var(--color--white);
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+  }
+`;
+
+const SidebarLinks = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+
+  a {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    text-decoration: none;
+    background-color: var(--color--black);
+    border: 1px solid var(--color--black);
+    color: var(--color--white);
+    padding: 8px 15px;
+    transition: all .3s ease;
+    border-radius: 10px;
+
+    & > svg {
+      font-size: 24px;
+      background-color: var(--color--white);
+      padding: 5px;
+      color: var(--color--black);
+      border-radius: 50%;
+      transform: rotate(-25deg);
+      transition: all .3s ease;
+    }
+
+    & > hr {
+      width: 40%;
+      height: 1px;
+      background-color: var(--color--white);
+      border-color: var(--color--white);
+      border-radius: 50%;
+    }
+
+    &:hover{
+      background-color: var(--color--white);
+      border: 1px solid var(--color--black);
+      color: var(--color--black);
+
+      & > svg {
+        font-size: 24px;
+        background-color: var(--color--black);
+        padding: 5px;
+        color: var(--color--white);
+        border-radius: 50%;
+        transform: rotate(0deg);
+      } 
+
+      & > hr {
+        width: 40%;
+        height: 1px;
+        background-color: var(--color--black);
+        border-color: var(--color--black);
+        border-radius: 50%;
+      }
+    }
+  }
+`;
+
+const SidebarContato = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+
+  & > div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--color--black);
+    gap: 5px;
+    width: 100%;
+    border: 1px solid var(--color--black);
+    padding: 5px;
+    transition: all .2s ease;
+
+    &:hover{
+      background-color: var(--color--black);
+
+      & > a {
+        color: var(--color--white);
+      }
+
+      & > svg {
+        fill: var(--color--white)!important;
+      }
+    }
+
+    & > a {
+      font-size: 14px;
+      color: var(--color--black);
+    }
+
+    & > svg {
+      width: 25px;
+      height: 25px;
+      padding: 5px;
+    }
+  }
+`
+
+const SidebarIcons = styled.div`
+  width: 100%;
+  display: none;
+  justify-content: space-evenly;
+
+  .IconLink{
+    padding: 10px;
+    border-radius: 50%;
+    background-color: var(--color--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+`
+
+const SidebarFooter = styled.div`
+  margin-top: auto;
 `;
 
 const Header = () => {
   const [scrollingDown, setScrollingDown] = useState(false);
-  const location = useLocation(); // Obtém a URL atual
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
+
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        setScrollingDown(true); // Scrolling down
-      } else {
-        setScrollingDown(false); // Scrolling up
+      if (!isSidebarOpen) {
+        if (window.scrollY > lastScrollY) {
+          setScrollingDown(true);
+        } else {
+          setScrollingDown(false);
+        }
       }
       lastScrollY = window.scrollY;
     };
@@ -180,14 +430,12 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
-
-  const isBlogPage = location.pathname === '/blog'; // Verifica se está na página do blog
+  }, [isSidebarOpen]);
 
   return (
     <HeaderAll
       style={{
-        top: scrollingDown ? "-15vh" : "0", // A navbar sai de cena para cima
+        top: scrollingDown ? "-15vh" : "0",
       }}
     >
       <HeaderDivBlack>
@@ -249,7 +497,62 @@ const Header = () => {
         <div>
           <Button04 href="#Form">Solicitar orçamento</Button04>
         </div>
+        <MenuButton onClick={() => setSidebarOpen(true)}>
+          Menu
+          <BsGrid3X3GapFill />
+        </MenuButton>
       </HeaderWhite>
+
+      <Sidebar isOpen={isSidebarOpen}>
+        <SidebarTop>
+          <CloseButton onClick={() => setSidebarOpen(false)}>
+            <BsX />
+          </CloseButton>
+          <img
+            src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a6bd0b20-7bcc-4575-98dd-39f394dbe100/public"
+            alt="logo da nova metalica"
+            loading="lazy"
+          />
+        </SidebarTop>
+        <SidebarLinks>
+          <NavLink to="/">Início <hr /> <BsArrowRight /></NavLink>
+          <NavLink to="/sobre">Sobre nós <hr /> <BsArrowRight /></NavLink>
+          <NavLink to="/produtos">Produtos <hr /> <BsArrowRight /></NavLink>
+          <NavLink to="/parcerias">Parcerias <hr /> <BsArrowRight /></NavLink>
+          <NavLink to="/blog">Blog <hr /> <BsArrowRight /></NavLink>
+        </SidebarLinks>
+
+        <SidebarContato>
+          <div>
+            <BsEnvelopeCheck color="var(--color--black)" />
+            <a href="#">contato@novametalica.com.br</a>
+          </div>
+          <div>
+            <BsTelephone color="var(--color--black)" />
+            <a href="#">+55 (21) 99288-2282</a>
+          </div>
+          <div>
+            <BsGeo color="var(--color--black)" />
+            <a href="#">Veja onde estamos localizados</a>
+          </div>
+        </SidebarContato>
+
+        <SidebarIcons>
+          <NavLink to="/blog" activeClassName="active" className={"IconLink"}>
+            <BsBook />
+          </NavLink>
+          <NavLink to="/produtos" activeClassName="active" className={"IconLink"}>
+            <BsCartCheck />
+          </NavLink>
+          <NavLink to="/" activeClassName="active" className={"IconLink"}>
+            <BsHouse />
+          </NavLink>
+        </SidebarIcons>
+
+        <SidebarFooter>
+          <Button04 href="#Form">Solicitar orçamento</Button04>
+        </SidebarFooter>
+      </Sidebar>
     </HeaderAll>
   );
 };

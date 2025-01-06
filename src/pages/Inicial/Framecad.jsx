@@ -5,25 +5,44 @@ import Button02 from "../../components/buttons/Button02";
 // Estilos do componente
 const FramecadAll = styled.section`
     width: 100%;
-    height: 80vh;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 1140px;
+    max-width: 1280px;
     transform: translateX(-50%);
     left: 50%;
     top: 0;
     position: relative;
+    padding: 10% 5%;
+
+    @media (max-width: 768px){
+        flex-direction: column-reverse;
+        gap: 50px;
+    }   
 `;
 
 const FramecadIframe = styled.div`
     width: 45%;
-    height: 60%;
+    height: 400px;
+
+    @media (max-width: 768px){
+        width: 100%;
+        height: 250px;
+    }
+
+    @media (min-width: 768px) and (max-width: 1280px){
+        height: 350px;
+    }
 
     & > iframe {
         width: 100%;
         height: 100%;
-        border-radius: 20px 0 0 20px;
+        border-radius: 20px;
+
+        @media (max-width: 768px){
+            border-radius: 12px;
+        }
     }
 `;
 
@@ -32,15 +51,24 @@ const FramecadTexts = styled.div`
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    padding-left: 5%;
     gap: 30px;
     width: 55%;
     z-index: 0; /* Garantir que o texto fique atrás do iframe */
     transition: opacity 1s ease;
 
+    @media (max-width: 768px){
+        width: 100%;
+        align-items: center;
+    }
+
     & > h1 {
         font-size: 26px;
         font-weight: 500;
+
+        @media (max-width: 768px){
+            font-size: 24px;
+            text-align: center;
+        }
     }
 
     & > h6 {
@@ -48,6 +76,13 @@ const FramecadTexts = styled.div`
         font-weight: 400;
         margin-top: -20px;
         opacity: .8;
+
+        @media (max-width: 768px){
+            font-size: 14px;
+            text-align: center;
+            width: 100%;
+            margin-top: -10px;
+        }
     }
 
     & > p {
@@ -55,6 +90,10 @@ const FramecadTexts = styled.div`
         opacity: .6;
         text-align: justify;
         width: 80%;
+
+        @media (max-width: 768px){
+            width: 100%;
+        }
     }
 
     & > button {

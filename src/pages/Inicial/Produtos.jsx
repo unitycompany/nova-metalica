@@ -6,9 +6,9 @@ import Button02 from "../../components/buttons/Button02"; // Supondo que esse bo
 import Button03 from "../../components/buttons/Button03";
 
 const ProdutosAll = styled.section`
-    width: 100%;
-    height: 60vh;
-    max-width: 1140px;
+    width: 97.5%;
+    height: auto;
+    max-width: 1280px;
     left: 50%;
     top: 0;
     transform: translateX(-50%);
@@ -18,8 +18,14 @@ const ProdutosAll = styled.section`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5%;
+    padding: 2.5% 5%;
     gap: 50px;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+        padding: 10% 5%;
+        gap: 10px;
+    }
 `;
 
 const ProdutosSwiper = styled.div`
@@ -30,6 +36,10 @@ const ProdutosSwiper = styled.div`
     justify-content: center;
     position: relative;
     overflow: hidden;
+
+    @media (max-width: 768px){
+        width: 100%;
+    }
 `;
 
 const ProdutosTexts = styled.div`
@@ -42,16 +52,31 @@ const ProdutosTexts = styled.div`
     gap: 30px;
     color: var(--color--white);
 
+    @media (max-width: 768px){
+        width: 100%;
+        align-items: center;
+    }
+
     & > h1{
         font-weight: 400;
         font-size: 28px;
         width: 80%;
+
+        @media (max-width: 768px){
+            width: 100%;
+            text-align: center;
+        }
     }
 
     & > p{
         font-size: 14px;
         width: 80%;
         font-weight: 300;
+
+        @media (max-width: 768px){
+            text-align: center;
+            width: 90%;
+        }
     }
 `;
 

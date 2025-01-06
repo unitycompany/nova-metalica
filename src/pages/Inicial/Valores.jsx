@@ -6,17 +6,17 @@ import Button02 from "../../components/buttons/Button02";
 import HomeCard2 from "../../layout/cards/CardValores02";
 
 const ValoresAll = styled.section`
-    width: 100%;
-    max-width: 1140px;
+    width: 97.5%;
+    max-width: 1280px;
     left: 50%;
     top: 0;
     transform: translateX(-50%);
     position: relative;
-    height: 130vh;
-    padding: 5%;
+    height: auto;
+    padding: 5% 5% 2.5% 5%;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 50px;
 
     &::before{
         content: '';
@@ -28,6 +28,7 @@ const ValoresAll = styled.section`
         position: absolute;
         background-color: var(--color--black);
         border-radius: 30px;
+        padding-bottom: 55px;
     }
 `
 
@@ -37,6 +38,11 @@ const ValoresCards = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+        gap: 20px;
+    }
 `
 
 // Fim dos cards
@@ -50,24 +56,43 @@ const ValoresText = styled.div`
     position: relative;
     z-index: 1;
 
+    @media (max-width: 768px){
+        flex-direction: column-reverse;
+    }
+
     & > div:nth-child(1){
         color: var(--color--white);
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        gap: 25px;
+        gap: 15px;
+
+        @media (max-width: 768px){
+            align-items: center;
+            gap: 15px;
+        }
 
         & > h1{
             font-size: 40px;
             font-weight: 500;
             line-height: 100%;
+
+            @media (max-width: 768px){
+                font-size: 32px;
+            }
         }
 
         & > p{
             font-size: 16px;
             opacity: .6;
             width: 80%;
+
+            @media (max-width: 768px){
+                width: 100%;
+                text-align: center;
+                opacity: 0.8;
+            }
         }
     }
 
@@ -83,12 +108,20 @@ const ValoresText = styled.div`
 
 const ValoresQualidades = styled.div`
     width: 100%;
-    height: 20%;
-    border: 1px solid red;
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+
+    @media (max-width: 768px){
+        border: 2px solid red;
+        height: auto;
+        gap: 10px;
+        margin-bottom: -45px;
+    }
+
+    
 `
 
 const Valores = () => {
@@ -108,7 +141,7 @@ const Valores = () => {
                     title="Visão" 
                     descricao="Ser reconhecida por entregar todos os projetos de Steel Frame dentro do prazo, com máxima qualidade e eficiência em cada etapa."
                     />
-                    <HomeCard 
+                    <HomeCard
                     image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/3bb56937-dc5e-48b9-1b59-f51889f13d00/public" 
                     descricaoImage="Imagem Exemplo" 
                     title="Missão" 
