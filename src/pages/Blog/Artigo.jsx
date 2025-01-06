@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom"; // Para pegar o slug da URL
+import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../../../firebase";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 import { BsInstagram, BsFacebook, BsLinkedin, BsFillPlayFill } from "react-icons/bs";
 import Button05 from "../../components/buttons/Button05";
 
@@ -407,296 +408,155 @@ const ArtigoTituloBlogs = styled.div`
 `
 
 const ArticlePage = () => {
-    const { slug } = useParams(); // Obtendo o slug da URL
+    const { slug } = useParams();
+    const navigate = useNavigate();
     const [article, setArticle] = useState(null);
+    const [relatedArticles, setRelatedArticles] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
   
     useEffect(() => {
-      // Simulando uma busca de artigo com base no slug
-      const articles = [
-        {
-          slug: "como-o-steel-frame",
-          title: "Como o Steel Frame está revolucionando a construção",
-          autor: "Alice Pereira de Jesus",
-          data: "24 de novembro de 2023",
-          imagemPrincipal: "https://via.placeholder.com/500",
-          bibliografiaImagemPrincipal: "https://alephsramos.com.br/",
-          t1Description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ratione iure qui ullam, necessitatibus, minus veritatis at fuga <a href='https://alephsramos.github.io/lpnovametalica/'>voluptates soluta</a> quidem sapiente dolor alias sint est distinctio consequuntur eum dicta.",
-          t1Pergunta1: "O que é steel frame?",
-          t1Resposta1: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ratione iure qui ullam, necessitatibus, minus veritatis at fuga voluptates soluta quidem sapiente dolor alias sint est distinctio consequuntur eum dicta.",
-          t1Pergunta2: "O que é Drywall",
-          t1Resposta2: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ratione iure qui ullam, necessitatibus, minus veritatis at fuga voluptates soluta quidem sapiente dolor alias sint est distinctio consequuntur eum dicta.",
-          image: "https://via.placeholder.com/800x400",
-
-          t1Image: "https://via.placeholder.com/500",
-          topico1: "Pergunta 01",
-          t1RespostaTopic: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ratione iure qui ullam, necessitatibus, minus veritatis at fuga voluptates soluta quidem sapiente dolor alias sint est distinctio consequuntur eum dicta.",
-          bibliografiaT1: "https://alephsramos.com.br",
-
-          t2Image: "https://via.placeholder.com/500",
-          topico2: "Pergunta 02",
-          t2RespostaTopic: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ratione iure qui ullam, necessitatibus, minus veritatis at fuga voluptates soluta quidem sapiente dolor alias sint est distinctio consequuntur eum dicta.",
-          bibliografiaT2: "https://alephsramos.com.br",
-
-          t3Image: "https://via.placeholder.com/500",
-          topico3: "Pergunta 03",
-          t3RespostaTopic: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ratione iure qui ullam, necessitatibus, minus veritatis at fuga voluptates soluta quidem sapiente dolor alias sint est distinctio consequuntur eum dicta.",
-          bibliografiaT3: "https://alephsramos.com.br",
-
-          t4Image: "https://via.placeholder.com/500",
-          topico4: "Pergunta 04",
-          t4RespostaTopic: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ratione iure qui ullam, necessitatibus, minus veritatis at fuga voluptates soluta quidem sapiente dolor alias sint est distinctio consequuntur eum dicta.",
-          bibliografiaT4: "https://alephsramos.com.br",
-
-          t5Image: "https://via.placeholder.com/500",
-          topico5: "Pergunta 05",
-          t5RespostaTopic: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ratione iure qui ullam, necessitatibus, minus veritatis at fuga voluptates soluta quidem sapiente dolor alias sint est distinctio consequuntur eum dicta.",
-          bibliografiaT5: "https://alephsramos.com.br",
-
-          tags: ["steel frame", "construção", "inovação"],
-          sumario: [
-            { id: "topico1", title: "Introdução ao Steel Frame" },
-            { id: "topico2", title: "Vantagens do Steel Frame" },
-            { id: "topico3", title: "Exemplos de Construções com Steel Frame" },
-          ],
-          carrosselImagens: [
-            { src: "https://via.placeholder.com/100", link: "/" },
-            { src: "https://via.placeholder.com/100", link: "/produtos" },
-            { src: "https://via.placeholder.com/100", link: "/sobre" }
-          ],
-          related: [{ title: "Artigo relacionado 1", description: "Descrição do artigo relacionado" }],
-        },
-      ];
+      const fetchArticle = async () => {
+        try {
+          const articlesRef = collection(db, "Artigos");
+          const q = query(articlesRef, where("slug", "==", slug));
+          const querySnapshot = await getDocs(q);
   
-      // Encontrar o artigo com base no slug
-      const foundArticle = articles.find((article) => article.slug === slug);
-      setArticle(foundArticle);
+          if (!querySnapshot.empty) {
+            const doc = querySnapshot.docs[0];
+            const fetchedArticle = { id: doc.id, ...doc.data() };
+            setArticle(fetchedArticle);
+  
+            fetchRelatedArticles(fetchedArticle.tags);
+          } else {
+            setError("Artigo não encontrado.");
+          }
+        } catch (err) {
+          console.error("Erro ao buscar artigo:", err);
+          setError("Ocorreu um erro ao carregar o artigo.");
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      const fetchRelatedArticles = async (tags) => {
+        try {
+          const articlesRef = collection(db, "Artigos");
+          const q = query(articlesRef, where("tags", "array-contains-any", tags));
+          const querySnapshot = await getDocs(q);
+  
+          const related = querySnapshot.docs
+            .map((doc) => ({ id: doc.id, ...doc.data() }))
+            .filter((relatedArticle) => relatedArticle.slug !== slug);
+  
+          setRelatedArticles(related);
+        } catch (err) {
+          console.error("Erro ao buscar artigos relacionados:", err);
+        }
+      };
+  
+      fetchArticle();
     }, [slug]);
+  
+    if (loading) {
+      return <p>Carregando artigo...</p>;
+    }
+  
+    if (error) {
+      return <p>{error}</p>;
+    }
+  
+    if (!article) {
+      return <p>Artigo não encontrado.</p>;
+    }
   
     return (
       <div>
-        {article ? (
-            <>          
-            <ArtigoAll>
-                <ArtigoLeft>
-                    <div>
-                        <h1>{article.title}</h1>
-                        <span>Escrito por: <b>{article.autor}</b> | {article.data}</span>
-                        <img src={article.imagemPrincipal} alt="Imagem do blog" />
-                        <h6>{article.bibliografiaImagemPrincipal}</h6>
-                    </div>
-
-                    <div>
-                        <p
-                            dangerouslySetInnerHTML={{ __html: article.t1Description }}
-                        />
-                        <h2>
-                            {article.t1Pergunta1}
-                        </h2>
-                        <p
-                            dangerouslySetInnerHTML={{ __html: article.t1Resposta1 }}
-                        />
-                        <h2>
-                            {article.t1Pergunta2}
-                        </h2>
-                        <p
-                            dangerouslySetInnerHTML={{ __html: article.t1Resposta2 }}
-                        />
-                    </div>
-
-                    <div>
-                        <img src={article.t1Image} />
-                        <h6>{article.bibliografiaT1}</h6>
-                        <h1 id="topico2">
-                            {article.topico1}
-                        </h1>
-                        <p
-                            dangerouslySetInnerHTML={{ __html: article.t1RespostaTopic }}
-                        />
-                    </div>
-
-                    <div>
-                        <img src={article.t2Image} />
-                        <h6>{article.bibliografiaT2}</h6>
-                        <h1 id="topico2">
-                            {article.topico2}
-                        </h1>
-                        <p
-                            dangerouslySetInnerHTML={{ __html: article.t2RespostaTopic }}
-                        />
-                    </div>
-
-                    <div>
-                        <img src={article.t3Image} />
-                        <h6>{article.bibliografiaT3}</h6>
-                        <h1 id="topico3">
-                            {article.topico3}
-                        </h1>
-                        <p
-                            dangerouslySetInnerHTML={{ __html: article.t3RespostaTopic }}
-                        />
-                    </div>
-
-                    <div>
-                        <img src={article.t4Image} />
-                        <h6>{article.bibliografiaT4}</h6>
-                        <h1 id="topico4">
-                            {article.topico4}
-                        </h1>
-                        <p
-                            dangerouslySetInnerHTML={{ __html: article.t4RespostaTopic }}
-                        />
-                    </div>
-
-                    <div>
-                        <img src={article.t5Image} />
-                        <h6>{article.bibliografiaT5}</h6>
-                        <h1 id="topico5">
-                            {article.topico5}
-                        </h1>
-                        <p
-                            dangerouslySetInnerHTML={{ __html: article.t5RespostaTopic }}
-                        />
-                    </div>
-
-                    <article>
-                        <div>
-                            <h1>Fique por dentro de tudo!</h1>
-                            <p>Por favor, preencha seus dados para nossa equipe entrar em contato com você.</p>
-                            <form>
-                                <input type="text" id="name" placeholder="Nome" />
-                                <input type="email" id="email" placeholder="E-mail" />
-                                <input type="tel" id="tel" placeholder="WhatsApp" />
-                                <button type="submit">Enviar</button>
-                            </form>
-                        </div>
-                    </article>
-                </ArtigoLeft>
-    
-                <ArtigoRight>
-                <div>
-                    <h3>Sumário</h3>
-                    <ol>
-                    {article.sumario.map((topic, index) => (
-                        <li key={index}>
-                        <a href={`#${topic.id}`}>
-                            <BsFillPlayFill /> <span>{topic.title}</span>
-                        </a>
-                        </li>
-                    ))}
-                    </ol>
-                </div>
-    
-                <div>
-                    <a href="#">
-                    <BsInstagram />
+        <ArtigoAll>
+          <ArtigoLeft>
+            <div>
+              <h1>{article.title}</h1>
+              <span>
+                Escrito por: <b>{article.autor}</b> | {article.data}
+              </span>
+              <img src={article.imagemPrincipal} alt="Imagem do blog" />
+              <h6>{article.bibliografiaImagemPrincipal}</h6>
+            </div>
+  
+            {article.sumario?.map((topic, index) => (
+              <div key={index} id={topic.id}>
+                <h1>{topic.title}</h1>
+                <p>{topic.content}</p>
+              </div>
+            ))}
+          </ArtigoLeft>
+  
+          <ArtigoRight>
+            <div>
+              <h3>Sumário</h3>
+              <ol>
+                {article.sumario?.map((topic, index) => (
+                  <li key={index}>
+                    <a href={`#${topic.id}`}>
+                      <BsFillPlayFill /> <span>{topic.title}</span>
                     </a>
-                    <a href="#">
-                    <BsFacebook />
+                  </li>
+                ))}
+              </ol>
+            </div>
+  
+            <div>
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                <BsInstagram />
+              </a>
+              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                <BsFacebook />
+              </a>
+              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                <BsLinkedin />
+              </a>
+            </div>
+  
+            <ArtigoCarrossel>
+              <Swiper spaceBetween={10} slidesPerView={1} navigation loop>
+                {article.carrosselImagens?.map((image, index) => (
+                  <SwiperSlide key={index}>
+                    <a href={image.link}>
+                      <img
+                        src={image.src}
+                        alt={`Imagem do carrossel ${index + 1}`}
+                        style={{
+                          width: "100%",
+                          borderRadius: "15px",
+                          height: "100%",
+                          objectFit: "contain",
+                        }}
+                      />
                     </a>
-                    <a href="#">
-                    <BsLinkedin />
-                    </a>
-                </div>
-    
-                <ArtigoCarrossel>
-                <Swiper spaceBetween={10} slidesPerView={1} navigation loop>
-                    {article.carrosselImagens.map((image, index) => (
-                    <SwiperSlide key={index}>
-                        <a href={image.link}>
-                        <img
-                            src={image.src}
-                            alt={`Imagem do carrossel ${index + 1}`}
-                            style={{ width: "100%", borderRadius: "15px", height: "100%", objectFit: "contain" }}
-                        />
-                        </a>
-                    </SwiperSlide>
-                    ))}
-                </Swiper>
-                </ArtigoCarrossel>
-    
-                <ArtigoRelacionados>
-                    {article.related.map((related, index) => (
-                    <div key={index}>
-                        <h2>{related.title}</h2>
-                        <p>{related.description}</p>
-                        <Button05 text="Saber mais" />
-                    </div>
-                    ))}
-                </ArtigoRelacionados>
-                </ArtigoRight>
-            </ArtigoAll>
-
-            <ArtigoTituloBlogs>
-                    <h1> Confira nossos blogs mais buscados</h1>
-            </ArtigoTituloBlogs>
-
-            <ArtigoBlogs>
-                <Swiper
-                    spaceBetween={30} // Espaço entre os slides
-                    slidesPerView={3} // Quantos slides serão visíveis por vez
-                    autoplay={{
-                    delay: 3000, // Atraso de 3 segundos
-                    disableOnInteraction: false, // Não desabilita o autoplay após interação
-                    }}
-                    loop={true} // Loop infinito
-                >
-                    <SwiperSlide>
-                    <Card>
-                            <h1>Nome do titulo do blog</h1>
-                            <p>Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.</p>
-                            <span>Escrito por: <b>Nome da autora</b> | 24 de novembro de 2023</span>
-                            <Button05 
-                            text="Saber mais"
-                            />
-                    </Card>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <Card>
-                            <h1>Nome do titulo do blog</h1>
-                            <p>Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.</p>
-                            <span>Escrito por: <b>Nome da autora</b> | 24 de novembro de 2023</span>
-                            <Button05 
-                            text="Saber mais"
-                            />
-                    </Card>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <Card>
-                            <h1>Nome do titulo do blog</h1>
-                            <p>Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.</p>
-                            <span>Escrito por: <b>Nome da autora</b> | 24 de novembro de 2023</span>
-                            <Button05 
-                            text="Saber mais"
-                            />
-                    </Card>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <Card>
-                            <h1>Nome do titulo do blog</h1>
-                            <p>Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.</p>
-                            <span>Escrito por: <b>Nome da autora</b> | 24 de novembro de 2023</span>
-                            <Button05 
-                            text="Saber mais"
-                            />
-                    </Card>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <Card>
-                            <h1>Nome do titulo do blog</h1>
-                            <p>Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.</p>
-                            <span>Escrito por: <b>Nome da autora</b> | 24 de novembro de 2023</span>
-                            <Button05 
-                            text="Saber mais"
-                            />
-                    </Card>
-                    </SwiperSlide>
-                </Swiper>
-            </ArtigoBlogs>
-
-          </>
-        ) : (
-          <p>Artigo não encontrado.</p>
-        )}
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </ArtigoCarrossel>
+  
+            <ArtigoRelacionados>
+              <h3>Artigos Relacionados</h3>
+              {relatedArticles.length > 0 ? (
+                relatedArticles.map((related, index) => (
+                  <div key={index}>
+                    <h2>{related.title}</h2>
+                    <p>{related.description}</p>
+                    <Button05
+                      text="Leia mais"
+                      onClick={() => navigate(`/blog/${related.slug}`)}
+                    />
+                  </div>
+                ))
+              ) : (
+                <p>Nenhum artigo relacionado encontrado.</p>
+              )}
+            </ArtigoRelacionados>
+          </ArtigoRight>
+        </ArtigoAll>
       </div>
     );
   };

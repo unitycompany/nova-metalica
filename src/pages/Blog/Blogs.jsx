@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { collection, getDocs } from "firebase/firestore"; // Importações do Firebase
+import { db } from "../../../firebase"; // Importa o Firestore configurado
+import { useNavigate } from 'react-router-dom'; // Para redirecionamento
 import CardLeftBlog from "../../layout/cards/CardBlog01";
 import Pesquisa from "../../layout/cards/HeaderBlog";
 import CardExample from "../../layout/cards/CardBlogExample"; // Seu componente de card
@@ -18,11 +21,11 @@ const BlogsAll = styled.section`
   gap: 20px;
   margin-bottom: 5vh;
 
-  & > div:nth-child(1){
+  & > div:nth-child(1) {
     width: 30%;
   }
 
-  & > div:nth-child(2){
+  & > div:nth-child(2) {
     width: 70%;
     height: 100%;
     display: flex;
@@ -52,191 +55,44 @@ const LoadMoreButton = styled.button`
   border: none;
   border-radius: 5px;
   margin-top: 20px;
-  transition: transform .2s ease;
-  
+  transition: transform 0.2s ease;
+
   &:hover {
-    transform: scale(.95);
+    transform: scale(0.95);
   }
 `;
 
 const Blogs = () => {
   const [filteredArticles, setFilteredArticles] = useState([]);
-  const [visibleArticles, setVisibleArticles] = useState(5); 
-
-  const articles = [
-    {
-      topico: "Steel Frame",
-      titulo: "O que é Steel Frame?",
-      description: "Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.",
-      hashtag: ["steelframe", "construção"],
-      autor: "Alice Pereira de Jesus",
-      data: "26/04/2022",
-      link: "como-o-steel-frame", // Slug aqui
-      image: 'https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/cef8b191-587e-4d10-2225-47b90e631200/public'
-    },
-
-    {
-      topico: "Steel Frame",
-      titulo: "Diferença entre Steel Frame e Alvenaria",
-      description: "Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.",
-      hashtag: ["steelframe", "construção"],
-      autor: "Carlos Silva",
-      data: "12/05/2022",
-      link: "vantagens-do-drywall", // Slug aqui
-      image: 'https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/e2f058a7-3785-4301-a244-6d11e8ad5200/public' // Imagem 2
-    },
-
-    {
-      topico: "Steel Frame",
-      titulo: "Como o Steel Frame está revolucionando a Construção Civil?",
-      description: "Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.",
-      hashtag: ["steelframe", "arquitetura"],
-      autor: "João Souza",
-      data: "15/06/2022",
-      link: "como-escolher-o-telhado", // Slug aqui
-      image: 'https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/bbea8596-157f-401b-c346-8c9da797ee00/public'
-    },
-    
-    {
-      topico: "Steel Frame",
-      titulo: "Por que construir em Steel Frame é mais rápido?",
-      description: "Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.",
-      hashtag: ["steelframe", "arquitetura"],
-      autor: "João Souza",
-      data: "15/06/2022",
-      link: "como-escolher-o-telhado", // Slug aqui
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      topico: "Steel Frame",
-      titulo: "Qual o custo de uma construção em Steel Frame?",
-      description: "Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.",
-      hashtag: ["steelframe", "arquitetura"],
-      autor: "João Souza",
-      data: "15/06/2022",
-      link: "como-escolher-o-telhado", // Slug aqui
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      topico: "Steel Frame",
-      titulo: "Por que uma construção em Steel Frame é mais barata que em Alvenaria",
-      description: "Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.",
-      hashtag: ["steelframe", "arquitetura"],
-      autor: "João Souza",
-      data: "15/06/2022",
-      link: "como-escolher-o-telhado", // Slug aqui
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      topico: "Projeto",
-      titulo: "Por que é necessário ter um Projeto de Cálculo Estrutural para Steel Frame?",
-      description: "Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.",
-      hashtag: ["steelframe", "arquitetura"],
-      autor: "João Souza",
-      data: "15/06/2022",
-      link: "como-escolher-o-telhado", // Slug aqui
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      topico: "Construções",
-      titulo: "Construções Offsite: Diferenças entre Pré-fabricação e Modular",
-      description: "Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.",
-      hashtag: ["steelframe", "arquitetura"],
-      autor: "João Souza",
-      data: "15/06/2022",
-      link: "como-escolher-o-telhado", // Slug aqui
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      topico: "Projetos",
-      titulo: "Steel Frame: A Solução Ideal para Projetos Modulares",
-      description: "Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.",
-      hashtag: ["steelframe", "arquitetura"],
-      autor: "João Souza",
-      data: "15/06/2022",
-      link: "como-escolher-o-telhado", // Slug aqui
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      topico: "Construções",
-      titulo: "Por que construções com perfis metálicos/de aço estão transformando a Construção Civil?",
-      description: "Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.",
-      hashtag: ["steelframe", "arquitetura"],
-      autor: "João Souza",
-      data: "15/06/2022",
-      link: "como-escolher-o-telhado", // Slug aqui
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      topico: "Steel Frame",
-      titulo: "Diferença entre Aço Comercial e Aço Normatizado",
-      description: "Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.",
-      hashtag: ["steelframe", "arquitetura"],
-      autor: "João Souza",
-      data: "15/06/2022",
-      link: "como-escolher-o-telhado", // Slug aqui
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      topico: "Steel Frame",
-      titulo: "Obra de Steel Frame pode voar com vento?",
-      description: "Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.",
-      hashtag: ["steelframe", "arquitetura"],
-      autor: "João Souza",
-      data: "15/06/2022",
-      link: "como-escolher-o-telhado", // Slug aqui
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      topico: "Steel Frame",
-      titulo: "Construção de Steel Frame enferruja?",
-      description: "Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.",
-      hashtag: ["steelframe", "arquitetura"],
-      autor: "João Souza",
-      data: "15/06/2022",
-      link: "como-escolher-o-telhado", // Slug aqui
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      topico: "Steel Frame",
-      titulo: "É possível financiar uma obra de Steel Frame?",
-      description: "Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.",
-      hashtag: ["steelframe", "arquitetura"],
-      autor: "João Souza",
-      data: "15/06/2022",
-      link: "como-escolher-o-telhado", // Slug aqui
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      topico: "Steel Frame",
-      titulo: "Posso modificar uma obra de Steel Frame?",
-      description: "Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.",
-      hashtag: ["steelframe", "arquitetura"],
-      autor: "João Souza",
-      data: "15/06/2022",
-      link: "como-escolher-o-telhado", // Slug aqui
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      topico: "Steel Frame",
-      titulo: "Obra de Steel Frame atrai raios?",
-      description: "Descrição curta e objetiva sobre o blog atual, Descrição curta e objetiva sobre o blog atual.",
-      hashtag: ["steelframe", "arquitetura"],
-      autor: "João Souza",
-      data: "15/06/2022",
-      link: "como-escolher-o-telhado", // Slug aqui
-      image: 'https://via.placeholder.com/150'
-    },
-  ];
+  const [visibleArticles, setVisibleArticles] = useState(5); // Quantos artigos mostrar inicialmente
+  const navigate = useNavigate(); // Para redirecionamento
 
   useEffect(() => {
-    setFilteredArticles(articles);
+    const fetchBlogs = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "Blog"));
+        if (querySnapshot.empty) {
+          console.warn("Nenhum documento na coleção 'Blog'.");
+          setFilteredArticles([]); // Garante que o estado seja atualizado
+        } else {
+          const blogs = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+          console.log("Documentos encontrados:", blogs); // Verifica os dados
+          setFilteredArticles(blogs);
+          console.log("Estado atualizado:", blogs); // Verifica o estado após atualização
+        }
+      } catch (error) {
+        console.error("Erro ao buscar blogs:", error);
+      }
+    };
+  
+    fetchBlogs();
   }, []);
 
-  const loadMoreArticles = () => {
-    if (visibleArticles < filteredArticles.length) {
-      setVisibleArticles(visibleArticles + 5);  // Carrega mais 5 artigos
-    }
+  const handleRedirect = (link) => {
+    navigate(`/blog/${link}`);
   };
 
   return (
@@ -245,29 +101,29 @@ const Blogs = () => {
         <CardLeftBlog />
       </div>
       <div>
-        <Pesquisa setFilteredArticles={setFilteredArticles} allArticles={articles} />
+        <Pesquisa setFilteredArticles={setFilteredArticles} allArticles={filteredArticles} />
         <div>
           {filteredArticles.length > 0 ? (
-            filteredArticles.slice(0, visibleArticles).map((article, index) => (
-              <div key={index}>
-                <a href={`/blog/${article.link}`} target="_blank">
-                  <CardExample
-                    topico={article.topico}
-                    titulo={article.titulo}
-                    description={article.description}
-                    hashtag={article.hashtag}
-                    autor={article.autor}
-                    data={article.data}
-                    image={article.image}
-                  />
-                </a>
+            filteredArticles.slice(0, visibleArticles).map((article) => (
+              <div key={article.id} onClick={() => handleRedirect(article.link)} style={{ cursor: 'pointer' }}>
+                <CardExample
+                  topico={article.topico}
+                  titulo={article.titulo}
+                  description={article.description}
+                  hashtag={article.hashtag}
+                  autor={article.autor}
+                  data={article.data}
+                  image={article.image}
+                />
               </div>
             ))
           ) : (
-            <p>Nenhum artigo encontrado</p>
+            <p>Nenhum artigo encontrado.</p>
           )}
           {visibleArticles < filteredArticles.length && (
-            <LoadMoreButton onClick={loadMoreArticles}>Ver mais blogs</LoadMoreButton>
+            <LoadMoreButton onClick={() => setVisibleArticles(visibleArticles + 5)}>
+              Ver mais blogs
+            </LoadMoreButton>
           )}
         </div>
       </div>

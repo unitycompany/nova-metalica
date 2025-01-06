@@ -5,6 +5,7 @@ import {
   Route,
   useLocation
 } from "react-router-dom";
+import { db } from '../firebase'; 
 
 import Header from "./layout/header/Header";
 import Footer from "./layout/footer/Footer";
@@ -14,6 +15,7 @@ import "./styles/global.css";
 import "./styles/reset.css";
 import "./styles/variables.css";
 
+
 // Lazy loading das páginas
 const PaginaInicial = lazy(() => import("./pages/Inicial/Inicial"));
 const PaginaSobre = lazy(() => import("./pages/Sobre/Inicial"));
@@ -22,6 +24,7 @@ const PaginaParceria = lazy(() => import("./pages/Parcerias/Inicial"));
 const PaginaBlog = lazy(() => import("./pages/Blog/Inicial"));
 const LpPaginaParcerias = lazy(() => import("./pages/Parcerias/LP/Inicial"));
 const ArticlePage = lazy(() => import("./pages/Blog/Artigo"));
+const AddBlog = lazy(() => import("./pages/Blog/AdicionarBlog"));
 
 // Componente para rolar a tela ao topo ao trocar de rota
 function ScrollToTop() {
@@ -49,12 +52,16 @@ function AnimatedRoutes() {
         <Route path="/blog" element={<PaginaBlog />} />
         <Route path="/blog/:slug" element={<ArticlePage />} />
         <Route path="/lpparcerias" element={<LpPaginaParcerias />} />
+        <Route path="/add-blog" element={<AddBlog />} />
       </Routes>
     </>
   );
 }
 
 function App() {
+
+  console.log("Firebase Configurado!", db);
+
   return (
     // Se preferir, troque HashRouter por BrowserRouter; verifique se seu servidor lida bem com as rotas.
     <Router>

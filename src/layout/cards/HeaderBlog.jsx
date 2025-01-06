@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { BsSearch } from "react-icons/bs";
+import { collection, getDocs, query, where } from "firebase/firestore"; // Para consultas no Firebase
+import { db } from "../../../firebase"; // Configuração do Firebase
 
 // Estilo da pesquisa
 const PesquisaAll = styled.div`
@@ -17,7 +19,7 @@ const PesquisaAll = styled.div`
     border-radius: 15px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 
-    & > div:nth-child(1){
+    & > div:nth-child(1) {
         width: 50%;
         display: flex;
         align-items: center;
@@ -30,7 +32,7 @@ const PesquisaAll = styled.div`
             border-radius: 12px;
             background-color: var(--color--white);
 
-            &::placeholder{
+            &::placeholder {
                 font-size: 14px;
             }
         }
@@ -44,7 +46,7 @@ const PesquisaAll = styled.div`
         }
     }
 
-    & > div:nth-child(2){
+    & > div:nth-child(2) {
         width: 50%;
         display: flex;
         align-items: center;
@@ -52,7 +54,7 @@ const PesquisaAll = styled.div`
         flex-wrap: wrap;
         gap: 10px;
 
-        & > button{
+        & > button {
             background-color: var(--color--white);
             padding: 10px;
             font-size: 10px;
@@ -61,20 +63,50 @@ const PesquisaAll = styled.div`
         }
 
         & > button.active {
-            background-color: var(--color--blue); /* Altere para a cor de fundo desejada */
+            background-color: var(--color--blue);
             color: var(--color--white);
         }
     }
 `;
 
-const Pesquisa = ({ setFilteredArticles, allArticles }) => {
-    const [searchTerm, setSearchTerm] = useState(""); // Para armazenar o termo da pesquisa
-    const [activeTopic, setActiveTopic] = useState("Todos"); // Para controlar o tópico ativo (inicializa com "Todos")
+const Pesquisa = ({ setFilteredArticles }) => {
+    const [searchTerm, setSearchTerm] = useState(""); // Termo de pesquisa
+    const [activeTopic, setActiveTopic] = useState("Todos"); // Tópico ativo
 
     useEffect(() => {
-        // Ao iniciar, mostra todos os artigos
-        filterArticles(searchTerm, activeTopic);
-    }, [allArticles, activeTopic]); // Refiltra sempre que allArticles ou activeTopic mudar
+        // Faz a busca sempre que searchTerm ou activeTopic mudar
+        fetchArticles(searchTerm, activeTopic);
+    }, [searchTerm, activeTopic]);
+
+    const fetchArticles = async (searchTerm, activeTopic) => {
+        try {
+            let q = collection(db, "Blog");
+
+            // Aplica o filtro por tópico, se necessário
+            if (activeTopic !== "Todos") {
+                q = query(q, where("topico", "==", activeTopic));
+            }
+
+            const querySnapshot = await getDocs(q);
+            const articles = querySnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+
+            // Realiza a filtragem parcial localmente
+            const filtered = articles.filter((article) => {
+                const term = searchTerm.toLowerCase();
+                return (
+                    article.titulo.toLowerCase().includes(term) || // Busca parcial no título
+                    article.hashtag.some((tag) => tag.toLowerCase().includes(term)) // Busca em hashtags
+                );
+            });
+
+            setFilteredArticles(filtered); // Atualiza os artigos filtrados
+        } catch (error) {
+            console.error("Erro ao buscar artigos:", error);
+        }
+    };
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value); // Atualiza o termo de pesquisa
@@ -84,36 +116,16 @@ const Pesquisa = ({ setFilteredArticles, allArticles }) => {
         setActiveTopic(topic); // Atualiza o tópico ativo
     };
 
-    const handleSearchSubmit = () => {
-        filterArticles(searchTerm, activeTopic); // Filtra com base no termo e no tópico
-    };
-
-    const filterArticles = (searchTerm, activeTopic) => {
-        // Filtra os artigos com base no termo de pesquisa e no tópico ativo
-        const filtered = allArticles.filter((article) => {
-            // Verifica se o termo de pesquisa é uma hashtag
-            const isHashtagSearch = searchTerm.startsWith("#");
-            const matchesSearchTerm = isHashtagSearch
-                ? article.hashtag.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())) // Busca nas hashtags
-                : article.titulo.toLowerCase().includes(searchTerm.toLowerCase()); // Busca no título normalmente
-
-            const matchesTopic = activeTopic === "Todos" || article.topico === activeTopic;
-            return matchesSearchTerm && matchesTopic;
-        });
-        setFilteredArticles(filtered); // Passa os artigos filtrados para o estado do componente pai
-    };
-
     return (
         <PesquisaAll>
             <div>
                 <input
                     type="search"
-                    name="pesquisa"
                     placeholder="Qual artigo você está buscando?"
                     value={searchTerm}
                     onChange={handleSearchChange}
                 />
-                <button type="button" onClick={handleSearchSubmit}>
+                <button type="button" onClick={() => fetchArticles(searchTerm, activeTopic)}>
                     <BsSearch />
                 </button>
             </div>

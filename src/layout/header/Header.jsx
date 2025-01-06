@@ -310,14 +310,6 @@ const SidebarLinks = styled.div`
       transition: all .3s ease;
     }
 
-    & > hr {
-      width: 40%;
-      height: 1px;
-      background-color: var(--color--white);
-      border-color: var(--color--white);
-      border-radius: 50%;
-    }
-
     &:hover{
       background-color: var(--color--white);
       border: 1px solid var(--color--black);
@@ -515,11 +507,11 @@ const Header = () => {
           />
         </SidebarTop>
         <SidebarLinks>
-          <NavLink to="/">Início <hr /> <BsArrowRight /></NavLink>
-          <NavLink to="/sobre">Sobre nós <hr /> <BsArrowRight /></NavLink>
-          <NavLink to="/produtos">Produtos <hr /> <BsArrowRight /></NavLink>
-          <NavLink to="/parcerias">Parcerias <hr /> <BsArrowRight /></NavLink>
-          <NavLink to="/blog">Blog <hr /> <BsArrowRight /></NavLink>
+          <NavLink to="/">Início <BsArrowRight /></NavLink>
+          <NavLink to="/sobre">Sobre nós <BsArrowRight /></NavLink>
+          <NavLink to="/produtos">Produtos <BsArrowRight /></NavLink>
+          <NavLink to="/parcerias">Parcerias <BsArrowRight /></NavLink>
+          <NavLink to="/blog">Blog <BsArrowRight /></NavLink>
         </SidebarLinks>
 
         <SidebarContato>

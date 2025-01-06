@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { collection, getDocs, query, orderBy, limit } from "firebase/firestore"; // Firebase
+import { db } from "../../../firebase"; // Configuração do Firebase
 import Button05 from "../../components/buttons/Button05";
 
 const CardAll = styled.div`
@@ -175,39 +177,52 @@ const CardAll = styled.div`
 `
 
 const CardLeftBlog = () => {
+    const [latestBlogs, setLatestBlogs] = useState([]);
+
+    useEffect(() => {
+        const fetchLatestBlogs = async () => {
+            try {
+                const q = query(
+                    collection(db, "Blog"),
+                    orderBy("data", "desc"), // Ordena pela data em ordem decrescente
+                    limit(3) // Limita aos 3 últimos blogs
+                );
+
+                const querySnapshot = await getDocs(q);
+                const blogs = querySnapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                }));
+
+                setLatestBlogs(blogs); // Define os últimos 3 blogs no estado
+            } catch (error) {
+                console.error("Erro ao buscar os últimos blogs:", error);
+            }
+        };
+
+        fetchLatestBlogs();
+    }, []);
+
     return (
-        <>
-            <CardAll>
-                <div>
+        <CardAll>
+            {latestBlogs.map((blog, index) => (
+                <div
+                    key={blog.id}
+                    style={{
+                        backgroundImage: `url(${blog.image})`, // Imagem de fundo do blog
+                    }}
+                >
                     <div>
-                        <h1>O que é Steel Frame</h1>
-                        <span>Escrito por: <b>Nome da autora</b> | 24 de novembro de 2023</span>
-                        <Button05 
-                        text="Saber mais"
-                        />
+                        <h1>{blog.titulo}</h1>
+                        <span>
+                            Escrito por: <b>{blog.autor}</b> | {blog.data}
+                        </span>
+                        <Button05 text="Saber mais" />
                     </div>
                 </div>
-                <div>
-                    <div>
-                        <h1>Diferença entre Steel Frame e Alvenaria</h1>
-                        <span>Escrito por: <b>Nome da autora</b> | 24 de novembro de 2023</span>
-                        <Button05 
-                        text="Saber mais"
-                        />
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h1>Como o Steel Frame está revolucionando a Construção Civil?</h1>
-                        <span>Escrito por: <b>Nome da autora</b> | 24 de novembro de 2023</span>
-                        <Button05
-                        text="Saber mais"
-                        />
-                    </div>
-                </div>
-            </CardAll>
-        </>
-    )
-}
+            ))}
+        </CardAll>
+    );
+};
 
 export default CardLeftBlog;
