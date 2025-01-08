@@ -139,8 +139,8 @@ const HeaderWhite = styled.div`
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
   }
 
-  @media (min-width: 768px) and (max-width: 1280px) {
-    padding: 25px 2.5%;
+  @media (min-width: 768px) and (max-width: 1180px) {
+    padding: 30px 2.5%;
     border-radius: 15px;
   }
 
@@ -298,7 +298,6 @@ const SidebarLinks = styled.div`
     color: var(--color--white);
     padding: 8px 15px;
     transition: all .3s ease;
-    border-radius: 10px;
 
     & > svg {
       font-size: 24px;

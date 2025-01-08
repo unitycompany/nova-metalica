@@ -49,7 +49,6 @@ const InfoContainer = styled.div`
     position: relative;
     z-index: 3;
     max-width: 1280px;
-    margin-top: -12.5vh;
     height: auto;
     left: 50%;
     transform: translateX(-50%);
@@ -65,6 +64,7 @@ const InfoContainer = styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        padding-bottom: 10%;
     }
 `;
 
@@ -72,7 +72,7 @@ const InfoCards = styled.div`
     width: 100%;
     height: auto;
     position: relative;
-    margin-top: -2.5vh;
+    margin-top: -10vh;
     z-index: 10 !important;
     display: flex;
     align-items: center;
@@ -201,7 +201,7 @@ const MobileSwiper = styled(Swiper)`
     display: none !important;
 
     @media (max-width: 768px) {
-        display: block !important;
+        display: none!important;
         display: flex!important;
         align-items: flex-end!important;
         justify-content: flex-end!important;
@@ -214,11 +214,12 @@ const MobileSwiperSlide = styled(SwiperSlide)`
     align-items: center;
     justify-content: center;
     width: 100%;
+    display: none!important;
 `
 
 const InfoDetails = styled.div`
     width: 100%;
-    height: 500px;
+    height: 450px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -232,7 +233,7 @@ const InfoDetails = styled.div`
     }
 
     @media (min-width: 768px) and (max-width: 1280px){
-        height: 400px;
+        height: 350px;
     }
 
     & > img {
@@ -243,7 +244,7 @@ const InfoDetails = styled.div`
 
         @media (max-width: 768px){
             width: 100%;
-            height: 200px;
+            height: 300px;
             border-radius: 15px;
         }
     }

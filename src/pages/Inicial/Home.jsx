@@ -91,7 +91,8 @@ const HomeText = styled.div`
 
 const HomeImage = styled.div`
     width: 50%;
-    height: 100%;
+    margin-top: 2.5%;
+    height: 95%;
     position: relative;
 
     @media (max-width: 768px){

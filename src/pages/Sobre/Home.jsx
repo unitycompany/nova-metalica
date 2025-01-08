@@ -15,7 +15,7 @@ const HomeBackground = styled.div`
     left: 50%;
     top: 0;
     transform: translateX(-50%);
-    padding: 10% 5% 0 5%;
+    padding: 15% 5% 0 5%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,9 +43,8 @@ const HomeBackground = styled.div`
 `
 
 const HomeContainer = styled.div`
-    padding-top: 12.5%;
-    padding-bottom: 10%;
-    height: auto;
+    height: 100vh;
+    padding: 10% 0;
     position: relative;
     z-index: 3;
     max-width: 1280px;
@@ -55,12 +54,12 @@ const HomeContainer = styled.div`
     align-items: center;
     justify-content: center;
 
-    @media (min-width: 768px) and (max-width: 1280px){
+    @media (min-width: 768px) and (max-width: 1120px){
         padding-top: 10%;
     }
 
     @media (max-width: 768px){
-        padding-top: 20%;
+        padding-top: 10%;
     }
 `
 

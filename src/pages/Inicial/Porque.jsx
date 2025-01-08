@@ -27,7 +27,7 @@ const PorqueAll = styled.section`
 
 const PorqueTexts = styled.div`
     width: 100%;
-    padding: 5% 0;
+    padding: 10% 0 5% 0;
 
     @media (max-width: 768px){
         padding: 15% 0 2.5% 0;

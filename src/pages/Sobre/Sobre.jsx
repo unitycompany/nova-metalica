@@ -11,11 +11,9 @@ const SobreAll = styled.section`
     left: 50%;
     transform: translateX(-50%);
     position: relative;
-    top: -2.5vh;
     z-index: 1;
     height: auto;
     background: var(--color--white);
-    border-radius: 80px;
     padding: 7.5% 5% 15% 5%;
     display: flex;
     align-items: flex-start;
@@ -25,12 +23,8 @@ const SobreAll = styled.section`
 
     @media (max-width: 768px){
         border-radius: 30px;
-        padding: 5% 5% 35% 5%;
+        padding: 0% 5% 35% 5%;
         gap: 80px;
-    }
-
-    @media (min-width: 768px) and (max-width: 1280px){
-        border-radius: 50px;
     }
 `
 
