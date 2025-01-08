@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { BsArrowLeftShort, BsArrowRightShort, BsBuildings } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -98,6 +98,21 @@ const InfoCard = styled.div`
     transition: all 0.3s ease-in-out;
     border-radius: 10px;
 
+    @media (max-width: 768px){
+        width: ${({ active }) => (active ? "100%" : "80%")};
+        height: ${({ active }) => (active ? "200px" : "180px")};
+        left: 50%;
+        transform: translateX(-50%);
+        flex-direction: row;
+        padding: 0 10%;
+        gap: 30px;
+    }
+
+    @media (min-width: 768px) and (max-width: 1280px){
+        width: ${({ active }) => (active ? "170px" : "140px")};
+        height: ${({ active}) => (active ? "170px" : "140px")};
+    }
+
     &::before {
         content: '';
         width: 100%;
@@ -149,6 +164,14 @@ const InfoCard = styled.div`
         font-size:  ${({ active }) => (active ? "44px" : "40px")};
         position: relative;
         z-index: 2;
+
+        @media (max-width: 768px){
+            font-size:  ${({ active }) => (active ? "70px" : "66px")};
+        }
+
+        @media (min-width: 768px) and (max-width: 1280px){
+            font-size: ${({ active}) => (active ? "36px" : "32px")};
+        }
     }
 
     & > p {
@@ -159,6 +182,16 @@ const InfoCard = styled.div`
         position: relative;
         z-index: 2;
         width: 80%;
+
+        @media (max-width: 768px){
+            width: 40%;
+            text-align: left;
+            font-size: ${({ active }) => (active ? "22px" : "18px")}
+        }
+
+        @media (min-width: 768px) and (max-width: 1280px){
+            font-size: ${({ active}) => (active ? "18px" : "14px")};
+        }
     }
 `;
 
@@ -169,8 +202,19 @@ const MobileSwiper = styled(Swiper)`
 
     @media (max-width: 768px) {
         display: block !important;
+        display: flex!important;
+        align-items: flex-end!important;
+        justify-content: flex-end!important;
+        width: 100%;
     }
 `;
+
+const MobileSwiperSlide = styled(SwiperSlide)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+`
 
 const InfoDetails = styled.div`
     width: 100%;
@@ -181,10 +225,27 @@ const InfoDetails = styled.div`
     border-radius: 10px;
     gap: 50px;
 
+    @media (max-width: 768px){
+        flex-direction: column;
+        gap: 50px;
+        height: auto;
+    }
+
+    @media (min-width: 768px) and (max-width: 1280px){
+        height: 400px;
+    }
+
     & > img {
         width: 50%;
         height: 100%;
         object-fit: cover;
+        border-radius: 15px;
+
+        @media (max-width: 768px){
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+        }
     }
 
     & > div {
@@ -194,15 +255,27 @@ const InfoDetails = styled.div`
         align-items: flex-start;
         gap: 20px;
 
+        @media (max-width: 768px){
+            width: 100%;
+        }
+
         & > h2 {
         font-size: 24px;
         margin-bottom: 10px;
         color: var(--color--white);
+
+        @media (max-width: 768px){
+            font-size: 20px;
+        }
         }
 
         & > p {
         font-size: 16px;
         color: var(--color--white);
+
+        @media (max-width: 768px){
+            font-size: 14px;
+        }
         }
     }
 
@@ -249,14 +322,15 @@ const NavigationButtons = styled.div`
 
 const Informacoes = () => {
     const [activeIndex, setActiveIndex] = useState(0);
+    const swiperRef = useRef(null);
 
     const cards = [
-        { title: "Como fabricamos?", image: "https://via.placeholder.com/300", description: "Descrição sobre como fabricamos." },
-        { title: "Como construímos?", image: "https://via.placeholder.com/300", description: "Descrição sobre como construímos." },
-        { title: "Nossos diferenciais", image: "https://via.placeholder.com/300", description: "Descrição sobre nossos diferenciais." },
-        { title: "Soluções inteligentes", image: "https://via.placeholder.com/300", description: "Descrição sobre soluções inteligentes." },
-        { title: "Por que nos escolher?", image: "https://via.placeholder.com/300", description: "Descrição sobre por que nos escolher." },
-        { title: "Somos sustentaveis?", image: "https://via.placeholder.com/300", description: "Descrição sobre sustentabilidade." }
+        { title: "Como fabricamos?", image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/1081687f-ba98-453b-c651-444af1325800/public", description: "Descrição sobre como fabricamos." },
+        { title: "Como construímos?", image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/1081687f-ba98-453b-c651-444af1325800/public", description: "Descrição sobre como construímos." },
+        { title: "Nossos diferenciais", image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/1081687f-ba98-453b-c651-444af1325800/public", description: "Descrição sobre nossos diferenciais." },
+        { title: "Soluções inteligentes", image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/1081687f-ba98-453b-c651-444af1325800/public", description: "Descrição sobre soluções inteligentes." },
+        { title: "Por que nos escolher?", image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/1081687f-ba98-453b-c651-444af1325800/public", description: "Descrição sobre por que nos escolher." },
+        { title: "Somos sustentaveis?", image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/1081687f-ba98-453b-c651-444af1325800/public", description: "Descrição sobre sustentabilidade." }
     ];
 
     const handleNext = () => {
@@ -296,14 +370,15 @@ const Informacoes = () => {
                     </InfoCards>
 
                     <MobileSwiper
-                        modules={[Navigation]}
-                        navigation
-                        spaceBetween={20}
+                        modules={false}
+                        navigation={false}
+                        spaceBetween={50}
                         slidesPerView={1}
                         onSlideChange={handleSlideChange}
+                        onSwiper={(swiper) => (swiperRef.current = swiper)} 
                     >
                         {cards.map((card, index) => (
-                            <SwiperSlide key={index}>
+                            <MobileSwiperSlide key={index}>
                                 <InfoCard
                                     active={index === activeIndex}
                                     onClick={() => setActiveIndex(index)}
@@ -312,7 +387,7 @@ const Informacoes = () => {
                                     <BsBuildings />
                                     <p>{card.title}</p>
                                 </InfoCard>
-                            </SwiperSlide>
+                            </MobileSwiperSlide>
                         ))}
                     </MobileSwiper>
 

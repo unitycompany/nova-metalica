@@ -22,6 +22,16 @@ const SobreAll = styled.section`
     justify-content: space-between;
     flex-direction: column;
     gap: 125px;
+
+    @media (max-width: 768px){
+        border-radius: 30px;
+        padding: 5% 5% 35% 5%;
+        gap: 80px;
+    }
+
+    @media (min-width: 768px) and (max-width: 1280px){
+        border-radius: 50px;
+    }
 `
 
 const SobreTop = styled.div`
@@ -29,6 +39,11 @@ const SobreTop = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+        gap: 50px;
+    }
 `
 
 const SobreCard = styled.div`
@@ -37,6 +52,12 @@ const SobreCard = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    
+    @media (max-width: 768px){
+        width: 100%;
+        border-bottom: 1px solid var(--color--blue);
+        padding-bottom: 2.5%;
+    }
 `
 
 const SobreCardTop = styled.div`
@@ -55,6 +76,17 @@ const SobreCardTop = styled.div`
         justify-content: center;
         position: relative;
         border-radius: 15px 0 15px 0px;
+
+        @media (max-width: 768px){
+            width: 60px;
+            height: 60px;
+            border-radius: 10px 0 10px 0;
+        }
+
+        @media (min-width: 768px) and (max-width: 1280px){
+            width: 60px;
+            height: 60px;
+        }
         
         &::before{
             content: '';
@@ -74,6 +106,16 @@ const SobreCardTop = styled.div`
             color: var(--color--white);
             position: relative;
             z-index: 2;
+
+            @media (max-width: 768px){
+                width: 20px;
+                height: 20px;
+            }
+
+            @media (min-width: 768px) and (max-width: 1280px){
+                width: 25px;
+                height: 25px;
+            }
         }
     }
 
@@ -89,12 +131,28 @@ const SobreCardTop = styled.div`
             font-size: 16px;
             color: var(--color--black);
             font-weight: 300;
+
+            @media (max-width: 768px){
+                font-size: 14px;
+            }
+
+            @media (min-width: 768px) and (max-width: 1280px){
+                font-size: 14px;
+            }
         }
 
         & > h1 {
             font-size: 22px;
             font-weight: 600;
             color: var(--color--black);
+
+            @media (max-width: 768px){
+                font-size: 20px;
+            }
+
+            @media (min-width: 768px) and (max-width: 1280px){
+                font-size: 18px;
+            }
         }
     }
 `
@@ -107,12 +165,25 @@ const SobreCardBottom = styled.div`
     justify-content: center;
     gap: 30px;
 
+    @media (max-width: 768px){
+        gap: 15px;
+    }
+
     & > p{
         font-size: 16px;
         line-height: 110%;
         width: 95%;
         font-weight: 500;
         color: var(--color--black);
+
+        @media (max-width: 768px){
+            font-size: 14px;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) and (max-width: 1280px){
+            font-size: 14px;
+        }
     }
 
     & > a {
@@ -124,9 +195,31 @@ const SobreCardBottom = styled.div`
         gap: 15px;
         color: var(--color--blue);
 
+        @media (max-width: 768px){
+            font-size: 12px;
+            gap: 10px;
+            justify-content: space-between;
+            width: 100%;
+            gap: 0;
+        }
+
+        @media (min-width: 768px) and (max-width: 1280px){
+            font-size: 14px;
+        }
+
         & > svg {
             width: 14px;
             height: 14px;
+
+            @media (max-width: 768px){
+                width: 8px;
+                height: 8px;
+            }
+
+            @media (min-width: 768px) and (max-width: 1280px){
+                width: 12px;
+                height: 12px;
+            }
         }
     }
 `
@@ -138,9 +231,36 @@ const SobreCenter = styled.div`
     gap: 100px;
     width: 100%;
 
+    @media (max-width: 768px){
+        flex-direction: column;
+        width: 100%;
+        gap: 50px;
+    }
+
+    @media (min-width: 768px) and (max-width: 1280px){
+        gap: 70px;
+    }
+
     & > div:nth-child(1){
 
+        @media (max-width: 768px){
+            width: 100%;
+        }
+
+        @media (min-width: 768px) and (max-width: 1280px){
+            width: 50%;
+        }
+
         & > img {
+
+            @media (max-width: 768px){
+                width: 100%;
+            }
+
+            @media (min-width: 768px) and (max-width: 1280px){
+                width: 100%;
+            }
+            
         }
     }
 
@@ -151,10 +271,18 @@ const SobreCenter = styled.div`
         justify-content: center;
         gap: 30px;
 
+        @media (min-width: 768px) and (max-width: 1280px){
+            width: 50%;
+        }
+
         & > span {
             font-size: 16px;
             color: var(--color--blue);
             font-weight: 300;
+
+            @media (max-width: 768px){
+                font-size: 14px;
+            }
         }
 
         & > h1 {
@@ -162,6 +290,14 @@ const SobreCenter = styled.div`
             line-height: 110%;
             font-weight: 400;
             margin-top: -15px;
+
+            @media (max-width: 768px){
+                font-size: 22px;
+            }
+
+            @media (min-width: 768px) and (max-width: 1280px){
+                font-size: 24px;
+            }
 
             & > b {
                 font-weight: 500;
@@ -173,6 +309,15 @@ const SobreCenter = styled.div`
             font-weight: 300;
             width: 85%;
             margin-top: -5px;
+
+            @media (max-width: 768px){
+                font-size: 14px;
+                width: 100%;
+            }
+
+            @media (min-width: 768px) and (max-width: 1280px){
+                margin-top: -10px;
+            }
         }
 
         & > div {
@@ -183,6 +328,10 @@ const SobreCenter = styled.div`
 
             & > p {
                 width: 95%;
+
+                @media (max-width: 768px){
+                    font-size: 14px;
+                }
             }
         }
     }

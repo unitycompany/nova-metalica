@@ -23,6 +23,10 @@ const HomeBackground = styled.div`
     gap: 25px;
     background: #353535;
 
+    @media (max-width: 768px){
+        height: 90vh;
+    }
+
     &::before{
         content: '';
         position: absolute;
@@ -54,6 +58,10 @@ const HomeContainer = styled.div`
     @media (min-width: 768px) and (max-width: 1280px){
         padding-top: 10%;
     }
+
+    @media (max-width: 768px){
+        padding-top: 20%;
+    }
 `
 
 const HomeDivAll = styled.div`
@@ -65,6 +73,11 @@ const HomeDivAll = styled.div`
     flex-direction: column;
     gap: 10px;
     position: relative;
+
+    @media (max-width: 768px){
+        width: 90%;
+        height: 400px;
+    }
 
     @media (min-width: 768px) and (max-width: 1280px){
         height: 400px;
@@ -78,8 +91,9 @@ const HomeLogo = styled.div`
     width: 150px;
     height: auto;
 
-    @media (min-width: 768px) and (max-width: 1280px){
-        
+    @media (max-width: 768px){
+        width: 120px;
+        top: 5%;
     }
 
     & > img {
@@ -102,6 +116,10 @@ const HomeTexts = styled.div`
         line-height: 110%;
         font-weight: 500;
 
+        @media (max-width: 768px){
+            font-size: 24px;
+        }
+
         @media (min-width: 768px) and (max-width: 1280px){
             font-size: 28px;
         }
@@ -118,6 +136,11 @@ const HomeTexts = styled.div`
         width: 85%;
         font-weight: 300;
 
+        @media (max-width: 768px){
+            width: 100%;
+            font-size: 16px;
+        }
+
         @media (min-width: 768px) and (max-width: 1280px){
             font-size: 16px;
         }
@@ -132,6 +155,12 @@ const HomeQuadrado = styled.div`
     right: 0;
     bottom: 0;
     clip-path: polygon(0% 0%, 0 30%, 3% 30%, 3% 3%, 97% 3%, 97% 97%, 0 97%, 0 100%, 100% 100%, 100% 0);
+
+    @media (max-width: 768px){
+        height: 75%;
+        bottom: 3.5%;
+        clip-path: polygon(0% 0%, 0 20%, 4% 20%, 4% 2.5%, 96% 2.5%, 96% 97.5%, 0 97.5%, 0 100%, 100% 100%, 100% 0);
+    }
 `
 
 const Home = () => {
