@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { BsArrowUpRight, BsAward } from "react-icons/bs";
+import Button04 from "../../components/buttons/Button04";
 
 
 const SobreAll = styled.section`
@@ -11,14 +12,16 @@ const SobreAll = styled.section`
     transform: translateX(-50%);
     position: relative;
     top: -2.5vh;
-    z-index: 5;
-    height: 100vh;
+    z-index: 1;
+    height: auto;
     background: var(--color--white);
-    border-radius: 80px 80px 0 0;
-    padding: 5%;
+    border-radius: 80px;
+    padding: 7.5% 5% 15% 5%;
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 125px;
 `
 
 const SobreTop = styled.div`
@@ -128,6 +131,63 @@ const SobreCardBottom = styled.div`
     }
 `
 
+const SobreCenter = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+    width: 100%;
+
+    & > div:nth-child(1){
+
+        & > img {
+        }
+    }
+
+    & > div:nth-child(2){
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 30px;
+
+        & > span {
+            font-size: 16px;
+            color: var(--color--blue);
+            font-weight: 300;
+        }
+
+        & > h1 {
+            font-size: 28px;
+            line-height: 110%;
+            font-weight: 400;
+            margin-top: -15px;
+
+            & > b {
+                font-weight: 500;
+                color: var(--color--blue);
+            }
+        }
+
+        & > p {
+            font-weight: 300;
+            width: 85%;
+            margin-top: -5px;
+        }
+
+        & > div {
+            padding: 5% 5%;
+            background-color: #f3f3f3;
+            position: relative;
+            border-left: 10px solid var(--color--blue);
+
+            & > p {
+                width: 95%;
+            }
+        }
+    }
+`
+
 const Sobre = () => {
     return (
         <>
@@ -200,6 +260,23 @@ const Sobre = () => {
                     </SobreCard>
 
                 </SobreTop>
+
+                <SobreCenter>
+                    <div>
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/8651a872-0b00-4e3e-4c14-ff48b6463d00/public" />
+                    </div>
+                    <div>
+                        <span>Bem vindo a Nova Metálica</span>
+                        <h1>Conheça a <b>Nova Metálica</b>, a melhor Fábrica de Steel Frame e Drywall</h1>
+                        <p>Colocar uma descrição curta falando sobre os materiais que vendemos, bem curta e objetiva</p>
+
+                        <div>
+                            <p>Colocar uma descrição curta falando sobre os materiais que vendemos, bem curta e objetiva, Colocar uma descrição curta.</p>
+                        </div>
+
+                        <Button04 children="Conhecer a fábrica"/>
+                    </div>
+                </SobreCenter>
             </SobreAll>
         </>
     )

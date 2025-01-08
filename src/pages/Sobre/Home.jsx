@@ -50,6 +50,10 @@ const HomeContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (min-width: 768px) and (max-width: 1280px){
+        padding-top: 10%;
+    }
 `
 
 const HomeDivAll = styled.div`
@@ -61,6 +65,10 @@ const HomeDivAll = styled.div`
     flex-direction: column;
     gap: 10px;
     position: relative;
+
+    @media (min-width: 768px) and (max-width: 1280px){
+        height: 400px;
+    }
 `
 
 const HomeLogo = styled.div`
@@ -69,6 +77,10 @@ const HomeLogo = styled.div`
     right: 0;
     width: 150px;
     height: auto;
+
+    @media (min-width: 768px) and (max-width: 1280px){
+        
+    }
 
     & > img {
         width: 100%;
@@ -90,6 +102,10 @@ const HomeTexts = styled.div`
         line-height: 110%;
         font-weight: 500;
 
+        @media (min-width: 768px) and (max-width: 1280px){
+            font-size: 28px;
+        }
+
         & > b {
             color: var(--color--blue);
             font-weight: 600;
@@ -101,6 +117,10 @@ const HomeTexts = styled.div`
         line-height: 120%;
         width: 85%;
         font-weight: 300;
+
+        @media (min-width: 768px) and (max-width: 1280px){
+            font-size: 16px;
+        }
     }
 `
 
