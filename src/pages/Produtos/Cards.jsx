@@ -39,7 +39,7 @@ const Cards = () => {
                 subDescription="Descrição bem objetiva sobre os produtos, falando sobre os principais que são os perfis."
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6c5c94de-a5ad-424e-17a6-3e5ea91cbc00/public"
                 padding="padding-right"
-                position="right"
+                position="left"
                 direction="row-reverse"
                 clipPath="polygon(0 0, 2.5% 0, 2.5% 100%, 0 100%);"
                 />
@@ -60,7 +60,7 @@ const Cards = () => {
                 subDescription="Descrição bem objetiva sobre os produtos, falando sobre os principais que são os perfis."
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/d086625e-8598-49b1-653b-173f4335b300/public"
                 padding="padding-right"
-                position="right"
+                position="left"
                 direction="row-reverse"
                 clipPath="polygon(0 0, 2.5% 0, 2.5% 100%, 0 100%);"
                 />

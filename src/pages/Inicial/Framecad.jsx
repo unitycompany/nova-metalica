@@ -96,21 +96,6 @@ const FramecadTexts = styled.div`
         }
     }
 
-    & > button {
-        padding: 10px;
-        background-color: var(--color--black);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-
-        & > svg {
-            fill: var(--color--white);
-            width: 30px;
-            height: 30px;
-        }
-    }
 `;
 
 const Framecad = () => {

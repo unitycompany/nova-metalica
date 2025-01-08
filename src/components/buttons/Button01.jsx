@@ -60,7 +60,7 @@ const GoBackButton = ({ link, text, onClick }) => {
       <IconWrapper>
         <Icon />
       </IconWrapper>
-      <a href={link}>
+        <a href={link}>
         <Text>{text}</Text>
       </a>
     </Button>

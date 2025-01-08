@@ -7,6 +7,7 @@ import Button03 from "../../components/buttons/Button03";
 import Button04 from "../../components/buttons/Button04";
 import Button05 from "../../components/buttons/Button05";
 import GoBackButton from "../../components/buttons/Button01";
+import Button02 from "../../components/buttons/Button02";
 
 const BlogAll = styled.section`
   width: 97.5%;
@@ -190,8 +191,8 @@ const Blog = () => {
                   <span key={index}>#{hashtag}</span>
                 ))}
               </div>
-              <GoBackButton
-                text="Leia mais"
+              <Button02
+                children="Saber mais"
                 onClick={() => navigate(`/blog/${blog.link}`)}
               />
             </div>

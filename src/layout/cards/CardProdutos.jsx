@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { BsStarFill } from "react-icons/bs";
 import Button05 from "../../components/buttons/Button05";
+import Button03 from "../../components/buttons/Button03";
+import Button04 from "../../components/buttons/Button04";
 
 const CardAll = styled.section`
   width: 100%;
@@ -42,21 +44,6 @@ const CardAll = styled.section`
 
     @media (max-width: 768px){
       opacity: 0.2;
-    }
-  }
-
-  &::after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    background: var(--color--white);
-    clip-path: ${({ clipPath }) => clipPath || "polygon(97.5% 0, 100% 0, 100% 100%, 97.5% 100%)"}; /* Clip-path dinâmico */
-
-    @media (max-width: 768px){
-      display: none;
     }
   }
 `;
@@ -150,7 +137,7 @@ const CardRight = styled.div`
   }
 
   & > img {
-    width: 100%;
+    width: 80%;
     height: auto;
     object-fit: contain;
     position: absolute;
@@ -178,8 +165,8 @@ const CardProdutos = ({ titleCardTop, title, description, subDescription, image,
           {subDescription}
         </p>
         <div>
-          <Button05 text="Saber mais" />
-          <Button05 text="Solicitar orçamento" />
+          <Button03 children="Saber mais" />
+          <Button05 children="Solicitar orçamento" />
         </div>
       </CardLeft>
       <CardRight position={position}>

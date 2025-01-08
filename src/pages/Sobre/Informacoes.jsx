@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import Button04 from "../../components/buttons/Button04";
 import Button05 from "../../components/buttons/Button05";
+import Button03 from "../../components/buttons/Button03";
 
 const InfoAll = styled.section`
     position: relative;
@@ -393,7 +394,7 @@ const Informacoes = () => {
                         <div>
                             <h2>{cards[activeIndex].title}</h2>
                             <p>{cards[activeIndex].description}</p>
-                            <Button05 text="Solicitar orçamento" />
+                            <Button03 children="Solicitar orçamento" />
                             <NavigationButtons>
                                 <button onClick={handlePrev} disabled={activeIndex === 0}>
                                     <BsArrowLeftShort />

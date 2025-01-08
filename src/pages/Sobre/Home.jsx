@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Button05 from "../../components/buttons/Button05";
+import Button02 from "../../components/buttons/Button02";
+import Button03 from "../../components/buttons/Button03";
 
 const HomeAll = styled.section`
     position: relative;
@@ -174,7 +176,7 @@ const Home = () => {
                         <HomeTexts>
                             <h1>Conheça a <b>Nova Metálica</b>, a melhor Fábrica de Steel Frame e Drywall</h1>
                             <p>Colocar uma descrição curta falando sobre os materiais que vendemos, bem curta e objetiva</p>
-                            <Button05 text="Conhecer a fábrica" />
+                            <Button03 children="Conhecer a fábrica" />
                         </HomeTexts>
                         <HomeQuadrado></HomeQuadrado>
                     </HomeDivAll>
