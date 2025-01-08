@@ -1,80 +1,190 @@
 import React from "react";
 import styled from "styled-components";
+import { BsStarFill } from "react-icons/bs";
 import Button05 from "../../components/buttons/Button05";
 
 const CardAll = styled.section`
   width: 100%;
-  max-width: 1140px;
-  margin: 50px 0;
   transform: translateX(-50%);
+  ${({ padding }) => (padding === "padding-left" ? "padding-left: 5%;" : "padding-right: 5%;")} /* Posição dinâmica */
   left: 50%;
   top: 0;
   position: relative;
-  height: 60vh;
+  height: 100vh;
   display: flex;
   align-items: center;
-  border-radius: 30px;
-  justify-content: space-between;
-  background-color: ${(props) => props.background ? props.background : 'transparent'};
-  flex-direction: ${(props) => props.reverse ? 'row-reverse' : 'row'};
-  gap: 30px;
-  transition: all .5s ease-in-out;
+  justify-content: center;
+  flex-direction: ${({ direction }) => direction || "row"}; /* Flex direction dinâmico */
+  gap: 50px;
+  background: #353535;
 
-  &:hover{
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
-
-  & > div:nth-child(1){
-    width: 55%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    & > img{
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-      border-radius: 30px;
-    }
-  }
-
-  & > div:nth-child(2){
-    width: 45%;
-    height: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+  @media (max-width: 768px) {
     flex-direction: column;
-    gap: 30px;
-    padding-left: ${(props) => props.padding ? props.padding : '0%'};
+    padding: 25% 0;
+    padding-left: 0%;
+    padding-right: 0%;
+    height: auto;
+    width: 97.5%;
+    margin-right: 2.5%;
+  }
 
-    & > h1{
-      font-size: 26px;
-      color: ${(props) => props.color ? props.color : 'var(--color--black)'};
-      font-weight: 400;
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/1081687f-ba98-453b-c651-444af1325800/public');
+    background-position: center;
+    background-size: cover;
+    opacity: 0.4;
+
+    @media (max-width: 768px){
+      opacity: 0.2;
     }
+  }
 
-    & > p{
-      opacity: 0.8;
-      font-size: 14px;
-      color: ${(props) => props.color ? props.color : 'var(--color--black)'}; /* Aqui também */
-      width: 90%;
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: var(--color--white);
+    clip-path: ${({ clipPath }) => clipPath || "polygon(97.5% 0, 100% 0, 100% 100%, 97.5% 100%)"}; /* Clip-path dinâmico */
+
+    @media (max-width: 768px){
+      display: none;
     }
   }
 `;
 
-const CardProdutos = ({ image, title, description, reverse, background, color, padding }) => {
+const CardLeft = styled.div`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 30px;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0 5%;
+  }
+
+  & > span {
+    background-color: var(--color--white);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    
+    @media (max-width: 768px) {
+      
+    }
+
+    & > svg {
+      fill: var(--color--dark--blue);
+
+      @media (max-width: 768px){
+        font-size: 12px;
+      }
+    }
+
+    & > p {    
+      font-weight: 600;
+      background: linear-gradient(90deg, var(--color--black), var(--color--blue));
+      color: transparent;
+      -webkit-background-clip: text;
+
+      @media (max-width: 768px){
+        font-size: 14px;
+      }
+    }
+  }
+
+  & > h1 {
+    font-size: 36px;
+    color: var(--color--white);
+  }
+
+  & > p {
+    color: var(--color--white);
+    font-size: 16px;
+    line-height: 110%;
+
+    @media (max-width: 768px){
+      font-size: 14px;
+      width: 100%;
+    }
+  }
+
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+`;
+
+const CardRight = styled.div`
+  width: 50%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 768px){
+    z-index: 1;
+    opacity: 0.5;
+    display: none;
+  }
+
+  @media (max-width: 768px){
+    width: 100%;
+  }
+
+  & > img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    position: absolute;
+    ${({ position }) => (position === "left" ? "left: 0;" : "right: 0;")} /* Posição dinâmica */
+    bottom: 0;
+
+    @media (max-width: 768px){
+      width: 65%;
+      display: none;
+    }
+  }
+`;
+
+const CardProdutos = ({ titleCardTop, title, description, subDescription, image, direction, clipPath, padding, position }) => {
   return (
-    <CardAll reverse={reverse} background={background} color={color} padding={padding}>
-      <div>
-        <img src={image} alt="imagem do produto" />
-      </div>
-      <div>
+    <CardAll direction={direction} clipPath={clipPath} padding={padding}>
+      <CardLeft>
+        <span>
+          <p>{titleCardTop}</p>
+          <BsStarFill />
+        </span>
         <h1>{title}</h1>
-        <p>{description}</p>
-        <Button05 text="Saber mais" />
-      </div>
+        <p>
+          {description}<br /> <br />
+          {subDescription}
+        </p>
+        <div>
+          <Button05 text="Saber mais" />
+          <Button05 text="Solicitar orçamento" />
+        </div>
+      </CardLeft>
+      <CardRight position={position}>
+        <img src={image} alt="Produto" />
+      </CardRight>
     </CardAll>
   );
 };

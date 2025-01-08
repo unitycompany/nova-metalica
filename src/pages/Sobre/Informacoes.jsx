@@ -72,7 +72,7 @@ const InfoCards = styled.div`
     width: 100%;
     height: auto;
     position: relative;
-    margin-top: -10vh;
+    margin-top: -15vh;
     z-index: 10 !important;
     display: flex;
     align-items: center;
@@ -85,8 +85,8 @@ const InfoCards = styled.div`
 
 const InfoCard = styled.div`
     background-color: ${({ active }) => (active ? "var(--color--blue)" : "var(--color--white)")};
-    width: ${({ active }) => (active ? "200px" : "160px")};
-    height: ${({ active }) => (active ? "200px" : "160px")};
+    width: ${({ active }) => (active ? "220px" : "170px")};
+    height: ${({ active }) => (active ? "220px" : "170px")};
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     position: relative;
     display: flex;
@@ -96,7 +96,6 @@ const InfoCard = styled.div`
     flex-direction: column;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    border-radius: 10px;
 
     @media (max-width: 768px){
         width: ${({ active }) => (active ? "100%" : "80%")};
@@ -108,9 +107,9 @@ const InfoCard = styled.div`
         gap: 30px;
     }
 
-    @media (min-width: 768px) and (max-width: 1280px){
-        width: ${({ active }) => (active ? "170px" : "140px")};
-        height: ${({ active}) => (active ? "170px" : "140px")};
+    @media (min-width: 768px) and (max-width: 1140px){
+        width: ${({ active }) => (active ? "190px" : "150px")};
+        height: ${({ active}) => (active ? "190px" : "150px")};
     }
 
     &::before {
@@ -124,7 +123,6 @@ const InfoCard = styled.div`
         clip-path: polygon(100% 0, 0% 100%, 100% 100%);
         z-index: 1;
         display: ${({ active }) => (active ? "block" : "none")};
-        border-radius: 10px;
     }
 
     &::after {
@@ -240,12 +238,10 @@ const InfoDetails = styled.div`
         width: 50%;
         height: 100%;
         object-fit: cover;
-        border-radius: 15px;
 
         @media (max-width: 768px){
             width: 100%;
             height: 300px;
-            border-radius: 15px;
         }
     }
 

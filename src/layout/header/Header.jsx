@@ -3,6 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Button04 from "../../components/buttons/Button04";
 import { BsTelephone, BsEnvelopeCheck, BsGeo, BsBook, BsCartCheck, BsHouse, BsX, BsGrid3X3GapFill, BsArrowRight } from "react-icons/bs";
+import { HiMiniBars3BottomRight } from "react-icons/hi2";
 
 // Estilos do header
 const HeaderAll = styled.section`
@@ -219,15 +220,16 @@ const MenuButton = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 14px;
     background-color: var(--color--black);
+    padding: 7.5px;
     border-radius: 8px;
     font-weight: 500;
     color: var(--color--white);
   }
 
   & > svg{
-    font-size: 12px;
+    font-size: 24px;
+    fill: var(--color--white);
   }
 `;
 
@@ -489,8 +491,7 @@ const Header = () => {
           <Button04 href="#Form">Solicitar orçamento</Button04>
         </div>
         <MenuButton onClick={() => setSidebarOpen(true)}>
-          Menu
-          <BsGrid3X3GapFill />
+          <HiMiniBars3BottomRight />
         </MenuButton>
       </HeaderWhite>
 

@@ -4,16 +4,21 @@ import Button02 from "../../components/buttons/Button02";
 
 const HomeAll = styled.section`
     width: 100%;
-    height: 95vh;
+    height: auto;
     max-width: 1280px;
     position: relative;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    padding-top: 10%;
     padding-bottom: 5%;
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 50px;
+
+    @media (min-width: 768px) and (max-width: 1140px){
+        align-items: flex-end;
+    }
 
     @media (max-width: 768px){
         display: flex;
@@ -33,7 +38,12 @@ const HomeText = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 30px;
+    gap: 40px;
+
+    @media (min-width: 768px) and (max-width: 1140px){
+        gap: 30px;
+        padding-bottom: 5%;
+    }
 
     @media (max-width: 768px){
         width: 100%;
@@ -63,6 +73,10 @@ const HomeText = styled.div`
         font-size: 40px;
         font-weight: 600;
         line-height: 110%;
+        
+        @media (min-width: 768px) and (max-width: 1140px){
+            font-size: 36px;
+        }
 
         @media (max-width: 768px){
             font-size: 36px;
@@ -76,12 +90,16 @@ const HomeText = styled.div`
     }
 
     & > p{
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 400;
         color: var(--color--black);
         opacity: .7;
         line-height: 110%;
         width: 90%;
+
+        @media (min-width: 768px) and (max-width: 1140px){
+            font-size: 14px;
+        }
 
         & > b{
             font-weight: 600;
@@ -91,8 +109,7 @@ const HomeText = styled.div`
 
 const HomeImage = styled.div`
     width: 50%;
-    margin-top: 2.5%;
-    height: 95%;
+    height: 100vh;
     position: relative;
 
     @media (max-width: 768px){
@@ -111,9 +128,7 @@ const HomeImage = styled.div`
         height: 100%;
         object-fit: cover;
         object-position: center;
-        border-radius: 18px 0 0 18px;
-        filter: contrast(110%) brightness(110%);
-        box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.2);
+        border-radius: 0 0 0 250px;
 
         @media (max-width: 768px){
             border-radius: 0 0 0 50px;

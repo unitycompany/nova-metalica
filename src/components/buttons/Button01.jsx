@@ -54,9 +54,9 @@ const Text = styled.p`
   transform: translateX(1rem); /* Para afastar o texto da borda */
 `;
 
-const GoBackButton = ({ link, text }) => {
+const GoBackButton = ({ link, text, onClick }) => {
   return (
-    <Button>
+    <Button onClick={onClick}>
       <IconWrapper>
         <Icon />
       </IconWrapper>
