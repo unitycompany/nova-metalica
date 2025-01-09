@@ -176,7 +176,15 @@ const Home = () => {
                         <HomeTexts>
                             <h1>Conheça a <b>Nova Metálica</b>, a melhor Fábrica de Steel Frame e Drywall</h1>
                             <p>Colocar uma descrição curta falando sobre os materiais que vendemos, bem curta e objetiva</p>
-                            <Button03 children="Conhecer a fábrica" />
+                            <Button03 
+                            children="Conhecer a fábrica" 
+                            onClick={() => {
+                                const sobreSection = document.getElementById('Sobre')
+                                if (sobreSection){
+                                    sobreSection.scrollIntoView({ behavior: 'smooth'});
+                                }
+                            }}
+                            />
                         </HomeTexts>
                         <HomeQuadrado></HomeQuadrado>
                     </HomeDivAll>

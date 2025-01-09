@@ -140,6 +140,7 @@ const ContactForm = styled.form`
     color: var(--color--white);
     cursor: pointer;
     transition: all .1s ease-in-out;
+
     }
 
     & > div > button:hover {
@@ -182,4 +183,4 @@ const Form = () => {
     )
 }
 
-export default Form
+export default Form;

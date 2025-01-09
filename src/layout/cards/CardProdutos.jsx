@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { BsStarFill } from "react-icons/bs";
 import Button05 from "../../components/buttons/Button05";
 import Button03 from "../../components/buttons/Button03";
-import Button04 from "../../components/buttons/Button04";
+import { useNavigate } from "react-router-dom";
 
 const CardAll = styled.section`
   width: 100%;
@@ -151,7 +151,10 @@ const CardRight = styled.div`
   }
 `;
 
-const CardProdutos = ({ titleCardTop, title, description, subDescription, image, direction, clipPath, padding, position }) => {
+const CardProdutos = ({ titleCardTop, title, description, subDescription, image, direction, clipPath, padding, position, link }) => {
+
+  const navigate = useNavigate();
+
   return (
     <CardAll direction={direction} clipPath={clipPath} padding={padding}>
       <CardLeft>
@@ -165,8 +168,19 @@ const CardProdutos = ({ titleCardTop, title, description, subDescription, image,
           {subDescription}
         </p>
         <div>
-          <Button03 children="Saber mais" />
-          <Button05 children="Solicitar orçamento" />
+          <Button03 
+          children="Saber mais"
+          onClick={() => navigate (link || '/produtos')}
+          />
+          <Button05 
+          children="Solicitar orçamento"
+          onClick={() => {
+            const formSection = document.getElementById('Form');
+            if (formSection) {
+              formSection.scrollIntoView({ behavior : 'smooth' });
+            }
+          }}
+          />
         </div>
       </CardLeft>
       <CardRight position={position}>

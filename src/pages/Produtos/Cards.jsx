@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import CardProdutos from "../../layout/cards/CardProdutos";
+import Form from "../Inicial/Form";
 
 const CardAll = styled.section `
     width: 100%;
@@ -30,6 +31,7 @@ const Cards = () => {
                 subDescription="Descrição bem objetiva sobre os produtos, falando sobre os principais que são os perfis."
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/7991b741-023c-461d-7e61-509b7e768000/public"
                 padding="padding-left"
+                link="/produtos/steel-frame"
                 />
 
                 <CardProdutos 
@@ -42,6 +44,7 @@ const Cards = () => {
                 position="left"
                 direction="row-reverse"
                 clipPath="polygon(0 0, 2.5% 0, 2.5% 100%, 0 100%);"
+                link="/produtos/drywall"
                 />
 
                 <CardProdutos 
@@ -51,6 +54,7 @@ const Cards = () => {
                 subDescription="Descrição bem objetiva sobre os produtos, falando sobre os principais que são os perfis."
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5665bd67-d11b-4522-2f91-54ce0558fb00/public"
                 padding="padding-left"
+                link="/produtos/telhados-industriais"
                 />
 
                 <CardProdutos 
@@ -63,6 +67,7 @@ const Cards = () => {
                 position="left"
                 direction="row-reverse"
                 clipPath="polygon(0 0, 2.5% 0, 2.5% 100%, 0 100%);"
+                link="/produtos/galpoes-industriais"
                 />
 
                 <CardProdutos 
@@ -72,7 +77,10 @@ const Cards = () => {
                 subDescription="Descrição bem objetiva sobre os produtos, falando sobre os principais que são os perfis."
                 image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/e760f765-c8d2-4fb5-f2ce-b893382a4800/public"
                 padding="padding-left"
+                link="/produtos/fachadas-engenheiradas"
                 />
+
+                <Form />
             </CardAll>
         </>
     )

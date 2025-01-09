@@ -54,32 +54,10 @@ const StyledButton = styled.button`
   }
 `;
 
-const Button04 = ({ href, children }) => {
-  const navigate = useNavigate();
-
-  const handleClick = (event) => {
-    event.preventDefault();
-
-    if (href.startsWith('#')) {
-      // Scroll para âncora
-      const element = document.querySelector(href);
-      if (element) {
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - 200; // Ajuste de -100px
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth',
-        });
-      }
-    } else {
-      // Navegação para outra página
-      navigate(href);
-    }
-  };
+const Button04 = ({ onClick, children }) => {
 
   return (
-    <StyledButton onClick={handleClick}>
+    <StyledButton onClick={onClick}>
       <span>{children}</span>
       <FaArrowRight size={14} />
     </StyledButton>

@@ -202,6 +202,7 @@ const Blog = () => {
             <p>Novos posts nos dias 15 e 30 de cada mês</p>
             <Button03 
             children="Saber mais"
+            onClick={() => navigate ('/blog')}
             />
           </BlogTexts>
         </BlogAll>

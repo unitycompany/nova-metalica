@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Button05 from "../../../components/buttons/Button06";
+import Button05 from "../../components/buttons/Button05";
 
 const FormAll = styled.section`
     width: 100%;

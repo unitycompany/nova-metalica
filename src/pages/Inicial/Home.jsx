@@ -150,11 +150,19 @@ const Home = () => {
 
                     <p>Escolha a <b>Nova Metálica para elevar seus projetos</b> a um novo patamar de excelência!</p>
 
-                    <Button02 href="#Form">Solicitar orçamento</Button02>
+                    <Button02 
+                    children="Solicitar orçamento!"
+                    onClick={() => {
+                        const formSection = document.getElementById('Form');
+                        if (formSection) {
+                            formSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }}
+                    />
                 </HomeText>
 
                 <HomeImage>
-                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/4e5edc4f-f411-4f7a-5f47-9fa8ab3e6d00/public" alt="imagem de uma casa de steel frame pela nova metalica" loading="lazy"></img>
+                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/8ac1e6f6-d87e-438e-9c4d-ab5124e8c300/public" alt="imagem de uma casa de steel frame pela nova metalica" loading="lazy"></img>
                 </HomeImage>
             </HomeAll>
         </>

@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+
+import { Navigate, useNavigate } from "react-router-dom";
 import Button03 from "../../components/buttons/Button03";
 import Button02 from "../../components/buttons/Button02";
 import Button04 from "../../components/buttons/Button04";
@@ -131,6 +133,8 @@ const ParceirosImage = styled.div`
 `
 
 const Parceiros = () => {
+    const navigate = useNavigate();
+
     return (
         <>
             <ParceirosAll>
@@ -147,7 +151,10 @@ const Parceiros = () => {
                             <p>Todos os perfis normatizados</p>
                         </div>
                     </div>
-                    <Button04 href="/parcerias">Ser parceiro</Button04>
+                    <Button04 
+                    children="Virar parceiro"
+                    onClick={() => navigate ('/parcerias')}
+                    />
                 </ParceirosTexts>
                 <ParceirosImage>
                     <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b790bac9-6a8a-402f-734b-0ab292815b00/public" alt="foto de perfis de steel frame" />

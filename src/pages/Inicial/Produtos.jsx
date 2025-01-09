@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react"; // Importação do Swiper
 import "swiper/css"; // Importação do CSS do Swiper
-import Button02 from "../../components/buttons/Button02"; // Supondo que esse botão já está estilizado
+import { useNavigate } from 'react-router-dom';
 import Button03 from "../../components/buttons/Button03";
 
 const ProdutosAll = styled.section`
@@ -93,6 +93,8 @@ const ProdutoImage = styled.img`
 `;
 
 const Produtos = () => {
+    const navigate = useNavigate();
+
     const imagens = [
         "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/65ab875a-1f55-4326-1f71-28088badc500/public",
         "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/65ab875a-1f55-4326-1f71-28088badc500/public",
@@ -135,8 +137,9 @@ const Produtos = () => {
                 <h1>Eleve seus projetos com <b>nossos produtos</b></h1>
                 <p>Na Nova Metálica, oferecemos mais do que produtos. Oferecemos soluções completas para suas construções.</p>
                 <Button03 
-                href="/produtos"
-                >Ver produtos</Button03>
+                children="Ver produtos"
+                onClick={() => navigate ('/produtos')}
+                />
             </ProdutosTexts>
         </ProdutosAll>
     );

@@ -247,7 +247,15 @@ const Construcao = () => {
                         <div>
                             <h2>Steel Frame</h2>
                             <p>O Steel Frame é uma revolução no setor da construção civil. Com perfis de aço galvanizado, essa técnica oferece uma estrutura leve, durável e resistente. A montagem rápida e precisa reduz significativamente o tempo de construção, enquanto a sustentabilidade e o conforto térmico e acústico tornam essa solução ideal para diversos tipos de edificações.</p>
-                            <Button02 href="#Form">Solicitar orçamento</Button02>
+                            <Button02 
+                            children="Solicitar orçamento!"
+                            onClick={() => {
+                                const formSection = document.getElementById('Form');
+                                if (formSection){
+                                    formSection.scrollIntoView({ behavior : 'smooth' })
+                                }
+                            }}
+                            />
                         </div>
                     </div>
                     <div>
@@ -263,7 +271,15 @@ const Construcao = () => {
                         <div>
                             <h2>Drywall</h2>
                             <p>O Drywall oferece praticidade e eficiência para a construção moderna, com excelente desempenho acústico e térmico. É a escolha perfeita para projetos residenciais e comerciais que buscam qualidade e agilidade na construção.</p>
-                            <Button02 href="#Form">Solicitar orçamento</Button02>
+                            <Button02
+                            children="Solicitar orçamento!"
+                            onClick={() => {
+                                const formSection = document.getElementById('Form');
+                                if (formSection){
+                                    formSection.scrollIntoView({ behavior : 'smooth' })
+                                }
+                            }}
+                            />
                         </div>
                     </div>
                 </ConstrucaoContainer2>

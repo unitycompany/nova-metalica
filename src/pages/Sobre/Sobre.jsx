@@ -334,7 +334,7 @@ const SobreCenter = styled.div`
 const Sobre = () => {
     return (
         <>
-            <SobreAll>
+            <SobreAll id="Sobre">
                 <SobreTop>
                     <SobreCard>
 
@@ -350,7 +350,12 @@ const Sobre = () => {
 
                         <SobreCardBottom>
                             <p>Colocar os motivos pelos quais somos os melhores para se comprar perfis de steel frame e drywall bem objetivo</p>
-                            <a href="#">
+                            <a onClick={() => {
+                                const formSection = document.getElementById('Form');
+                                if ( formSection ){
+                                    formSection.scrollIntoView({ behavior : 'smooth' })
+                                }
+                            }}>
                                 Comprar da fábrica
                                 <BsArrowUpRight />
                             </a>
@@ -372,7 +377,12 @@ const Sobre = () => {
 
                         <SobreCardBottom>
                             <p>Colocar os motivos pelos quais somos os melhores para se comprar perfis de steel frame e drywall bem objetivo</p>
-                            <a href="#">
+                            <a onClick={() => {
+                                const formSection = document.getElementById('Form');
+                                if ( formSection ){
+                                    formSection.scrollIntoView({ behavior : 'smooth' })
+                                }
+                            }}>
                                 Comprar da fábrica
                                 <BsArrowUpRight />
                             </a>
@@ -394,7 +404,12 @@ const Sobre = () => {
 
                         <SobreCardBottom>
                             <p>Colocar os motivos pelos quais somos os melhores para se comprar perfis de steel frame e drywall bem objetivo</p>
-                            <a href="#">
+                            <a onClick={() => {
+                                const formSection = document.getElementById('Form');
+                                if ( formSection ){
+                                    formSection.scrollIntoView({ behavior : 'smooth' })
+                                }
+                            }}>
                                 Comprar da fábrica
                                 <BsArrowUpRight />
                             </a>
@@ -417,7 +432,15 @@ const Sobre = () => {
                             <p>Colocar uma descrição curta falando sobre os materiais que vendemos, bem curta e objetiva, Colocar uma descrição curta.</p>
                         </div>
 
-                        <Button04 children="Conhecer a fábrica"/>
+                        <Button04 
+                        children="Conhecer mais"
+                        onClick={() => {
+                            const infoSection = document.getElementById('Informacoes');
+                            if ( infoSection ) {
+                                infoSection.scrollIntoView({ behavior : 'smooth'});
+                            }
+                        }}
+                        />
                     </div>
                 </SobreCenter>
             </SobreAll>

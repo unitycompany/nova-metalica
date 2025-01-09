@@ -117,7 +117,7 @@ const HeaderIcons = styled.div`
 
 const HeaderWhite = styled.div`
   width: 90%;
-  height: 7.5vh;
+  height: 8vh;
   position: relative;
   top: -3.75vh;
   left: 5%;
@@ -179,24 +179,46 @@ const HeaderWhite = styled.div`
 
     & > a {
       font-size: 12px;
-      padding: 8px 10px;
+      padding: 10px 15px;
       color: var(--color--black);
-      font-weight: 400;
+      font-weight: 500;
       transition: all 0.2s ease;
       display: flex;
       align-items: center;
-      border-radius: 8px;
-    }
+      border-radius: 5px;
+      position: relative;
+      overflow: hidden;
 
-    & > .active {
+      &::before {
+        content: '';
+        width: 0;
+        height: 300%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--color--dark--blue);
+        transition: 0.5s ease;
+        display: block;
+        z-index: -1;
+      }
+
+      &.active {
       background-color: var(--color--dark--blue);
       color: var(--color--white);
+      transform: scale(1.05);
     }
 
-    & > a:hover {
-      background-color: var(--color--dark--blue);
-      border-radius: 8px;
+      &:hover::before {
+      width: 120%;
+      padding: 30px 10px;
+    }
+
+    &:hover {
       color: var(--color--white);
+      font-weight: 500;
+    }
+
     }
   }
 
@@ -435,15 +457,15 @@ const Header = () => {
         <HeaderContact>
           <div>
             <BsEnvelopeCheck color="var(--color--white)" />
-            <a href="#">contato@novametalica.com.br</a>
+            <a href="mailto:contato@novametalica.com.br" target="_blank">contato@novametalica.com.br</a>
           </div>
           <div>
             <BsTelephone color="var(--color--white)" />
-            <a href="#">+55 (21) 99288-2282</a>
+            <a href="https://api.whatsapp.com/send?phone=5521992882282&text=Ol%C3%A1,%20vim%20do%20site!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank">+55 (21) 99288-2282</a>
           </div>
           <div>
             <BsGeo color="var(--color--white)" />
-            <a href="#">Veja onde estamos localizados</a>
+            <a href="https://www.google.com/maps/place/BR-040,+Rio+de+Janeiro/@-21.7695806,-43.442561,17z/data=!3m1!4b1!4m7!3m6!1s0x94ac4abe39278459:0x550b83a54f48120!8m2!3d-21.7695857!4d-43.4376901!15sCkdSdWEgRW5nZW5oZWlybyBXYXRlcmxleSAgQ2lkYWRlIEphcmRpbSBNYXJham9hcmEsIEphcGVyaS9SSiAtIDI2NDEzLTA0MJIBCWhpZ2h3YXlfMeABAA!16s%2Fm%2F04k9y71?coh=219816&entry=tts&g_ep=EgoyMDI0MDgxNC4xKgBIAVAD" target="_blank">Veja onde estamos localizados</a>
           </div>
         </HeaderContact>
         <HeaderIcons>
@@ -488,7 +510,15 @@ const Header = () => {
           </NavLink>
         </div>
         <div>
-          <Button04 href="#Form">Solicitar orçamento</Button04>
+          <Button04 
+          children="Solicitar orçamento"
+          onClick={() => {
+            const formSection = document.getElementById('Form');
+            if ( formSection ){
+              formSection.scrollIntoView({ behavior : 'smooth' })
+            }
+          }}
+          />
         </div>
         <MenuButton onClick={() => setSidebarOpen(true)}>
           <HiMiniBars3BottomRight />
@@ -507,11 +537,11 @@ const Header = () => {
           />
         </SidebarTop>
         <SidebarLinks>
-          <NavLink to="/">Início <BsArrowRight /></NavLink>
-          <NavLink to="/sobre">Sobre nós <BsArrowRight /></NavLink>
-          <NavLink to="/produtos">Produtos <BsArrowRight /></NavLink>
-          <NavLink to="/parcerias">Parcerias <BsArrowRight /></NavLink>
-          <NavLink to="/blog">Blog <BsArrowRight /></NavLink>
+          <NavLink to="/" activeClassName="active">Início <BsArrowRight /></NavLink>
+          <NavLink to="/sobre" activeClassName="active">Sobre nós <BsArrowRight /></NavLink>
+          <NavLink to="/produtos" activeClassName="active">Produtos <BsArrowRight /></NavLink>
+          <NavLink to="/parcerias" activeClassName="active">Parcerias <BsArrowRight /></NavLink>
+          <NavLink to="/blog" activeClassName="active">Blog <BsArrowRight /></NavLink>
         </SidebarLinks>
 
         <SidebarContato>

@@ -352,8 +352,8 @@ const Informacoes = () => {
             <InfoAll>
                 <InfoBackground></InfoBackground>
 
-                <InfoContainer>
-                    <InfoCards>
+                <InfoContainer >
+                    <InfoCards id="Informacoes">
                         {cards.map((card, index) => (
                             <InfoCard
                                 key={index}
@@ -394,7 +394,15 @@ const Informacoes = () => {
                         <div>
                             <h2>{cards[activeIndex].title}</h2>
                             <p>{cards[activeIndex].description}</p>
-                            <Button03 children="Solicitar orçamento" />
+                            <Button03 
+                            children="Solicitar orçamento" 
+                            onClick={() => {
+                                const formSection = document.getElementById('Form');
+                                if ( formSection ) {
+                                    formSection.scrollIntoView({ behavior : 'smooth' })
+                                }
+                            }}
+                            />
                             <NavigationButtons>
                                 <button onClick={handlePrev} disabled={activeIndex === 0}>
                                     <BsArrowLeftShort />

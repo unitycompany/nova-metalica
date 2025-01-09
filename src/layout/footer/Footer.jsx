@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import { BsPlayFill } from "react-icons/bs";
 
@@ -145,6 +146,8 @@ const FooterPolitica = styled.div`
 `
 
 const Footer = () => {
+    const navigate = useNavigate();
+
     return (
         <>
             <FooterAll>
@@ -152,72 +155,72 @@ const Footer = () => {
                     <div>
                         <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b440dfa1-5f27-48ad-a0a6-8de8dd71c700/public" alt="logo da nova metalica" loading="lazy"></img>
                         <h4>Steel Frame & Drywall</h4>
-                        <a href="#">contato@novametalica.com.br</a>
-                        <a href="#">+55 (21) 99288-2282</a>
+                        <a href="mailto:contato@novametalica.com.br" target="_blank">contato@novametalica.com.br</a>
+                        <a href="https://api.whatsapp.com/send?phone=5521992882282&text=Ol%C3%A1,%20vim%20do%20site!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.">+55 (21) 99288-2282</a>
                     </div>
                     <div>
                         <h4>Mapa do site</h4>
-                        <a href="#">
+                        <a onClick={() => navigate ('/')}>
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Início
                         </a>
-                        <a href="#">
+                        <a onClick={() => navigate ('/produtos')}>
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Produtos
                         </a>
-                        <a href="#">
+                        <a onClick={() => navigate ('/sobre')}>
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Sobre nós
                         </a>
-                        <a href="#">
+                        <a onClick={() => navigate ('/parcerias')}>
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Parcerias
                         </a>
-                        <a href="#">
+                        <a onClick={() => navigate ('/blog')}>
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Blog
                         </a>
-                        <a href="#">
+                        <a onClick={() => navigate ('/sobre')}>
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Como fabricamos
                         </a>
                     </div>
                     <div>
                         <h4>Parcerias</h4>
-                            <a href="#">
+                            <a href="https://www.csn.com.br/" target="_blank">
                                 <BsPlayFill style={{ marginLeft: '5px' }} />
                                 CSN Siderúrgica
                             </a>
-                            <a href="#">
+                            <a href="https://brasil.arcelormittal.com/" target="_blank">
                                 <BsPlayFill style={{ marginLeft: '5px' }} />
                                 Arcellar Mital
                             </a>
-                            <a href="#">
+                            <a href="https://www.saint-gobain.com.br/" target="_blank">
                                 <BsPlayFill style={{ marginLeft: '5px' }} />
                                 Saint Gobain
                             </a>
-                            <a href="#">
+                            <a href="https://stobrasil.com.br/" target="_blank">
                                 <BsPlayFill style={{ marginLeft: '5px' }} />
                                 Grupo STO Brasil
                             </a>
                     </div>
                     <div>
                         <h4>Nos acompanhe</h4>
-                        <a href="#">
+                        <a href="https://www.instagram.com/anovametalica/" target="_blank">
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Instagram
                         </a>
-                        <a href="#">
+                        <a href="https://www.facebook.com/people/Nova-Met%C3%A1lica/61564565333487/" target="_blank">
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Facebook
                         </a>
-                        <a href="#">
+                        <a href="https://www.linkedin.com/in/novametalica/" target="_blank">
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             LinkedIn
                         </a>
-                        <a href="#">
+                        <a href="mailto:contato@novametalica.com.br" target="_blank">
                             <BsPlayFill style={{ marginLeft: '5px' }} />
-                            YouTube
+                            E-mail
                         </a>
                     </div>
                 </FooterContainer>
