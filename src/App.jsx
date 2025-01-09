@@ -1,4 +1,7 @@
 import React, { lazy, Suspense, useEffect } from "react";
+import AOS from "aos";
+import 'aos/dist/aos.css';
+
 import {
   HashRouter as Router,
   Routes,
@@ -29,6 +32,16 @@ const AddBlog = lazy(() => import("./pages/Blog/AdicionarBlog"));
 // Componente para rolar a tela ao topo ao trocar de rota
 function ScrollToTop() {
   const { pathname } = useLocation();
+
+  
+  useEffect(() => {
+    AOS.init({
+      duration: 1200, 
+      once: true,   
+      offset: 0,
+      easing: 'ease-out-cubic'
+    });
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);

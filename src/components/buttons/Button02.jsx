@@ -45,7 +45,7 @@ const StyledButton = styled.button`
 
 // Componente React
 const Button02 = ({ children, onClick }) => {
-  return <StyledButton onClick={onClick}>{children}</StyledButton>;
+  return <StyledButton onClick={onClick} data-aos="fade-up" data-aos-delay="100">{children}</StyledButton>;
 };
 
 export default Button02;

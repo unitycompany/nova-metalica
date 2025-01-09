@@ -70,7 +70,7 @@ const Porque = () => {
         <>
             <PorqueAll>
                 <PorqueTexts>
-                    <h1>Porque escolher a <b>Nova Metálica?</b></h1>
+                    <h1 data-aos="fade-left" data-aos-delay="100">Porque escolher a <b>Nova Metálica?</b></h1>
                 </PorqueTexts>
 
                 <PorqueCards>

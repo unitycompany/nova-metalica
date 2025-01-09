@@ -139,14 +139,14 @@ const Parceiros = () => {
         <>
             <ParceirosAll>
                 <ParceirosTexts>
-                    <h1>Seja nosso <b>parceiro</b></h1>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium sequi magni porro quibusdam a. Laudantium modi, maiores possimus accusantium enim exercitationem delectus ex voluptas molestias magni, facilis voluptatibus reiciendis a!</p>
+                    <h1 data-aos="fade-left" data-aos-delay="100">Seja nosso <b>parceiro</b></h1>
+                    <p data-aos="fade-left" data-aos-delay="200">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium sequi magni porro quibusdam a. Laudantium modi, maiores possimus accusantium enim exercitationem delectus ex voluptas molestias magni, facilis voluptatibus reiciendis a!</p>
                     <div>
-                        <div>
+                        <div data-aos="fade-up" data-aos-delay="100">
                             <span>100%</span>
                             <p>Todos os perfis normatizados</p>
                         </div>
-                        <div>
+                        <div data-aos="fade-up" data-aos-delay="100">
                             <span>100%</span>
                             <p>Todos os perfis normatizados</p>
                         </div>
@@ -156,7 +156,7 @@ const Parceiros = () => {
                     onClick={() => navigate ('/parcerias')}
                     />
                 </ParceirosTexts>
-                <ParceirosImage>
+                <ParceirosImage data-aos="fade-right" data-aos-delay="100">
                     <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b790bac9-6a8a-402f-734b-0ab292815b00/public" alt="foto de perfis de steel frame" />
                 </ParceirosImage>
             </ParceirosAll>

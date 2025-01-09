@@ -453,7 +453,7 @@ const Header = () => {
         top: scrollingDown ? "-15vh" : "0",
       }}
     >
-      <HeaderDivBlack>
+      <HeaderDivBlack data-aos="fade-down" data-aos-delay="0">
         <HeaderContact>
           <div>
             <BsEnvelopeCheck color="var(--color--white)" />
@@ -484,7 +484,7 @@ const Header = () => {
         </HeaderIcons>
       </HeaderDivBlack>
 
-      <HeaderWhite>
+      <HeaderWhite data-aos="fade-down" data-aos-delay="500">
         <div>
           <img
             src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a6bd0b20-7bcc-4575-98dd-39f394dbe100/public"

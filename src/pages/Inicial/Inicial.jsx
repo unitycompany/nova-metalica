@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 import Home from "./Home";
 import Valores from "./Valores";
@@ -10,19 +9,27 @@ import Produtos from "./Produtos";
 import Parceiros from "./Parceiras";
 import Blog from "./Blog";
 import Form from "./Form";
+import styled from "styled-components";
+
+const All = styled.div`
+    overflow: hidden;
+`
 
 const PaginaInicial = () => {
+
     return (
         <>
-            <Home />
-                <Valores />
-                    <Porque />
-                        <Construcao />
-                            <Framecad />
-                                <Produtos />
-                                    <Parceiros />
-                                        <Form />
-                                            <Blog />
+            <All>
+                <Home />
+                    <Valores />
+                        <Porque />
+                            <Construcao />
+                                <Framecad />
+                                    <Produtos />
+                                        <Parceiros />
+                                            <Form />
+                                                <Blog />
+            </All>
         </>
     )
 }

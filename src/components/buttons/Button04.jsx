@@ -57,7 +57,7 @@ const StyledButton = styled.button`
 const Button04 = ({ onClick, children }) => {
 
   return (
-    <StyledButton onClick={onClick}>
+    <StyledButton onClick={onClick} data-aos="fade-up" data-aos-delay="100">
       <span>{children}</span>
       <FaArrowRight size={14} />
     </StyledButton>

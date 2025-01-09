@@ -181,7 +181,7 @@ const Card02 = () => {
         <>
             <Card>
 
-                <div>
+                <div data-aos="fade-right" data-aos-delay="100">
                     <CardText2>
                         <h1>Tecnologia de Ponta</h1>
                         <p>Equipados com tecnologia CNC Framecad e máquinas de fabricação de telhas termoacústicas, garantimos precisão e inovação em cada perfil de Steel Frame.</p>
@@ -191,7 +191,7 @@ const Card02 = () => {
                     </CardIcon2>
                 </div>
 
-                <div>
+                <div data-aos="fade-left" data-aos-delay="100">
                     <CardText>
                         <h1>Soluções Eficientes</h1>
                         <p>Colaboramos com gigantes como CSN Siderúrgica, Arcellor Mital, Saint-Gobain e STO Brasil para oferecer soluções de Steel Frame de qualidade inigualável.</p>

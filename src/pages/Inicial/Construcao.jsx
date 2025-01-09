@@ -238,15 +238,15 @@ const Construcao = () => {
         <>
             <ConstrucaoAll>
                 <ConstrucaoText>
-                    <h1>Construção a Seco</h1>
-                    <p>Agilize suas obras com a qualidade superior e menos resíduos que o Steel Frame proporciona.</p>
+                    <h1 data-aos="fade-up" data-aos-delay="100">Construção a Seco</h1>
+                    <p data-aos="fade-up" data-aos-delay="300">Agilize suas obras com a qualidade superior e menos resíduos que o Steel Frame proporciona.</p>
                 </ConstrucaoText>
 
                 <ConstrucaoContainer>
                     <div>
                         <div>
-                            <h2>Steel Frame</h2>
-                            <p>O Steel Frame é uma revolução no setor da construção civil. Com perfis de aço galvanizado, essa técnica oferece uma estrutura leve, durável e resistente. A montagem rápida e precisa reduz significativamente o tempo de construção, enquanto a sustentabilidade e o conforto térmico e acústico tornam essa solução ideal para diversos tipos de edificações.</p>
+                            <h2 data-aos="fade-up-left" data-aos-delay="100">Steel Frame</h2>
+                            <p data-aos="fade-up-left" data-aos-delay="200">O Steel Frame é uma revolução no setor da construção civil. Com perfis de aço galvanizado, essa técnica oferece uma estrutura leve, durável e resistente. A montagem rápida e precisa reduz significativamente o tempo de construção, enquanto a sustentabilidade e o conforto térmico e acústico tornam essa solução ideal para diversos tipos de edificações.</p>
                             <Button02 
                             children="Solicitar orçamento!"
                             onClick={() => {
@@ -258,19 +258,19 @@ const Construcao = () => {
                             />
                         </div>
                     </div>
-                    <div>
+                    <div data-aos="fade-up-right" data-aos-delay="100">
                         <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b790bac9-6a8a-402f-734b-0ab292815b00/public" alt="steel frame" />
                     </div>
                 </ConstrucaoContainer>
 
                 <ConstrucaoContainer2>
-                    <div>
+                    <div data-aos="fade-up-left" data-aos-delay="100">
                         <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/d1000bbb-40dd-427d-a012-ce2c42bf7200/public" alt="drywall" />
                     </div>
                     <div>
                         <div>
-                            <h2>Drywall</h2>
-                            <p>O Drywall oferece praticidade e eficiência para a construção moderna, com excelente desempenho acústico e térmico. É a escolha perfeita para projetos residenciais e comerciais que buscam qualidade e agilidade na construção.</p>
+                            <h2 data-aos="fade-up-right" data-aos-delay="100">Drywall</h2>
+                            <p data-aos="fade-up-right" data-aos-delay="100">O Drywall oferece praticidade e eficiência para a construção moderna, com excelente desempenho acústico e térmico. É a escolha perfeita para projetos residenciais e comerciais que buscam qualidade e agilidade na construção.</p>
                             <Button02
                             children="Solicitar orçamento!"
                             onClick={() => {

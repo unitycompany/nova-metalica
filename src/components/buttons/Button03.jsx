@@ -55,7 +55,7 @@ const Button = styled.a`
 const Button03 = ({ children, href, onClick }) => {
 
   return (
-    <Button href={href} onClick={onClick}>
+    <Button href={href} onClick={onClick} data-aos="fade-up" data-aos-delay="100">
       <span>{children}</span>  
     </Button>
   );

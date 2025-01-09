@@ -155,12 +155,12 @@ const Form = () => {
         <>
             <FormAll id="Form"> 
                 <FormTexts>
-                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a6bd0b20-7bcc-4575-98dd-39f394dbe100/public" alt="logo da nova metalica" />
-                    <h1>Entre em contato agora</h1>
-                    <p>Estamos à disposição para esclarecer suas dúvidas e ajudá-lo a encontrar a melhor solução para seu projeto.</p>
-                    <p>Ao enviar esse formulário você está de acordo com a nossa <a href="#">politica de dados</a>, e nosso <a href="#">termo e condições</a>.</p>
+                    <img data-aos="fade-up-left" data-aos-delay="100" src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a6bd0b20-7bcc-4575-98dd-39f394dbe100/public" alt="logo da nova metalica" />
+                    <h1 data-aos="fade-up-left" data-aos-delay="200">Entre em contato agora</h1>
+                    <p data-aos="fade-up-left" data-aos-delay="300">Estamos à disposição para esclarecer suas dúvidas e ajudá-lo a encontrar a melhor solução para seu projeto.</p>
+                    <p data-aos="fade-up-left" data-aos-delay="400">Ao enviar esse formulário você está de acordo com a nossa <a href="#">politica de dados</a>, e nosso <a href="#">termo e condições</a>.</p>
                 </FormTexts>
-                <ContactForm id="contactForm">
+                <ContactForm id="contactForm" data-aos="fade-up-right" data-aos-delay="200">
                     <div>
                         <label>
                             Nome

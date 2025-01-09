@@ -181,7 +181,7 @@ const Card01 = () => {
     return (
         <>
             <Card>
-                <div>
+                <div data-aos="fade-right" data-aos-delay="100">
 
                     <CardText>
                         <h1>Produtos Nacionais</h1>
@@ -192,7 +192,7 @@ const Card01 = () => {
                     </CardIcon>
 
                 </div>
-                <div>
+                <div data-aos="fade-left" data-aos-delay="100">
                         <CardText2>
                             <h1>Soluções Eficientes</h1>
                             <p>Oferecemos a menor taxa de aço do mercado, resultando em estruturas de Steel Frame mais leves e econômicas. </p>

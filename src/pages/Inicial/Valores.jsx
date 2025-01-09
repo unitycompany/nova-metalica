@@ -151,11 +151,11 @@ const Valores = () => {
 
                 <ValoresText>
                     <div>
-                        <h1>Nossos valores</h1>
-                        <p>Entenda sobre nossos pontos fortes e nossas melhores qualidades</p>
+                        <h1 data-aos="fade-up-right" data-aos-delay="100">Nossos valores</h1>
+                        <p data-aos="fade-right" data-aos-delay="200">Entenda sobre nossos pontos fortes e nossas melhores qualidades</p>
                     </div>
                     <div>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b440dfa1-5f27-48ad-a0a6-8de8dd71c700/public" alt="logo da nova metalica" />
+                        <img data-aos="fade-up" data-aos-delay="400" src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b440dfa1-5f27-48ad-a0a6-8de8dd71c700/public" alt="logo da nova metalica" />
                     </div>
                 </ValoresText>
 

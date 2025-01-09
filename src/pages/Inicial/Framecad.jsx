@@ -103,9 +103,9 @@ const Framecad = () => {
     return (
         <FramecadAll>
              <FramecadTexts>
-                <h1>Como Fabricamos Nossos Perfis</h1>
-                <h6>A F325iT em Ação</h6>
-                <p>
+                <h1 data-aos="fade-left" data-aos-delay="100">Como Fabricamos Nossos Perfis</h1>
+                <h6 data-aos="fade-left" data-aos-delay="200">A F325iT em Ação</h6>
+                <p data-aos="fade-left" data-aos-delay="300">
                     A F325iT é uma máquina de última geração, equipada com um rolo calibrador automático, um avançado sistema hidráulico de fluxo variável e ferramentas adicionais de perfuração. Essa combinação permite ajustar com precisão os perfis de aço, otimizar o desempenho da máquina e oferecer flexibilidade na criação de cortes personalizados. Como resultado, o F325iT se destaca como a solução mais eficiente e versátil da FRAMECAD para fabricação de estruturas em Steel Frame.
                 </p>
                 <Button02 
@@ -118,7 +118,7 @@ const Framecad = () => {
                 }}
                 />
             </FramecadTexts>
-            <FramecadIframe>
+            <FramecadIframe data-aos="fade-right" data-aos-delay="200">
                 <iframe 
                     src="https://www.youtube.com/embed/KVCquOX5toQ?autoplay=1" 
                     title="FRAMECAD F325iT - Ideal for residential and light commercial construction projects" 

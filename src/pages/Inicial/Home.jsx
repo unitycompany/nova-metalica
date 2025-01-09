@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Button02 from "../../components/buttons/Button02";
 
@@ -138,19 +138,20 @@ const HomeImage = styled.div`
 `
 
 const Home = () => {
+
     return(
         <>
             <HomeAll>
                 <HomeText>
-                    <span><hr />A solução para a sua empresa</span>
+                    <span data-aos="fade-left" data-aos-delay="100"><hr />A solução para a sua empresa</span>
 
-                    <h1>Sua Parceira <b>N°1</b> em Soluções para Steel Frame</h1>
+                    <h1 data-aos="fade-left" data-aos-delay="300">Sua Parceira <b>N°1</b> em Soluções para Steel Frame</h1>
 
-                    <p>Na Nova Metálica, somos <b>líderes em oferecer os melhores perfis de Steel Frame do mercado</b> para a construção de estruturas metálicas. Nossa dedicação à qualidade, durabilidade excepcional e inovação constante nos diferencia.</p>
+                    <p data-aos="fade-left" data-aos-delay="500">Na Nova Metálica, somos <b>líderes em oferecer os melhores perfis de Steel Frame do mercado</b> para a construção de estruturas metálicas. Nossa dedicação à qualidade, durabilidade excepcional e inovação constante nos diferencia.</p>
 
-                    <p>Escolha a <b>Nova Metálica para elevar seus projetos</b> a um novo patamar de excelência!</p>
+                    <p data-aos="fade-left" data-aos-delay="700">Escolha a <b>Nova Metálica para elevar seus projetos</b> a um novo patamar de excelência!</p>
 
-                    <Button02 
+                    <Button02
                     children="Solicitar orçamento!"
                     onClick={() => {
                         const formSection = document.getElementById('Form');
@@ -161,7 +162,7 @@ const Home = () => {
                     />
                 </HomeText>
 
-                <HomeImage>
+                <HomeImage data-aos="fade-up-left" data-aos-delay="100">
                     <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/8ac1e6f6-d87e-438e-9c4d-ab5124e8c300/public" alt="imagem de uma casa de steel frame pela nova metalica" loading="lazy"></img>
                 </HomeImage>
             </HomeAll>

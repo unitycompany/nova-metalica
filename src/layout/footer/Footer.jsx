@@ -6,6 +6,7 @@ import { BsPlayFill } from "react-icons/bs";
 
 const FooterAll = styled.section`
     width: 97.5%;
+    overflow-x: hidden;
     height: 45vh;
     max-width: 1280px;
     bottom: 0;
@@ -152,13 +153,13 @@ const Footer = () => {
         <>
             <FooterAll>
                 <FooterContainer>
-                    <div>
+                    <div data-aos="fade-up" data-aos-delay="100">
                         <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b440dfa1-5f27-48ad-a0a6-8de8dd71c700/public" alt="logo da nova metalica" loading="lazy"></img>
                         <h4>Steel Frame & Drywall</h4>
                         <a href="mailto:contato@novametalica.com.br" target="_blank">contato@novametalica.com.br</a>
                         <a href="https://api.whatsapp.com/send?phone=5521992882282&text=Ol%C3%A1,%20vim%20do%20site!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.">+55 (21) 99288-2282</a>
                     </div>
-                    <div>
+                    <div  data-aos="fade-up" data-aos-delay="100">
                         <h4>Mapa do site</h4>
                         <a onClick={() => navigate ('/')}>
                             <BsPlayFill style={{ marginLeft: '5px' }} />
@@ -185,7 +186,7 @@ const Footer = () => {
                             Como fabricamos
                         </a>
                     </div>
-                    <div>
+                    <div  data-aos="fade-up" data-aos-delay="100">
                         <h4>Parcerias</h4>
                             <a href="https://www.csn.com.br/" target="_blank">
                                 <BsPlayFill style={{ marginLeft: '5px' }} />
@@ -204,7 +205,7 @@ const Footer = () => {
                                 Grupo STO Brasil
                             </a>
                     </div>
-                    <div>
+                    <div  data-aos="fade-up" data-aos-delay="100">
                         <h4>Nos acompanhe</h4>
                         <a href="https://www.instagram.com/anovametalica/" target="_blank">
                             <BsPlayFill style={{ marginLeft: '5px' }} />
@@ -226,8 +227,8 @@ const Footer = () => {
                 </FooterContainer>
 
                 <FooterPolitica>
-                    <p>© 2024 Nova Metálica | Todos os direitos reservados | <a href="#">Política de Privacidade</a></p>
-                    <p><a href="https://alephsramos.com.br/" target="_blank"><img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5360ae68-4678-4438-a170-893b230de700/public" /></a></p>
+                    <p  data-aos="fade-left" data-aos-delay="100">© 2024 Nova Metálica | Todos os direitos reservados | <a href="#">Política de Privacidade</a></p>
+                    <p  data-aos="fade-left" data-aos-delay="100"><a href="https://alephsramos.com.br/" target="_blank"><img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5360ae68-4678-4438-a170-893b230de700/public" /></a></p>
                 </FooterPolitica>
             </FooterAll>
         </>

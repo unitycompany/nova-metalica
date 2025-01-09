@@ -112,7 +112,7 @@ const Produtos = () => {
 
     return (
         <ProdutosAll>
-            <ProdutosSwiper>
+            <ProdutosSwiper data-aos="fade-left" data-aos-delay="100">
                 <Swiper
                     spaceBetween={30}
                     slidesPerView={1}
@@ -134,8 +134,8 @@ const Produtos = () => {
                 </Swiper>
             </ProdutosSwiper>
             <ProdutosTexts>
-                <h1>Eleve seus projetos com <b>nossos produtos</b></h1>
-                <p>Na Nova Metálica, oferecemos mais do que produtos. Oferecemos soluções completas para suas construções.</p>
+                <h1 data-aos="fade-left" data-aos-delay="200">Eleve seus projetos com <b>nossos produtos</b></h1>
+                <p data-aos="fade-left" data-aos-delay="300">Na Nova Metálica, oferecemos mais do que produtos. Oferecemos soluções completas para suas construções.</p>
                 <Button03 
                 children="Ver produtos"
                 onClick={() => navigate ('/produtos')}

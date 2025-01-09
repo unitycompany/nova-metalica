@@ -89,9 +89,9 @@ const HomeCard2 = ({image, descricaoImage, title, descricao}) => {
     return (
         <>
 
-            <Card>
+            <Card data-aos="fade-up" data-aos-delay="0">
                 <div>
-                    <img src={image} alt={descricaoImage} />
+                    <img src={image} alt={descricaoImage}/>
                 </div>
                 <div>
                     <h2>{title}</h2>
