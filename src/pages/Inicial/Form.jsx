@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const FormAll = styled.div`
@@ -28,7 +29,7 @@ const FormTexts = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 25px;
+    gap: 35px;
 
     @media (max-width: 768px){
         width: 100%;
@@ -62,6 +63,7 @@ const FormTexts = styled.div`
     & > p {
         width: 85%;
         font-size: 16px;
+        font-weight: 300;
         opacity: .6;
 
         @media (max-width: 768px){
@@ -79,17 +81,43 @@ const FormTexts = styled.div`
 
 const ContactForm = styled.form`
     width: 45%;
-    height: 400px;
+    height: 500px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    gap: 10px;
-    border-radius: 20px;
+    gap: 50px;
+    border-radius: 10px;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 
     @media (max-width: 768px){
         width: 100%;
+    }
+
+    & > h1 {
+        font-size: 28px;
+        text-align: left;
+        padding-left: 5%;
+        font-weight: 500;
+        color: var(--color--black);
+
+        @media (max-width: 768px){
+            font-size: 24px;
+            padding-left: 7.5%;
+        }
+    }
+
+    & > p {
+        font-size: 14px;
+        color: var(--color--black);
+        width: 90%;
+        margin-top: -35px;
+        opacity: 0.7;
+        padding-left: 5%;
+
+        @media (max-width: 768px){
+            padding-left: 7.5%;
+        }
     }
 
     & > div {
@@ -112,6 +140,8 @@ const ContactForm = styled.form`
         justify-content: center;
         flex-direction: column;
         gap: 10px;
+        font-weight: 400;
+        color: var(--color--black);
     }
 
     & > div > label > input {
@@ -128,13 +158,14 @@ const ContactForm = styled.form`
 
     & > div > label > input::placeholder{
         font-size: 14px;
-        opacity: .6;
+        opacity: .2;
         color: var(--color--dark--blue);
     }
 
     & > div > button {
     padding: 15px;
-    background: linear-gradient(130deg, var(--color--blue), var(--color--dark--blue));
+    background-color: var(--color--blue);
+    font-weight: 500;
     width: 100%;
     border-radius: 5px;
     color: var(--color--white);
@@ -151,6 +182,8 @@ const ContactForm = styled.form`
 `
 
 const Form = () => {
+    const navigate = useNavigate();
+
     return (
         <>
             <FormAll id="Form"> 
@@ -158,9 +191,15 @@ const Form = () => {
                     <img data-aos="fade-up-left" data-aos-delay="100" src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a6bd0b20-7bcc-4575-98dd-39f394dbe100/public" alt="logo da nova metalica" />
                     <h1 data-aos="fade-up-left" data-aos-delay="200">Entre em contato agora</h1>
                     <p data-aos="fade-up-left" data-aos-delay="300">Estamos à disposição para esclarecer suas dúvidas e ajudá-lo a encontrar a melhor solução para seu projeto.</p>
-                    <p data-aos="fade-up-left" data-aos-delay="400">Ao enviar esse formulário você está de acordo com a nossa <a href="#">politica de dados</a>, e nosso <a href="#">termo e condições</a>.</p>
+                    <p data-aos="fade-up-left" data-aos-delay="400">Ao enviar esse formulário você está de acordo com a nossa <a onClick={() => navigate ('/politica-de-dados')}>politica de dados</a>, e nosso <a onClick={() => navigate ('/termos-de-condicoes')}>termo e condições</a>.</p>
                 </FormTexts>
                 <ContactForm id="contactForm" data-aos="fade-up-right" data-aos-delay="200">
+                    <h1>
+                        Solicite seu orçamento
+                    </h1>
+                    <p>
+                        Essas informações serão usadas apenas para fins de contato, ao enviar você concorda com isso.
+                    </p>
                     <div>
                         <label>
                             Nome
@@ -174,7 +213,7 @@ const Form = () => {
                             Seu WhatsApp
                             <input type="tel" id="tel" placeholder="24981234567" />
                         </label>
-                        <button type="submit">Enviar</button>
+                        <button type="submit">Enviar formulário</button>
                     </div>
                 </ContactForm>
 

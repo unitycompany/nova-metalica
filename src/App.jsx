@@ -28,6 +28,9 @@ const PaginaBlog = lazy(() => import("./pages/Blog/Inicial"));
 const LpPaginaParcerias = lazy(() => import("./pages/Parcerias/LP/Inicial"));
 const ArticlePage = lazy(() => import("./pages/Blog/Artigo"));
 const AddBlog = lazy(() => import("./pages/Blog/AdicionarBlog"));
+const TermosCondicoes = lazy(() => import("./pages/Politicas/Termos/Termos"))
+const PoliticaDados = lazy(() => import("./pages/Politicas/Dados/Dados"))
+const PoliticaPrivacidade = lazy(() => import("./pages/Politicas/Privacidade/Privacidade"))
 
 // Componente para rolar a tela ao topo ao trocar de rota
 function ScrollToTop() {
@@ -66,6 +69,9 @@ function AnimatedRoutes() {
         <Route path="/blog/:slug" element={<ArticlePage />} />
         <Route path="/lpparcerias" element={<LpPaginaParcerias />} />
         <Route path="/add-blog" element={<AddBlog />} />
+        <Route path="/politica-de-privacidade" element={<PoliticaPrivacidade />} />
+        <Route path="/politica-de-dados" element={<PoliticaDados />} />
+        <Route path="/termos-de-condicoes" element={<TermosCondicoes />} />
       </Routes>
     </>
   );

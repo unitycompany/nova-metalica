@@ -114,7 +114,7 @@ const HomeImage = styled.div`
 
     @media (max-width: 768px){
         width: 80%;
-        opacity: 0.05;
+        opacity: 0.05!important;
         top: 0;
         z-index: -1;
         right: 0;

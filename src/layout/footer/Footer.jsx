@@ -72,6 +72,7 @@ const FooterContainer = styled.div`
             color: var(--color--white);
             font-weight: 200;
             transition: all .2s ease;
+            cursor: pointer;
         }
 
         & > a:hover{
@@ -227,7 +228,7 @@ const Footer = () => {
                 </FooterContainer>
 
                 <FooterPolitica>
-                    <p  data-aos="fade-left" data-aos-delay="100">© 2024 Nova Metálica | Todos os direitos reservados | <a href="#">Política de Privacidade</a></p>
+                    <p  data-aos="fade-left" data-aos-delay="100">© 2024 Nova Metálica | Todos os direitos reservados | <a onClick={() => navigate ('/politica-de-privacidade')}>Política de Privacidade</a></p>
                     <p  data-aos="fade-left" data-aos-delay="100"><a href="https://alephsramos.com.br/" target="_blank"><img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5360ae68-4678-4438-a170-893b230de700/public" /></a></p>
                 </FooterPolitica>
             </FooterAll>

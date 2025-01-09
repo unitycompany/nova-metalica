@@ -258,13 +258,13 @@ const Construcao = () => {
                             />
                         </div>
                     </div>
-                    <div data-aos="fade-up-right" data-aos-delay="100">
+                    <div>
                         <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b790bac9-6a8a-402f-734b-0ab292815b00/public" alt="steel frame" />
                     </div>
                 </ConstrucaoContainer>
 
                 <ConstrucaoContainer2>
-                    <div data-aos="fade-up-left" data-aos-delay="100">
+                    <div>
                         <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/d1000bbb-40dd-427d-a012-ce2c42bf7200/public" alt="drywall" />
                     </div>
                     <div>

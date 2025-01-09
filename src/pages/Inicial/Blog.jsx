@@ -178,15 +178,15 @@ const Blog = () => {
     <>
       {blogs.map((blog) => (
         <BlogAll key={blog.id}>
-          <BlogSwiper>
-            <div data-aos="fade-left" data-aos-delay="100">
+          <BlogSwiper  data-aos="fade-up" data-aos-delay="100">
+            <div>
               <img src={blog.image} alt={blog.titulo} />
             </div>
             <div>
-              <h4 data-aos="fade-up-left" data-aos-delay="100">{blog.titulo}</h4>
-              <p data-aos="fade-up-left" data-aos-delay="100">{blog.description}</p>
+              <h4>{blog.titulo}</h4>
+              <p>{blog.description}</p>
 
-              <div data-aos="fade-up" data-aos-delay="100">
+              <div>
                 {blog.hashtag?.map((hashtag, index) => (
                   <span key={index}>#{hashtag}</span>
                 ))}
@@ -198,8 +198,8 @@ const Blog = () => {
             </div>
           </BlogSwiper>
           <BlogTexts>
-            <h1 data-aos="fade-left" data-aos-delay="100">Confira nosso blog e fique por dentro de tudo</h1>
-            <p data-aos="fade-left" data-aos-delay="200">Novos posts nos dias 15 e 30 de cada mês</p>
+            <h1>Confira nosso blog e fique por dentro de tudo</h1>
+            <p>Novos posts nos dias 15 e 30 de cada mês</p>
             <Button03 
             children="Saber mais"
             onClick={() => navigate ('/blog')}
