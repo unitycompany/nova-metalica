@@ -14,14 +14,23 @@ const ProdutosContainer = styled.section`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 50px;
+    gap: 80px;
     height: auto;
+
+    @media (max-width:768px){
+        flex-direction: column;
+    }
 `
 
 const ProdutosImage = styled.div`
     width: 40%;
     padding-left: 5%;
     height: 700px;
+
+    @media (max-width:768px){
+        width: 100%;
+        height: 200px;
+    }
 
     & > img {
         width: 100%;
@@ -40,9 +49,19 @@ const ProdutosRight = styled.div`
     justify-content: center;
     gap: 20px;
 
+    @media (max-width:768px){
+        width: 100%;
+        padding: 0 5%;
+        margin-bottom: 5vh;
+    }
+
     & > h1 {
         font-size: 30px;
         font-weight: 400;
+
+        @media (max-width:768px){
+            font-size: 24px;
+        }
     }
 
     & > p {
@@ -50,6 +69,10 @@ const ProdutosRight = styled.div`
         line-height: 110%;
         font-weight: 300;
         padding-bottom: 30px;
+
+        @media (max-width:768px){
+            font-size: 16px;
+        }
     }
 
     & > table {
@@ -58,6 +81,11 @@ const ProdutosRight = styled.div`
         overflow: hidden;
         color: var(--color--black);
         margin-bottom: 30px!important;
+
+        @media (max-width:768px){
+            overflow-x: scroll;
+            width: 200%;
+        }
 
         & > th, td{
             padding: 10px!important;
@@ -98,6 +126,10 @@ const ProdutosRight = styled.div`
 
     & > button {
         width: 45%;
+
+        @media (max-width:768px){
+            width: 80%;
+        }
     }
 `
 
@@ -105,17 +137,17 @@ const Produtos = () => {
     return (
         <>
             <ProdutosContainer>
-                <ProdutosImage>
-                    <img src="#" alt="foto de todos os perfis de steel frame" loading="lazy" />
+                <ProdutosImage data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/46f191f0-60f1-440c-ff92-af4a37dbce00/public" alt="foto de todos os perfis de steel frame" loading="lazy" />
                 </ProdutosImage>
                 <ProdutosRight>
-                    <h1>
+                    <h1 data-aos="fade-up-right" data-aos-delay="100">
                         Produtos de Steel Frame que Fazem a Diferença no Seu Negócio
                     </h1>
-                    <p>
+                    <p data-aos="fade-right" data-aos-delay="200">
                         Na Nova Metálica, oferecemos uma linha completa de perfis de Steel Frame para atender às mais diversas demandas do mercado, com qualidade superior e produção sob medida. Conheça nossos produtos:
                     </p>
-                    <table>
+                    <table data-aos="fade-up" data-aos-delay="100">
                         <tr>
                             <th>Produto</th>
                             <th>Descrição</th>

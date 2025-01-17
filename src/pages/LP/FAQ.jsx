@@ -11,6 +11,10 @@ const FaqContainer = styled.section`
   background-color: #1d1d1b;
   color: var(--color--white);
   padding-bottom: 3%;
+
+  @media (max-width:768px){
+    padding-bottom: 5vh;
+  }
 `;
 
 const FaqAll = styled.div`
@@ -21,6 +25,12 @@ const FaqAll = styled.div`
   gap: 40px;
   justify-content: center;
   align-items: flex-start;
+
+  @media (max-width:768px){
+    flex-direction: column;
+    padding: 10% 0;
+    gap: 20px;
+  }
 `;
 
 const FaqLeft = styled.div`
@@ -30,9 +40,17 @@ const FaqLeft = styled.div`
   gap: 30px;
   padding-left: 5%;
 
+  @media (max-width:768px){
+    padding: 0 5%;
+  }
+
   & > button {
     width: 50%;
     color: var(--color--black);
+
+    @media (max-width:768px){
+      width: 80%;
+    }
   }
 `;
 
@@ -44,11 +62,19 @@ const FaqSobre = styled.div`
   & > h1 {
     font-size: 30px;
     font-weight: 400;
+
+    @media (max-width:768px){
+      font-size: 26px;
+    }
   }
 
   & > p {
     font-size: 18px;
     font-weight: 300;
+
+    @media (max-width:768px){
+      font-size: 16px;
+    }
   }
 `;
 
@@ -113,6 +139,15 @@ const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
 
+  @media (max-width:768px){
+    display: none;
+  }
+
+  @media (max-width:768px){
+    height: 300px;
+    width: 90%;
+  }
+
   img {
     width: 100%;
     height: auto;
@@ -132,6 +167,11 @@ const Footer = styled.div`
     align-items: center;
     background-color: var(--color--white);
     padding: 15px 20px;
+
+    @media (max-width:768px){
+      justify-content: center;
+      margin-top: 0vh;
+    }
     
     & > p {
         font-size: 14px;
@@ -140,12 +180,28 @@ const Footer = styled.div`
         align-items: center;
         justify-content: center;
         gap: 10px;
+
+        @media (max-width:768px){
+          text-align: center;
+        }
+
+        &:nth-child(1){
+          @media (max-width:768px){
+            display: none;
+          }
+        }
+
     }
 
     & > p > a{
         display: flex;
         align-items: center;
         justify-content: center;
+
+        @media (max-width:768px){
+          display: block!important;
+          align-items: center;
+        }
     }
 
     & > p > a > img {
@@ -192,11 +248,11 @@ const FAQ = () => {
       <FaqAll>
         <FaqLeft>
           <FaqSobre>
-            <h1>Ficou com dúvidas ainda?</h1>
-            <p>Abaixo listamos as nossas perguntas mais frequentes</p>
+            <h1 data-aos="fade-up-right" data-aos-delay="100">Ficou com dúvidas ainda?</h1>
+            <p data-aos="fade-up-right" data-aos-delay="100">Abaixo listamos as nossas perguntas mais frequentes</p>
           </FaqSobre>
 
-          <FaqPerguntas>
+          <FaqPerguntas data-aos="fade-up" data-aos-delay="100">
             {questions.map((q, index) => (
               <FaqPergunta
                 key={q.id}
@@ -218,7 +274,7 @@ const FAQ = () => {
         </FaqLeft>
 
         <FaqRight>
-          <ImageContainer>
+          <ImageContainer data-aos="fade-up-left" data-aos-delay="100">
             {questions.map((q, index) => (
               <img
                 key={q.id}
@@ -234,7 +290,7 @@ const FAQ = () => {
         </FaqRight>
       </FaqAll>
       
-        <Footer>
+        <Footer data-aos="fade-down" data-aos-delay="100">
             <p>Todos os direitos reservados |  CNPJ: 45.989.824/0001-74 - Nova Metálica</p>
             <p>Desenvolvido por <a href="https://alephsramos.com.br/" target="_blank"><img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/aa412b31-1015-40a2-cfd6-ab7afce75500/public" alt="logo do desenvolvedor web Aleph Ramos" loading="lazy" /></a></p>
         </Footer>

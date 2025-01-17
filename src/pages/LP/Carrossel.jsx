@@ -13,7 +13,7 @@ const CarrosselContainer = styled.section`
     left: 50%;
     top: 0;
     position: relative;
-    transform: translateX(-50%);
+    transform: translateX(-50%)!important;
     height: auto;
     padding: 5% 0;
 `;
@@ -39,7 +39,7 @@ const Carrossel = () => {
     };
 
     return (
-        <CarrosselContainer>
+        <CarrosselContainer data-aos="fade-up" data-aos-delay="100">
             {/* Carrossel 1: Movimento contínuo para a esquerda */}
             <SwiperWrapper>
                 <Swiper

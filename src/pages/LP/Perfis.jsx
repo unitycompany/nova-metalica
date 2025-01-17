@@ -14,6 +14,11 @@ const PerfisContainer = styled.section`
     justify-content: center;
     gap: 40px;
     color: var(--color--white);
+
+    @media (max-width:768px){
+        flex-direction: column-reverse;
+        padding: 10% 0;
+    }
 `
 
 const PerfisLeft = styled.div`
@@ -26,10 +31,22 @@ const PerfisLeft = styled.div`
     justify-content: center;
     gap: 30px;
 
+    @media (max-width:768px){
+        padding: 0 5%;
+    }
+
+    @media (max-width:768px){
+        width: 100%;
+    }
+
     & > h1 {
         font-size: 32px;
         font-weight: 400;
         color: var(--color--black);
+
+        @media (max-width:768px){
+            font-size: 26px;
+        }
 
         & > b {
             font-weight: 500;
@@ -42,10 +59,18 @@ const PerfisLeft = styled.div`
         color: var(--color--black);
         font-weight: 300;
         margin-bottom: 20px;
+
+        @media (max-width:768px){
+            font-size: 16px;
+        }
     }
 
     & > button {
         width: 50%;
+
+        @media (max-width:768px){
+            width: 80%;
+        }
     }
 `
 
@@ -60,9 +85,25 @@ const PerfisVideo = styled.div`
     align-items: center;
     justify-content: center;
 
+    @media (max-width:768px){
+        width: 100%;
+        height: auto;
+    }
+
+    & > div {
+        @media (max-width:768px){
+            width: 90%;
+            height: auto;
+        }
+    }
+
     & > div > iframe {
             width: 450px;
             height: 250px;
+
+            @media (max-width:768px){
+                width: 100%;
+            }
         }
 `
 
@@ -71,10 +112,10 @@ const Perfis = () => {
         <>
             <PerfisContainer>
                 <PerfisLeft>
-                    <h1>
+                    <h1 data-aos="fade-up-right" data-aos-delay="100">
                         Perfis normatizados e com aço <b>100% nacional</b>
                     </h1>
-                    <p>
+                    <p data-aos="fade-up-right" data-aos-delay="100">
                         Nossos perfis são fabricados com aço 100% nacional, fornecido por parceiros de renome como CSN Siderúrgica e ArcelorMittal, garantindo qualidade e rastreabilidade, pois todo aço fornecido tem um certificado da usina com o ensaio técnico do lote.
                         <br /> <br />
                         Com tecnologia de ponta, utilizamos equipamentos avançados, como a máquina F325iT FRAMECAD, que possibilita cortes precisos e personalizados, tornando o nosso processo produtivo mais eficiente e versátil.
@@ -84,7 +125,7 @@ const Perfis = () => {
                     <ButtonLP2 />
                 </PerfisLeft>
                 <PerfisVideo>
-                    <div>
+                    <div data-aos="fade-up" data-aos-delay="100">
                         <iframe
                             src="https://customer-g3gc6xcdls9bgs9k.cloudflarestream.com/e46e6388d3cf6d794418c81c2c22c3aa/iframe?muted=true&preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-g3gc6xcdls9bgs9k.cloudflarestream.com%2Fe46e6388d3cf6d794418c81c2c22c3aa%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"
                             loading="lazy"

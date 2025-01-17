@@ -14,6 +14,12 @@ const Card = styled.div`
     background: #e6e6e6;
     transition: all .1s ease-in-out;
 
+    @media (max-width:768px){
+        width: 90%;
+        margin-left: 5%;
+        height: 155px;
+    }
+
     &:hover {
         background: #353535;
         transform: scale(1.02);
@@ -27,6 +33,10 @@ const Card = styled.div`
         font-size: 22px;
         font-weight: 400;
         color: var(--color--black);
+
+        @media (max-width:768px){
+            font-size: 20px;
+        }
     }
 `
 

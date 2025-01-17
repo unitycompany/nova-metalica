@@ -28,12 +28,23 @@ const BlackContainer = styled.div`
     gap: 40px;
     color: var(--color--white);
 
+    @media (max-width:768px){
+        gap: 20px;
+        padding: 10% 0;
+    }
+
     & > h1 {
         padding-left: 5%;
         font-size: 32px;
         font-weight: 500;
         width: 80%;
         line-height: 110%;
+
+        @media (max-width:768px){
+            font-size: 24px;
+            width: 100%;
+            padding: 0 5%;
+        }
     }
 
     & > p {
@@ -42,6 +53,12 @@ const BlackContainer = styled.div`
         line-height: 120%;
         width: 90%;
         font-weight: 300;
+
+        @media (max-width:768px){
+            font-size: 14px;
+            width: 100%;
+            padding: 0 5%;
+        }
     }
 `
 
@@ -52,10 +69,10 @@ const Black = () => {
             <All>
                 <BlackBackground> </BlackBackground>
                 <BlackContainer>
-                    <h1>
+                    <h1 data-aos="fade-up-right" data-aos-delay="100">
                         Na Nova Metálica, você garante o melhor preço e condições comerciais do mercado!
                     </h1>
-                    <p>
+                    <p data-aos="fade-up" data-aos-delay="100">
                         Trabalhamos com perfis normatizados de altíssima qualidade, oferecendo preços altamente competitivos para pedidos no atacado. Além disso, oferecemos serviços de cálculo estrutural para Steel Frame – basta fornecer o projeto arquitetônico. 
                         Seja você revendedor, arquiteto, engenheiro ou construtor, nossa equipe está pronta para ajudar o seu negócio a crescer!
                     </p>

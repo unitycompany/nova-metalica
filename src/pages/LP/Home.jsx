@@ -24,6 +24,11 @@ const HomeFaixa = styled.div`
         font-size: 16px;
         color: var(--color--white);
 
+        @media (max-width:768px){
+            text-align: center;
+            font-size: 14px;
+        }
+
         & > b {
             font-weight: 600;
         }
@@ -33,6 +38,10 @@ const HomeFaixa = styled.div`
             color: #FFCC00;
             font-size: 20px;
             margin: 0 5px;
+
+            @media (max-width:768px){
+                font-size: 18px;
+            }
         }
     }
 `
@@ -50,6 +59,11 @@ const HomeContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     gap: 50px;
+
+    @media (max-width:768px){
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
 `
 
 const HomeLeft = styled.div`
@@ -61,6 +75,12 @@ const HomeLeft = styled.div`
     align-items: flex-start;
     justify-content: center;
     gap: 10px;
+
+    @media (max-width:768px){
+        width: 100%;
+        padding: 0 5%;
+        gap: 30px;
+    }
 `
 
 const HomeTitle = styled.div`
@@ -71,9 +91,17 @@ const HomeTitle = styled.div`
     gap: 15px;
     padding: 5% 0;
 
+    @media (max-width:768px){
+        padding: 0;
+    }
+
     & > h1 {
         font-size: 36px;
         font-weight: 300;
+
+        @media (max-width:768px){
+            font-size: 28px;
+        }
 
         & > b {
             font-weight: 500;
@@ -84,6 +112,10 @@ const HomeTitle = styled.div`
     & > h6 {
         font-size: 18px;
         font-weight: 300;
+
+        @media (max-width:768px){
+            font-size: 16px;
+        }
 
         & > b {
             font-weight: 500;
@@ -99,6 +131,10 @@ const HomeForm = styled.form`
     align-items: flex-start;
     justify-content: center;
     gap: 20px;
+
+    @media (max-width:768px){
+        margin-bottom: 30px;
+    }
 
     & > div:nth-child(1), & > div:nth-child(2), & > div:nth-child(3){
         display: flex;
@@ -261,10 +297,20 @@ const HomeRight = styled.div`
     position: relative;
     height: 700px;
 
+    @media (max-width:768px){
+        width: 90%;
+        height: auto;
+        margin-top: 10vh;
+    }
+
     & > div {
         position: absolute;
         right: 0;
         top: 50px;
+
+        @media (max-width:768px){
+            display: none;
+        }
 
         & > img {
             width: 250px;
@@ -300,6 +346,10 @@ const HomeRight = styled.div`
         & > iframe {
             width: 450px;
             height: 250px;
+
+            @media (max-width:768px){
+                width: 100%;
+            }
         }
     }
 `
@@ -350,7 +400,7 @@ const Home = () => {
     return (
         <>
             <HomeAll>
-                <HomeFaixa>
+                <HomeFaixa data-aos="fade-down" data-aos-delay="100">
                     <h1>
                         <b>VENDAS NO ATACADO</b> COM PEDIDO MÍNIMO DE <span>1500 PEÇAS</span> DIRETO DA FÁBRICA
                     </h1>    
@@ -359,14 +409,14 @@ const Home = () => {
                 <HomeContainer>
                     <HomeLeft>
                         <HomeTitle>
-                            <h1>
+                            <h1 data-aos="fade-left" data-aos-delay="100">
                                 Reduza os custos e <b>otimize</b> os seus projetos:
                             </h1>
-                            <h6>
+                            <h6 data-aos="fade-up-right" data-aos-delay="100">
                                 Fabricamos perfis de <b>Steel Frame</b> sob medida, com qualidade de ponta e benefícios exclusivos para você.
                             </h6>
                         </HomeTitle>
-                        <HomeForm id="contactForm">
+                        <HomeForm id="contactForm" data-aos="fade-up" data-aos-delay="100">
                         <div>
                             <label>
                                 <input type="text" id="name" placeholder=" " required />
@@ -479,15 +529,16 @@ const Home = () => {
                     </HomeLeft>
 
                     <HomeRight>
-                        <div>
+                        <div data-aos="fade-up-left" data-aos-delay="100">
                             <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a6bd0b20-7bcc-4575-98dd-39f394dbe100/public" alt="logo da nova metalica" />
                         </div>
                         <div>
                             <iframe
-                                src="https://customer-g3gc6xcdls9bgs9k.cloudflarestream.com/e46e6388d3cf6d794418c81c2c22c3aa/iframe?muted=true&preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-g3gc6xcdls9bgs9k.cloudflarestream.com%2Fe46e6388d3cf6d794418c81c2c22c3aa%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"
+                                src="https://customer-g3gc6xcdls9bgs9k.cloudflarestream.com/bb55b730584a791554abea0ab2d9c596/iframe?preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-g3gc6xcdls9bgs9k.cloudflarestream.com%2Fbb55b730584a791554abea0ab2d9c596%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"
                                 loading="lazy"
                                 allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
                                 allowfullscreen="true"
+                                data-aos="fade-up" data-aos-delay="100"
                             ></iframe>
                             </div>
 
