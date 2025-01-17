@@ -17,6 +17,7 @@ const HomeFaixa = styled.div`
     background-color: #ff0000;
     position: fixed;
     z-index: 999;
+    box-shadow: 0 0 5px #ffffff;
 
     & > h1 {
         font-weight: 400;
@@ -44,7 +45,7 @@ const HomeContainer = styled.div`
     position: relative;
     transform: translateX(-50%);
     height: auto;
-    padding: 5% 0;
+    padding: 3% 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -59,7 +60,7 @@ const HomeLeft = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
 `
 
 const HomeTitle = styled.div`
@@ -71,7 +72,7 @@ const HomeTitle = styled.div`
     padding: 5% 0;
 
     & > h1 {
-        font-size: 34px;
+        font-size: 36px;
         font-weight: 300;
 
         & > b {
@@ -99,53 +100,46 @@ const HomeForm = styled.form`
     justify-content: center;
     gap: 20px;
 
-    & > div:nth-child(1), & > div:nth-child(3){
+    & > div:nth-child(1), & > div:nth-child(2), & > div:nth-child(3){
         display: flex;
         justify-content: space-between;
         width: 100%;
         gap: 15px;
 
-        & > label {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            font-size: 16px;
-            font-weight: 400;
-            width: 50%;
-            height: 100%;
-
-            & > input {
-                padding: 10px 0px;
-                width: 100%;
-                border-bottom: 1px solid #00000020;
-                color: #00000070;
-
-                &::placeholder{
-                    font-size: 14px;
-                    opacity: 0.4;
-                }
-            }
-        }
-    }
-
-    & > label {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        font-size: 16px;
-        font-weight: 400;
+        label {
+        position: relative;
+        display: block;
+        font-size: 1rem;
+        font-weight: 500;
         width: 100%;
-        height: 100%;
+        }
 
-        & > input {
-            padding: 10px 0px;
-            width: 100%;
-            border-bottom: 1px solid #00000020;
+        label input {
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 1rem;
+        font-weight: 400;
+        border: 1px solid #00000020;
+        }
 
-            &::placeholder{
-                font-size: 14px;
-                opacity: 0.4;
-            }
+        label span {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        color: #00000030;
+        font-size: 0.9rem;
+        background-color: #fff; /* Ajuste conforme necessário */
+        padding: 0 4px;
+        transition: 0.3s ease;
+        pointer-events: none;
+        }
+
+        label input:focus + span,
+        label input:not(:placeholder-shown) + span {
+        top: -8px;
+        left: 8px;
+        font-size: 0.75rem;
+        color: #333;
         }
     }
 
@@ -177,7 +171,8 @@ const FormSelectWrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+    font-size: 0.9rem;
   }
 
   div {
@@ -188,8 +183,9 @@ const FormSelectWrapper = styled.div`
     justify-content: space-between;
     width: 100%;
     opacity: 0.4;
-    padding: 10px 0;
-    border-bottom: 1px solid #00000050;   
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: 1px solid #00000050;   
     font-size: 14px;
     color: #00000080;
 
@@ -258,11 +254,15 @@ const HomeRight = styled.div`
 
     & > div {
         position: absolute;
-        right: 20px;
-        top: 20px;
+        right: 0;
+        top: 80px;
 
         & > img {
-            width: 100px;
+            width: 150px;
+            background-color: #ffffff;
+            box-shadow: 10px 5px 0px #00000050;
+            padding: 20px;
+            border: 1px solid #00000050;
         }
     }
 
@@ -283,8 +283,10 @@ const HomeRight = styled.div`
             top: 0;
             right: 0;
             position: absolute;
-            clip-path: polygon(50% 20%, 100% 20%, 100% 100%, 50% 100%);
-            background: #eeeeee;
+            background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6e52a162-0a72-4e7d-5be1-228921228700/public');
+            background-position: right;
+            background-size: contain;
+            background-repeat: no-repeat;
             z-index: -1;
         }
 
@@ -359,30 +361,34 @@ const Home = () => {
                             </h6>
                         </HomeTitle>
                         <HomeForm id="contactForm">
-                             <div>
-                                <label>
-                                    Nome
-                                    <input type="text" id="name" placeholder="Nova Metálica" required/>
-                                </label>
-                                <label>
-                                    WhatsApp
-                                    <input type="tel" id="tel" placeholder="24992882282" required/>
-                                </label>
-                             </div>
-                             <label>
-                                E-mail
-                                <input type="email" id="email" placeholder="contato@novametalica.com.br" required/>
-                             </label>
-                             <div>
-                                <label>
-                                    Cidade
-                                    <input type="text" id="cidade" placeholder="Japeri" required/>
-                                </label>
-                                <label>
-                                    Estado
-                                    <input type="text" id="estado" placeholder="Rio de Janeiro" required/>
-                                </label>
-                             </div>
+                        <div>
+                            <label>
+                                <input type="text" id="name" placeholder=" " required />
+                                <span>Nome</span>
+                            </label>
+                            <label>
+                                <input type="tel" id="tel" placeholder=" " required />
+                                <span>WhatsApp</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <label>
+                                <input type="email" id="email" placeholder=" " required />
+                                <span>E-mail</span>
+                            </label>
+                        </div>
+                        
+                        <div>
+                            <label>
+                                <input type="text" id="cidade" placeholder=" " required />
+                                <span>Cidade</span>
+                            </label>
+                            <label>
+                                <input type="text" id="estado" placeholder=" " required />
+                                <span>Estado</span>
+                            </label>
+                        </div>
 
                             <FormSelectWrapper isOpen={isOpen}>
                                 <label>
