@@ -25,7 +25,7 @@ const SobreBackground = styled.div`
         clip-path: polygon(0 0, 25% 0, 25% 100%, 0% 100%);
 
         @media (max-width:768px){
-            clip-path: polygon(0 0, 35% 0, 35% 100%, 0% 100%);   
+            display: none;
         }
 
     }
@@ -67,6 +67,7 @@ const SobreImage = styled.div`
         width: 100%;
         position: absolute;
         right: -10%;
+        top: 5%;
     }
 `
 

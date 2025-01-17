@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 
 import Home from "./Home";
 import Black from "./Black";
@@ -9,10 +10,15 @@ import Sobre from "./Sobre";
 import Perfis from "./Perfis";
 import FAQ from "./FAQ";
 
+const All = styled.div`
+    overflow: hidden;
+`
+
 const PaginaInicial = () => {
 
     return (
         <>
+            <All>
             <Home />
                 <Black />
                     <Carrossel />  
@@ -23,6 +29,7 @@ const PaginaInicial = () => {
                                         <Faixa />
                                             <Perfis />
                                                 <FAQ />
+            </All>
         </>
     )
 }

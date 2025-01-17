@@ -53,7 +53,6 @@ const ProdutosRight = styled.div`
         width: 100%;
         padding: 0 5%;
         margin-bottom: 5vh;
-        overflow-x: auto;
     }
 
     & > h1 {
@@ -76,7 +75,14 @@ const ProdutosRight = styled.div`
         }
     }
 
-    & > table {
+    & > div {
+        @media (max-width: 768px){
+            overflow-x: auto;
+            width: 100%;
+        }
+    }
+
+    & > div > table {
         width: 100%;
         border-collapse: collapse;
         overflow: hidden;
@@ -150,6 +156,7 @@ const Produtos = () => {
                     <p data-aos="fade-right" data-aos-delay="200">
                         Na Nova Metálica, oferecemos uma linha completa de perfis de Steel Frame para atender às mais diversas demandas do mercado, com qualidade superior e produção sob medida. Conheça nossos produtos:
                     </p>
+                    <div>
                     <table data-aos="fade-up" data-aos-delay="100">
                         <tr>
                             <th>Produto</th>
@@ -177,6 +184,7 @@ const Produtos = () => {
                             <td>Espessuras: 0,80 mm  e 0,95 mm.</td>
                         </tr>
                     </table>
+                    </div>
                     <ButtonLP2 />                    
                 </ProdutosRight>
             </ProdutosContainer>
