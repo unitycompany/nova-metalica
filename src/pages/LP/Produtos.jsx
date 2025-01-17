@@ -83,8 +83,10 @@ const ProdutosRight = styled.div`
         margin-bottom: 30px!important;
 
         @media (max-width:768px){
-            overflow-x: scroll;
-            width: 200%;
+            overflow-x: auto; /* Permite o scroll horizontal */
+            -webkit-overflow-scrolling: touch; /* Para uma rolagem mais suave no iOS */
+            min-width: 600px;
+            display: block;
         }
 
         & > th, td{

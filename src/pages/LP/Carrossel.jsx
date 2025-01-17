@@ -107,7 +107,7 @@ const Carrossel = () => {
                     breakpoints={{
                         0: {
                             slidesPerView: 1,
-                            spaceBetween: 10,
+                            spaceBetween: 0,
                         },
                         1080: {
                             slidesPerView: 4,

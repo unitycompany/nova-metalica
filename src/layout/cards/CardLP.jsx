@@ -15,8 +15,8 @@ const Card = styled.div`
     transition: all .1s ease-in-out;
 
     @media (max-width:768px){
-        width: 90%;
-        margin-left: 5%;
+        width: 95%;
+        margin-left: 2.5%;
         height: 155px;
     }
 
