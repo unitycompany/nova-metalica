@@ -153,6 +153,15 @@ const HomeForm = styled.form`
         color: var(--color--white);
         font-weight: 500;
         cursor: pointer;
+        border: 1px solid var(--color--black);
+        transition: all .1s ease;
+
+        &:hover {
+            background-color: transparent;
+            color: var(--color--black);
+            border: 1px solid var(--color--black);
+            z-index: 10;
+        }
     }
 
     & > p {
@@ -255,14 +264,11 @@ const HomeRight = styled.div`
     & > div {
         position: absolute;
         right: 0;
-        top: 80px;
+        top: 50px;
 
         & > img {
-            width: 150px;
-            background-color: #ffffff;
-            box-shadow: 10px 5px 0px #00000050;
+            width: 250px;
             padding: 20px;
-            border: 1px solid #00000050;
         }
     }
 
@@ -287,6 +293,7 @@ const HomeRight = styled.div`
             background-position: right;
             background-size: contain;
             background-repeat: no-repeat;
+            opacity: 0.8;
             z-index: -1;
         }
 
@@ -462,7 +469,7 @@ const Home = () => {
                             </FormSelectWrapper>
 
                             <button type="submit" id="buttonEnviarForm">
-                                Enviar e entrar em contato!
+                                Solicitar orçamento!
                             </button>
 
                             <p>

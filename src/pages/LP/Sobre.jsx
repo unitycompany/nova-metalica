@@ -47,7 +47,7 @@ const SobreContainer = styled.div`
 
 const SobreImage = styled.div`
     width: 50%;
-    padding-left: 5%;
+    padding-left: 0%;
     height: 100%;
 `
 
