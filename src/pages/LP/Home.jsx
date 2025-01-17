@@ -19,6 +19,10 @@ const HomeFaixa = styled.div`
   z-index: 999;
   box-shadow: 0 0 5px #ffffff;
   overflow: hidden; /* Para garantir que o efeito de luz não vaze */
+
+  @media (max-width: 768px){
+    
+  }
   
   &::before {
     content: "";
@@ -47,8 +51,18 @@ const HomeFaixa = styled.div`
     justify-content: center;
     gap: 10px;
 
+    @media (max-width: 768px){
+        display: inline-block;
+        align-items: center;
+        justify-content: center;
+    }
+
     & > svg {
         font-size: 24px;
+
+        @media (max-width: 768px){
+            display: none;
+        }
     }
 
     @media (max-width: 768px) {
@@ -65,7 +79,7 @@ const HomeFaixa = styled.div`
       color: #FFCC00;
       font-size: 20px;
       margin: 0 5px;
-      animation: pulse 1s ease-out infinite;
+      animation: pulse 3s ease-out infinite;
 
       @media (max-width: 768px) {
         font-size: 18px;
@@ -90,7 +104,7 @@ const HomeFaixa = styled.div`
         transform: scale(1.0);
     }
     50% {
-        transform: scale(1.05);
+        transform: scale(1.1) rotate(-2deg);
     }
   }
 `;
