@@ -6,9 +6,6 @@ const All = styled.section`
     width: 100%;
     height: auto;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 `
 
 const SobreBackground = styled.div`
@@ -32,11 +29,12 @@ const SobreBackground = styled.div`
 
 const SobreContainer = styled.div`
     max-width: 1280px;
+    border: 1px solid red;
     width: 100%;
     left: 50%;
-    position: relative;
     top: 0;
-    transform: translateX(-50%);
+    transform: translateX(-50%)!important;
+    position: relative;
     padding: 10% 0;
     display: flex;
     align-items: center;
@@ -47,11 +45,11 @@ const SobreContainer = styled.div`
 
 const SobreImage = styled.div`
     width: 50%;
-    padding-left: 0%;
+    padding-left: 5%;
     height: 100%;
 `
 
-const SobreRight = styled.div`
+const SobreRight = styled.digv`
     width: 50%;
     padding-right: 5%;
     height: 100%;
