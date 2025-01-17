@@ -60,9 +60,10 @@ const PerfisVideo = styled.div`
     align-items: center;
     justify-content: center;
 
-    & > div {
-        color: var(--color--black);
-    }
+    & > div > iframe {
+            width: 450px;
+            height: 250px;
+        }
 `
 
 const Perfis = () => {
@@ -84,7 +85,12 @@ const Perfis = () => {
                 </PerfisLeft>
                 <PerfisVideo>
                     <div>
-                        Video mostrando o perfil sendo fabricado
+                        <iframe
+                            src="https://customer-g3gc6xcdls9bgs9k.cloudflarestream.com/e46e6388d3cf6d794418c81c2c22c3aa/iframe?muted=true&preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-g3gc6xcdls9bgs9k.cloudflarestream.com%2Fe46e6388d3cf6d794418c81c2c22c3aa%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"
+                            loading="lazy"
+                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                            allowfullscreen="true"
+                        ></iframe>
                     </div>
                 </PerfisVideo>
             </PerfisContainer>
