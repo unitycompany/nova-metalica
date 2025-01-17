@@ -53,6 +53,7 @@ const ProdutosRight = styled.div`
         width: 100%;
         padding: 0 5%;
         margin-bottom: 5vh;
+        overflow-x: auto;
     }
 
     & > h1 {
@@ -83,7 +84,7 @@ const ProdutosRight = styled.div`
         margin-bottom: 30px!important;
 
         @media (max-width:768px){
-            overflow-x: auto; /* Permite o scroll horizontal */
+            overflow-x: auto!important; /* Permite o scroll horizontal */
             -webkit-overflow-scrolling: touch; /* Para uma rolagem mais suave no iOS */
             min-width: 600px;
             display: block;
