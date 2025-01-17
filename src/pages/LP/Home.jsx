@@ -65,6 +65,7 @@ const HomeFaixa = styled.div`
       color: #FFCC00;
       font-size: 20px;
       margin: 0 5px;
+      animation: pulse 1s ease-out infinite;
 
       @media (max-width: 768px) {
         font-size: 18px;
@@ -83,8 +84,16 @@ const HomeFaixa = styled.div`
       left: 100%;
     }
   }
-`;
 
+  @keyframes pulse {
+    0% {
+        transform: scale(1.0);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+  }
+`;
 
 const HomeContainer = styled.div` 
     width: 100%;
@@ -192,7 +201,7 @@ const HomeForm = styled.form`
 
         label input {
         width: 100%;
-        padding: 8px 12px;
+        padding: 10px 12px;
         font-size: 1rem;
         font-weight: 400;
         border: 1px solid #00000020;

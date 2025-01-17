@@ -100,7 +100,7 @@ const ProdutosRight = styled.div`
             padding: 10px!important;
             text-align: left;
             border-bottom: 1px solid #e9e9e9;
-            border: 3px solid #fff;
+            border: 1px solid var(--color--dark--blue);
         }
 
         & > tr > td {
@@ -113,11 +113,12 @@ const ProdutosRight = styled.div`
         }
 
         & > tr > th {
-            background-color: #f7f7f7;
-            font-weight: bold;
+            background-color: var(--color--blue);
+            color: var(--color--white);
+            font-weight: 500;
             padding: 10px;
             text-align: left;
-            border: 3px solid #fff;
+            border: 1px solid var(--color--dark--blue);
         }
 
         & >  tr:nth-child(even){
@@ -147,7 +148,7 @@ const Produtos = () => {
         <>
             <ProdutosContainer>
                 <ProdutosImage data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/46f191f0-60f1-440c-ff92-af4a37dbce00/public" alt="foto de todos os perfis de steel frame" loading="lazy" />
+                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/81ca2c9a-17a0-4118-d62a-0be1a6909a00/public" alt="foto de todos os perfis de steel frame" loading="lazy" />
                 </ProdutosImage>
                 <ProdutosRight>
                     <h1 data-aos="fade-up-right" data-aos-delay="100">
