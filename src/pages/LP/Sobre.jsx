@@ -29,7 +29,6 @@ const SobreBackground = styled.div`
 
 const SobreContainer = styled.div`
     max-width: 1280px;
-    border: 1px solid red;
     width: 100%;
     left: 50%;
     top: 0;
@@ -49,7 +48,7 @@ const SobreImage = styled.div`
     height: 100%;
 `
 
-const SobreRight = styled.digv`
+const SobreRight = styled.div`
     width: 50%;
     padding-right: 5%;
     height: 100%;
