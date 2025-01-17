@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { BsArrowDownShort } from "react-icons/bs";
+import { BsArrowDownShort, BsTruck} from "react-icons/bs";
 
 
 const HomeAll = styled.section`
@@ -9,42 +9,82 @@ const HomeAll = styled.section`
 `
 
 const HomeFaixa = styled.div`
-    width: 100%;
-    height: 60px;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff0000;
+  position: fixed;
+  z-index: 999;
+  box-shadow: 0 0 5px #ffffff;
+  overflow: hidden; /* Para garantir que o efeito de luz não vaze */
+  
+  &::before {
+    content: "";
+    position: absolute;
+    width: 200px; /* Ajuste conforme necessário */
+    height: 100%;
+    background-image: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0) 70%
+    );
+    top: 0;
+    left: -200px;
+    opacity: 0.6;
+    animation: shine 4.5s ease-out infinite;
+  }
+
+  & > h1 {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--color--white);
+    position: relative; /* Para manter o texto acima do efeito */
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #ff0000;
-    position: fixed;
-    z-index: 999;
-    box-shadow: 0 0 5px #ffffff;
+    gap: 10px;
 
-    & > h1 {
-        font-weight: 400;
-        font-size: 16px;
-        color: var(--color--white);
-
-        @media (max-width:768px){
-            text-align: center;
-            font-size: 14px;
-        }
-
-        & > b {
-            font-weight: 600;
-        }
-
-        & > span {
-            font-weight: 800;
-            color: #FFCC00;
-            font-size: 20px;
-            margin: 0 5px;
-
-            @media (max-width:768px){
-                font-size: 18px;
-            }
-        }
+    & > svg {
+        font-size: 24px;
     }
-`
+
+    @media (max-width: 768px) {
+      text-align: center;
+      font-size: 14px;
+    }
+
+    & > b {
+      font-weight: 600;
+    }
+
+    & > span {
+      font-weight: 800;
+      color: #FFCC00;
+      font-size: 20px;
+      margin: 0 5px;
+
+      @media (max-width: 768px) {
+        font-size: 18px;
+      }
+    }
+  }
+
+  @keyframes shine {
+    0% {
+      left: -200px;
+    }
+    60% {
+      left: 100%;
+    }
+    to {
+      left: 100%;
+    }
+  }
+`;
+
 
 const HomeContainer = styled.div` 
     width: 100%;
@@ -406,7 +446,7 @@ const Home = () => {
             <HomeAll>
                 <HomeFaixa data-aos="fade-down" data-aos-delay="100">
                     <h1>
-                        <b>VENDAS NO ATACADO</b> COM PEDIDO MÍNIMO DE <span>1500 PEÇAS</span> DIRETO DA FÁBRICA
+                    <BsTruck /> <b>VENDAS NO ATACADO</b> COM PEDIDO MÍNIMO DE <span>1500 PEÇAS</span> DIRETO DA FÁBRICA
                     </h1>    
                 </HomeFaixa>    
 
