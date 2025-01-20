@@ -9,6 +9,7 @@ import Produtos from "./Produtos";
 import Sobre from "./Sobre";
 import Perfis from "./Perfis";
 import FAQ from "./FAQ";
+import Galpao from "./Galpao";
 
 const All = styled.div`
     overflow: hidden;
@@ -25,10 +26,12 @@ const PaginaInicial = () => {
                         <Faixa />
                             <Produtos />
                                 <Faixa />
-                                    <Sobre />
+                                    <Galpao />
                                         <Faixa />
-                                            <Perfis />
-                                                <FAQ />
+                                            <Sobre />
+                                                <Faixa />
+                                                    <Perfis />
+                                                        <FAQ />
             </All>
         </>
     )
