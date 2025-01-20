@@ -231,13 +231,13 @@ const FAQ = () => {
       id: 2,
       question: "Com quais materiais de construção trabalhamos?",
       answer: "Apenas perfis para Steel Frame e Drywall normatizados.",
-      image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/8651a872-0b00-4e3e-4c14-ff48b6463d00/public",
+      image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5193d37c-6e5b-4723-7649-e20522bccb00/public",
     },
     {
       id: 3,
       question: "Com que tipo de aço nós trabalhamos?",
       answer: "Trabalhamos apenas com aço leve galvanizado e nacional, não fazemos o uso de aço chinês.",
-      image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/8651a872-0b00-4e3e-4c14-ff48b6463d00/public",
+      image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/57530941-dac0-42ce-59d9-ca6968839000/public",
     },
   ];
 
