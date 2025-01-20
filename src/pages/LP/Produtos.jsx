@@ -19,6 +19,8 @@ const ProdutosContainer = styled.section`
 
     @media (max-width:768px){
         flex-direction: column;
+        margin-top: 300px;
+        position: none;
     }
 `
 
@@ -29,7 +31,9 @@ const ProdutosImage = styled.div`
 
     @media (max-width:768px){
         width: 100%;
-        height: 200px;
+        height: 300px;
+        position: absolute;
+        top: -300px;
     }
 
     & > img {
