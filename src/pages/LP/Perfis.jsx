@@ -130,7 +130,7 @@ const PerfisVideo = styled.div`
             & > iframe {
             width: 450px;
             height: 250px;
-            border-left: 10px solid var(--color--blue);
+            border-left: 10px solid var(--color--black);
             position: relative;
 
             @media (max-width:768px){
