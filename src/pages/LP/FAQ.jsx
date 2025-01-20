@@ -151,7 +151,6 @@ const ImageContainer = styled.div`
   img {
     width: 100%;
     height: auto;
-    border-radius: 10px;
     position: absolute;
     transition: opacity 0.5s ease, transform 0.5s ease;
     opacity: ${(props) => (props.isVisible ? "1" : "0")};
@@ -220,7 +219,7 @@ const FAQ = () => {
       id: 0,
       question: "Desenvolvemos projetos?",
       answer: "Não, mas desenvolvemos o projeto estrutural em Steel Frame para clientes que já possuem o projeto arquitetônico da construção.",
-      image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/8651a872-0b00-4e3e-4c14-ff48b6463d00/public",
+      image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/848448da-cfb4-41e0-2173-0258a4f17200/public",
     },
     {
       id: 1,
