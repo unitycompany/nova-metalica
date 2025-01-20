@@ -284,7 +284,7 @@ const FormSelectWrapper = styled.div`
     align-items: flex-start;
     width: 100%;
     margin-bottom: 0px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   div {
@@ -294,15 +294,15 @@ const FormSelectWrapper = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    opacity: 0.4;
+    opacity: ${({ selected }) => (selected ? "0.5" : "1")};
     margin-top: 10px;
     padding: 8px 12px;
     border: 1px solid #00000050;   
     font-size: 14px;
-    color: #00000080;
+    color: ${({ selected }) => (selected ? "#000" : "#00000080")};
 
     & > svg {
-        font-size: 20px;
+      font-size: 20px;
     }
   }
 
@@ -310,6 +310,7 @@ const FormSelectWrapper = styled.div`
     display: block;
     padding: 5px 0;
   }
+
   .dropdown {
     display: ${({ isOpen }) => (isOpen ? "block" : "none")};
     position: absolute;
@@ -324,40 +325,45 @@ const FormSelectWrapper = styled.div`
     gap: 10px;
 
     & > span {
-        margin: 10px 0;
+      margin: 10px 0;
+      font-size: 14px;
+      padding: 5px;
+      width: 100%;
+      opacity: 0.9; /* Opacidade padrão */
+      transition: opacity 0.2s, color 0.2s;
+
+      &:last-child {
+        color: #00000050;
+      }
+
+      & > input {
+        border-left: 1px solid var(--color--black);
+        margin-left: 5px;
         font-size: 14px;
-        padding: 5px;
-        width: 100%;
+        width: auto;
+        width: 60%;
 
-        &:last-child{
-            color: #00000050;
+        &::placeholder {
+          padding-left: 5px;
+          color: var(--color--black);
+          opacity: 0.8;
         }
+      }
 
-        & > input {
-            border-left: 1px solid var(--color--black);
-            margin-left: 5px;
-            font-size: 14px;
-            width: auto;
-            width: 60%;
-
-            &::placeholder{
-                padding-left: 5px;
-                color: var(--color--black);
-                opacity: 0.8;
-            }
-        }
-
-        &:hover {
-            background: #f5f5f5;
-        }
+      &:hover {
+        background: #f5f5f5;
+      }
     }
   }
+
   hr {
     border: none;
     border-top: 1px solid #ddd;
     margin: 10px 0;
   }
 `;
+
+
 
 const HomeRight = styled.div`
     width: 50%;
@@ -410,14 +416,37 @@ const HomeRight = styled.div`
             z-index: -1;
         }
 
-        & > iframe {
-            width: 450px;
-            height: 250px;
+        & > div {
+            width: auto;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-            @media (max-width:768px){
-                width: 100%;
+            &::before{
+                content: '';
+                width: 450px;
+                height: 250px;
+                top: 52.5%;
+                transform: translateY(-50%) translateX(-50%);
+                left: 52.5%;
+                position: absolute;
+                z-index: -1;
+                border: 1px solid var(--color--blue);
+            }
+
+                & > iframe {
+                width: 450px;
+                height: 250px;
+                border-left: 10px solid var(--color--blue);
+                position: relative;
+
+                @media (max-width:768px){
+                    width: 100%;
+                }
             }
         }
+
     }
 `
 
@@ -464,9 +493,102 @@ const Home = () => {
         }
     };
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+      
+        // Coleta os valores dos campos
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const whatsapp = document.getElementById('tel').value.trim();
+        const cidade = document.getElementById('cidade').value.trim();
+        const estado = document.getElementById('estado').value.trim();
+      
+        // Verifica os valores dos estados para os campos de seleção
+        const areaAtuacao = selectedOption || '';
+        const motivoContato = selectedOption2 || '';
+      
+        // Validação básica
+        if (!name || !email || !whatsapp || !cidade || !estado || !areaAtuacao || !motivoContato) {
+          alert('Por favor, preencha todos os campos corretamente.');
+          return;
+        }
+      
+        // Coleta de UTMs (se necessário)
+        const utms = new URLSearchParams(window.location.search);
+        const utmSource = utms.get('utm_source') || 'organico';
+        const utmMedium = utms.get('utm_medium') || '';
+        const utmCampaign = utms.get('utm_campaign') || '';
+        const utmContent = utms.get('utm_content') || '';
+        const utmTerm = utms.get('utm_term') || '';
+        const pageReferrer = window.location.href || 'URL não encontrada';
+      
+        // Data e hora
+        const dataAtual = new Date().toLocaleDateString('pt-BR');
+        const horaAtual = new Date().toLocaleTimeString('pt-BR');
+      
+        // Payload para o PipeRun
+        const payload = {
+          rules: {
+            update: 'false',
+            filter_status_update: 'open',
+            equal_pipeline: 'true',
+            status: 'open',
+            validate_cpf: 'false',
+          },
+          leads: [
+            {
+              id: 'form-sistemas-steel-frame-asr',
+              user: name,
+              email: email,
+              name: name,
+              personal_phone: whatsapp,
+              mobile_phone: whatsapp,
+              cidade: cidade,
+              estado: estado,
+              areaAtuacao: areaAtuacao,
+              motivoContato: motivoContato,
+              last_conversion: {
+                source: utmSource,
+                data: dataAtual,
+                hora: horaAtual,
+              },
+              custom_fields: {
+                uniqueId: new Date().getTime().toString(),
+                utm_source: utmSource,
+                utm_medium: utmMedium,
+                utm_campaign: utmCampaign,
+                utm_content: utmContent,
+                utm_term: utmTerm,
+                page_referrer: pageReferrer,
+              },
+            },
+          ],
+        };
+      
+        // Envio dos dados
+        fetch('https://app.pipe.run/webservice/integradorJson?hash=56c50ba8-44e9-42fd-ba51-93207130106f', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        })
+          .then((response) => {
+            if (!response.ok) throw new Error(`Erro ao enviar ao PipeRun. Status: ${response.status}`);
+            return response.json();
+          })
+          .then(() => {
+            alert('Formulário enviado com sucesso!');
+            document.getElementById('contactForm').reset();
+          })
+          .catch((error) => {
+            console.error('Erro:', error);
+            alert('Houve um erro ao enviar o formulário.');
+          });
+      };
+      
+
     return (
         <>
-            <HomeAll>
+            <HomeAll id="form">
                 <HomeFaixa data-aos="fade-down" data-aos-delay="100">
                     <h1>
                     <BsTruck /> <b>VENDAS NO ATACADO</b> COM PEDIDO MÍNIMO DE <span>1500 PEÇAS</span> DIRETO DA FÁBRICA
@@ -483,7 +605,7 @@ const Home = () => {
                                 Fabricamos perfis de <b>Steel Frame</b> sob medida, com qualidade de ponta e benefícios exclusivos para você.
                             </h6>
                         </HomeTitle>
-                        <HomeForm id="contactForm" data-aos="fade-up" data-aos-delay="100">
+                        <HomeForm id="contactForm" data-aos="fade-up" data-aos-delay="100" onSubmit={handleSubmit}>
                         <div>
                             <label>
                                 <input type="text" id="name" placeholder=" " required />
@@ -529,7 +651,7 @@ const Home = () => {
                                 <span onClick={() => handleOptionClick("Engenheiro ou arquiteto (uso em projetos profissionais)")}>
                                     Engenheiro ou arquiteto (uso em projetos profissionais)
                                 </span>
-                                <span onClick={() => handleOptionClick("Construtor (uso em obras e projetos próprios)")}>
+                                <span onClick={() => handleOptionClick("Construtor (uso em obras e projetos proprios)")}>
                                     Construtor (uso em obras e projetos próprios)
                                 </span>
                                 <span onClick={() => setShowOtherInput(true)}>
@@ -560,13 +682,13 @@ const Home = () => {
                                 <span onClick={() => handleOptionClick2("Estou buscando um fornecedor para pedidos no atacado")}>
                                     Estou buscando um fornecedor para pedidos no atacado
                                 </span>
-                                <span onClick={() => handleOptionClick2("Quero solicitar um orçamento para revenda")}>
+                                <span onClick={() => handleOptionClick2("Quero solicitar um orcamento para revenda")}>
                                     Quero solicitar um orçamento para revenda
                                 </span>
-                                <span onClick={() => handleOptionClick2("Tenho interesse em conhecer os produtos e condições para parceria.")}>
+                                <span onClick={() => handleOptionClick2("Tenho interesse em conhecer os produtos e condicoes para parceria.")}>
                                     Tenho interesse em conhecer os produtos e condições para parceria.
                                 </span>
-                                <span onClick={() => handleOptionClick2("Gostaria de saber mais informações antes de tomar uma decisão.")}>
+                                <span onClick={() => handleOptionClick2("Gostaria de saber mais informacoes antes de tomar uma decisao.")}>
                                     Gostaria de saber mais informações antes de tomar uma decisão.
                                 </span>
                                 <span onClick={() => setShowOtherInput2(true)}>
@@ -600,15 +722,16 @@ const Home = () => {
                             <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a6bd0b20-7bcc-4575-98dd-39f394dbe100/public" alt="logo da nova metalica" />
                         </div>
                         <div>
-                            <iframe
-                                src="https://customer-g3gc6xcdls9bgs9k.cloudflarestream.com/e46e6388d3cf6d794418c81c2c22c3aa/iframe?preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-g3gc6xcdls9bgs9k.cloudflarestream.com%2Fe46e6388d3cf6d794418c81c2c22c3aa%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"
-                                loading="lazy"
-                                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-                                allowfullscreen="true"
-                                data-aos="fade-up" data-aos-delay="100"
-                            ></iframe>
+                            <div>
+                                <iframe
+                                    src="https://customer-g3gc6xcdls9bgs9k.cloudflarestream.com/bb55b730584a791554abea0ab2d9c596/iframe?muted=true&preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-g3gc6xcdls9bgs9k.cloudflarestream.com%2Fbb55b730584a791554abea0ab2d9c596%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"
+                                    loading="lazy"
+                                    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                                    allowfullscreen="true"
+                                    data-aos="fade-up" data-aos-delay="100"
+                                ></iframe>
                             </div>
-
+                        </div>
                     </HomeRight>
                 </HomeContainer>
 

@@ -97,12 +97,34 @@ const PerfisVideo = styled.div`
         }
     }
 
-    & > div > iframe {
-            width: 450px;
-            height: 250px;
+    & > div {
+            width: auto;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-            @media (max-width:768px){
-                width: 100%;
+            &::before{
+                content: '';
+                width: 450px;
+                height: 250px;
+                top: 45.5%;
+                transform: translateY(-50%) translateX(-50%);
+                left: 52.5%;
+                position: absolute;
+                z-index: -1;
+                border: 1px solid var(--color--blue);
+            }
+
+                & > iframe {
+                width: 450px;
+                height: 250px;
+                border-left: 10px solid var(--color--blue);
+                position: relative;
+
+                @media (max-width:768px){
+                    width: 100%;
+                }
             }
         }
 `

@@ -50,7 +50,12 @@ const ButtonLP2 = () => {
 
     return (
         <>
-           <Button>
+           <Button onClick={() => {
+            const clickForm = document.getElementById('form');
+            if ( clickForm ) {
+                clickForm.scrollIntoView({ behavior: "smooth" });
+            }
+           }}>
                 <div>
                     Solicitar orçamento
                 </div>
