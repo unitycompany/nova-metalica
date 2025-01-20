@@ -224,19 +224,19 @@ const FAQ = () => {
     {
       id: 1,
       question: "Fornecemos mão de obra?",
-      answer: "Não, mas desenvolvemos o projeto estrutural em Steel Frame para clientes que já possuem o projeto arquitetônico da construção.",
-      image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/d086625e-8598-49b1-653b-173f4335b300/public",
+      answer: "Não, mas indicamos empresas parceiras para execução da construção.",
+      image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/12ba2ae0-8735-43c3-aac8-4b90a454d100/public",
     },
     {
       id: 2,
       question: "Com quais materiais de construção trabalhamos?",
-      answer: "Não, mas desenvolvemos o projeto estrutural em Steel Frame para clientes que já possuem o projeto arquitetônico da construção.",
+      answer: "Apenas perfis para Steel Frame e Drywall normatizados.",
       image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/8651a872-0b00-4e3e-4c14-ff48b6463d00/public",
     },
     {
       id: 3,
       question: "Com que tipo de aço nós trabalhamos?",
-      answer: "Não, mas desenvolvemos o projeto estrutural em Steel Frame para clientes que já possuem o projeto arquitetônico da construção.",
+      answer: "Trabalhamos apenas com aço leve galvanizado e nacional, não fazemos o uso de aço chinês.",
       image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/8651a872-0b00-4e3e-4c14-ff48b6463d00/public",
     },
   ];
