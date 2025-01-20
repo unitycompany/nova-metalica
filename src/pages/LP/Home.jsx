@@ -297,7 +297,7 @@ const FormSelectWrapper = styled.div`
     opacity: ${({ selected }) => (selected ? "0.5" : "1")};
     margin-top: 10px;
     padding: 8px 12px;
-    border: 1px solid #00000050;   
+    border: 1px solid #00000030;   
     font-size: 14px;
     color: ${({ selected }) => (selected ? "#000" : "#00000080")};
 
@@ -363,8 +363,6 @@ const FormSelectWrapper = styled.div`
   }
 `;
 
-
-
 const HomeRight = styled.div`
     width: 50%;
     position: relative;
@@ -423,6 +421,11 @@ const HomeRight = styled.div`
             align-items: center;
             justify-content: center;
 
+            @media (max-width:768px){
+                width: 100%;
+                height: auto;
+            }
+
             &::before{
                 content: '';
                 width: 450px;
@@ -433,6 +436,13 @@ const HomeRight = styled.div`
                 position: absolute;
                 z-index: -1;
                 border: 1px solid var(--color--blue);
+
+                @media (max-width:768px){
+                    width: 95%;
+                    height: 210px;
+                    left: 49%;
+                    top: 50%;
+                }
             }
 
                 & > iframe {
@@ -443,6 +453,7 @@ const HomeRight = styled.div`
 
                 @media (max-width:768px){
                     width: 100%;
+                    height: 200px;
                 }
             }
         }

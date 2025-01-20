@@ -5,6 +5,7 @@ const All = styled.section`
     width: 100%;
     height: auto;
     position: relative;
+    z-index: -1;
 `
 
 const BlackBackground = styled.div`
