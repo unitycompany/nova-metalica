@@ -223,15 +223,15 @@ const FAQ = () => {
     },
     {
       id: 1,
-      question: "Fornecemos mão de obra?",
-      answer: "Não, mas indicamos empresas parceiras para execução da construção.",
-      image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/12ba2ae0-8735-43c3-aac8-4b90a454d100/public",
-    },
-    {
-      id: 2,
       question: "Com quais materiais de construção trabalhamos?",
       answer: "Apenas perfis para Steel Frame e Drywall normatizados.",
       image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5193d37c-6e5b-4723-7649-e20522bccb00/public",
+    },
+    {
+      id: 2,
+      question: "Fornecemos mão de obra?",
+      answer: "Não, mas indicamos empresas parceiras para execução da construção.",
+      image: "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/12ba2ae0-8735-43c3-aac8-4b90a454d100/public",
     },
     {
       id: 3,
