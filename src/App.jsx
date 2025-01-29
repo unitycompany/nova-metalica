@@ -21,8 +21,8 @@ import "./styles/variables.css";
 // Lazy loading das páginas
 const PaginaInicial = lazy(() => import("./pages/Inicial/Inicial"));
 const PaginaSobre = lazy(() => import("./pages/Sobre/Inicial"));
-const PaginaProdutosSteelFrame = lazy(() => import("./pages/Produtos/steelframe/Inicial"));
-const PaginaProdutosDrywall = lazy(() => import("./pages/Produtos/drywall/Inicial"));
+const SteelFrame = lazy(() => import("./pages/Produtos/steelframe/Inicial"));
+const Drywall = lazy(() => import("./pages/Produtos/drywall/Inicial"));
 const PaginaParceria = lazy(() => import("./pages/Parcerias/Inicial"));
 const PaginaBlog = lazy(() => import("./pages/Blog/Inicial"));
 const LpPaginaParcerias = lazy(() => import("./pages/Parcerias/LP/Inicial"));
@@ -62,8 +62,8 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PaginaInicial />} />
         <Route path="/sobre" element={<PaginaSobre />} />
-        <Route path="/produtos/drywall" element={<PaginaProdutosDrywall />} />
-        <Route path="/produtos/steel-frame" element={<PaginaProdutosSteelFrame />} />
+        <Route path="/produtos/drywall" element={<Drywall />} />
+        <Route path="/produtos/steel-frame" element={<SteelFrame />} />
         <Route path="/parcerias" element={<PaginaParceria />} />
         <Route path="/blog" element={<PaginaBlog />} />
         <Route path="/blog/:slug" element={<ArticlePage />} />
