@@ -119,14 +119,13 @@ const Framecad = () => {
                 />
             </FramecadTexts>
             <FramecadIframe data-aos="fade-right" data-aos-delay="200">
-                <iframe 
-                    src="https://www.youtube.com/embed/KVCquOX5toQ?autoplay=1" 
-                    title="FRAMECAD F325iT - Ideal for residential and light commercial construction projects" 
-                    frameborder="0" 
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    referrerpolicy="strict-origin-when-cross-origin" 
-                    allowfullscreen>
-                </iframe>
+                        <iframe
+                            src="https://customer-g3gc6xcdls9bgs9k.cloudflarestream.com/bb55b730584a791554abea0ab2d9c596/iframe?muted=true&preload=true&loop=true&autoplay=true&poster=https%3A%2F%2Fcustomer-g3gc6xcdls9bgs9k.cloudflarestream.com%2Fbb55b730584a791554abea0ab2d9c596%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"
+                            loading="lazy"
+                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                            allowfullscreen="true"
+                            data-aos="fade-up" data-aos-delay="100"
+                        ></iframe>
             </FramecadIframe>
         </FramecadAll>
     );

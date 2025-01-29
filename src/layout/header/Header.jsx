@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { Navigate, NavLink, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button04 from "../../components/buttons/Button04";
 import { BsTelephone, BsEnvelopeCheck, BsGeo, BsBook, BsCartCheck, BsHouse, BsX, BsGrid3X3GapFill, BsArrowRight } from "react-icons/bs";
-import { HiMiniBars3BottomRight } from "react-icons/hi2";
+import { HiOutlineBars4 } from "react-icons/hi2";
+import RedirectDropdown from "../../components/buttons/Select";
 
 // Estilos do header
 const HeaderAll = styled.section`
@@ -36,7 +37,7 @@ const HeaderDivBlack = styled.div`
   justify-content: space-between;
   padding: 1.2% 7.5%;
   gap: 50px;
-  border-radius: 0 0 20px 20px;
+  border-radius: 0 0 10px 10px;
 
   @media (max-width: 768px) {
     display: none;
@@ -117,27 +118,27 @@ const HeaderIcons = styled.div`
 
 const HeaderWhite = styled.div`
   width: 90%;
-  height: 8vh;
+  height: 9vh;
   position: relative;
   top: -3.75vh;
   left: 5%;
   z-index: 1;
-  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2.5%;
-  box-shadow: 0 0 2.5px rgba(0, 0, 0, 0.4);
-  background-color: var(--color--white);
+  background-color: #fff;
+  border: 2px solid var(--color--black);
+  border-radius: 10px;
 
   @media (max-width: 768px) {
     top: 1vh;
     width: 95%;
     left: 2.5%;
-    border-radius: 15px;
+    border-radius: 0px;
     padding: 0 5% 0 5%;
     height: 100%;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0);
   }
 
   @media (min-width: 768px) and (max-width: 1180px) {
@@ -156,7 +157,14 @@ const HeaderWhite = styled.div`
       width: auto;
     }
 
-    & > img {
+    & > a{
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    & > a > img {
       width: 100%;
       height: auto;
 
@@ -172,6 +180,7 @@ const HeaderWhite = styled.div`
     align-items: center;
     justify-content: center;
     gap: 10px;
+    height: 100%;
 
     @media (max-width: 768px) {
       display: none;
@@ -179,13 +188,12 @@ const HeaderWhite = styled.div`
 
     & > a {
       font-size: 12px;
-      padding: 10px 15px;
+      padding: 10px 20px;
       color: var(--color--black);
       font-weight: 500;
       transition: all 0.2s ease;
       display: flex;
       align-items: center;
-      border-radius: 5px;
       position: relative;
       overflow: hidden;
 
@@ -207,6 +215,8 @@ const HeaderWhite = styled.div`
       background-color: var(--color--dark--blue);
       color: var(--color--white);
       transform: scale(1.05);
+      border: 1px solid var(--color--blue);
+
     }
 
       &:hover::before {
@@ -244,7 +254,6 @@ const MenuButton = styled.button`
     justify-content: center;
     background-color: var(--color--black);
     padding: 7.5px;
-    border-radius: 8px;
     font-weight: 500;
     color: var(--color--white);
   }
@@ -258,21 +267,20 @@ const MenuButton = styled.button`
 const Sidebar = styled.div`
   position: fixed;
   top: 0;
-  right: ${(props) => (props.isOpen ? "0" : "-100%")};
+  right: ${(props) => (props.isOpen ? "0" : "-150%")};
   width: 70%;
   top: 2.5vh;
-  height: auto;
+  height: 95vh;
   background-color: var(--color--white);
-  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0 5px rgba(0, 0, 0, 0.2);
   display: flex!important;
   flex-direction: column!important;
   align-items: center;
   justify-content: space-between!important;
   gap: 40px;
   padding: 30px 20px;
-  transition: right 0.3s ease;
+  transition: right 1s ease;
   z-index: 1000;
-  border-radius: 20px 0 0 20px;
   overflow: hidden;
 `;
 
@@ -310,6 +318,12 @@ const SidebarLinks = styled.div`
   gap: 10px;
   width: 100%;
 
+  @media (max-width: 768px){
+    & > div {
+      width: 100%;
+    }
+  }
+
   a {
     font-size: 14px;
     display: flex;
@@ -317,20 +331,12 @@ const SidebarLinks = styled.div`
     justify-content: space-between;
     width: 100%;
     text-decoration: none;
-    background-color: var(--color--black);
-    border: 1px solid var(--color--black);
-    color: var(--color--white);
+    color: var(--color--black);
     padding: 8px 15px;
     transition: all .3s ease;
 
     & > svg {
-      font-size: 24px;
-      background-color: var(--color--white);
-      padding: 5px;
-      color: var(--color--black);
-      border-radius: 50%;
-      transform: rotate(-25deg);
-      transition: all .3s ease;
+      display: none;
     }
 
     &:hover{
@@ -426,6 +432,8 @@ const SidebarFooter = styled.div`
 const Header = () => {
   const [scrollingDown, setScrollingDown] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const location = useLocation();
+  const Navigate = useNavigate();
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -447,10 +455,14 @@ const Header = () => {
     };
   }, [isSidebarOpen]);
 
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, [location]);
+
   return (
     <HeaderAll
       style={{
-        top: scrollingDown ? "-15vh" : "0",
+        top: scrollingDown ? "-20vh" : "0",
       }}
     >
       <HeaderDivBlack data-aos="fade-down" data-aos-delay="0">
@@ -473,7 +485,7 @@ const Header = () => {
             <BsBook color="var(--color--white)" />
             <span>Blog</span>
           </NavLink>
-          <NavLink to="/produtos" activeClassName="active">
+          <NavLink to="/produtos/steel-frame" activeClassName="active">
             <BsCartCheck color="var(--color--white)" />
             <span>Loja</span>
           </NavLink>
@@ -486,11 +498,13 @@ const Header = () => {
 
       <HeaderWhite data-aos="fade-down" data-aos-delay="500">
         <div>
-          <img
-            src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a6bd0b20-7bcc-4575-98dd-39f394dbe100/public"
-            alt="logo da nova metalica"
-            loading="lazy"
-          />
+          <a onClick={() => Navigate('/')}>
+            <img
+              src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a6bd0b20-7bcc-4575-98dd-39f394dbe100/public"
+              alt="logo da nova metalica"
+              loading="lazy"
+            />
+          </a>
         </div>
         <div>
           <NavLink to="/" activeClassName="active">
@@ -499,9 +513,11 @@ const Header = () => {
           <NavLink to="/sobre" activeClassName="active">
             Sobre nós
           </NavLink>
-          <NavLink to="/produtos" activeClassName="active">
-            Produtos
-          </NavLink>
+          
+          <div>
+            <RedirectDropdown />
+          </div>
+
           <NavLink to="/parcerias" activeClassName="active">
             Parcerias
           </NavLink>
@@ -521,7 +537,7 @@ const Header = () => {
           />
         </div>
         <MenuButton onClick={() => setSidebarOpen(true)}>
-          <HiMiniBars3BottomRight />
+        <HiOutlineBars4 />
         </MenuButton>
       </HeaderWhite>
 
@@ -539,7 +555,9 @@ const Header = () => {
         <SidebarLinks>
           <NavLink to="/" activeClassName="active">Início <BsArrowRight /></NavLink>
           <NavLink to="/sobre" activeClassName="active">Sobre nós <BsArrowRight /></NavLink>
-          <NavLink to="/produtos" activeClassName="active">Produtos <BsArrowRight /></NavLink>
+          <div>
+            <RedirectDropdown />
+          </div>
           <NavLink to="/parcerias" activeClassName="active">Parcerias <BsArrowRight /></NavLink>
           <NavLink to="/blog" activeClassName="active">Blog <BsArrowRight /></NavLink>
         </SidebarLinks>
@@ -563,7 +581,7 @@ const Header = () => {
           <NavLink to="/blog" activeClassName="active" className={"IconLink"}>
             <BsBook />
           </NavLink>
-          <NavLink to="/produtos" activeClassName="active" className={"IconLink"}>
+          <NavLink to="/produtos/steel-frame" activeClassName="active" className={"IconLink"}>
             <BsCartCheck />
           </NavLink>
           <NavLink to="/" activeClassName="active" className={"IconLink"}>
@@ -572,7 +590,14 @@ const Header = () => {
         </SidebarIcons>
 
         <SidebarFooter>
-          <Button04 href="#Form">Solicitar orçamento</Button04>
+          <Button04 
+          children="Solicitar orçamento"
+          onClick={() => {
+            const formSection = document.getElementById('Form');
+            if ( formSection ){
+              formSection.scrollIntoView({ behavior : 'smooth' })
+            }
+          }}></Button04>
         </SidebarFooter>
       </Sidebar>
     </HeaderAll>

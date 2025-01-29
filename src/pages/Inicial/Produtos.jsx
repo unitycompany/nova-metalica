@@ -138,7 +138,7 @@ const Produtos = () => {
                 <p data-aos="fade-left" data-aos-delay="300">Na Nova Metálica, oferecemos mais do que produtos. Oferecemos soluções completas para suas construções.</p>
                 <Button03 
                 children="Ver produtos"
-                onClick={() => navigate ('/produtos')}
+                onClick={() => navigate ('/produtos/steel-frame')}
                 />
             </ProdutosTexts>
         </ProdutosAll>

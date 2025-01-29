@@ -75,6 +75,12 @@ const FormTexts = styled.div`
         & > a{
             color: var(--color--blue);
             text-decoration: underline;
+            cursor: pointer;
+            transition: all .2s ease;
+
+            &:hover {
+                color: var(--color--green);
+            }
         }
     }
 `

@@ -188,6 +188,16 @@ const SobreCardBottom = styled.div`
         font-weight: 400;
         gap: 15px;
         color: var(--color--blue);
+        cursor: pointer;
+        transition: all .2s ease;
+
+        &:hover {
+            color: var(--color--dark--blue);
+        }
+
+        &:hover > svg {
+            transform: rotate(135deg);
+        }
 
         @media (max-width: 768px){
             font-size: 12px;
@@ -204,6 +214,7 @@ const SobreCardBottom = styled.div`
         & > svg {
             width: 14px;
             height: 14px;
+            transition: all .1s ease;
 
             @media (max-width: 768px){
                 width: 8px;

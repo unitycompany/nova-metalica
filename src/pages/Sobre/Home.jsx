@@ -153,6 +153,7 @@ const HomeQuadrado = styled.div`
     width: 50%;
     height: 80%;
     position: absolute;
+    z-index: -1;
     right: 0;
     bottom: 0;
     clip-path: polygon(0% 0%, 0 30%, 3% 30%, 3% 3%, 97% 3%, 97% 97%, 0 97%, 0 100%, 100% 100%, 100% 0);

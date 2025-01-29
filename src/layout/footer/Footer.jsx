@@ -135,6 +135,12 @@ const FooterPolitica = styled.div`
         & > a {
             color: var(--color--blue);
             text-decoration: underline;
+            cursor: pointer;
+            transition: all .2s ease;
+
+            &:hover {
+                color: var(--color--green);
+            }
 
             & > img {
                 width: 100px;
@@ -166,7 +172,7 @@ const Footer = () => {
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Início
                         </a>
-                        <a onClick={() => navigate ('/produtos')}>
+                        <a onClick={() => navigate ('/produtos/steel-frame')}>
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Produtos
                         </a>
