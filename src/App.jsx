@@ -21,7 +21,7 @@ import "./styles/variables.css";
 // Lazy loading das páginas
 const PaginaInicial = lazy(() => import("./pages/Inicial/Inicial"));
 const PaginaSobre = lazy(() => import("./pages/Sobre/Inicial"));
-const PageSteelFrame = lazy(() => import("./pages/Produtos/Steelframe/Inicial"));
+// const PageSteelFrame = lazy(() => import("./pages/Produtos/Steelframe/Inicial"));
 const PageDrywall = lazy(() => import("./pages/Produtos/Drywall/Inicial"));
 const PaginaParceria = lazy(() => import("./pages/Parcerias/Inicial"));
 const PaginaBlog = lazy(() => import("./pages/Blog/Inicial"));
@@ -63,7 +63,7 @@ function AnimatedRoutes() {
         <Route path="/" element={<PaginaInicial />} />
         <Route path="/sobre" element={<PaginaSobre />} />
         <Route path="/produtos/drywall" element={<PageDrywall />} />
-        <Route path="/produtos/steel-frame" element={<PageSteelFrame />} />
+        {/* <Route path="/produtos/steel-frame" element={<PageSteelFrame />} /> */}
         <Route path="/parcerias" element={<PaginaParceria />} />
         <Route path="/blog" element={<PaginaBlog />} />
         <Route path="/blog/:slug" element={<ArticlePage />} />
