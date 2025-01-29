@@ -15,7 +15,7 @@ const All = styled.div`
     overflow: hidden;
 `
 
-const PaginaInicial = () => {
+const PaginaSteelFrame = () => {
 
     return (
         <>
@@ -37,4 +37,4 @@ const PaginaInicial = () => {
     )
 }
 
-export default PaginaInicial;
+export default PaginaSteelFrame;
