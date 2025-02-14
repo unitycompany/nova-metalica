@@ -515,11 +515,11 @@ const Home = () => {
         const estado = document.getElementById('estado').value.trim();
       
         // Verifica os valores dos estados para os campos de seleção
-        const areaAtuacao = selectedOption || '';
+        const sistema = selectedOption || '';
         const motivoContato = selectedOption2 || '';
       
         // Validação básica
-        if (!name || !email || !whatsapp || !cidade || !estado || !areaAtuacao || !motivoContato) {
+        if (!name || !email || !whatsapp || !cidade || !estado || !sistema || !motivoContato) {
           alert('Por favor, preencha todos os campos corretamente.');
           return;
         }
@@ -556,7 +556,7 @@ const Home = () => {
               mobile_phone: whatsapp,
               cidade: cidade,
               estado: estado,
-              areaAtuacao: areaAtuacao,
+              sistema: sistema,
               motivoContato: motivoContato,
               last_conversion: {
                 source: utmSource,
@@ -648,7 +648,7 @@ const Home = () => {
 
                             <FormSelectWrapper isOpen={isOpen}>
                                 <label>
-                                Em que área você atua?
+                                Qual sistema você procura?
                                 <div onClick={() => setIsOpen((prev) => !prev)}>
                                     <span>{selectedOption || "Selecione uma opção"}</span>
                                     <BsArrowDownShort />
@@ -656,27 +656,16 @@ const Home = () => {
 
                                 </label>
                                 <div className="dropdown">
-                                <span onClick={() => handleOptionClick("Revendedor (busco estoque para revenda)")}>
-                                    Revendedor (busco estoque para revenda)
+                                <span onClick={() => handleOptionClick("Steel Frame")}>
+                                    Steel Frame
                                 </span>
-                                <span onClick={() => handleOptionClick("Engenheiro ou arquiteto (uso em projetos profissionais)")}>
-                                    Engenheiro ou arquiteto (uso em projetos profissionais)
+                                <span onClick={() => handleOptionClick("Drywall")}>
+                                    Drywall
                                 </span>
-                                <span onClick={() => handleOptionClick("Construtor (uso em obras e projetos proprios)")}>
-                                    Construtor (uso em obras e projetos próprios)
+                                <span onClick={() => handleOptionClick("Steel Frame e Drywall")}>
+                                    Steel Frame e Drywall
                                 </span>
-                                <span onClick={() => setShowOtherInput(true)}>
-                                    Outro (especifique):
-                                    {showOtherInput && (
-                                    <input
-                                        type="text"
-                                        placeholder="Digite sua área e pressione Enter"
-                                        value={otherInput}
-                                        onChange={(e) => setOtherInput(e.target.value)}
-                                        onKeyDown={handleOtherInput}
-                                    />
-                                    )}
-                                </span>
+                                
                                 </div>
                             </FormSelectWrapper>
 
@@ -701,6 +690,9 @@ const Home = () => {
                                 </span>
                                 <span onClick={() => handleOptionClick2("Gostaria de saber mais informacoes antes de tomar uma decisao.")}>
                                     Gostaria de saber mais informações antes de tomar uma decisão.
+                                </span>
+                                <span onClick={() => handleOptionClick2("Busco produtos para a construção do meu cliente")}>
+                                    Busco produtos para a construção do meu cliente
                                 </span>
                                 <span onClick={() => setShowOtherInput2(true)}>
                                     Outro (especifique):
