@@ -16,8 +16,8 @@ import "./styles/variables.css";
 // Lazy loading das páginas
 const PaginaInicial = lazy(() => import("./pages/Inicial/Inicial"));
 const PaginaSobre = lazy(() => import("./pages/Sobre/Inicial"));
-const PageSteelFrame = lazy(() => import("./pages/Produtos/Steelframe/Inicial"));
-const PageDrywall = lazy(() => import("./pages/Produtos/Drywall/Inicial"));
+// const PageSteelFrame = lazy(() => import("./pages/Produtos/Steelframe/Inicial"));
+// const PageDrywall = lazy(() => import("./pages/Produtos/Drywall/Inicial"));
 const PaginaParceria = lazy(() => import("./pages/Parcerias/Inicial"));
 const PaginaBlog = lazy(() => import("./pages/Blog/Inicial"));
 const LpPaginaParcerias = lazy(() => import("./pages/Parcerias/LP/Inicial"));
