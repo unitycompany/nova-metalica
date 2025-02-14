@@ -82,8 +82,8 @@ function AnimatedRoutes() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<PaginaInicial />} />
           <Route path="/sobre" element={<PaginaSobre />} />
-          <Route path="/produtos/drywall" element={<PageDrywall />} />
-          <Route path="/produtos/steel-frame" element={<PageSteelFrame />} />
+          {/* <Route path="/produtos/drywall" element={<PageDrywall />} />
+          <Route path="/produtos/steel-frame" element={<PageSteelFrame />} /> */}
           <Route path="/parcerias" element={<PaginaParceria />} />
           <Route path="/blog" element={<PaginaBlog />} />
           <Route path="/blog/:slug" element={<ArticlePage />} />
