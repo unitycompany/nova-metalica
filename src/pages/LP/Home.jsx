@@ -587,7 +587,7 @@ const Home = () => {
             return response.json();
           })
           .then(() => {
-            alert('Formulário enviado com sucesso!');
+            alert('Formulário enviado com sucesso!!!');
             document.getElementById('contactForm').reset();
           })
           .catch((error) => {
