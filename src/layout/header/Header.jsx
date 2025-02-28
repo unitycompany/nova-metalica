@@ -3,7 +3,7 @@ import { Navigate, NavLink, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button04 from "../../components/buttons/Button04";
 import { BsTelephone, BsEnvelopeCheck, BsGeo, BsBook, BsCartCheck, BsHouse, BsX, BsGrid3X3GapFill, BsArrowRight } from "react-icons/bs";
-import { HiOutlineBars4 } from "react-icons/hi2";
+import { HiBars3, HiOutlineBars4 } from "react-icons/hi2";
 import RedirectDropdown from "../../components/buttons/Select";
 
 // Estilos do header
@@ -133,9 +133,8 @@ const HeaderWhite = styled.div`
   border-radius: 0 0 20px 20px ;
 
   @media (max-width: 768px) {
-    top: 1vh;
-    width: 95%;
-    left: 2.5%;
+    top: 0;
+    width: 100%;
     border-radius: 0px;
     padding: 0 5% 0 5%;
     height: 100%;
@@ -252,15 +251,13 @@ const MenuButton = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color--black);
-    padding: 7.5px;
     font-weight: 500;
     color: var(--color--white);
   }
 
   & > svg{
-    font-size: 24px;
-    fill: var(--color--white);
+    font-size: 28px;
+    fill: var(--color--black);
   }
 `;
 
@@ -537,7 +534,7 @@ const Header = () => {
           />
         </div>
         <MenuButton onClick={() => setSidebarOpen(true)}>
-        <HiOutlineBars4 />
+          <HiBars3 />
         </MenuButton>
       </HeaderWhite>
 
