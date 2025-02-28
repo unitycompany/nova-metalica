@@ -11,7 +11,7 @@ const HeaderAll = styled.section`
   width: 98.5%;
   height: 15vh;
   position: fixed;
-  max-width: 1280px;
+  max-width: 1320px;
   z-index: 10;
   left: 50%;
   transform: translateX(-50%);
@@ -30,7 +30,7 @@ const HeaderDivBlack = styled.div`
   position: relative;
   width: 100%;
   height: 10vh;
-  background-color: var(--color--black);
+  background-color: #000;
   z-index: -1;
   display: flex;
   align-items: flex-start;
@@ -38,6 +38,7 @@ const HeaderDivBlack = styled.div`
   padding: 1.2% 7.5%;
   gap: 50px;
   border-radius: 0 0 10px 10px;
+  display: none;
 
   @media (max-width: 768px) {
     display: none;
@@ -117,19 +118,19 @@ const HeaderIcons = styled.div`
 `;
 
 const HeaderWhite = styled.div`
-  width: 90%;
+  width: 100%;
   height: 9vh;
   position: relative;
-  top: -3.75vh;
-  left: 5%;
+  top: 0px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  left: 0;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2.5%;
-  background-color: #fff;
-  border: 2px solid var(--color--black);
-  border-radius: 10px;
+  background-color: #ffffff;
+  border-radius: 0 0 20px 20px ;
 
   @media (max-width: 768px) {
     top: 1vh;
@@ -179,7 +180,7 @@ const HeaderWhite = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
     height: 100%;
 
     @media (max-width: 768px) {
@@ -187,8 +188,8 @@ const HeaderWhite = styled.div`
     }
 
     & > a {
-      font-size: 12px;
-      padding: 10px 20px;
+      font-size: 14px;
+      padding: 15px 20px;
       color: var(--color--black);
       font-weight: 500;
       transition: all 0.2s ease;
@@ -212,10 +213,9 @@ const HeaderWhite = styled.div`
       }
 
       &.active {
-      background-color: var(--color--dark--blue);
-      color: var(--color--white);
+      border-bottom: 2px solid var(--color--dark--blue);
+      color: var(--color--dark--blue);
       transform: scale(1.05);
-      border: 1px solid var(--color--blue);
 
     }
 

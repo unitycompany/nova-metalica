@@ -18,7 +18,7 @@ const DropdownHeader = styled.div`
   justify-content: space-between;
   gap: 15px;
   align-items: center;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--color--black);
 

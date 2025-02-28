@@ -4,12 +4,21 @@ import Button05 from "../../components/buttons/Button05"; // Suponho que esse se
 
 const CardAll = styled.div`
     width: 100%!important;
-    height: 30vh;
+    height: 35vh;
     border-radius: 25px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 20px;
+
+    @media (max-width: 768px){
+        height: auto;
+        flex-direction: column;
+        gap: 10px;
+        padding: 5px;
+        border: 1px solid var(--color--black);
+        border-radius: 20px;
+    }
 
     & > div:nth-child(1) {
         width: 50%;
@@ -20,9 +29,13 @@ const CardAll = styled.div`
         justify-content: center;
         background-color: #00000010;
 
+        @media (max-width: 768px){
+            height: 200px;
+            width: 100%;
+        }
+
         & > img {
             width: 100%;
-
             object-fit: cover;
             height: 100%;
             border-radius: 20px;
@@ -38,6 +51,11 @@ const CardAll = styled.div`
         padding: 15px 0;
         gap: 15px;
         height: 100%;
+
+        @media (max-width: 768px){
+            width: 100%;
+            padding: 10px;
+        }
 
         & > span{
             font-size: 12px;
@@ -109,7 +127,7 @@ const CardExample = ({ topico, titulo, description, hashtag, autor, data, image 
                         <span key={index}>#{tag}</span> // Hashtags dinâmicas
                     ))}
                 </div>
-                <Button05 text="Saber mais" /> {/* Botão "Saber mais" */}
+                <Button05 children="Saber mais" /> {/* Botão "Saber mais" */}
                 <h6>Escrito por: <a href="#"> {autor} </a> | {data}</h6> {/* Autor e data dinâmicos */}
             </div>
         </CardAll>

@@ -19,12 +19,21 @@ const PesquisaAll = styled.div`
     border-radius: 15px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 
+    @media (max-width: 768px){
+        flex-direction: column!important;
+        gap: 15px!important;
+    }
+
     & > div:nth-child(1) {
         width: 50%;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 10px;
+
+        @media (max-width: 768px){
+            width: 100%;
+        }
 
         & > input {
             padding: 10px;
@@ -53,6 +62,11 @@ const PesquisaAll = styled.div`
         justify-content: flex-end;
         flex-wrap: wrap;
         gap: 10px;
+
+        @media (max-width: 768px){
+            width: 100%;
+            justify-content: center;
+        }
 
         & > button {
             background-color: var(--color--white);

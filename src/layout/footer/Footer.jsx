@@ -127,6 +127,10 @@ const FooterPolitica = styled.div`
     & > p{
         font-size: 12px;
         color: var(--color--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
 
         @media (max-width: 768px){
             line-height: 120%;
@@ -143,7 +147,7 @@ const FooterPolitica = styled.div`
             }
 
             & > img {
-                width: 100px;
+                width: 70px;
 
                 @media (max-width: 768px){
                     width: 60px;
@@ -235,7 +239,7 @@ const Footer = () => {
 
                 <FooterPolitica>
                     <p  data-aos="fade-left" data-aos-delay="100">© 2024 Nova Metálica | Todos os direitos reservados | <a onClick={() => navigate ('/politica-de-privacidade')}>Política de Privacidade</a></p>
-                    <p  data-aos="fade-left" data-aos-delay="100"><a href="https://alephsramos.com.br/" target="_blank"><img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5360ae68-4678-4438-a170-893b230de700/public" /></a></p>
+                    <p  ata-aos="fade-left" data-aos-delay="100">Desenvolvido por <a href="https://alephsramos.com.br/" target="_blank"><img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5360ae68-4678-4438-a170-893b230de700/public" /></a></p>
                 </FooterPolitica>
             </FooterAll>
         </>

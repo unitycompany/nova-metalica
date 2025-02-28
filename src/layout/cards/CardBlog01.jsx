@@ -217,7 +217,7 @@ const CardLeftBlog = () => {
                         <span>
                             Escrito por: <b>{blog.autor}</b> | {blog.data}
                         </span>
-                        <Button05 text="Saber mais" />
+                        <Button05 children="Saber mais" />
                     </div>
                 </div>
             ))}

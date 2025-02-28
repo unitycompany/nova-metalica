@@ -7,7 +7,7 @@ import Button05 from "../../components/buttons/Button05";
 const HomeAll = styled.section`
     width: 100%;
     height: 100vh;
-    max-width: 1140px;
+    max-width: 1280px;
     transform: translateX(-50%);
     left: 50%;
     top: 0;
@@ -17,6 +17,11 @@ const HomeAll = styled.section`
     justify-content: space-between;
     gap: 20px;
     padding: 10% 0 5% 0;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+        padding: 20% 2.5% 0% 2.5%;
+    }
 `
 
 const HomeLeft = styled.div`
@@ -31,7 +36,13 @@ const HomeLeft = styled.div`
     filter: contrast(120%);
     background-position: center;
     background-size: cover;
-    border-image: 0 fill linear-gradient(90deg, #00000050, #0000);
+    border-image: 0 fill linear-gradient(90deg, #00000050, #0000);  
+
+    @media (max-width: 768px){
+        width: 100%;
+        padding: 20px;
+        border-image: 0 fill linear-gradient(90deg, #00000070, #0000);  
+    }
 
     & > div {
         display: flex;
@@ -48,6 +59,10 @@ const HomeLeft = styled.div`
             background-clip: text; 
             color: transparent; 
             line-height: 120%;
+
+            @media (max-width: 768px){
+                font-size: 20px;
+            }
         }
 
         & > p {
@@ -77,6 +92,10 @@ const HomeRight = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    @media (max-width: 768px){
+        width: 100%;
+    }
 
     & > div:nth-child(1){
         background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/e2f058a7-3785-4301-a244-6d11e8ad5200/public');
@@ -148,6 +167,11 @@ const HomeRight = styled.div`
         background-size: cover;
         border-image: 0 fill linear-gradient(90deg, #00000050, #0000);
         overflow: hidden;
+
+        @media (max-width: 768px){
+            border: 1px solid red;
+            width: 100%;
+        }
 
             & > div {
             display: flex;
@@ -230,7 +254,7 @@ const Home = () => {
                             <span>
                                 Escrito por: <b>{latestBlogs[0].autor}</b> | {latestBlogs[0].data}
                             </span>
-                            <Button05 text="Saber mais sobre esse artigo" />
+                            <Button05 children="Saber mais sobre esse artigo" />
                         </div>
                     </HomeLeft>
                     <HomeRight>
@@ -246,7 +270,7 @@ const Home = () => {
                                     <span>
                                         Escrito por: <b>{blog.autor}</b> | {blog.data}
                                     </span>
-                                    <Button05 text="Saber mais sobre esse artigo" />
+                                    <Button05 children="Saber mais sobre esse artigo" />
                                 </div>
                             </div>
                         ))}

@@ -4,7 +4,10 @@ import styled from "styled-components";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { BsInstagram, BsFacebook, BsLinkedin, BsFillPlayFill } from "react-icons/bs";
 import Button05 from "../../components/buttons/Button05";
 
@@ -44,7 +47,7 @@ const ArtigoLeft = styled.div`
         & > h1 {
             font-size: 32px;
             font-weight: 400;
-            color: var(--color--black);
+            color: var(--color--blue);
         }
 
         & > span {
@@ -56,8 +59,14 @@ const ArtigoLeft = styled.div`
 
             & > b {
                 font-weight: 500;
-                color: var(--color--dark--blue);
+                color: var(--color--blue);
             }
+        }
+
+        & > p {
+          font-weight: 400;
+          line-height: 120%;
+          color: var(--color--black);
         }
 
         & > img {
@@ -69,13 +78,13 @@ const ArtigoLeft = styled.div`
 
         & > h6 {
             font-weight: 300;
-            font-size: 10px;
+            font-size: 12px;
             font-style: italic;
             padding-left: 30px;
         }
     }
 
-    & > div:nth-child(2){
+    & > div:nth-child(n + 2){
         height: auto;
         width: 100%;
         display: flex;
@@ -84,58 +93,76 @@ const ArtigoLeft = styled.div`
         justify-content: flex-start;
         gap: 20px;
 
-        & > p{
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 120%;
-            opacity: .6;
+        & > h1 {
+          font-size: 24px;
+          color: var(--color--blue);
+          font-weight: 500;
         }
 
-        & > h2{
-            font-size: 24px;
-            font-weight: 400;
-            color: var(--color--black);
-        }
-    }
+        & > div {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          gap: 15px;
 
-    & > div:nth-child(n + 3){
-        height: auto;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 30px;
-
-        & > h6 {
-            font-weight: 300;
-            font-size: 10px;
-            font-style: italic;
-            padding-left: 30px;
-        }
-
-        & > img{
+          & > img {
             width: 100%;
-            height: 50vh;
+            height: 100%;
             object-fit: cover;
             border-radius: 30px;
         }
 
-        & > h1{
-            font-size: 30px;
-            font-weight: 400;
-            background: linear-gradient(130deg, var(--color--blue), var(--color--dark--blue));
-            -webkit-background-clip: text;  
-            background-clip: text; 
-            color: transparent; 
+        & > h6 {
+            font-weight: 300;
+            font-size: 12px;
+            font-style: italic;
+            padding-left: 30px;
         }
 
-        & > p{
-            font-size: 14px;
+          & > p {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 120%;
             opacity: .8;
-            color: var(--color);
+            color: var(--color--black);
+          }
+
+          & > ol {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 20px;
+
+            & > li {
+              font-size: 16px;
+              font-weight: 400;
+              line-height: 120%;
+              color: var(--color--black);
+              position: relative;
+              padding-left: 25px;
+
+              &::before{
+                content: "";
+                position: absolute;
+                left: 5px;
+                top: 5px;
+                width: 8px;
+                height: 8px;
+                background-color: var(--color--blue);
+                border-radius: 50%;
+              }
+
+              & > b {
+                font-weight: 600;
+                color: var(--color--black);
+              }
+            }
+          }
         }
     }
+
 
     & > article {
         width: 100%;
@@ -474,23 +501,26 @@ const ArticlePage = () => {
       <div>
         <ArtigoAll>
           <ArtigoLeft>
+            {/* primeira dobra */}
             <div>
               <h1>{article.title}</h1>
               <span>
                 Escrito por: <b>{article.autor}</b> | {article.data}
               </span>
+              <p dangerouslySetInnerHTML={{ __html: article.descricao }} />
               <img src={article.imagemPrincipal} alt="Imagem do blog" />
-              <h6>{article.bibliografiaImagemPrincipal}</h6>
+              <h6 dangerouslySetInnerHTML={{ __html: article.bibliografiaPrincipal }} />
             </div>
-  
+
+            {/* Segunda dobra */}
             {article.sumario?.map((topic, index) => (
               <div key={index} id={topic.id}>
                 <h1>{topic.title}</h1>
-                <p>{topic.content}</p>
+                <div dangerouslySetInnerHTML={{ __html: topic.content }} />
               </div>
             ))}
           </ArtigoLeft>
-  
+
           <ArtigoRight>
             <div>
               <h3>Sumário</h3>
@@ -506,35 +536,63 @@ const ArticlePage = () => {
             </div>
   
             <div>
-              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/anovametalica/" target="_blank" rel="noopener noreferrer">
                 <BsInstagram />
               </a>
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.facebook.com/people/Nova-Met%C3%A1lica/61564565333487/" target="_blank" rel="noopener noreferrer">
                 <BsFacebook />
               </a>
-              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/novametalica/" target="_blank" rel="noopener noreferrer">
                 <BsLinkedin />
               </a>
             </div>
   
             <ArtigoCarrossel>
-              <Swiper spaceBetween={10} slidesPerView={1} navigation loop>
-                {article.carrosselImagens?.map((image, index) => (
-                  <SwiperSlide key={index}>
-                    <a href={image.link}>
-                      <img
-                        src={image.src}
-                        alt={`Imagem do carrossel ${index + 1}`}
-                        style={{
-                          width: "100%",
-                          borderRadius: "15px",
-                          height: "100%",
-                          objectFit: "contain",
-                        }}
-                      />
-                    </a>
-                  </SwiperSlide>
-                ))}
+              <Swiper spaceBetween={10} slidesPerView={1} navigation loop modules={[Navigation]}>
+                <SwiperSlide>
+                  <a href="/pagina1">
+                    <img
+                      src="https://via.placeholder.com/600x300?text=Imagem+1"
+                      alt="Imagem 1"
+                      style={{
+                        width: "100%",
+                        borderRadius: "15px",
+                        height: "100%",
+                        objectFit: "contain",
+                      }}
+                    />
+                  </a>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <a href="/pagina2">
+                    <img
+                      src="https://via.placeholder.com/600x300?text=Imagem+2"
+                      alt="Imagem 2"
+                      style={{
+                        width: "100%",
+                        borderRadius: "15px",
+                        height: "100%",
+                        objectFit: "contain",
+                      }}
+                    />
+                  </a>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <a href="/pagina3">
+                    <img
+                      src="https://via.placeholder.com/600x300?text=Imagem+3"
+                      alt="Imagem 3"
+                      style={{
+                        width: "100%",
+                        borderRadius: "15px",
+                        height: "100%",
+                        objectFit: "contain",
+                      }}
+                    />
+                  </a>
+                </SwiperSlide>
               </Swiper>
             </ArtigoCarrossel>
   
@@ -546,7 +604,7 @@ const ArticlePage = () => {
                     <h2>{related.title}</h2>
                     <p>{related.description}</p>
                     <Button05
-                      text="Leia mais"
+                      children="Leia mais"
                       onClick={() => navigate(`/blog/${related.slug}`)}
                     />
                   </div>

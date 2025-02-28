@@ -9,7 +9,7 @@ import CardExample from "../../layout/cards/CardBlogExample"; // Seu componente 
 
 const BlogsAll = styled.section`
   width: 100%;
-  max-width: 1140px;
+  max-width: 1280px;
   transform: translateX(-50%);
   left: 50%;
   top: 0;
@@ -21,8 +21,18 @@ const BlogsAll = styled.section`
   gap: 20px;
   margin-bottom: 5vh;
 
+  @media (max-width: 768px){
+    height: auto;
+    margin-top: 25px;
+    padding: 0 2.5%;
+  }
+
   & > div:nth-child(1) {
     width: 30%;
+
+    @media (max-width: 768px){
+      display: none;
+    }
   }
 
   & > div:nth-child(2) {
@@ -33,6 +43,11 @@ const BlogsAll = styled.section`
     gap: 20px;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 768px){
+      width: 100%;
+    }
+
     & > div {
       width: 100%;
       overflow-y: scroll;
@@ -42,6 +57,9 @@ const BlogsAll = styled.section`
       align-items: center;
       justify-content: flex-start;
       gap: 30px;
+
+      @media (max-width: 768px){
+      }
     }
   }
 `;
