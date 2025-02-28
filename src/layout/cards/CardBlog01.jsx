@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore"; // Firebase
 import { db } from "../../../firebase"; // Configuração do Firebase
 import Button05 from "../../components/buttons/Button05";
+import { useNavigate } from "react-router-dom";
 
 const CardAll = styled.div`
     width: 100%;
@@ -12,7 +13,7 @@ const CardAll = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    padding: 10px;
     gap: 20px;
     background-color: var(--color--dark--blue);
 
@@ -178,6 +179,7 @@ const CardAll = styled.div`
 
 const CardLeftBlog = () => {
     const [latestBlogs, setLatestBlogs] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchLatestBlogs = async () => {
@@ -203,6 +205,10 @@ const CardLeftBlog = () => {
         fetchLatestBlogs();
     }, []);
 
+    const handleRedirect = (link) => {
+        navigate(`/blog/${link}`);
+      };
+
     return (
         <CardAll>
             {latestBlogs.map((blog, index) => (
@@ -217,7 +223,7 @@ const CardLeftBlog = () => {
                         <span>
                             Escrito por: <b>{blog.autor}</b> | {blog.data}
                         </span>
-                        <Button05 children="Saber mais" />
+                        <Button05 children="Saber mais" onClick={() => handleRedirect(blog.link)}/>
                     </div>
                 </div>
             ))}

@@ -20,6 +20,7 @@ const BlogsAll = styled.section`
   justify-content: space-between;
   gap: 20px;
   margin-bottom: 5vh;
+  padding: 0 2.5%;
 
   @media (max-width: 768px){
     height: auto;

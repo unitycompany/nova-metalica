@@ -7,13 +7,13 @@ import { db } from "../../../firebase"; // Configuração do Firebase
 // Estilo da pesquisa
 const PesquisaAll = styled.div`
     width: 100%!important;
-    height: 10%!important;
+    height: auto!important;
     display: flex!important;
     align-items: center!important;
     justify-content: space-between!important;
     flex-direction: row!important;
     gap: 20px;
-    padding: 15px;
+    padding: 10px;
     background-color: var(--color--dark--blue);
     overflow: hidden!important;
     border-radius: 15px;
@@ -71,7 +71,7 @@ const PesquisaAll = styled.div`
         & > button {
             background-color: var(--color--white);
             padding: 10px;
-            font-size: 10px;
+            font-size: 12px;
             border-radius: 10px;
             cursor: pointer;
         }

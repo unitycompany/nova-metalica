@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore"; // Firebase
 import { db } from "../../../firebase"; // Configuração do Firebase
 import Button05 from "../../components/buttons/Button05";   
+import { useNavigate } from "react-router-dom";
 
 const HomeAll = styled.section`
     width: 100%;
@@ -16,7 +17,7 @@ const HomeAll = styled.section`
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    padding: 10% 0 5% 0;
+    padding: 10% 2.5% 5% 2.5%;
 
     @media (max-width: 768px){
         flex-direction: column;
@@ -215,6 +216,7 @@ const HomeRight = styled.div`
 
 const Home = () => {
     const [latestBlogs, setLatestBlogs] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchLatestBlogs = async () => {
@@ -240,6 +242,10 @@ const Home = () => {
         fetchLatestBlogs();
     }, []);
 
+    const handleRedirect = (link) => {
+        navigate(`/blog/${link}`);
+      };
+
     return (
         <HomeAll>
             {latestBlogs.length > 0 && (
@@ -247,14 +253,19 @@ const Home = () => {
                     <HomeLeft
                         style={{
                             backgroundImage: `url(${latestBlogs[0].image})`,
+                            cursor: "pointer",
                         }}
+                        onClick={() => handleRedirect(latestBlogs[0].link)}
                     >
                         <div>
                             <h1>{latestBlogs[0].titulo}</h1>
                             <span>
                                 Escrito por: <b>{latestBlogs[0].autor}</b> | {latestBlogs[0].data}
                             </span>
-                            <Button05 children="Saber mais sobre esse artigo" />
+                            <Button05 
+                                children="Saber mais sobre esse artigo" 
+                                onClick={() => handleRedirect(latestBlogs[0].link)}
+                            />
                         </div>
                     </HomeLeft>
                     <HomeRight>
@@ -263,14 +274,19 @@ const Home = () => {
                                 key={blog.id}
                                 style={{
                                     backgroundImage: `url(${blog.image})`,
+                                    cursor: "pointer",
                                 }}
+                                onClick={() => handleRedirect(blog.link)}
                             >
                                 <div>
                                     <h1>{blog.titulo}</h1>
                                     <span>
                                         Escrito por: <b>{blog.autor}</b> | {blog.data}
                                     </span>
-                                    <Button05 children="Saber mais sobre esse artigo" />
+                                    <Button05 
+                                        children="Saber mais sobre esse artigo" 
+                                        onClick={() => handleRedirect(blog.link)}
+                                    />
                                 </div>
                             </div>
                         ))}

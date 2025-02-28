@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { collection, query, where, getDocs } from "firebase/firestore";
@@ -14,26 +14,35 @@ import Button05 from "../../components/buttons/Button05";
 // Estilos para o layout do artigo
 const ArtigoAll = styled.section`
   width: 100%;
-  max-width: 1140px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 10% 0% 5% 0;
+  padding: 10% 2.5% 5% 2.5%;
   display: flex;
-  align-items: flex-start;
+  align-self: flex-start;
+  align-items: stretch;
   justify-content: space-between;
   gap: 50px;
   height: auto;
+
+  @media (max-width: 768px){
+    flex-direction: column;
+    padding: 30% 2.5% 5% 2.5%;
+  }
 `;
 
 const ArtigoLeft = styled.div`
     width: 70%;
-    height: 100vh;
-    overflow-y: scroll;
+    height: auto;
     padding-left: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 30px;
     padding-right: 1.5%;
+    
+    @media (max-width: 768px){
+      width: 100%;
+    }
 
     & > div:nth-child(1){
         width: 100%;
@@ -74,6 +83,10 @@ const ArtigoLeft = styled.div`
             height: 70%;
             object-fit: cover;
             border-radius: 30px;
+            
+            @media(max-width: 768px){
+              border-radius: 15px;
+            }
         }
 
         & > h6 {
@@ -81,6 +94,10 @@ const ArtigoLeft = styled.div`
             font-size: 12px;
             font-style: italic;
             padding-left: 30px;
+
+            @media(max-width: 768px){
+              padding-left: 0px;
+            }
         }
     }
 
@@ -111,6 +128,10 @@ const ArtigoLeft = styled.div`
             height: 100%;
             object-fit: cover;
             border-radius: 30px;
+
+            @media(max-width: 768px){
+              border-radius: 15px;
+            }
         }
 
         & > h6 {
@@ -118,6 +139,10 @@ const ArtigoLeft = styled.div`
             font-size: 12px;
             font-style: italic;
             padding-left: 30px;
+
+            @media(max-width: 768px){
+              padding-left: 0;
+            }
         }
 
           & > p {
@@ -223,15 +248,22 @@ const ArtigoLeft = styled.div`
 const ArtigoRight = styled.div`
     width: 30%;
     height: 90vh;
-    margin-right: 0%;
     background-color: #00000010;
     border-radius: 30px;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 15px;
+    position: sticky!important;
+    top: 10px;
+
+    @media(max-width: 768px){
+      width: 100%;
+      height: 120vh;
+      border-radius: 15px;
+    }
     
     & > div:nth-child(1){
         width: 100%;
@@ -292,7 +324,6 @@ const ArtigoRight = styled.div`
         background-color: var(--color--white);
         border-radius: 20px;
         gap: 20px;
-
         & > a {
             color: var(--color--black);
             font-size: 24px;
@@ -303,6 +334,8 @@ const ArtigoRight = styled.div`
                 transform: scale(.95);
             }
         }
+
+        
     }
 `
 
@@ -441,6 +474,7 @@ const ArticlePage = () => {
     const [relatedArticles, setRelatedArticles] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const sidebarRef = useRef(null);
   
     useEffect(() => {
       const fetchArticle = async () => {
@@ -520,7 +554,7 @@ const ArticlePage = () => {
               </div>
             ))}
           </ArtigoLeft>
-
+          
           <ArtigoRight>
             <div>
               <h3>Sumário</h3>
@@ -548,17 +582,17 @@ const ArticlePage = () => {
             </div>
   
             <ArtigoCarrossel>
-              <Swiper spaceBetween={10} slidesPerView={1} navigation loop modules={[Navigation]}>
+              <Swiper spaceBetween={10} slidesPerView={1} navigation={false} loop modules={[Navigation]}>
                 <SwiperSlide>
-                  <a href="/pagina1">
+                  <a href="/produtos/drywall">
                     <img
-                      src="https://via.placeholder.com/600x300?text=Imagem+1"
+                      src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/1b675373-001c-4d4b-faa7-e37e0f2fb900/public"
                       alt="Imagem 1"
                       style={{
                         width: "100%",
                         borderRadius: "15px",
                         height: "100%",
-                        objectFit: "contain",
+                        objectFit: "cover",
                       }}
                     />
                   </a>

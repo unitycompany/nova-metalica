@@ -10,6 +10,7 @@ const CardAll = styled.div`
     align-items: center;
     justify-content: flex-start;
     gap: 20px;
+    border: 1px solid var(--color--black);
 
     @media (max-width: 768px){
         height: auto;
@@ -48,7 +49,7 @@ const CardAll = styled.div`
         flex-direction: column;
         align-items: flex-start;
         justify-content: space-between;
-        padding: 15px 0;
+        padding: 20px 0;
         gap: 15px;
         height: 100%;
 
