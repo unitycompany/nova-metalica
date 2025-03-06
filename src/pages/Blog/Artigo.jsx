@@ -584,9 +584,9 @@ const ArticlePage = () => {
             <ArtigoCarrossel>
               <Swiper spaceBetween={10} slidesPerView={1} navigation={false} loop modules={[Navigation]}>
                 <SwiperSlide>
-                  <a href="/produtos/drywall">
+                  <a href="/#Form">
                     <img
-                      src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/1b675373-001c-4d4b-faa7-e37e0f2fb900/public"
+                      src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/38bef10d-c181-4aff-61e9-a1d7c602b300/public"
                       alt="Imagem 1"
                       style={{
                         width: "100%",
@@ -599,9 +599,9 @@ const ArticlePage = () => {
                 </SwiperSlide>
 
                 <SwiperSlide>
-                  <a href="/pagina2">
+                  <a href="/#Form">
                     <img
-                      src="https://via.placeholder.com/600x300?text=Imagem+2"
+                      src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/57163d33-3bd1-44f8-516a-e24a150bed00/public"
                       alt="Imagem 2"
                       style={{
                         width: "100%",
@@ -614,9 +614,9 @@ const ArticlePage = () => {
                 </SwiperSlide>
 
                 <SwiperSlide>
-                  <a href="/pagina3">
+                  <a href="/#Form">
                     <img
-                      src="https://via.placeholder.com/600x300?text=Imagem+3"
+                      src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/3408152b-3487-438d-4ae7-8b8af2de6e00/public"
                       alt="Imagem 3"
                       style={{
                         width: "100%",
