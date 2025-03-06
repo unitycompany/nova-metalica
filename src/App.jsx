@@ -12,6 +12,7 @@ import "./App.css";
 import "./styles/global.css";
 import "./styles/reset.css";
 import "./styles/variables.css";
+import CookieConsent from "./pages/Politicas/CookieConsent";
 
 // Lazy loading das páginas
 const PaginaInicial = lazy(() => import("./pages/Inicial/Inicial"));
@@ -95,6 +96,7 @@ function AnimatedRoutes() {
           <Route path="/lp" element={<LP />} />
         </Routes>
       </motion.div>
+      
     </AnimatePresence>
   );
 }
@@ -103,6 +105,7 @@ function App() {
   return (
     <Router>
       <MainApp />
+      <CookieConsent />
     </Router>
   );
 }
@@ -127,6 +130,7 @@ function MainApp() {
       {!isLandingPage && <Header />}
       <Suspense fallback={<div>Carregando...</div>}>
         <AnimatedRoutes />
+        
       </Suspense>
       {!isLandingPage && <Footer />}
     </div>

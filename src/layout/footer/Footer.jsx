@@ -182,23 +182,23 @@ const Footer = () => {
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Início
                         </a>
-                        <a onClick={() => navigate ('/produtos/steel-frame')}>
+                        {/* <a onClick={() => navigate ('/produtos/steel-frame')}>
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Produtos
-                        </a>
+                        </a> */}
                         <a onClick={() => navigate ('/sobre')}>
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Sobre nós
                         </a>
-                        <a onClick={() => navigate ('/parcerias')}>
+                        {/* <a onClick={() => navigate ('/parcerias')}>
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Parcerias
-                        </a>
+                        </a> */}
                         <a onClick={() => navigate ('/blog')}>
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Blog
                         </a>
-                        <a onClick={() => navigate ('/sobre')}>
+                        <a onClick={() => navigate ('/sobre#Informacoes')}>
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Como fabricamos
                         </a>
