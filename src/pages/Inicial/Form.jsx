@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -189,6 +190,20 @@ const ContactForm = styled.form`
 
 const Form = () => {
     const navigate = useNavigate();
+
+    const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === "#Form") {
+      setTimeout(() => {
+        const formSection = document.getElementById("Form");
+        if (formSection) {
+          formSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300); // Aguarda um pouco para garantir que a página carregou
+    }
+  }, [location]);
+
 
     const [formData, setFormData] = useState({
         name: "",

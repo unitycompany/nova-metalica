@@ -459,7 +459,7 @@ const Header = () => {
   return (
     <HeaderAll
       style={{
-        top: scrollingDown ? "-20vh" : "0",
+        top: scrollingDown ? "0vh" : "0",
       }}
     >
       <HeaderDivBlack data-aos="fade-down" data-aos-delay="0">
@@ -523,15 +523,24 @@ const Header = () => {
           </NavLink>
         </div>
         <div>
-          <Button04 
-          children="Solicitar orçamento"
-          onClick={() => {
-            const formSection = document.getElementById('Form');
-            if ( formSection ){
-              formSection.scrollIntoView({ behavior : 'smooth' })
-            }
-          }}
-          />
+        <Button04 
+  children="Solicitar orçamento"
+  onClick={() => {
+    const formSection = document.getElementById('Form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.href = "/#Form";
+      setTimeout(() => {
+        const formAfterNav = document.getElementById('Form');
+        if (formAfterNav) {
+          formAfterNav.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 500); // Aguarda meio segundo para garantir que a página carregou
+    }
+  }}
+/>
+
         </div>
         <MenuButton onClick={() => setSidebarOpen(true)}>
           <HiBars3 />
