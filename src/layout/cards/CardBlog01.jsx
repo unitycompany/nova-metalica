@@ -223,7 +223,7 @@ const CardLeftBlog = () => {
                         <span>
                             Escrito por: <b>{blog.autor}</b> | {blog.data}
                         </span>
-                        <Button05 children="Saber mais" onClick={() => handleRedirect(blog.link)}/>
+                        <Button05 children="Ler artigo" onClick={() => handleRedirect(blog.link)}/>
                     </div>
                 </div>
             ))}

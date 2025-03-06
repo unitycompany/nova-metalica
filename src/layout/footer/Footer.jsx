@@ -123,6 +123,11 @@ const FooterPolitica = styled.div`
     align-items: center;
     justify-content: space-between;
     height: 5%;
+
+    @media (max-width: 768px){
+        flex-direction: column;
+        gap: 20px;
+    }
     
     & > p{
         font-size: 12px;
@@ -134,6 +139,7 @@ const FooterPolitica = styled.div`
 
         @media (max-width: 768px){
             line-height: 120%;
+            flex-direction: column;
         }
 
         & > a {

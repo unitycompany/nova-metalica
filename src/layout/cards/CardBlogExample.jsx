@@ -128,7 +128,7 @@ const CardExample = ({ topico, titulo, description, hashtag, autor, data, image 
                         <span key={index}>#{tag}</span> // Hashtags dinâmicas
                     ))}
                 </div>
-                <Button05 children="Saber mais" /> {/* Botão "Saber mais" */}
+                <Button05 children="Ler artigo" /> {/* Botão "Saber mais" */}
                 <h6>Escrito por: <a href="#"> {autor} </a> | {data}</h6> {/* Autor e data dinâmicos */}
             </div>
         </CardAll>

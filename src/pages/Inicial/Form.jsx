@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -190,6 +190,125 @@ const ContactForm = styled.form`
 const Form = () => {
     const navigate = useNavigate();
 
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        tel: "",
+      });
+      const [loading, setLoading] = useState(false);
+      const [pageName, setPageName] = useState("Home"); // Nome da página padrão
+    
+      useEffect(() => {
+        // Obtém o nome da página a partir da URL
+        let path = window.location.pathname.replace(/\//g, ""); // Remove barras
+        path = path ? path.charAt(0).toUpperCase() + path.slice(1) : "Home"; // Capitaliza a primeira letra
+        setPageName(path);
+      }, []);
+    
+      const handleChange = (e) => {
+        const { id, value } = e.target;
+        setFormData((prevState) => ({
+          ...prevState,
+          [id]: value,
+        }));
+      };
+    
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        const { name, email, tel } = formData;
+    
+        // Validação básica
+        if (!name || !email || !tel) {
+          alert("Por favor, preencha todos os campos corretamente.");
+          return;
+        }
+    
+        setLoading(true);
+    
+        // Captura de UTM
+        const utms = getUTMs();
+        const utmSource = utms.utm_source || "orgânico";
+        const utmMedium = utms.utm_medium || "";
+        const utmCampaign = utms.utm_campaign || "";
+        const utmContent = utms.utm_content || "";
+        const utmTerm = utms.utm_term || "";
+        const pageReferrer = window.location.href || "URL não encontrada";
+    
+        // Montagem do novo ID
+        const customId = `FORMULARIO - ${pageName} - ${name}`;
+        const customSource = `FORMULARIO - ${pageName}`;
+    
+        // Montagem do payload
+        const payload = {
+          rules: {
+            update: "false",
+            filter_status_update: "open",
+            equal_pipeline: "true",
+            status: "open",
+            validate_cpf: "false",
+          },
+          leads: [
+            {
+              id: customId, // Aqui entra o ID personalizado
+              user: name,
+              email: email,
+              name: name,
+              personal_phone: tel,
+              mobile_phone: tel,
+              last_conversion: {
+                source: customSource,
+              },
+              custom_fields: {
+                uniqueId: customId, // Também pode ser usado no uniqueId se quiser
+                utm_source: utmSource,
+                utm_medium: utmMedium,
+                utm_campaign: utmCampaign,
+                utm_content: utmContent,
+                utm_term: utmTerm,
+                page_referrer: pageReferrer,
+              },
+            },
+          ],
+        };
+    
+        try {
+          const response = await fetch(
+            "https://app.pipe.run/webservice/integradorJson?hash=56c50ba8-44e9-42fd-ba51-93207130106f",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(payload),
+            }
+          );
+    
+          const data = await response.json();
+          console.log("Success:", data);
+          alert("Formulário enviado com sucesso!");
+          setFormData({ name: "", email: "", tel: "" });
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Houve um erro ao enviar o formulário.");
+        } finally {
+          setLoading(false);
+        }
+      };
+    
+      // Função para capturar UTMs
+      const getUTMs = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        return {
+          utm_source: urlParams.get("utm_source"),
+          utm_medium: urlParams.get("utm_medium"),
+          utm_campaign: urlParams.get("utm_campaign"),
+          utm_content: urlParams.get("utm_content"),
+          utm_term: urlParams.get("utm_term"),
+        };
+      };
+    
+
     return (
         <>
             <FormAll id="Form"> 
@@ -199,7 +318,7 @@ const Form = () => {
                     <p data-aos="fade-up-left" data-aos-delay="300">Estamos à disposição para esclarecer suas dúvidas e ajudá-lo a encontrar a melhor solução para seu projeto.</p>
                     <p data-aos="fade-up-left" data-aos-delay="400">Ao enviar esse formulário você está de acordo com a nossa <a onClick={() => navigate ('/politica-de-dados')}>politica de dados</a>, e nosso <a onClick={() => navigate ('/termos-de-condicoes')}>termo e condições</a>.</p>
                 </FormTexts>
-                <ContactForm id="contactForm" data-aos="fade-up-right" data-aos-delay="200">
+                <ContactForm id="contactForm" onSubmit={handleSubmit} data-aos="fade-up-right" data-aos-delay="200">
                     <h1>
                         Solicite seu orçamento
                     </h1>
@@ -209,17 +328,17 @@ const Form = () => {
                     <div>
                         <label>
                             Nome
-                            <input type="text" id="name" placeholder="Anna Fernandes" />
+                            <input type="text" id="name" placeholder="Anna Fernandes" value={formData.name} onChange={handleChange}/>
                         </label>
                         <label>
                             E-mail
-                            <input type="email" id="email" placeholder="annafernandes@gmail.com" />
+                            <input type="email" id="email" placeholder="annafernandes@gmail.com" value={formData.email} onChange={handleChange} />
                         </label>
                         <label>
                             Seu WhatsApp
-                            <input type="tel" id="tel" placeholder="24981234567" />
+                            <input type="tel" id="tel" placeholder="24981234567" value={formData.tel} onChange={handleChange}/>
                         </label>
-                        <button type="submit">Enviar formulário</button>
+                        <button type="submit" disabled={loading}>{loading ? "Enviando..." : "Enviar formulário"}</button>
                     </div>
                 </ContactForm>
 

@@ -37,8 +37,8 @@ const BlogSwiper = styled.div`
   height: 300px;
   display: flex;
   justify-content: space-between;
-  padding: 10px;
-  border-radius: 15px;
+  padding: 5px;
+  border-radius: 20px;
   background-color: var(--color--white);
   gap: 25px;
 
@@ -192,7 +192,7 @@ const Blog = () => {
                 ))}
               </div>
               <Button02
-                children="Saber mais"
+                children="Ler artigo"
                 onClick={() => navigate(`/blog/${blog.link}`)}
               />
             </div>
@@ -201,7 +201,7 @@ const Blog = () => {
             <h1>Confira nosso blog e fique por dentro de tudo</h1>
             <p>Novos posts nos dias 15 e 30 de cada mês</p>
             <Button03 
-            children="Saber mais"
+            children="Ver todos os artigos"
             onClick={() => navigate ('/blog')}
             />
           </BlogTexts>
