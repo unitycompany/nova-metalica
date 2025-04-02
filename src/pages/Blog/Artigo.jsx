@@ -38,7 +38,7 @@ const ArtigoLeft = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 40px;
+    gap: 45px;
     padding-right: 1.5%;
     padding-top: 1%;
     overflow-y: auto;
