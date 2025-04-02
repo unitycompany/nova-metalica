@@ -37,6 +37,7 @@ const ArtigoLeft = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: flex-start;
     gap: 30px;
     padding-right: 1.5%;
     padding-top: 1%;
@@ -50,7 +51,7 @@ const ArtigoLeft = styled.div`
         width: 100%;
         display: flex;
         align-items: flex-start;
-        justify-content: center;
+        justify-content: flex-start;
         flex-direction: column;
         height: 80vh;
         gap: 20px;
@@ -151,7 +152,6 @@ const ArtigoLeft = styled.div`
             font-size: 16px;
             font-weight: 400;
             line-height: 120%;
-            opacity: .8;
             color: var(--color--black);
           }
 
