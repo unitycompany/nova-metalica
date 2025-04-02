@@ -23,6 +23,7 @@ const ArtigoAll = styled.section`
   justify-content: space-between;
   gap: 50px;
   overflow: visible;
+  scroll-behavior: smooth;
 
   @media (max-width: 768px){
     flex-direction: column;
@@ -636,9 +637,7 @@ const ArticlePage = () => {
               <p dangerouslySetInnerHTML={{ __html: article.descricao }} />
               <img src={article.imagemPrincipal} alt="Imagem do blog" />
               <h6 dangerouslySetInnerHTML={{ __html: article.bibliografiaPrincipal }} />
-            </div>
-
-            
+            </div>   
 
             {/* Segunda dobra */}
             {article.sumario?.map((topic, index) => (
