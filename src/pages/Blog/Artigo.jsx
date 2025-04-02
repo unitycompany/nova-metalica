@@ -16,7 +16,7 @@ const ArtigoAll = styled.section`
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 10% 2.5% 5% 2.5%;
+  padding: 7.5% 2.5% 5% 2.5%;
   display: flex;
   align-self: flex-start;
   align-items: flex-start;
@@ -38,7 +38,7 @@ const ArtigoLeft = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 30px;
+    gap: 40px;
     padding-right: 1.5%;
     padding-top: 1%;
     overflow-y: auto;
@@ -55,6 +55,7 @@ const ArtigoLeft = styled.div`
         flex-direction: column;
         height: 80vh;
         gap: 20px;
+        margin-bottom: 50px;
 
         & > h1 {
             font-size: 32px;
@@ -125,6 +126,11 @@ const ArtigoLeft = styled.div`
           align-items: flex-start;
           justify-content: center;
           gap: 15px;
+
+          
+          & > video {
+            border-radius: 25px;
+          }
 
           & > img {
             width: 100%;
@@ -632,22 +638,7 @@ const ArticlePage = () => {
               <h6 dangerouslySetInnerHTML={{ __html: article.bibliografiaPrincipal }} />
             </div>
 
-            {/* <p>
-              No <i>Steel Frame</i>, os perfis de aço galvanizado formam a estrutura da edificação. Essa estrutura é preenchida com materiais de vedação, como placas cimentícias ou Glasroc X, e isolantes térmicos e acústicos, como lã de vidro. Tudo é planejado previamente, resultando em maior precisão durante a execução.
-            </p>
-            <div>
-              <h4>Aplicações</h4>
-              <p>O <i>Steel Frame</i> pode ser utilizado em diversos tipos de construção, incluindo:</p>
-              <ol>
-                <li>Residências;</li>
-                <li>Hoteis, resorts e pousadas;</li>
-                <li>Prédios residenciais, comerciais e industriais;</li>
-                <li>Escolas, hospitais e UPAs;</li>
-                <li>Galpões;</li>
-                <li>Centros logísticos (de distribuição).</li>
-              </ol>
-            </div>
-            <p>A sua versatilidade permite adaptações para diferentes climas e, ainda, terrenos, além de facilitar futuras ampliações (ou reformas).</p> */}
+            
 
             {/* Segunda dobra */}
             {article.sumario?.map((topic, index) => (
