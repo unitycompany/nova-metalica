@@ -187,6 +187,39 @@ const ArtigoLeft = styled.div`
               }
             }
           }
+
+          & > ul {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 20px;
+
+            & > li {
+              font-size: 16px;
+              font-weight: 400;
+              line-height: 120%;
+              color: var(--color--black);
+              position: relative;
+              padding-left: 25px;
+
+              &::before{
+                content: "";
+                position: absolute;
+                left: 5px;
+                top: 5px;
+                width: 8px;
+                height: 8px;
+                background-color: var(--color--blue);
+                border-radius: 50%;
+              }
+
+              & > b {
+                font-weight: 600;
+                color: var(--color--black);
+              }
+            }
+          }
         }
     }
 
