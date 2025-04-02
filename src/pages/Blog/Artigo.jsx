@@ -19,10 +19,10 @@ const ArtigoAll = styled.section`
   padding: 10% 2.5% 5% 2.5%;
   display: flex;
   align-self: flex-start;
-  align-items: stretch;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 50px;
-  height: auto;
+  overflow: visible;
 
   @media (max-width: 768px){
     flex-direction: column;
@@ -32,13 +32,15 @@ const ArtigoAll = styled.section`
 
 const ArtigoLeft = styled.div`
     width: 70%;
-    height: auto;
+    height: 95vh;
     padding-left: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 30px;
     padding-right: 1.5%;
+    padding-top: 1%;
+    overflow-y: auto;
     
     @media (max-width: 768px){
       width: 100%;
@@ -258,11 +260,14 @@ const ArtigoRight = styled.div`
     gap: 15px;
     position: sticky!important;
     top: 10px;
+    align-self: flex-start;
+    transition: transform 0.2s ease-out;
 
     @media(max-width: 768px){
       width: 100%;
       height: 120vh;
       border-radius: 15px;
+      position: static;
     }
     
     & > div:nth-child(1){
@@ -551,6 +556,12 @@ const ArticlePage = () => {
               <div key={index} id={topic.id}>
                 <h1>{topic.title}</h1>
                 <div dangerouslySetInnerHTML={{ __html: topic.content }} />
+                {topic.videoUrl && (
+                  <video controls width="100%">
+                    <source src={topic.videoUrl} type="video/mp4" />
+                    Seu navegador não suporta o elemento de vídeo.
+                  </video>
+                )}
               </div>
             ))}
           </ArtigoLeft>

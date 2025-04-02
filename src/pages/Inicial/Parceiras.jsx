@@ -140,7 +140,7 @@ const Parceiros = () => {
             <ParceirosAll>
                 <ParceirosTexts>
                     <h1 data-aos="fade-left" data-aos-delay="100">Seja nosso <b>parceiro</b></h1>
-                    <p data-aos="fade-left" data-aos-delay="200">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium sequi magni porro quibusdam a. Laudantium modi, maiores possimus accusantium enim exercitationem delectus ex voluptas molestias magni, facilis voluptatibus reiciendis a!</p>
+                    <p data-aos="fade-left" data-aos-delay="200">Junte-se a nós e faça parte de uma parceria sólida e confiável. Trabalhamos com materiais de alta qualidade e garantia de excelência, assegurando que todos os perfis sejam normatizados e atendam aos mais altos padrões do mercado. Seja nosso parceiro e fortaleça seus projetos com segurança e inovação!</p>
                     <div>
                         <div data-aos="fade-up" data-aos-delay="100">
                             <span>100%</span>
@@ -148,7 +148,7 @@ const Parceiros = () => {
                         </div>
                         <div data-aos="fade-up" data-aos-delay="100">
                             <span>100%</span>
-                            <p>Todos os perfis normatizados</p>
+                            <p>Fábricados por nós</p>
                         </div>
                     </div>
                     {/* <Button04 

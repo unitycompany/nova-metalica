@@ -130,7 +130,7 @@ const HeaderWhite = styled.div`
   justify-content: space-between;
   padding: 0 2.5%;
   background-color: #ffffff;
-  border-radius: 0 0 20px 20px ;
+  border-radius: 0 0 20px 20px;
 
   @media (max-width: 768px) {
     top: 0;

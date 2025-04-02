@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { BsArrowUpRight, BsAward } from "react-icons/bs";
+import { BsArrowUpRight, BsAward, BsCrosshair, BsBagCheck, BsCapslock } from "react-icons/bs";
 import Button04 from "../../components/buttons/Button04";
 
 
@@ -351,16 +351,17 @@ const Sobre = () => {
 
                         <SobreCardTop>
                             <div>
-                                <BsAward />
+                            <BsCrosshair />
+
                             </div>
                             <div>
-                                <h6>Por que</h6>
-                                <h1>Somos os melhores</h1>
+                                <h6>Produzimos com</h6>
+                                <h1>precisão e tecnologia</h1>
                             </div>
                         </SobreCardTop>
 
                         <SobreCardBottom>
-                            <p>Colocar os motivos pelos quais somos os melhores para se comprar perfis de steel frame e drywall bem objetivo</p>
+                            <p>Cada perfil de Steel Frame e Drywall que fabricamos passa por rigorosos processos de qualidade, garantindo resistência e exatidão para qualquer projeto.</p>
                             <a onClick={() => {
                                 const formSection = document.getElementById('Form');
                                 if ( formSection ){
@@ -378,16 +379,17 @@ const Sobre = () => {
 
                         <SobreCardTop>
                             <div>
-                                <BsAward />
+                            <BsBagCheck />
+
                             </div>
                             <div>
-                                <h6>Por que</h6>
-                                <h1>Somos os melhores</h1>
+                                <h6>Máteria-prima</h6>
+                                <h1>de alto padrão</h1>
                             </div>
                         </SobreCardTop>
 
                         <SobreCardBottom>
-                            <p>Colocar os motivos pelos quais somos os melhores para se comprar perfis de steel frame e drywall bem objetivo</p>
+                            <p>Utilizamos aço galvanizado de qualidade superior, garantindo estruturas duráveis, seguras e livres de corrosão.</p>
                             <a onClick={() => {
                                 const formSection = document.getElementById('Form');
                                 if ( formSection ){
@@ -405,16 +407,17 @@ const Sobre = () => {
 
                         <SobreCardTop>
                             <div>
-                                <BsAward />
+                            <BsCapslock />
+
                             </div>
                             <div>
-                                <h6>Por que</h6>
-                                <h1>Somos os melhores</h1>
+                                <h6>Fabricação</h6>
+                                <h1>sob demanda</h1>
                             </div>
                         </SobreCardTop>
 
                         <SobreCardBottom>
-                            <p>Colocar os motivos pelos quais somos os melhores para se comprar perfis de steel frame e drywall bem objetivo</p>
+                            <p>Produzimos perfis sob medida, adaptados às necessidades do seu projeto, com agilidade na entrega e padronização garantida.</p>
                             <a onClick={() => {
                                 const formSection = document.getElementById('Form');
                                 if ( formSection ){

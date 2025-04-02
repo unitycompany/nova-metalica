@@ -177,189 +177,211 @@ const ContactForm = styled.form`
     border-radius: 5px;
     color: var(--color--white);
     cursor: pointer;
-    transition: all .1s ease-in-out;
+    transition: all .3s ease-in-out;
+    position: relative;
+
+    &::before{
+      content: '';
+      width: 0%;
+      left: 0;
+      top: 0;
+      height: 100%;
+      background-color: var(--color--green);
+      position: absolute;
+      color: var(--color--black);
+      transition: all .3s ease-in-out;
+      z-index: -1;
+      border-radius: 5px;
+    }
+
+    &:hover::before{
+      width: 100%;
+    }
 
     }
 
     & > div > button:hover {
-        transform: scale(0.98);
+        transform: scale(0.95);
+        background-color: transparent;
+        box-shadow: 0 0 50px rgba(179, 255, 0, 0.3);
     }
 
 
 `
 
 const Form = () => {
-    const navigate = useNavigate();
-
-    const location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    if (location.hash === "#Form") {
-      setTimeout(() => {
-        const formSection = document.getElementById("Form");
-        if (formSection) {
-          formSection.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 300); // Aguarda um pouco para garantir que a página carregou
-    }
+      if (location.hash === "#Form") {
+          setTimeout(() => {
+              const formSection = document.getElementById("Form");
+              if (formSection) {
+                  formSection.scrollIntoView({ behavior: "smooth" });
+              }
+          }, 300);
+      }
   }, [location]);
 
+  const [formData, setFormData] = useState({
+      name: "",
+      email: "",
+      tel: "",
+  });
 
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        tel: "",
-      });
-      const [loading, setLoading] = useState(false);
-      const [pageName, setPageName] = useState("Home"); // Nome da página padrão
-    
-      useEffect(() => {
-        // Obtém o nome da página a partir da URL
-        let path = window.location.pathname.replace(/\//g, ""); // Remove barras
-        path = path ? path.charAt(0).toUpperCase() + path.slice(1) : "Home"; // Capitaliza a primeira letra
-        setPageName(path);
-      }, []);
-    
-      const handleChange = (e) => {
-        const { id, value } = e.target;
-        setFormData((prevState) => ({
+  const [loading, setLoading] = useState(false);
+  const [pageName, setPageName] = useState("Home");
+
+  useEffect(() => {
+      let path = window.location.pathname.replace(/\//g, "");
+      path = path ? path.charAt(0).toUpperCase() + path.slice(1) : "Home";
+      setPageName(path);
+  }, []);
+
+  // Função para formatar o telefone (24) 98141-4141
+  const formatPhone = (value) => {
+      value = value.replace(/\D/g, ""); // Remove tudo que não for número
+      value = value.replace(/^(\d{2})(\d)/g, "($1) $2"); // Coloca parênteses no DDD
+      value = value.replace(/(\d{5})(\d)/, "$1-$2"); // Coloca hífen no número
+      return value;
+  };
+
+  const handleChange = (e) => {
+      const { id, value } = e.target;
+      
+      // Aplica a formatação apenas no campo de telefone
+      const newValue = id === "tel" ? formatPhone(value) : value;
+
+      setFormData((prevState) => ({
           ...prevState,
-          [id]: value,
-        }));
-      };
-    
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-    
-        const { name, email, tel } = formData;
-    
-        // Validação básica
-        if (!name || !email || !tel) {
+          [id]: newValue,
+      }));
+  };
+
+  const handleSubmit = async (e) => {
+      e.preventDefault();
+      const { name, email, tel } = formData;
+
+      if (!name || !email || !tel) {
           alert("Por favor, preencha todos os campos corretamente.");
           return;
-        }
-    
-        setLoading(true);
-    
-        // Captura de UTM
-        const utms = getUTMs();
-        const utmSource = utms.utm_source || "orgânico";
-        const utmMedium = utms.utm_medium || "";
-        const utmCampaign = utms.utm_campaign || "";
-        const utmContent = utms.utm_content || "";
-        const utmTerm = utms.utm_term || "";
-        const pageReferrer = window.location.href || "URL não encontrada";
-    
-        // Montagem do novo ID
-        const customId = `FORMULARIO - ${pageName} - ${name}`;
-        const customSource = `FORMULARIO - ${pageName}`;
-    
-        // Montagem do payload
-        const payload = {
+      }
+
+      setLoading(true);
+
+      const utms = getUTMs();
+      const utmSource = utms.utm_source || "orgânico";
+      const utmMedium = utms.utm_medium || "";
+      const utmCampaign = utms.utm_campaign || "";
+      const utmContent = utms.utm_content || "";
+      const utmTerm = utms.utm_term || "";
+      const pageReferrer = window.location.href || "URL não encontrada";
+
+      const customId = `FORMULARIO - ${pageName} - ${name}`;
+      const customSource = `FORMULARIO - ${pageName}`;
+
+      const payload = {
           rules: {
-            update: "false",
-            filter_status_update: "open",
-            equal_pipeline: "true",
-            status: "open",
-            validate_cpf: "false",
+              update: "false",
+              filter_status_update: "open",
+              equal_pipeline: "true",
+              status: "open",
+              validate_cpf: "false",
           },
           leads: [
-            {
-              id: customId, // Aqui entra o ID personalizado
-              user: name,
-              email: email,
-              name: name,
-              personal_phone: tel,
-              mobile_phone: tel,
-              last_conversion: {
-                source: customSource,
+              {
+                  id: customId,
+                  user: name,
+                  email: email,
+                  name: name,
+                  personal_phone: tel.replace(/\D/g, ""), // Enviar apenas os números
+                  mobile_phone: tel.replace(/\D/g, ""),
+                  last_conversion: {
+                      source: customSource,
+                  },
+                  custom_fields: {
+                      uniqueId: customId,
+                      utm_source: utmSource,
+                      utm_medium: utmMedium,
+                      utm_campaign: utmCampaign,
+                      utm_content: utmContent,
+                      utm_term: utmTerm,
+                      page_referrer: pageReferrer,
+                  },
               },
-              custom_fields: {
-                uniqueId: customId, // Também pode ser usado no uniqueId se quiser
-                utm_source: utmSource,
-                utm_medium: utmMedium,
-                utm_campaign: utmCampaign,
-                utm_content: utmContent,
-                utm_term: utmTerm,
-                page_referrer: pageReferrer,
-              },
-            },
           ],
-        };
-    
-        try {
+      };
+
+      try {
           const response = await fetch(
-            "https://app.pipe.run/webservice/integradorJson?hash=56c50ba8-44e9-42fd-ba51-93207130106f",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(payload),
-            }
+              "https://app.pipe.run/webservice/integradorJson?hash=56c50ba8-44e9-42fd-ba51-93207130106f",
+              {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(payload),
+              }
           );
-    
+
           const data = await response.json();
           console.log("Success:", data);
           alert("Formulário enviado com sucesso!");
           setFormData({ name: "", email: "", tel: "" });
-        } catch (error) {
+      } catch (error) {
           console.error("Error:", error);
           alert("Houve um erro ao enviar o formulário.");
-        } finally {
+      } finally {
           setLoading(false);
-        }
-      };
-    
-      // Função para capturar UTMs
-      const getUTMs = () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        return {
+      }
+  };
+
+  const getUTMs = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      return {
           utm_source: urlParams.get("utm_source"),
           utm_medium: urlParams.get("utm_medium"),
           utm_campaign: urlParams.get("utm_campaign"),
           utm_content: urlParams.get("utm_content"),
           utm_term: urlParams.get("utm_term"),
-        };
       };
-    
+  };
 
-    return (
-        <>
-            <FormAll id="Form"> 
-                <FormTexts>
-                    <img data-aos="fade-up-left" data-aos-delay="100" src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a6bd0b20-7bcc-4575-98dd-39f394dbe100/public" alt="logo da nova metalica" />
-                    <h1 data-aos="fade-up-left" data-aos-delay="200">Entre em contato agora</h1>
-                    <p data-aos="fade-up-left" data-aos-delay="300">Estamos à disposição para esclarecer suas dúvidas e ajudá-lo a encontrar a melhor solução para seu projeto.</p>
-                    <p data-aos="fade-up-left" data-aos-delay="400">Ao enviar esse formulário você está de acordo com a nossa <a onClick={() => navigate ('/politica-de-dados')}>politica de dados</a>, e nosso <a onClick={() => navigate ('/termos-de-condicoes')}>termo e condições</a>.</p>
-                </FormTexts>
-                <ContactForm id="contactForm" onSubmit={handleSubmit} data-aos="fade-up-right" data-aos-delay="200">
-                    <h1>
-                        Solicite seu orçamento
-                    </h1>
-                    <p>
-                        Essas informações serão usadas apenas para fins de contato, ao enviar você concorda com isso.
-                    </p>
-                    <div>
-                        <label>
-                            Nome
-                            <input type="text" id="name" placeholder="Anna Fernandes" value={formData.name} onChange={handleChange}/>
-                        </label>
-                        <label>
-                            E-mail
-                            <input type="email" id="email" placeholder="annafernandes@gmail.com" value={formData.email} onChange={handleChange} />
-                        </label>
-                        <label>
-                            Seu WhatsApp
-                            <input type="tel" id="tel" placeholder="24981234567" value={formData.tel} onChange={handleChange}/>
-                        </label>
-                        <button type="submit" disabled={loading}>{loading ? "Enviando..." : "Enviar formulário"}</button>
-                    </div>
-                </ContactForm>
+  return (
+      <>
+          <FormAll id="Form"> 
+              <FormTexts>
+                  <img data-aos="fade-up-left" data-aos-delay="100" src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a6bd0b20-7bcc-4575-98dd-39f394dbe100/public" alt="logo da nova metalica" />
+                  <h1 data-aos="fade-up-left" data-aos-delay="200">Entre em contato agora</h1>
+                  <p data-aos="fade-up-left" data-aos-delay="300">Estamos à disposição para esclarecer suas dúvidas e ajudá-lo a encontrar a melhor solução para seu projeto.</p>
+                  <p data-aos="fade-up-left" data-aos-delay="400">
+                      Ao enviar esse formulário você está de acordo com a nossa <a onClick={() => navigate('/politica-de-dados')}>política de dados</a> e nosso <a onClick={() => navigate('/termos-de-condicoes')}>termo e condições</a>.
+                  </p>
+              </FormTexts>
+              <ContactForm id="contactForm" onSubmit={handleSubmit} data-aos="fade-up-right" data-aos-delay="200">
+                  <h1>Solicite seu orçamento</h1>
+                  <p>Essas informações serão usadas apenas para fins de contato, ao enviar você concorda com isso.</p>
+                  <div>
+                      <label>
+                          Nome
+                          <input type="text" id="name" placeholder="Nova Metálica" value={formData.name} onChange={handleChange}/>
+                      </label>
+                      <label>
+                          E-mail
+                          <input type="email" id="email" placeholder="contato@novametalica.com.br" value={formData.email} onChange={handleChange} />
+                      </label>
+                      <label>
+                          Seu WhatsApp
+                          <input type="tel" id="tel" placeholder="(21) 99288-2282" value={formData.tel} onChange={handleChange} maxLength="15"/>
+                      </label>
+                      <button type="submit" disabled={loading}>{loading ? "Enviando..." : "Enviar formulário"}</button>
+                  </div>
+              </ContactForm>
+          </FormAll>
+      </>
+  );
+};
 
-            </FormAll>
-        </>
-    )
-}
 
 export default Form;
