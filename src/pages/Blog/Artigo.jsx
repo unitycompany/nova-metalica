@@ -16,7 +16,7 @@ const ArtigoAll = styled.section`
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 7.5% 2.5% 5% 2.5%;
+  padding: 5% 2.5% 5% 2.5%;
   display: flex;
   align-self: flex-start;
   align-items: flex-start;
