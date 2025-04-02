@@ -155,6 +155,54 @@ const ArtigoLeft = styled.div`
             color: var(--color--black);
           }
 
+          & div {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+
+            & > ol {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 5px;
+            padding-left: 20px;
+
+            & > li {
+              font-size: 16px;
+              font-weight: 400;
+              line-height: 120%;
+              color: var(--color--black);
+              position: relative;
+              padding-left: 25px;
+
+              &::before{
+                content: "";
+                position: absolute;
+                left: 5px;
+                top: 5px;
+                width: 8px;
+                height: 8px;
+                background-color: var(--color--blue);
+                border-radius: 50%;
+              }
+
+              & > b {
+                font-weight: 600;
+                color: var(--color--black);
+              }
+            }
+          }
+
+            & h4 {
+              font-size: 18px;
+              font-weight: 500;
+              color: var(--color--blue);
+              margin-bottom: 0px;
+            }
+          }
+
           & > ol {
             display: flex;
             flex-direction: column;
@@ -584,17 +632,28 @@ const ArticlePage = () => {
               <h6 dangerouslySetInnerHTML={{ __html: article.bibliografiaPrincipal }} />
             </div>
 
+            {/* <p>
+              No <i>Steel Frame</i>, os perfis de aço galvanizado formam a estrutura da edificação. Essa estrutura é preenchida com materiais de vedação, como placas cimentícias ou Glasroc X, e isolantes térmicos e acústicos, como lã de vidro. Tudo é planejado previamente, resultando em maior precisão durante a execução.
+            </p>
+            <div>
+              <h4>Aplicações</h4>
+              <p>O <i>Steel Frame</i> pode ser utilizado em diversos tipos de construção, incluindo:</p>
+              <ol>
+                <li>Residências;</li>
+                <li>Hoteis, resorts e pousadas;</li>
+                <li>Prédios residenciais, comerciais e industriais;</li>
+                <li>Escolas, hospitais e UPAs;</li>
+                <li>Galpões;</li>
+                <li>Centros logísticos (de distribuição).</li>
+              </ol>
+            </div>
+            <p>A sua versatilidade permite adaptações para diferentes climas e, ainda, terrenos, além de facilitar futuras ampliações (ou reformas).</p> */}
+
             {/* Segunda dobra */}
             {article.sumario?.map((topic, index) => (
               <div key={index} id={topic.id}>
                 <h1>{topic.title}</h1>
                 <div dangerouslySetInnerHTML={{ __html: topic.content }} />
-                {topic.videoUrl && (
-                  <video controls width="100%">
-                    <source src={topic.videoUrl} type="video/mp4" />
-                    Seu navegador não suporta o elemento de vídeo.
-                  </video>
-                )}
               </div>
             ))}
           </ArtigoLeft>
