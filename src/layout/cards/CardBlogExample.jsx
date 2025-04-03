@@ -4,7 +4,6 @@ import Button05 from "../../components/buttons/Button05"; // Suponho que esse se
 
 const CardAll = styled.div`
     width: 100%!important;
-    min-height: 35vh;
     height: auto;
     border-radius: 25px;
     display: flex;
@@ -13,6 +12,26 @@ const CardAll = styled.div`
     gap: 20px;
     border: 1px solid var(--color--black);
     padding: 5px;
+    position: relative;
+
+    &:hover::before{
+        width: 100%;
+    }
+
+    &::before{
+        content: '';
+        width: 0;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: var(--color--blue);
+        opacity: 0.05;
+        z-index: -1;
+        border-radius: 25px;
+        transition: all .5s linear;
+        border-color: var(--color--blue);
+    }
 
     @media (max-width: 768px){
         height: auto;
@@ -25,7 +44,7 @@ const CardAll = styled.div`
 
     & > div:nth-child(1) {
         width: 50%;
-        min-height: 300px;
+        min-height: 270px;
         height: 100%;
         border-radius: 20px;
         display: flex;
@@ -41,9 +60,14 @@ const CardAll = styled.div`
         & > img {
             width: 100%;
             object-fit: cover;
-            min-height: 300px;
+            min-height: 270px;
             height: 100% auto;
             border-radius: 20px;
+            transition: all .5s linear;
+
+            &:hover {
+                filter: brightness(105%) contrast(105%);
+            }
         }
     }
 

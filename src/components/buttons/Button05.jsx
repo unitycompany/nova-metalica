@@ -5,7 +5,7 @@ const Button = styled.a`
     outline: none;
     cursor: pointer;
     border: none;
-    padding: 15px 25px;
+    padding: 10px 25px;
     margin: 0;
     font-family: inherit;
     font-size: inherit;
@@ -13,10 +13,11 @@ const Button = styled.a`
     display: inline-block;
     font-weight: 500;
     font-size: 16px;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
     background: var(--color--blue);
     color: var(--color--black);
+    border: 1px solid #00000020 ;
 
     & span {
     position: relative;

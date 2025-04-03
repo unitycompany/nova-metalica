@@ -37,7 +37,7 @@ const PesquisaAll = styled.div`
 
         & > input {
             padding: 10px;
-            width: 85%;
+            width: 90%;
             border-radius: 12px;
             background-color: var(--color--white);
 
@@ -47,11 +47,20 @@ const PesquisaAll = styled.div`
         }
 
         & > button {
-            width: 15%;
+            width: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 10px;
             border-radius: 12px;
             cursor: pointer;
             background-color: var(--color--white);
+            transition: all .1s ease-in-out;
+
+            &:hover {
+                transform: scale(0.95);
+                background-color: #e0e0e0;
+            }
         }
     }
 
@@ -74,9 +83,15 @@ const PesquisaAll = styled.div`
             font-size: 12px;
             border-radius: 10px;
             cursor: pointer;
+            transition: all .1s ease-in-out;
+
+            &:hover {
+                transform: scale(0.98);
+                background-color: #e0e0e0;
+            }
         }
 
-        & > button.active {
+        & > button.active{
             background-color: var(--color--blue);
             color: var(--color--white);
         }
