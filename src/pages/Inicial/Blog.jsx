@@ -46,6 +46,7 @@ const BlogSwiper = styled.div`
     width: 100%;
     height: auto;
     flex-direction: column;
+    padding: 15px;
   }
 
   & > div:nth-child(1) {

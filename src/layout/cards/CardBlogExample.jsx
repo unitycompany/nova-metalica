@@ -131,7 +131,7 @@ const CardExample = ({ topico, titulo, description, hashtag, autor, data, image 
                     ))}
                 </div>
                 <Button05 children="Ler mais" /> {/* Botão "Saber mais" */}
-                <h6>Escrito por <a href="#"> {autor} </a> | {data}</h6> {/* Autor e data dinâmicos */}
+                <h6>Escrito por <a href=""> {autor} </a> | {data}</h6> {/* Autor e data dinâmicos */}
             </div>
         </CardAll>
     );

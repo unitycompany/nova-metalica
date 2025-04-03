@@ -13,14 +13,14 @@ const All = styled.section`
 `;
 
 /**
- * Topo fixo:
- * - Se estiver no topo da página (scrollY === 0):
+ * Cabeçalho fixo:
+ * - No topo da página (scrollY === 0):
  *   -> Desktop: 500px 
- *   -> Mobile: 250px (metade)
+ *   -> Mobile: 250px
  *   -> z-index = 2
- * - Se estiver rolando a página (scrollY > 0):
+ * - Ao rolar a página (scrollY > 0):
  *   -> Desktop: 350px 
- *   -> Mobile: 175px (metade)
+ *   -> Mobile: 175px
  *   -> z-index = 999
  */
 const Topo = styled.div`
@@ -44,7 +44,7 @@ const Topo = styled.div`
   & > img {
     width: 100px;
     @media (max-width: ${BREAKPOINT_MOBILE}px) {
-      width: 70px; /* Imagem menor no mobile */
+      width: 70px;
     }
   }
 
@@ -53,17 +53,13 @@ const Topo = styled.div`
     color: #333;
     font-weight: 500;
     margin: 0;
-
     @media (max-width: ${BREAKPOINT_MOBILE}px) {
-      font-size: 2rem; /* Tamanho reduzido no mobile */
+      font-size: 2rem;
     }
   }
 `;
 
-/* 
-  Contêiner principal com margem para não ficar 
-  escondido atrás do cabeçalho fixo 
-*/
+/* Contêiner principal com margem para não ficar escondido atrás do cabeçalho */
 const ContentContainer = styled.div`
   max-width: 1280px;
   position: relative;
@@ -75,7 +71,6 @@ const ContentContainer = styled.div`
   border-radius: 8px;
 
   @media (max-width: ${BREAKPOINT_MOBILE}px) {
-    /* Ajuste para mobile */
     margin-top: 280px;
     padding: 3% 5%;
   }
@@ -104,7 +99,7 @@ const Paragraph = styled.p`
   }
 `;
 
-/* Wrapper de tabela, com scroll horizontal no mobile */
+/* Wrapper de tabela com scroll horizontal no mobile */
 const TableWrapper = styled.div`
   margin: 2rem 0;
   position: relative;
@@ -125,7 +120,7 @@ const TableWrapper = styled.div`
     opacity: 0.9;
 
     @media (min-width: ${BREAKPOINT_MOBILE + 1}px) {
-      display: none; /* some em telas maiores */
+      display: none;
     }
   }
 `;
@@ -163,31 +158,26 @@ const StyledTable = styled.table`
 `;
 
 const PoliticaDePrivacidade = () => {
-  const [headerHeight, setHeaderHeight] = useState(500); // Desktop: topo "cheio"
+  const [headerHeight, setHeaderHeight] = useState(500); // Cabeçalho "cheio" no Desktop
   const [topoZIndex, setTopoZIndex] = useState(2);
 
   useEffect(() => {
     const handleScroll = () => {
       const isMobile = window.innerWidth <= BREAKPOINT_MOBILE;
-
-      // Se está no topo (scrollY == 0) -> cabeçalho maior
       if (window.scrollY === 0) {
-        // Desktop: 500  |  Mobile: 250
-        setHeaderHeight(isMobile ? 250 : 500);
+        // No topo: cabeçalho maior
+        setHeaderHeight(isMobile ? 250 : 350);
         setTopoZIndex(2);
       } else {
-        // Rolando -> cabeçalho reduzido
-        // Desktop: 350 | Mobile: 175
-        setHeaderHeight(isMobile ? 175 : 350);
+        // Ao rolar: cabeçalho reduzido
+        setHeaderHeight(isMobile ? 175 : 250);
         setTopoZIndex(999);
       }
     };
 
-    // Executa a checagem no primeiro render para ajustar ao estado inicial
     handleScroll();
-
     window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll); 
+    window.addEventListener('resize', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
@@ -207,107 +197,135 @@ const PoliticaDePrivacidade = () => {
 
       <ContentContainer>
         <Paragraph>
-          Bem-vindo(a) à nossa <strong>Política de Privacidade</strong>. Aqui você
-          encontra informações detalhadas sobre como coletamos, utilizamos e
-          protegemos seus dados, em conformidade com a{' '}
-          <em>Lei Geral de Proteção de Dados (LGPD)</em>. Nosso compromisso é
-          manter a máxima transparência e segurança em cada etapa do tratamento
-          de dados.
+          Bem-vindo(a) à nossa <strong>Política de Privacidade</strong>. Este documento explica como coletamos, usamos e protegemos as suas informações pessoais, sempre em conformidade com a legislação vigente. Nosso compromisso é oferecer transparência e segurança em cada etapa do tratamento dos seus dados.
         </Paragraph>
 
-        <Title>1. Introdução</Title>
+        <Title>1. Definições e Escopo</Title>
         <Paragraph>
-          Esta Política de Privacidade descreve as práticas adotadas pela nossa
-          empresa em relação à coleta, utilização e proteção de informações
-          pessoais. Ao acessar nosso site ou utilizar nossos serviços, você
-          concorda com os termos aqui apresentados.
+          <strong>Informações Pessoais:</strong> dados que podem identificar você, como nome, e-mail, CPF e endereço.
+          <br />
+          <strong>Usuário:</strong> pessoa que utiliza nossos serviços.
+          <br />
+          <strong>Controlador:</strong> entidade que define as finalidades e meios para o tratamento das informações.
+          <br />
+          <strong>Operador:</strong> prestador de serviços que realiza o tratamento dos dados em nome do controlador.
         </Paragraph>
 
-        <Title>2. Coleta de Informações</Title>
+        <Title>2. Coleta e Uso das Informações</Title>
         <Paragraph>
-          Podemos coletar informações que você nos fornece diretamente, tais
-          como nome, e-mail, telefone e quaisquer outros dados necessários para
-          executar nossos serviços. Também podemos receber dados de terceiros
-          ou fontes públicas, sempre em conformidade com a LGPD.
+          Coletamos as informações que você nos fornece ao se cadastrar, solicitar serviços ou entrar em contato. Também obtemos dados automaticamente, como cookies, endereço IP e dados de navegação, para aprimorar a sua experiência e oferecer conteúdos personalizados.
         </Paragraph>
 
-        <Title>3. Uso das Informações</Title>
+        <TableWrapper>
+          <StyledTable>
+            <thead>
+              <tr>
+                <th>Tipo de Informação</th>
+                <th>Exemplo</th>
+                <th>Finalidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Identificação</td>
+                <td>Nome, CPF, RG</td>
+                <td>Cadastro e validação de identidade</td>
+              </tr>
+              <tr>
+                <td>Contato</td>
+                <td>E-mail, Telefone</td>
+                <td>Comunicação e suporte</td>
+              </tr>
+              <tr>
+                <td>Navegação</td>
+                <td>Cookies, IP, Sessão</td>
+                <td>Análise de uso e melhoria contínua</td>
+              </tr>
+            </tbody>
+          </StyledTable>
+        </TableWrapper>
+
+        <Title>3. Compartilhamento e Divulgação</Title>
         <Paragraph>
-          As informações coletadas são utilizadas para prestação de serviços,
-          comunicação com o usuário, melhorias em nosso site ou aplicativo e
-          envio de conteúdo promocional (quando permitido). Não vendemos ou
-          compartilhamos suas informações pessoais com terceiros para fins
-          comerciais sem o seu consentimento expresso.
+          As suas informações pessoais não são comercializadas. Compartilhamos seus dados apenas nos seguintes casos:
+        </Paragraph>
+        <ul>
+          <li>
+            <strong>Parceiros de Serviço:</strong> empresas que auxiliam na prestação de nossos serviços, sempre sob rigorosas cláusulas de confidencialidade.
+          </li>
+          <li>
+            <strong>Obrigação Legal:</strong> em atendimento a requisições judiciais ou normativas legais.
+          </li>
+          <li>
+            <strong>Consentimento:</strong> quando você autoriza explicitamente o compartilhamento para finalidades específicas.
+          </li>
+        </ul>
+
+        <Title>4. Segurança das Informações</Title>
+        <Paragraph>
+          Empregamos medidas técnicas, administrativas e físicas para garantir a proteção dos seus dados. Confira alguns exemplos de nossas práticas:
+        </Paragraph>
+        <TableWrapper>
+          <StyledTable>
+            <thead>
+              <tr>
+                <th>Medida de Segurança</th>
+                <th>Descrição</th>
+                <th>Benefício</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Criptografia</td>
+                <td>Proteção dos dados sensíveis durante armazenamento e transmissão.</td>
+                <td>Reduz o risco de acessos não autorizados.</td>
+              </tr>
+              <tr>
+                <td>Controle de Acesso</td>
+                <td>Restrição de acesso às informações somente a colaboradores autorizados.</td>
+                <td>Minimiza a possibilidade de vazamento de dados.</td>
+              </tr>
+              <tr>
+                <td>Backup Regular</td>
+                <td>Cópias de segurança realizadas periodicamente.</td>
+                <td>Assegura a integridade e a disponibilidade dos dados.</td>
+              </tr>
+            </tbody>
+          </StyledTable>
+        </TableWrapper>
+
+        <Title>5. Direitos dos Usuários</Title>
+        <Paragraph>
+          Você tem o direito de acessar, corrigir, atualizar ou solicitar a exclusão das suas informações pessoais. Para exercer esses direitos, entre em contato conosco:
+        </Paragraph>
+        <ul>
+          <li>
+            Email: <em>contato@exemplo.com</em>
+          </li>
+          <li>
+            Telefone: <em>(XX) XXXX-XXXX</em>
+          </li>
+          <li>
+            Endereço: <em>Rua X, nº 123, Cidade, Estado</em>
+          </li>
+        </ul>
+
+        <Title>6. Uso de Cookies e Tecnologias Similares</Title>
+        <Paragraph>
+          Utilizamos cookies e outras tecnologias para personalizar sua experiência, analisar o tráfego do site e oferecer conteúdos relevantes. Você pode gerenciar as suas preferências através das configurações do seu navegador.
         </Paragraph>
 
-        <Title>4. Direitos do Usuário</Title>
+        <Title>7. Alterações na Política</Title>
         <Paragraph>
-          Em consonância com a LGPD, você tem direito ao acesso, correção,
-          atualização e exclusão de suas informações pessoais armazenadas por
-          nós. Para solicitar qualquer uma dessas ações, basta entrar em contato
-          conosco pelos canais disponibilizados em nosso site.
-        </Paragraph>
-
-        <Title>5. Segurança dos Dados</Title>
-        <Paragraph>
-          Adotamos medidas técnicas e organizacionais para proteger seus dados,
-          incluindo uso de criptografia, controles de acesso e sistemas de
-          monitoramento. Essas ações são revistas regularmente para garantir a
-          segurança contínua das informações.
-        </Paragraph>
-
-        <Title>6. Compartilhamento de Informações</Title>
-        <Paragraph>
-          Seus dados podem ser compartilhados com parceiros de confiança ou
-          autoridades competentes, mas somente quando necessário para cumprir
-          obrigações legais, contratuais ou quando houver seu consentimento
-          expresso.
-        </Paragraph>
-
-        <Title>7. Retenção de Dados</Title>
-        <Paragraph>
-          Manteremos seus dados apenas pelo tempo necessário para atender às
-          finalidades descritas nesta política, salvo se houver exigência legal
-          que imponha período de armazenamento superior.
-        </Paragraph>
-
-        <Title>8. Transferência Internacional de Dados</Title>
-        <Paragraph>
-          Se for necessária a transferência de dados para fora do país,
-          asseguraremos que essas transferências sigam os requisitos de
-          proteção exigidos pela legislação vigente, adotando cláusulas
-          contratuais apropriadas.
-        </Paragraph>
-
-        <Title>9. Cookies e Tecnologias Semelhantes</Title>
-        <Paragraph>
-          Utilizamos cookies e tecnologias semelhantes para melhorar sua
-          experiência de navegação, analisar o tráfego e personalizar conteúdo.
-          Você pode gerenciar suas preferências de cookies a qualquer momento em
-          seu navegador ou nas configurações do aplicativo.
-        </Paragraph>
-
-        <Title>10. Alterações Nesta Política</Title>
-        <Paragraph>
-          Podemos atualizar esta <strong>Política de Privacidade</strong>{' '}
-          periodicamente para refletir mudanças em nossas práticas ou na
-          legislação aplicável. Qualquer modificação significativa será
-          comunicada em nossos canais oficiais, para que você esteja sempre
-          informado.
+          Esta Política de Privacidade pode ser atualizada periodicamente para refletir melhorias em nossos processos ou mudanças na legislação. Alterações significativas serão comunicadas através de nossos canais oficiais.
         </Paragraph>
 
         <Paragraph>
-          Em caso de dúvidas sobre nossa Política de Privacidade ou sobre como
-          seus dados estão sendo tratados, entre em contato. Estamos à
-          disposição para fornecer esclarecimentos adicionais, visando a melhor
-          experiência possível, com total respeito aos seus direitos e
-          privacidade.
+          Em caso de dúvidas ou para obter mais informações, entre em contato. Estamos comprometidos com a proteção e a privacidade das suas informações.
         </Paragraph>
 
         <Paragraph>
-          <em>
-            Última atualização: <strong>01 de Janeiro de 2025</strong>
-          </em>
+          <em>Última atualização: 01 de Janeiro de 2025</em>
         </Paragraph>
       </ContentContainer>
     </All>
