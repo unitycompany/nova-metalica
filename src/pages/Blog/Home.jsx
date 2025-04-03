@@ -17,7 +17,7 @@ const HomeAll = styled.section`
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    padding: 10% 2.5% 5% 2.5%;
+    padding: 7.5% 2.5% 5% 2.5%;
 
     @media (max-width: 768px){
         flex-direction: column;
@@ -260,10 +260,10 @@ const Home = () => {
                         <div>
                             <h1>{latestBlogs[0].titulo}</h1>
                             <span>
-                                Escrito por: <b>{latestBlogs[0].autor}</b> | {latestBlogs[0].data}
+                                Escrito por <b>{latestBlogs[0].autor}</b> | {latestBlogs[0].data}
                             </span>
                             <Button05 
-                                children="Saber mais sobre esse artigo" 
+                                children="Ler artigo" 
                                 onClick={() => handleRedirect(latestBlogs[0].link)}
                             />
                         </div>
@@ -281,10 +281,10 @@ const Home = () => {
                                 <div>
                                     <h1>{blog.titulo}</h1>
                                     <span>
-                                        Escrito por: <b>{blog.autor}</b> | {blog.data}
+                                        Escrito por <b>{blog.autor}</b> | {blog.data}
                                     </span>
                                     <Button05 
-                                        children="Saber mais sobre esse artigo" 
+                                        children="Ler artigo" 
                                         onClick={() => handleRedirect(blog.link)}
                                     />
                                 </div>

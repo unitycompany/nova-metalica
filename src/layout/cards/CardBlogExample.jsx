@@ -4,13 +4,15 @@ import Button05 from "../../components/buttons/Button05"; // Suponho que esse se
 
 const CardAll = styled.div`
     width: 100%!important;
-    height: 35vh;
+    min-height: 35vh;
+    height: auto;
     border-radius: 25px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 20px;
     border: 1px solid var(--color--black);
+    padding: 5px;
 
     @media (max-width: 768px){
         height: auto;
@@ -128,8 +130,8 @@ const CardExample = ({ topico, titulo, description, hashtag, autor, data, image 
                         <span key={index}>#{tag}</span> // Hashtags dinâmicas
                     ))}
                 </div>
-                <Button05 children="Ler artigo" /> {/* Botão "Saber mais" */}
-                <h6>Escrito por: <a href="#"> {autor} </a> | {data}</h6> {/* Autor e data dinâmicos */}
+                <Button05 children="Ler mais" /> {/* Botão "Saber mais" */}
+                <h6>Escrito por <a href="#"> {autor} </a> | {data}</h6> {/* Autor e data dinâmicos */}
             </div>
         </CardAll>
     );
