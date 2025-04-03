@@ -373,7 +373,7 @@ const Form = () => {
                       </label>
                       <label>
                           Seu WhatsApp
-                          <input type="tel" id="tel" placeholder="(21) 99288-2282" value={formData.tel} onChange={handleChange} maxLength="15"/>
+                          <input type="tel" id="tel" placeholder="(21) 96932-0223" value={formData.tel} onChange={handleChange} maxLength="15"/>
                       </label>
                       <button type="submit" disabled={loading}>{loading ? "Enviando..." : "Enviar formulário"}</button>
                   </div>

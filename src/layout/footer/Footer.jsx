@@ -176,7 +176,7 @@ const Footer = () => {
                         <h4>Steel Frame & Drywall</h4>
                         <a href="https://www.google.com/maps/place/BR-040,+Rio+de+Janeiro/@-21.7695806,-43.442561,17z/data=!3m1!4b1!4m7!3m6!1s0x94ac4abe39278459:0x550b83a54f48120!8m2!3d-21.7695857!4d-43.4376901!15sCkdSdWEgRW5nZW5oZWlybyBXYXRlcmxleSAgQ2lkYWRlIEphcmRpbSBNYXJham9hcmEsIEphcGVyaS9SSiAtIDI2NDEzLTA0MJIBCWhpZ2h3YXlfMeABAA!16s%2Fm%2F04k9y71?coh=219816&entry=tts&g_ep=EgoyMDI0MDgxNC4xKgBIAVAD" target="_blank">R. Eng. Waterley, Lt 12 Qd 16 - Cidade Jardim Marajoara, Japeri/RJ - 26413-040</a>
                         <a href="mailto:contato@novametalica.com.br" target="_blank">contato@novametalica.com.br</a>
-                        <a href="https://api.whatsapp.com/send?phone=5521992882282&text=Ol%C3%A1,%20vim%20do%20site!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.">+55 (21) 99288-2282</a>
+                        <a href="https://api.whatsapp.com/send?phone=5521969320223&text=Ol%C3%A1,%20vim%20do%20site!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.">+55 (21) 96932-0223</a>
                     </div>
                     <div  data-aos="fade-up" data-aos-delay="100">
                         <h4>Mapa do site</h4>
