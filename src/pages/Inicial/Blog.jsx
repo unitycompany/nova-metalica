@@ -22,7 +22,7 @@ const BlogAll = styled.section`
   align-items: center;
   justify-content: center;
   gap: 30px;
-  padding: 5%;
+  padding: 2.5%;
   background-color: var(--color--dark--blue);
   border-radius: 30px;
 
@@ -33,7 +33,7 @@ const BlogAll = styled.section`
 `;
 
 const BlogSwiper = styled.div`
-  width: 50%;
+  width: 60%;
   height: 300px;
   display: flex;
   justify-content: space-between;
@@ -113,7 +113,7 @@ const BlogSwiper = styled.div`
 `;
 
 const BlogTexts = styled.div`
-  width: 50%;
+  width: 40%;
   height: 80%;
   display: flex;
   flex-direction: column;
@@ -198,8 +198,8 @@ const Blog = () => {
             </div>
           </BlogSwiper>
           <BlogTexts>
-            <h1>Confira nosso blog e fique por dentro de tudo</h1>
-            <p>Novos posts nos dias 15 e 30 de cada mês</p>
+            <h1>Confira o nosso Blog e fique por dentro de tudo</h1>
+            <p>Publicações novas toda semana, não perca!</p>
             <Button03 
             children="Ver todos os artigos"
             onClick={() => navigate ('/blog')}
