@@ -25,6 +25,7 @@ const CardAll = styled.div`
 
     & > div:nth-child(1) {
         width: 50%;
+        min-height: 300px;
         height: 100%;
         border-radius: 20px;
         display: flex;
@@ -40,7 +41,8 @@ const CardAll = styled.div`
         & > img {
             width: 100%;
             object-fit: cover;
-            height: 100%;
+            min-height: 300px;
+            height: 100% auto;
             border-radius: 20px;
         }
     }
