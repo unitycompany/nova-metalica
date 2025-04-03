@@ -47,6 +47,7 @@ const ArtigoLeft = styled.div`
     @media (max-width: 768px){
       width: 100%;
       gap: 30px;
+      height: auto;
     }
 
     & > div:nth-child(1){
@@ -60,7 +61,7 @@ const ArtigoLeft = styled.div`
         margin-bottom: 50px;
 
         @media (max-width: 768px){
-          margin-bottom: 80px;
+          margin-bottom: 30px;
         }
 
         & > h1 {
@@ -637,7 +638,7 @@ const ArticlePage = () => {
             <div>
               <h1>{article.title}</h1>
               <span>
-                Escrito por: <b>{article.autor}</b> | {article.data}
+                Escrito por <b>{article.autor}</b> | {article.data}
               </span>
               <p dangerouslySetInnerHTML={{ __html: article.descricao }} />
               <img src={article.imagemPrincipal} alt="Imagem do blog" />
