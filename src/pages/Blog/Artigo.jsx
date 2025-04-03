@@ -644,9 +644,6 @@ const ArticlePage = () => {
               <h6 dangerouslySetInnerHTML={{ __html: article.bibliografiaPrincipal }} />
             </div>   
 
-            <p>O <a href="https://docs.google.com/document/d/12IQr1z0WQhAcgKXGWACPupakjFBJTPTqxrFRe985dV4/edit?tab=t.bpim2011gb14" target="_blank"><i>Steel Frame</i></a> é um dos sistemas construtivos mais adaptáveis disponíveis atualmente. Ele permite a realização de projetos personalizados com liberdade arquitetônica, seja para pequenas residências, seja para grandes empreendimentos comerciais ou industriais.<br /><br />
-            Por ser um método de construção pré-fabricada, ele não só facilita a execução do processo de construção, como também possibilita ampliações futuras sem grandes complicações estruturais.</p>
-
             {/* Segunda dobra */}
             {article.sumario?.map((topic, index) => (
               <div key={index} id={topic.id}>
