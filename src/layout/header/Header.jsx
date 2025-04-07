@@ -266,10 +266,12 @@ const Sidebar = styled.div`
   top: 0;
   right: ${(props) => (props.isOpen ? "0" : "-150%")};
   width: 65%;
-  top: 0;
-  height: 100vh;
+  top: 5vh;
+  border-radius: 20px 0 0 20px;
+  height: 90vh;
+  border: 1px solid #00000050;
+  border-right: 0;
   background-color: var(--color--white);
-  box-shadow: 0px 0 7px rgba(0, 0, 0, 0.5);
   display: flex!important;
   flex-direction: column!important;
   align-items: center;
@@ -332,31 +334,12 @@ const SidebarLinks = styled.div`
     padding: 8px 15px;
     transition: all .3s ease;
 
-    & > svg {
-      display: none;
+    &:hover {
+      color: var(--color--blue);
     }
 
-    &:hover{
-      background-color: var(--color--white);
-      border: 1px solid var(--color--black);
-      color: var(--color--black);
-
-      & > svg {
-        font-size: 24px;
-        background-color: var(--color--black);
-        padding: 5px;
-        color: var(--color--white);
-        border-radius: 50%;
-        transform: rotate(0deg);
-      } 
-
-      & > hr {
-        width: 40%;
-        height: 1px;
-        background-color: var(--color--black);
-        border-color: var(--color--black);
-        border-radius: 50%;
-      }
+    & > svg {
+      display: none;
     }
   }
 `;

@@ -25,7 +25,6 @@ const ParceirosAll = styled.section`
 
     @media (max-width: 768px){
        flex-direction: column-reverse;
-       padding: 5% 5% 10% 5%;
     }
 `
 
@@ -95,6 +94,7 @@ const ParceirosTexts = styled.div`
             @media (max-width: 768px){
                 height: 120px;
                 gap: 10px;
+                border-radius: 20px;
             }
 
             & > span{
@@ -119,12 +119,14 @@ const ParceirosImage = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 30px;
+    height: 500px;
 
     @media (max-width: 768px){
         width: 100%;
+        height: 250px;
     }
 
-    & > img {
+    & img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -157,7 +159,7 @@ const Parceiros = () => {
                     /> */}
                 </ParceirosTexts>
                 <ParceirosImage data-aos="fade-right" data-aos-delay="100">
-                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b790bac9-6a8a-402f-734b-0ab292815b00/public" alt="foto de perfis de steel frame" />
+                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5b355654-4746-4938-c707-1480d15e4900/public" alt="foto de perfis de steel frame" />
                 </ParceirosImage>
             </ParceirosAll>
         </>

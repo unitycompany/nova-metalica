@@ -96,19 +96,17 @@ const Produtos = () => {
     const navigate = useNavigate();
 
     const imagens = [
-        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/65ab875a-1f55-4326-1f71-28088badc500/public",
-        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/65ab875a-1f55-4326-1f71-28088badc500/public",
-        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/65ab875a-1f55-4326-1f71-28088badc500/public",
-        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/65ab875a-1f55-4326-1f71-28088badc500/public",
-        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/65ab875a-1f55-4326-1f71-28088badc500/public",
-        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/65ab875a-1f55-4326-1f71-28088badc500/public",
-        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/65ab875a-1f55-4326-1f71-28088badc500/public",
-        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/65ab875a-1f55-4326-1f71-28088badc500/public",
-        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/65ab875a-1f55-4326-1f71-28088badc500/public",
-        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/65ab875a-1f55-4326-1f71-28088badc500/public"
+        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/aa102622-40e8-45a3-b06a-952f5a27db00/public",
+        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6890677a-4bd1-4b45-c196-a51698c0db00/public",
+        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/0b8c47d5-efc5-4007-405b-77bf33d7c200/public",
+        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6ab7319d-3c5a-4aad-5885-bb9037c5b700/public",
+        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/defa3de9-d8c8-443d-fd30-cc61fa3b9000/public",
+        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/f1b7c826-d7bc-4a97-ea20-cc7e2fe82c00/public",
+        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/e7a1b6dc-5225-4872-bd43-f9b3261c8300/public",
+        "https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/3b21810e-d228-454e-d7a0-401b711ef200/public"
     ];
 
-    const link = "#"; 
+    const link = "/"; 
 
     return (
         <ProdutosAll>
