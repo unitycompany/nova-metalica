@@ -155,6 +155,13 @@ const IconWrapper = styled.div`
     border: 1px solid #000000;
     transform: scale(0);
     transition: all .2s ease-in-out;
+
+    @media (max-width: 768px){
+        transform: scale(1);
+        top: -40px;
+        right: -10px;
+        opacity: 0.3;
+    }
   }
 `;
 
@@ -426,7 +433,7 @@ const Form = () => {
           console.log("Success:", data);
           alert("Formulário enviado com sucesso!");
           
-          setButtonText("Você enviou") ;
+          setButtonText("Você já enviou!") ;
           setFormData({ name: "", email: "", tel: "" });
       } catch (error) {
           console.error("Error:", error);
