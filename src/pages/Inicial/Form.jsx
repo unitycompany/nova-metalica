@@ -2,6 +2,35 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { FaCheck, FaClock } from "react-icons/fa";
+import { BsCheck2, BsCheckCircleFill, BsExclamationLg, BsFillExclamationCircleFill } from "react-icons/bs";
+import { LuLoader } from "react-icons/lu";
+
+// Função para validar o campo e retornar o ícone de check se válido
+const renderValidationIcon = (field, value) => {
+    let isValid = false;
+    if (field === "name") {
+      isValid = value.trim().length > 2;
+    } else if (field === "email") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      isValid = emailRegex.test(value);
+    } else if (field === "tel") {
+      const digits = value.replace(/\D/g, "");
+      isValid = digits.length === 11;
+    }
+  
+    return isValid ? (
+      <IconWrapper>
+        <span>Tudo certo!</span>
+        <BsCheckCircleFill color="green"/>
+      </IconWrapper>
+    ) : 
+        <IconWrapper>
+            <span>Digite o {field} válido</span>
+            <BsFillExclamationCircleFill color="orange"/>
+        </IconWrapper>;
+  };
+
 
 const FormAll = styled.div`
     width: 100%;
@@ -86,6 +115,49 @@ const FormTexts = styled.div`
     }
 `
 
+const IconWrapper = styled.div`
+  position: absolute;
+  right: 10px;     /* ajuste conforme necessário */
+  top: 70%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  cursor: help;
+
+  & svg {
+    transition: all .2s ease-in-out;
+  }
+
+  &:hover svg {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+
+    &:hover span {
+        top: -40px;
+        right: -10px;
+        transform: scale(1);
+    }
+
+  & span {
+    position: absolute;
+    top: -10px;
+    right: 0px;
+    width: max-content;
+    font-size: 10px;
+    font-weight: 300;
+    line-height: 100%;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 1px solid #000000;
+    transform: scale(0);
+    transition: all .2s ease-in-out;
+  }
+`;
+
 const ContactForm = styled.form`
     width: 45%;
     height: 500px;
@@ -154,6 +226,7 @@ const ContactForm = styled.form`
         gap: 10px;
         font-weight: 400;
         color: var(--color--black);
+        position: relative;
 
         & span {
             font-weight: 600;
@@ -235,6 +308,7 @@ const ContactForm = styled.form`
 const Form = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [buttonText, setButtonText] = useState("Enviar formulário");
 
   useEffect(() => {
       if (location.hash === "#Form") {
@@ -351,10 +425,13 @@ const Form = () => {
           const data = await response.json();
           console.log("Success:", data);
           alert("Formulário enviado com sucesso!");
+          
+          setButtonText("Você enviou") ;
           setFormData({ name: "", email: "", tel: "" });
       } catch (error) {
           console.error("Error:", error);
           alert("Houve um erro ao enviar o formulário.");
+          setButtonText("Tente novamente")
       } finally {
           setLoading(false);
       }
@@ -388,17 +465,20 @@ const Form = () => {
                   <div>
                       <label>
                           <span>Nome</span>
-                          <input type="text" id="name" placeholder="Nova Metálica" value={formData.name} onChange={handleChange}/>
+                          <input type="text" id="name" placeholder="Nova Metálica" value={formData.name} onChange={handleChange} required/>
+                          {renderValidationIcon("name", formData.name)}
                       </label>
                       <label>
                             <span>E-mail</span>
-                          <input type="email" id="email" placeholder="contato@novametalica.com.br" value={formData.email} onChange={handleChange} />
+                          <input type="email" id="email" placeholder="contato@novametalica.com.br" value={formData.email} onChange={handleChange} required/>
+                          {renderValidationIcon("email", formData.email)}
                       </label>
                       <label>
                             <span>Seu WhatsApp</span>
-                          <input type="tel" id="tel" placeholder="(21) 96932-0223" value={formData.tel} onChange={handleChange} maxLength="15"/>
+                          <input type="tel" id="tel" placeholder="(21) 96932-0223" value={formData.tel} onChange={handleChange} maxLength="15" required/>
+                          {renderValidationIcon("tel", formData.tel)}
                       </label>
-                      <button type="submit" disabled={loading}>{loading ? "Enviando..." : "Enviar formulário"}</button>
+                      <button id="buttonForm" type="submit" disabled={loading}>{loading ? <LuLoader /> : buttonText }</button>
                   </div>
               </ContactForm>
           </FormAll>
