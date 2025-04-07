@@ -27,7 +27,7 @@ const InfoBackground = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 25px;
-    background: #353535;
+    background: #000;
 
     &::before {
         content: '';
@@ -36,7 +36,7 @@ const InfoBackground = styled.div`
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/1081687f-ba98-453b-c651-444af1325800/public');
+        background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/ab3d723d-1710-46b1-0518-dffdda007e00/public');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -86,8 +86,8 @@ const InfoCards = styled.div`
 
 const InfoCard = styled.div`
     background-color: ${({ active }) => (active ? "var(--color--blue)" : "var(--color--white)")};
-    width: ${({ active }) => (active ? "220px" : "170px")};
-    height: ${({ active }) => (active ? "220px" : "170px")};
+    width: ${({ active }) => (active ? "200px" : "170px")};
+    height: ${({ active }) => (active ? "200px" : "170px")};
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     position: relative;
     display: flex;

@@ -17,13 +17,10 @@ import CookieConsent from "./pages/Politicas/CookieConsent";
 // Lazy loading das páginas
 const PaginaInicial = lazy(() => import("./pages/Inicial/Inicial"));
 const PaginaSobre = lazy(() => import("./pages/Sobre/Inicial"));
-// const PageSteelFrame = lazy(() => import("./pages/Produtos/Steelframe/Inicial"));
-// const PageDrywall = lazy(() => import("./pages/Produtos/Drywall/Inicial"));
 const PaginaParceria = lazy(() => import("./pages/Parcerias/Inicial"));
 const PaginaBlog = lazy(() => import("./pages/Blog/Inicial"));
 const LpPaginaParcerias = lazy(() => import("./pages/Parcerias/LP/Inicial"));
 const ArticlePage = lazy(() => import("./pages/Blog/Artigo"));
-const AddBlog = lazy(() => import("./pages/Blog/AdicionarBlog"));
 const TermosCondicoes = lazy(() => import("./pages/Politicas/Termos/Termos"));
 const PoliticaDados = lazy(() => import("./pages/Politicas/Dados/Dados"));
 const PoliticaPrivacidade = lazy(() => import("./pages/Politicas/Privacidade/Privacidade"));
@@ -89,7 +86,6 @@ function AnimatedRoutes() {
           <Route path="/blog" element={<PaginaBlog />} />
           <Route path="/blog/:slug" element={<ArticlePage />} />
           <Route path="/lpparcerias" element={<LpPaginaParcerias />} />
-          <Route path="/add-blog" element={<AddBlog />} />
           <Route path="/politica-de-privacidade" element={<PoliticaPrivacidade />} />
           <Route path="/politica-de-dados" element={<PoliticaDados />} />
           <Route path="/termos-de-condicoes" element={<TermosCondicoes />} />

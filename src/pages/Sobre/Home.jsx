@@ -23,7 +23,7 @@ const HomeBackground = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 25px;
-    background: #353535;
+    background: #000;
 
     @media (max-width: 768px){
         height: 90vh;
@@ -36,11 +36,12 @@ const HomeBackground = styled.div`
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/1081687f-ba98-453b-c651-444af1325800/public');
-        background-position: center;
+        background-image: url('https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6d7850c3-4de2-490f-6ac3-16ab5f43c100/public');
+        background-position: bottom;
         background-repeat: no-repeat;
         background-size: cover;
         z-index: -1;
+        opacity: 0.5;
     }
 `
 
