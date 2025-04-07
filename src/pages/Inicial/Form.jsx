@@ -94,8 +94,13 @@ const ContactForm = styled.form`
     align-items: flex-start;
     justify-content: center;
     gap: 50px;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    transition: all .5s linear!important;
+
+    &:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
 
     @media (max-width: 768px){
         width: 100%;
@@ -149,24 +154,42 @@ const ContactForm = styled.form`
         gap: 10px;
         font-weight: 400;
         color: var(--color--black);
+
+        & span {
+            font-weight: 600;
+        }
     }
 
     & > div > label > input {
         border: 1px solid #00000020;
-        border-radius: 5px;
+        border-radius: 10px;
         width: 100%;
         padding: 10px 15px;
-        color: var(--color--dark--blue);
-    }
+        font-weight: 500;
+        color: transparent;
+        background: linear-gradient(90deg, var(--color--blue), var(--color--green), var(--color--orange));
+        -webkit-background-clip: text;
+        transition: all .2s linear!important;
 
-    & > div > label > input:focus{
-        border: 1px solid var(--color--dark--blue);
-    }
+        &:focus{
+            border: none;
+            box-shadow: 5px 5px 10px #179dd615, -5px -5px 10px #ff5b0010;
 
-    & > div > label > input::placeholder{
-        font-size: 14px;
-        opacity: .2;
-        color: var(--color--dark--blue);
+            & span {
+                color: red;
+            }
+
+            &::placeholder{
+                opacity: 0.6;
+            }
+        }
+
+        &::placeholder{
+            font-size: 14px;
+            opacity: .3;
+            color: var(--color--dark--blue);
+            transition: all .2s linear!important;
+        }
     }
 
     & > div > button {
@@ -174,7 +197,7 @@ const ContactForm = styled.form`
     background-color: var(--color--blue);
     font-weight: 500;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 15px;
     color: var(--color--white);
     cursor: pointer;
     transition: all .3s ease-in-out;
@@ -191,7 +214,7 @@ const ContactForm = styled.form`
       color: var(--color--black);
       transition: all .3s ease-in-out;
       z-index: -1;
-      border-radius: 5px;
+      border-radius: 15px;
     }
 
     &:hover::before{
@@ -364,15 +387,15 @@ const Form = () => {
                   <p>Essas informações serão usadas apenas para fins de contato, ao enviar você concorda com isso.</p>
                   <div>
                       <label>
-                          Nome
+                          <span>Nome</span>
                           <input type="text" id="name" placeholder="Nova Metálica" value={formData.name} onChange={handleChange}/>
                       </label>
                       <label>
-                          E-mail
+                            <span>E-mail</span>
                           <input type="email" id="email" placeholder="contato@novametalica.com.br" value={formData.email} onChange={handleChange} />
                       </label>
                       <label>
-                          Seu WhatsApp
+                            <span>Seu WhatsApp</span>
                           <input type="tel" id="tel" placeholder="(21) 96932-0223" value={formData.tel} onChange={handleChange} maxLength="15"/>
                       </label>
                       <button type="submit" disabled={loading}>{loading ? "Enviando..." : "Enviar formulário"}</button>

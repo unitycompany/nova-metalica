@@ -200,11 +200,7 @@ const Footer = () => {
                             <BsPlayFill style={{ marginLeft: '5px' }} />
                             Blog
                         </a>
-                        <a onClick={() => navigate ('/sobre#Informacoes')}>
-                            <BsPlayFill style={{ marginLeft: '5px' }} />
-                            Como fabricamos
-                        </a>
-                    </div>
+                        </div>
                     <div  data-aos="fade-up" data-aos-delay="100">
                         <h4>Parcerias</h4>
                             <a href="https://www.csn.com.br/" target="_blank">
