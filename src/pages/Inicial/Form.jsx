@@ -79,7 +79,6 @@ const FormTexts = styled.div`
         font-weight: 500;
         color: var(--color--dark--blue);
         width: 70%;
-        white-space: nowrap;
 
         @media (max-width: 768px){
             white-space: wrap;

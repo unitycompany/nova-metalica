@@ -711,7 +711,7 @@ const ArticlePage = () => {
             <div>
               <h1>{article.title}</h1>
               <span>
-                Escrito por <b>{article.autor}</b> | {article.data}
+                Escrito por <a href="https://www.linkedin.com/in/alice-pereira-150226290" target="_blank"><b>{article.autor}</b></a> | {article.data}
               </span>
               <p dangerouslySetInnerHTML={{ __html: article.descricao }} />
               <img src={article.imagemPrincipal} alt="Imagem do blog" />
