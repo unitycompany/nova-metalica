@@ -187,9 +187,8 @@ const TermosECondicoes = () => {
           Caso tenha dúvidas ou necessite de esclarecimentos adicionais, entre em contato conosco:
         </Paragraph>
         <ul>
-          <li>Email: <em>contato@exemplo.com</em></li>
-          <li>Telefone: <em>(XX) XXXX-XXXX</em></li>
-          <li>Endereço: <em>Rua X, nº 123, Cidade, Estado</em></li>
+          <li>Email: <em>contato@novametalica.com.br</em></li>
+          <li>Telefone: <em>(21) 96932-0223</em></li>
         </ul>
 
         <Paragraph>

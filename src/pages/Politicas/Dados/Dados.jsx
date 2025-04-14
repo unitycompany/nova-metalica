@@ -383,13 +383,10 @@ const PoliticaDeDados = () => {
         </Paragraph>
         <ul>
           <li>
-            E-mail: <em>contato@exemplo.com</em>
+            E-mail: <em>contato@novametalica.com.br</em>
           </li>
           <li>
-            Telefone: <em>(XX) XXXX-XXXX</em>
-          </li>
-          <li>
-            Presencialmente em nossa sede: <em>Rua X, nº 123, Cidade, Estado</em>
+            Telefone: <em>(21) 96932-0223</em>
           </li>
         </ul>
 
