@@ -52,7 +52,7 @@ const Card = styled.div`
 const HomeCard = ({ image, descricaoImage, title, descricao}) => {
     return (
         <Card data-aos="fade-in" data-aos-delay="0">
-            <img src={image} alt={descricaoImage} data-aos="fade-up" data-aos-delay="100"/>
+            <img src={image} alt={descricaoImage} data-aos="fade-up" title={descricaoImage} data-aos-delay="100" loading="lazy"/>
             <h2 data-aos="fade-up" data-aos-delay="200">{title}</h2>
             <p data-aos="fade-up" data-aos-delay="300">{descricao}</p>
         </Card>

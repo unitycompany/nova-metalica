@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { FaCheck, FaClock } from "react-icons/fa";
 import { BsCheck2, BsCheckCircleFill, BsExclamationLg, BsFillExclamationCircleFill } from "react-icons/bs";
 import { LuLoader } from "react-icons/lu";
+import { use } from "react";
 
 // Função para validar o campo e retornar o ícone de check se válido
 const renderValidationIcon = (field, value) => {
@@ -30,7 +31,6 @@ const renderValidationIcon = (field, value) => {
             <BsFillExclamationCircleFill color="orange"/>
         </IconWrapper>;
   };
-
 
 const FormAll = styled.div`
     width: 100%;
@@ -316,7 +316,6 @@ const Form = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [buttonText, setButtonText] = useState("Enviar formulário");
-
   useEffect(() => {
       if (location.hash === "#Form") {
           setTimeout(() => {
@@ -460,15 +459,15 @@ const Form = () => {
           <FormAll id="Form"> 
               <FormTexts>
                   <img data-aos="fade-up-left" data-aos-delay="100" src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a6bd0b20-7bcc-4575-98dd-39f394dbe100/public" alt="logo da nova metalica" />
-                  <h1 data-aos="fade-up-left" data-aos-delay="200">Entre em contato agora</h1>
+                  <h1 data-aos="fade-up-left" data-aos-delay="200">Entre em contato conosco agora mesmo</h1>
                   <p data-aos="fade-up-left" data-aos-delay="300">Estamos à disposição para esclarecer suas dúvidas e ajudá-lo a encontrar a melhor solução para seu projeto.</p>
                   <p data-aos="fade-up-left" data-aos-delay="400">
-                      Ao enviar esse formulário você está de acordo com a nossa <a onClick={() => navigate('/politica-de-dados')}>política de dados</a> e nosso <a onClick={() => navigate('/termos-de-condicoes')}>termo e condições</a>.
+                      Ao enviar esse formulário, você está de acordo com a nossa <a onClick={() => navigate('/politica-de-dados')}>política de dados</a> e nosso <a onClick={() => navigate('/termos-de-condicoes')}>termo e condições</a>.
                   </p>
               </FormTexts>
               <ContactForm id="contactForm" onSubmit={handleSubmit} data-aos="fade-up-right" data-aos-delay="200">
                   <h1>Solicite seu orçamento</h1>
-                  <p>Essas informações serão usadas apenas para fins de contato, ao enviar você concorda com isso.</p>
+                  <p>Suas informações serão usadas apenas para fins de contato.</p>
                   <div>
                       <label>
                           <span>Nome</span>

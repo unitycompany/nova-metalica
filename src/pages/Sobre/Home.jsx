@@ -176,8 +176,8 @@ const Home = () => {
                     <HomeDivAll>
                         <HomeLogo><img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/b440dfa1-5f27-48ad-a0a6-8de8dd71c700/public" alt="logo da nova metálica branca" /></HomeLogo>
                         <HomeTexts>
-                            <h1>Conheça a <b>Nova Metálica</b>, a melhor Fábrica de Steel Frame e Drywall</h1>
-                            <p>Colocar uma descrição curta falando sobre os materiais que vendemos, bem curta e objetiva</p>
+                            <h1>Conheça a <b>Nova Metálica</b>, referência em perfis para Steel Frame e Drywall</h1>
+                            <p>Somos líderes na fabricação de perfis para Steel Frame e Drywall, oferecendo soluções construtivas de alta qualidade para todo tipo de obra.</p>
                             <Button03 
                             children="Conhecer a fábrica" 
                             onClick={() => {

@@ -133,7 +133,7 @@ const Produtos = () => {
             </ProdutosSwiper>
             <ProdutosTexts>
                 <h1 data-aos="fade-left" data-aos-delay="200">Eleve seus projetos com <b>nossos produtos</b></h1>
-                <p data-aos="fade-left" data-aos-delay="300">Na Nova Metálica, oferecemos mais do que produtos. Oferecemos soluções completas para suas construções.</p>
+                <p data-aos="fade-left" data-aos-delay="300">Na Nova Metálica, oferecemos mais do que produtos. Oferecemos soluções completas para a sua construção.</p>
                 {/* <Button03 
                 children="Ver produtos"
                 onClick={() => navigate ('/produtos/steel-frame')}

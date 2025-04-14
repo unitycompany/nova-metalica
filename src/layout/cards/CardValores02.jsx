@@ -91,7 +91,7 @@ const HomeCard2 = ({image, descricaoImage, title, descricao}) => {
 
             <Card data-aos="fade-up" data-aos-delay="0">
                 <div>
-                    <img src={image} alt={descricaoImage}/>
+                    <img src={image} alt={descricaoImage} loading="lazy" title={descricaoImage}/>
                 </div>
                 <div>
                     <h2>{title}</h2>

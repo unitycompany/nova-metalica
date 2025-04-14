@@ -21,7 +21,7 @@ const PaginaInicial = () => {
         <>
             <All>
                 <Home />
-                    <Valores />
+                    {/* <Valores /> */}
                         <Porque />
                             <Construcao />
                                 <Framecad />

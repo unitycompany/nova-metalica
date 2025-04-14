@@ -143,13 +143,13 @@ const Home = () => {
         <>
             <HomeAll>
                 <HomeText>
-                    <span data-aos="fade-left" data-aos-delay="100"><hr />A solução para a sua empresa</span>
+                    <span data-aos="fade-left" data-aos-delay="100"><hr />A solução ideal para sua construção</span>
 
-                    <h1 data-aos="fade-left" data-aos-delay="300">Sua Parceira <b>N°1</b> em Soluções para Steel Frame</h1>
+                    <h1 data-aos="fade-left" data-aos-delay="300">Sua parceira <b>N°1</b> para Soluções em Steel Frame</h1>
 
-                    <p data-aos="fade-left" data-aos-delay="500">Na Nova Metálica, somos <b>líderes em oferecer os melhores perfis de Steel Frame do mercado</b> para a construção de estruturas metálicas. Nossa dedicação à qualidade, durabilidade excepcional e inovação constante nos diferencia.</p>
+                    <p data-aos="fade-left" data-aos-delay="500">A Nova Metálica é <b>líder em oferecer os melhores perfis de Steel Frame do mercado</b> para construção a seco. Nossa dedicação à qualidade e inovação constante nos diferencia.</p>
 
-                    <p data-aos="fade-left" data-aos-delay="700">Escolha a <b>Nova Metálica para elevar seus projetos</b> a um novo patamar de excelência!</p>
+                    <p data-aos="fade-left" data-aos-delay="700">Traga <b>seu projeto</b> para a Nova Metálica!</p>
 
                     <Button02
                     children="Solicitar orçamento!"
@@ -163,7 +163,7 @@ const Home = () => {
                 </HomeText>
 
                 <HomeImage data-aos="fade-up-left" data-aos-delay="100">
-                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/8ac1e6f6-d87e-438e-9c4d-ab5124e8c300/public" alt="imagem de uma casa de steel frame pela nova metalica" loading="lazy"></img>
+                    <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/8ac1e6f6-d87e-438e-9c4d-ab5124e8c300/public" alt="Máquina fabricando o Steel Frame na fábrica da Nova Metálica" loading="lazy" title="Máquina fabricando o Steel Frame na fábrica da Nova Metálica"></img>
                 </HomeImage>
             </HomeAll>
         </>

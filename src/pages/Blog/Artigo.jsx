@@ -8,7 +8,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { BsInstagram, BsFacebook, BsLinkedin, BsFillPlayFill } from "react-icons/bs";
+import { BsInstagram, BsFacebook, BsLinkedin, BsFillPlayFill, BsArrowRight } from "react-icons/bs";
 import Button05 from "../../components/buttons/Button05";
 
 // Estilos para o layout do artigo
@@ -48,6 +48,75 @@ const ArtigoLeft = styled.div`
       width: 100%;
       gap: 30px;
       height: auto;
+    }
+
+    & .cta-final-blog{
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+      border-left: 3px solid var(--color--blue);
+      padding: 15px 0 15px 15px;
+      gap: 15px;
+      background-color: transparent;
+      transition: all .2s ease-in-out;
+      position: relative;
+
+      &::before{
+        content: '';
+        width: 0;
+        height: 100%;
+        left: 0;
+        top: 0;
+        position: absolute;
+        z-index: -1;
+        background-color: #f0f0f0;
+        transition: all .5s ease-in-out;
+      }
+
+      &:hover::before {
+        width: 100%;
+      }
+
+      & h1 {
+        font-size: 18px;
+        font-weight: 400;
+      }
+
+      & button {
+        cursor: pointer;
+        background-color: var(--color--black);
+        padding: 5px 5px 5px 15px;
+        border-radius: 25px;
+        color: var(--color--white);
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+          transform: scale(0.98);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        &:hover svg {
+          transform: rotate(-45deg);
+        }
+
+        & svg {
+          width: 25px;
+          height: 25px;
+          padding: 5px;
+          border-radius: 50px;
+          background-color: #f9f9f9;
+          color: var(--color--black);
+          transition: all .2s ease-in-out;
+        }
+      }
     }
 
     & > div:nth-child(1){
@@ -653,8 +722,13 @@ const ArticlePage = () => {
               </div>
             ))}
 
-            <h1>Se você tem interesse em construir com Steel Frame, entre em contato agora!</h1>
-            <button>Entrar em contato</button>
+            <aside className="cta-final-blog">
+              <h1>Se você constrói em Steel Frame e procura um fornecedor de confiança para comprar perfis de Steel Frame com qualidade, entre em contato conosco!</h1>
+              <button onClick={() => navigate('/#Form')}>
+                Entrar em contato
+                <BsArrowRight />  
+              </button>
+            </aside>
           </ArtigoLeft>
           
           <ArtigoRight>

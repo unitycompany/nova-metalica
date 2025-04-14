@@ -103,10 +103,14 @@ const Framecad = () => {
     return (
         <FramecadAll>
              <FramecadTexts>
-                <h1 data-aos="fade-left" data-aos-delay="100">Como Fabricamos Nossos Perfis</h1>
+                <h1 data-aos="fade-left" data-aos-delay="100">Como fabricamos nossos perfis</h1>
                 <h6 data-aos="fade-left" data-aos-delay="200">A F325iT em Ação</h6>
                 <p data-aos="fade-left" data-aos-delay="300">
-                    A F325iT é uma máquina de última geração, equipada com um rolo calibrador automático, um avançado sistema hidráulico de fluxo variável e ferramentas adicionais de perfuração. Essa combinação permite ajustar com precisão os perfis de aço, otimizar o desempenho da máquina e oferecer flexibilidade na criação de cortes personalizados. Como resultado, o F325iT se destaca como a solução mais eficiente e versátil da FRAMECAD para fabricação de estruturas em Steel Frame.
+                Nossos perfis são fabricados com aço 100% nacional, fornecido por parceiros de renome como CSN Siderúrgica e Arcelor Mittal, garantindo qualidade superior e rastreabilidade total – todo aço fornecido vem com o certificado da usina e o ensaio técnico do lote.
+                <br /><br />
+                Utilizando tecnologia de ponta, contamos com equipamentos avançados para a fabricação de perfis de Steel Frame, como a máquina F325iT FRAMECAD, que possibilita cortes personalizados e precisos, tornando nosso processo produtivo mais eficiente e versátil.
+                <br /><br />
+                Para os perfis de Drywall, utilizamos maquinários Metalso de última geração, entregando excelência em cada perfil produzido.
                 </p>
                 <Button02 
                 children="Solicitar orçamento!"

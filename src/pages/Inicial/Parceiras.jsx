@@ -2,9 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import { Navigate, useNavigate } from "react-router-dom";
-import Button03 from "../../components/buttons/Button03";
-import Button02 from "../../components/buttons/Button02";
-import Button04 from "../../components/buttons/Button04";
 
 const ParceirosAll = styled.section`
     width: 97.5%;
@@ -142,15 +139,15 @@ const Parceiros = () => {
             <ParceirosAll>
                 <ParceirosTexts>
                     <h1 data-aos="fade-left" data-aos-delay="100">Seja nosso <b>parceiro</b></h1>
-                    <p data-aos="fade-left" data-aos-delay="200">Junte-se a nós e faça parte de uma parceria sólida e confiável. Trabalhamos com materiais de alta qualidade e garantia de excelência, assegurando que todos os perfis sejam normatizados e atendam aos mais altos padrões do mercado. Seja nosso parceiro e fortaleça seus projetos com segurança e inovação!</p>
+                    <p data-aos="fade-left" data-aos-delay="200">Junte-se à Nova Metálica e faça parte de uma parceria sólida e confiável. Aqui, trabalhamos com aço de qualidade nacional, assegurando que todos os nossos perfis sejam normatizados e atendam aos mais altos padrões do mercado. Faça parte da nossa rede de parceiros e leve seus projetos a um novo nível de excelência!</p>
                     <div>
                         <div data-aos="fade-up" data-aos-delay="100">
                             <span>100%</span>
-                            <p>Todos os perfis normatizados</p>
+                            <p>Produtos nacionais</p>
                         </div>
                         <div data-aos="fade-up" data-aos-delay="100">
                             <span>100%</span>
-                            <p>Fábricados por nós</p>
+                            <p>Dentro das normas</p>
                         </div>
                     </div>
                     {/* <Button04 

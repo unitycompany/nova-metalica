@@ -184,20 +184,20 @@ const Card02 = () => {
                 <div data-aos="fade-right" data-aos-delay="100">
                     <CardText2>
                         <h1>Tecnologia de Ponta</h1>
-                        <p>Equipados com tecnologia CNC Framecad e máquinas de fabricação de telhas termoacústicas, garantimos precisão e inovação em cada perfil de Steel Frame.</p>
+                        <p>Equipados com tecnologia FRAMECAD, garantimos precisão e eficiência em cada perfil de Steel Frame fabricado.</p>
                     </CardText2>
                     <CardIcon2>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/608dfa80-7aa9-4c16-8241-0ca1544bad00/public" alt="foto do mapa do brasil" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/608dfa80-7aa9-4c16-8241-0ca1544bad00/public" alt="imagem de um cerebro no site da Nova Metálica" title="imagem de um cerebro no site da Nova Metálica" loading="lazy"/>
                     </CardIcon2>
                 </div>
 
                 <div data-aos="fade-left" data-aos-delay="100">
                     <CardText>
-                        <h1>Soluções Eficientes</h1>
+                        <h1>Parcerias Estratégicas</h1>
                         <p>Colaboramos com gigantes como CSN Siderúrgica, Arcellor Mital, Saint-Gobain e STO Brasil para oferecer soluções de Steel Frame de qualidade inigualável.</p>
                     </CardText>
                     <CardIcon>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/7b2e17de-668a-47d2-212c-04548992f700/public" alt="foto do mapa do brasil" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/7b2e17de-668a-47d2-212c-04548992f700/public" alt="imagem de mãos no site da Nova Metálica" title="imagem de mãos no site da Nova Metálica" loading="lazy"/>
                     </CardIcon>
                 </div>
                 

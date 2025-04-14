@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import HomeCard from "../../layout/cards/CardValores01";
-import Button02 from "../../components/buttons/Button02";
 import HomeCard2 from "../../layout/cards/CardValores02";
 
 const ValoresAll = styled.section`
@@ -131,19 +130,19 @@ const Valores = () => {
                 <ValoresCards>
                     <HomeCard 
                     image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/87a0a7c1-73c9-47ff-e0bb-59c72fbc9a00/public" 
-                    descricaoImage="Foto de fundo para sobre nós" 
+                    descricaoImage="Foto de uma casa sendo construida com Steel Frame, com perfis de Steel Frame da Nova Metálica" 
                     title="Sobre nós" 
                     descricao="A Nova Metálica é uma empresa inovadora e referência no segmento de construção metálica, especializada em soluções de Steel Frame."
                     />
                     <HomeCard 
                     image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/8ac46440-2a94-4396-f4eb-5b9bba1a2700/public" 
-                    descricaoImage="Imagem Exemplo" 
+                    descricaoImage="Estrutura metálica feita com Steel Frame,  com perfis de Steel Frame da Nova Metálica" 
                     title="Visão" 
                     descricao="Ser reconhecida por entregar todos os projetos de Steel Frame dentro do prazo, com máxima qualidade e eficiência em cada etapa."
                     />
                     <HomeCard
                     image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/3bb56937-dc5e-48b9-1b59-f51889f13d00/public" 
-                    descricaoImage="Imagem Exemplo" 
+                    descricaoImage="Casa em processo de construção com Steel Frame, com perfis de Steel Frame da Nova Metálica" 
                     title="Missão" 
                     descricao="Evoluir a construção civil promovendo o Steel Frame como a melhor alternativa à alvenaria tradicional, elevando o padrão da indústria."
                     />
@@ -162,16 +161,19 @@ const Valores = () => {
                 <ValoresQualidades>
                     <HomeCard2 
                     image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/992069d8-d5ab-4522-11d8-04cb49714b00/public"
+                    descricaoImage="Icone de Inovação, na Nova Metálica"
                     title="Inovação"
                     descricao="Buscamos incessantemente novas tecnologias e métodos para desafiar os padrões estabelecidos da construção civil."
                     />
                     <HomeCard2 
                     image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/66eecf95-d765-4d16-7e4c-c13bea3cde00/public"
+                    descricaoImage="Icone de Qualidade, na Nova Metálica"
                     title="Qualidade"
                     descricao="Comprometemo-nos com a excelência em todos os nossos produtos e serviços, assegurando a satisfação plena dos nossos clientes."
                     />
                     <HomeCard2 
                     image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/3381d730-6783-4b29-ec37-0c3848d9d000/public"
+                    descricaoImage="Icone de Sustentabilidade, na Nova Metálica"
                     title="Sustentabilidade"
                     descricao="Adotamos práticas que reduzem o impacto ambiental de nossas operações, comprometidos com a responsabilidade ecológica."
                     />
@@ -180,17 +182,20 @@ const Valores = () => {
                 <ValoresQualidades>
                     <HomeCard2 
                     image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/ec88ac56-8147-4f89-f0b2-e7dcdc44b900/public"
+                    descricaoImage="Icone de Velocidade, na Nova Metálica"
                     title="Velocidade"
                     descricao="Entregamos seus projetos de Steel Frame no prazo, garantindo agilidade e eficiência em todas as etapas."
                     />
                     <HomeCard2 
                     image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a3c4b281-55ad-4774-a81a-8477fae72f00/public"
+                    descricaoImage="Icone de Equipe, na Nova Metálica"
                     title="Equipe"
                     descricao="Valorizamos a diversidade e o trabalho em equipe, integrando colaboradores, parceiros e comunidades."
                     />
                     <HomeCard2 
                     image="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/cc0601c8-e556-4ccc-641d-fb3d74f66d00/public"
-                    title="Persitência"
+                    descricaoImage="Icone de Persistência, na Nova Metálica"
+                    title="Persistência"
                     descricao="Superamos desafios com determinação, focados em alcançar resultados que atendam às necessidades dos nossos clientes."
                     />
                 </ValoresQualidades>

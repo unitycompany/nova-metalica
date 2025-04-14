@@ -185,20 +185,20 @@ const Card01 = () => {
 
                     <CardText>
                         <h1>Produtos Nacionais</h1>
-                        <p>Asseguramos que todos os nossos perfis de Steel Frame são 100% normatizados e fabricados exclusivamente com materiais de siderúrgicas brasileiras, sem o uso de aço importado.</p>
+                        <p>Asseguramos que todos os nossos perfis de Steel Frame são 100% normatizados e fabricados, exclusivamente, com o aço de siderúrgicas brasileiras - sem o uso de aço chinês.</p>
                     </CardText>
                     <CardIcon>
-                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/7c2a46a4-fc03-4da7-87be-3bbba03b5700/public" alt="foto do mapa do brasil" />
+                        <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/7c2a46a4-fc03-4da7-87be-3bbba03b5700/public" alt="imagem do mapa do brasil no site da Nova Metálica" title="imagem do mapa do brasil no site da Nova Metálica" loading="lazy"/>
                     </CardIcon>
 
                 </div>
                 <div data-aos="fade-left" data-aos-delay="100">
                         <CardText2>
                             <h1>Soluções Eficientes</h1>
-                            <p>Oferecemos a menor taxa de aço do mercado, resultando em estruturas de Steel Frame mais leves e econômicas. </p>
+                            <p>Oferecemos o serviço de cálculo estrutural para Steel Frame: basta nos enviar seu projeto de arquitetura.</p>
                         </CardText2>
                         <CardIcon2>
-                            <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c050183b-0686-4310-6235-ec02c4323400/public" alt="foto do mapa do brasil" />
+                            <img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/c050183b-0686-4310-6235-ec02c4323400/public" alt="imagem de um escudo no site da Nova Metálica" title="imagem de um escudo no site da Nova Metálica" loading="lazy"/>
                         </CardIcon2>
                 </div>
             </Card>
