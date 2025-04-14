@@ -267,6 +267,7 @@ const Sidebar = styled.div`
   right: ${(props) => (props.isOpen ? "0" : "-150%")};
   width: 70%;
   top: 10vh;
+  background-color: #f0f0f0;
   height: 90vh;
   border-top: 1px solid #00000050;
   border-right: 0;
@@ -374,9 +375,10 @@ const SidebarContato = styled.div`
     justify-content: center;
     flex-direction: column;
     color: var(--color--black);
+    box-shadow:  3px 3px 5px #d9d9d9,
+             -3px -3px 5px #ffffff;
     gap: 5px;
     width: 100%;
-    border: 1px solid var(--color--black);
     padding: 5px;
     transition: all .2s ease;
 
@@ -393,7 +395,7 @@ const SidebarContato = styled.div`
     }
 
     & > a {
-      font-size: 14px;
+      font-size: 12px;
       color: var(--color--black);
     }
 
@@ -402,22 +404,6 @@ const SidebarContato = styled.div`
       height: 25px;
       padding: 5px;
     }
-  }
-`
-
-const SidebarIcons = styled.div`
-  width: 100%;
-  display: none;
-  justify-content: space-evenly;
-
-  .IconLink{
-    padding: 10px;
-    border-radius: 50%;
-    background-color: var(--color--black);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
   }
 `
 
@@ -583,18 +569,6 @@ const Header = () => {
             <a href="#">Veja onde estamos localizados</a>
           </div>
         </SidebarContato>
-
-        <SidebarIcons>
-          <NavLink to="/blog" activeClassName="active" className={"IconLink"}>
-            <BsBook />
-          </NavLink>
-          <NavLink to="/produtos/steel-frame" activeClassName="active" className={"IconLink"}>
-            <BsCartCheck />
-          </NavLink>
-          <NavLink to="/" activeClassName="active" className={"IconLink"}>
-            <BsHouse />
-          </NavLink>
-        </SidebarIcons>
 
         <SidebarFooter>
           <Button04 
