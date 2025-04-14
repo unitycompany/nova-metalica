@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react"; // Importação do Swiper
 import "swiper/css"; // Importação do CSS do Swiper
 import { useNavigate } from 'react-router-dom';
 import Button03 from "../../components/buttons/Button03";
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 const ProdutosAll = styled.section`
     width: 97.5%;
@@ -113,7 +113,11 @@ const Produtos = () => {
         <ProdutosAll>
             <ProdutosSwiper data-aos="fade-left" data-aos-delay="100">
                 <Swiper
-                    modules={{Pagination, Navigation}}
+                    modules={[Pagination, Navigation, Autoplay]}
+                    autoplay={{
+                        delay: 3000,
+                        disableOnInteraction: false
+                    }}
                     spaceBetween={30}
                     navigation={true}
                     slidesPerView={1}

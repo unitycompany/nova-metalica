@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -762,7 +762,7 @@ const ArticlePage = () => {
             </div>
   
             <ArtigoCarrossel>
-              <Swiper spaceBetween={10} slidesPerView={1} navigation={false} loop modules={[Navigation]}>
+              <Swiper spaceBetween={10} slidesPerView={1} navigation={false} loop modules={[Navigation, Autoplay]} autoplay={{delay: 3000, disableOnInteraction: false}}>
                 <SwiperSlide>
                   <a href="/#Form">
                     <img
