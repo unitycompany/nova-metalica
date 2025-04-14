@@ -81,6 +81,10 @@ const ArtigoLeft = styled.div`
       & h1 {
         font-size: 18px;
         font-weight: 400;
+
+        @media (max-width: 768px){
+          font-size: 16px;
+        }
       }
 
       & button {
