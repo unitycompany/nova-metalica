@@ -145,7 +145,7 @@ const Home = () => {
                 <HomeText>
                     <span data-aos="fade-left" data-aos-delay="100"><hr />A solução ideal para sua construção</span>
 
-                    <h1 data-aos="fade-left" data-aos-delay="300">Sua parceira <b>N°1</b> para Soluções em Steel Frame</h1>
+                    <h1 data-aos="fade-left" data-aos-delay="300">Sua parceira <b>N°1</b> para soluções em Steel Frame</h1>
 
                     <p data-aos="fade-left" data-aos-delay="500">A Nova Metálica é <b>líder em oferecer os melhores perfis de Steel Frame do mercado</b> para construção a seco. Nossa dedicação à qualidade e inovação constante nos diferencia.</p>
 
