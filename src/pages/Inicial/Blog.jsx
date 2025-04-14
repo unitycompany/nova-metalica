@@ -40,6 +40,7 @@ const BlogSwiper = styled.div`
   padding: 5px;
   border-radius: 20px;
   background-color: var(--color--white);
+  cursor: pointer;
   gap: 25px;
 
   @media (max-width: 768px) {
@@ -179,7 +180,7 @@ const Blog = () => {
     <>
       {blogs.map((blog) => (
         <BlogAll key={blog.id}>
-          <BlogSwiper  data-aos="fade-up" data-aos-delay="100">
+          <BlogSwiper  data-aos="fade-up" data-aos-delay="100" onClick={() => navigate(`/blog/${blog.link}`)}>
             <div>
               <img src={blog.image} alt={blog.titulo} />
             </div>
