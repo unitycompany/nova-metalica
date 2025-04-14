@@ -265,11 +265,10 @@ const Sidebar = styled.div`
   position: fixed;
   top: 0;
   right: ${(props) => (props.isOpen ? "0" : "-150%")};
-  width: 65%;
-  top: 5vh;
-  border-radius: 20px 0 0 20px;
+  width: 70%;
+  top: 10vh;
   height: 90vh;
-  border: 1px solid #00000050;
+  border-top: 1px solid #00000050;
   border-right: 0;
   background-color: var(--color--white);
   display: flex!important;
@@ -277,11 +276,28 @@ const Sidebar = styled.div`
   align-items: center;
   justify-content: space-between!important;
   gap: 40px;
-  padding: 30px 10px;
+  padding: 30px 15px;
   transition: right 1s ease;
   z-index: 1000;
   overflow: hidden;
+  z-index: 1;
 `;
+
+const Overlay = styled.div`
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  transition: left 1s ease;
+  left: ${(props) => (props.isOpen ? "-70%" : "-100%")};
+  top: 0;
+  z-index: -1;
+  display: none;
+
+  @media (max-width: 768px){
+    display: block;
+  }
+`
 
 const SidebarTop = styled.div`
   width: 100%;
@@ -331,7 +347,7 @@ const SidebarLinks = styled.div`
     width: 100%;
     text-decoration: none;
     color: var(--color--black);
-    padding: 8px 15px;
+    padding: 5px 0;
     transition: all .3s ease;
 
     &:hover {
@@ -530,12 +546,14 @@ const Header = () => {
         </MenuButton>
       </HeaderWhite>
 
+      <Overlay isOpen={isSidebarOpen} onClick={() => setSidebarOpen(false)}></Overlay>
       <Sidebar isOpen={isSidebarOpen}>
         <SidebarTop>
           <CloseButton onClick={() => setSidebarOpen(false)}>
             <BsX />
           </CloseButton>
           <img
+            onClick={() => Navigate('/')}
             src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a6bd0b20-7bcc-4575-98dd-39f394dbe100/public"
             alt="logo da nova metalica"
             loading="lazy"
@@ -581,7 +599,7 @@ const Header = () => {
         <SidebarFooter>
           <Button04 
           children="Solicitar orçamento"
-          onClick={() => {
+          onClick={() => { setSidebarOpen(false)
             const formSection = document.getElementById('Form');
             if ( formSection ){
               formSection.scrollIntoView({ behavior : 'smooth' })

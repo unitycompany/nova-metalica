@@ -10,7 +10,7 @@ const HomeAll = styled.section`
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    padding-bottom: 5%;
+    padding-bottom: 0%;
     display: flex;
     align-items: center;
     justify-content: center;

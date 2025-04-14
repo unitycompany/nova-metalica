@@ -17,11 +17,11 @@ const PorqueAll = styled.section`
     justify-content: center;
     flex-direction: column;
     gap: 50px;
-    margin-top: 45px;
+    margin-top: 0px;
     padding: 0 5%;
 
     @media (max-width: 768px){
-        margin-top: 55px;
+        margin-top: 5px;
     }
 `
 

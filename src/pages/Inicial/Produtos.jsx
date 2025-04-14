@@ -119,9 +119,9 @@ const Produtos = () => {
                         disableOnInteraction: false
                     }}
                     spaceBetween={30}
-                    navigation={true}
+                    navigation={false}
                     slidesPerView={1}
-                    pagination={true}
+                    pagination={false}
                     loop={true}
                     onMouseEnter={() => this.swiper.swiper.autoplay.stop()} // Para o autoplay quando o mouse entra
                     onMouseLeave={() => this.swiper.swiper.autoplay.start()} // Retoma o autoplay quando o mouse sai

@@ -89,7 +89,7 @@ const ArtigoLeft = styled.div`
 
       & button {
         cursor: pointer;
-        background-color: var(--color--black);
+        background-color: var(--color--blue);
         padding: 5px 5px 5px 15px;
         border-radius: 25px;
         color: var(--color--white);
@@ -117,7 +117,7 @@ const ArtigoLeft = styled.div`
           padding: 5px;
           border-radius: 50px;
           background-color: #f9f9f9;
-          color: var(--color--black);
+          color: var(--color--blue);
           transition: all .2s ease-in-out;
         }
       }
@@ -565,79 +565,6 @@ const ArtigoRelacionados = styled.div`
     }
 `
 
-const ArtigoBlogs = styled.section `
-    width: 100%;
-    height: 40vh;
-    display: flex;
-    align-items: center;
-    margin: 2.5% 0 5% 0;
-    max-width: 1140px;
-    left: 50%;
-    top: 0;
-    position: relative;
-    transform: translateX(-50%);
-`
-
-const Card = styled.div`
-  padding: 25px;
-  height: 40vh;
-  border-radius: 12px;
-  background-color: #00000010;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  flex-direction: column;
-  gap: 20px;
-
-    & > h1 {
-        font-size: 20px;
-        font-weight: 400;
-    }
-
-    & > p {
-        font-size: 12px;
-        font-weight: 400;
-        opacity: .6;
-    }
-
-    & > span {
-        font-size: 10px;
-        opacity: .4;
-        font-style: italic;
-        font-weight: 400;
-
-        & > b{
-            font-weight: 500;
-            color: var(--color--blue);
-        }
-    }
-
-    & > button {
-        font-size: 12px;
-        padding: 10px 15px;
-    }
-`
-
-const ArtigoTituloBlogs = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 10vh;
-    background-color: var(--color--dark--blue);
-    max-width: 1140px;
-    left: 50%;
-    top: 0;
-    position: relative;
-    transform: translateX(-50%);
-    border-radius: 20px;
-
-    & > h1 {
-        font-size: 24px;
-        font-weight: 300;
-        color: var(--color--white);
-    }
-`
 
 const ArticlePage = () => {
     const { slug } = useParams();
