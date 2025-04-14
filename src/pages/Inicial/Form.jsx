@@ -178,7 +178,9 @@ const ContactForm = styled.form`
     transition: all .5s linear!important;
 
     &:hover {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), -3px 3px 0px var(--color--blue);
+        transform: skew(0.5deg)!important;
+        border-radius: 23px;
     }
 
     @media (max-width: 768px){

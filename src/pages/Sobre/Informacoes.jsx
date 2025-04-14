@@ -114,7 +114,7 @@ const ValoresQualidades = styled.div`
 const Valores = () => {
     return (
         <>
-            <ValoresAll>
+            <ValoresAll id="Informacoes">
                 <ValoresText>
                     <div>
                         <h1 data-aos="fade-up-right" data-aos-delay="100">Nossos valores</h1>

@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react"; // Importação do Swiper
 import "swiper/css"; // Importação do CSS do Swiper
 import { useNavigate } from 'react-router-dom';
 import Button03 from "../../components/buttons/Button03";
+import { Navigation, Pagination } from "swiper/modules";
 
 const ProdutosAll = styled.section`
     width: 97.5%;
@@ -112,8 +113,11 @@ const Produtos = () => {
         <ProdutosAll>
             <ProdutosSwiper data-aos="fade-left" data-aos-delay="100">
                 <Swiper
+                    modules={{Pagination, Navigation}}
                     spaceBetween={30}
+                    navigation={true}
                     slidesPerView={1}
+                    pagination={true}
                     loop={true}
                     onMouseEnter={() => this.swiper.swiper.autoplay.stop()} // Para o autoplay quando o mouse entra
                     onMouseLeave={() => this.swiper.swiper.autoplay.start()} // Retoma o autoplay quando o mouse sai
