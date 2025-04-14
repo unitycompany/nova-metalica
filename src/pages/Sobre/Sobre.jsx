@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import { BsArrowUpRight, BsAward, BsCrosshair, BsBagCheck, BsCapslock } from "react-icons/bs";
+import { BsArrowUpRight, BsAward, BsCrosshair, BsBagCheck, BsCapslock, BsChatSquareQuote, BsEye } from "react-icons/bs";
 import Button04 from "../../components/buttons/Button04";
+import { TfiTarget } from "react-icons/tfi";
 
 
 const SobreAll = styled.section`
@@ -14,7 +15,7 @@ const SobreAll = styled.section`
     z-index: 1;
     height: auto;
     background: var(--color--white);
-    padding: 7.5% 5% 15% 5%;
+    padding: 7.5% 5% 5% 5%;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -352,17 +353,17 @@ const Sobre = () => {
 
                         <SobreCardTop>
                             <div>
-                            <BsCrosshair />
+                            <BsChatSquareQuote />
 
                             </div>
                             <div>
-                                <h6>Produzimos com</h6>
-                                <h1>precisão e tecnologia</h1>
+                                <h6>Nova Metálica</h6>
+                                <h1>Sobre</h1>
                             </div>
                         </SobreCardTop>
 
                         <SobreCardBottom>
-                            <p>Cada perfil de Steel Frame e Drywall que fabricamos passa por rigorosos processos de qualidade, garantindo resistência e exatidão para qualquer projeto.</p>
+                            <p>A Nova Metálica é uma fábrica referência no segmento de construção metálica, especializada em soluções de alta qualidade em Steel Frame.</p>
                             <a onClick={() => {
                                 const formSection = document.getElementById('Form');
                                 if ( formSection ){
@@ -380,17 +381,17 @@ const Sobre = () => {
 
                         <SobreCardTop>
                             <div>
-                            <BsBagCheck />
+                            <TfiTarget />
 
                             </div>
                             <div>
-                                <h6>Máteria-prima</h6>
-                                <h1>de alto padrão</h1>
+                                <h6>Nova Metálica</h6>
+                                <h1>Missão</h1>
                             </div>
                         </SobreCardTop>
 
                         <SobreCardBottom>
-                            <p>Utilizamos aço galvanizado de qualidade superior, garantindo estruturas duráveis, seguras e livres de corrosão.</p>
+                            <p>Ser reconhecida por entregar todos os tipos de projetos dentro do prazo, com máxima qualidade e eficiência em cada etapa.</p>
                             <a onClick={() => {
                                 const formSection = document.getElementById('Form');
                                 if ( formSection ){
@@ -408,17 +409,17 @@ const Sobre = () => {
 
                         <SobreCardTop>
                             <div>
-                            <BsCapslock />
+                            <BsEye />
 
                             </div>
                             <div>
-                                <h6>Fabricação</h6>
-                                <h1>sob demanda</h1>
+                                <h6>Nova Metálica</h6>
+                                <h1>Visão</h1>
                             </div>
                         </SobreCardTop>
 
                         <SobreCardBottom>
-                            <p>Produzimos perfis sob medida, adaptados às necessidades do seu projeto, com agilidade na entrega e padronização garantida.</p>
+                            <p>Evoluir a construção civil promovendo o Steel Frame como a melhor alternativa à alvenaria tradicional e elevando o padrão da indústria.</p>
                             <a onClick={() => {
                                 const formSection = document.getElementById('Form');
                                 if ( formSection ){
@@ -440,11 +441,14 @@ const Sobre = () => {
                     </div>
                     <div>
                         <span>Bem vindo a Nova Metálica</span>
-                        <h1>Conheça a <b>Nova Metálica</b>, a melhor Fábrica de Steel Frame e Drywall</h1>
-                        <p>Colocar uma descrição curta falando sobre os materiais que vendemos, bem curta e objetiva</p>
+                        <h1>Confiança e <b>qualidade</b> tem nome</h1>
+                        <p>
+                            Somos a primeira fábrica de perfis para Steel Frame e Drywall do Rio de Janeiro, uma referência em qualidade e tecnologia para o setor da construção civil.<br /><br />
+                            Com a missão de oferecer perfis metálicos normatizados e fabricados com aço 100% nacional, estamos equipados com tecnologia de ponta, como as avançadas máquinas FRAMECAD para Steel Frame e equipamentos Metalso de última geração para Drywall, garantindo maior precisão, eficiência e agilidade no processo de produção.
+                        </p>
 
                         <div>
-                            <p>Colocar uma descrição curta falando sobre os materiais que vendemos, bem curta e objetiva, Colocar uma descrição curta.</p>
+                            <p>Escolher a Nova Metálica é optar por inovação, custo-benefício e uma parceria que coloca a qualidade em primeiro lugar.</p>
                         </div>
 
                         <Button04 
