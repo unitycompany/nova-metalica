@@ -24,7 +24,7 @@ const SobreAll = styled.section`
 
     @media (max-width: 768px){
         border-radius: 30px;
-        padding: 0% 5% 35% 5%;
+        padding: 0% 5% 10% 5%;
         gap: 80px;
     }
 `
