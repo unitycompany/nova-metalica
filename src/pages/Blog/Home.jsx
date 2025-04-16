@@ -108,7 +108,7 @@ const HomeRight = styled.div`
         border-radius: 0px 15px 15px 0px;
         display: flex;
         align-items: flex-end;
-        justify-content: flex-end;
+        justify-content: flex-start;
         padding: 30px;
         border-image: 0 fill linear-gradient(90deg, #00000050, #0000);
 
@@ -157,7 +157,7 @@ const HomeRight = styled.div`
         border-radius: 0px 15px 15px 0px;
         display: flex;
         align-items: flex-end;
-        justify-content: flex-end;
+        justify-content: flex-start;
         padding: 30px;
         background-color: var(--color--white);
         position: relative;

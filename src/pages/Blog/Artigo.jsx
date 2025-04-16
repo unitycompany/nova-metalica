@@ -123,6 +123,7 @@ const ArtigoLeft = styled.div`
       }
     }
 
+
     & > div:nth-child(1){
         width: 100%;
         display: flex;
@@ -134,7 +135,8 @@ const ArtigoLeft = styled.div`
         margin-bottom: 50px;
 
         @media (max-width: 768px){
-          margin-bottom: 30px;
+          margin-bottom: 10px;
+          height: auto;
         }
 
         & > h1 {
@@ -239,6 +241,64 @@ const ArtigoLeft = styled.div`
             font-weight: 400;
             line-height: 120%;
             color: var(--color--black);
+          }
+
+          & > aside {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+            padding-left: 20px;
+
+            & h2 {
+              color: var(--color--blue);
+            }
+
+            & > p {
+              margin-top: -10px;
+            }
+
+            & > div {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: flex-start;
+                  gap: 10px;
+
+                  & > ol {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: flex-start;
+                  justify-content: center;
+                  gap: 5px;
+                  padding-left: 20px;
+
+                  & > li {
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 120%;
+                    color: var(--color--black);
+                    position: relative;
+                    padding-left: 25px;
+
+                    &::before{
+                      content: "";
+                      position: absolute;
+                      left: 5px;
+                      top: 5px;
+                      width: 8px;
+                      height: 8px;
+                      background-color: var(--color--blue);
+                      border-radius: 50%;
+                    }
+
+                    & > b {
+                      font-weight: 600;
+                      color: var(--color--black);
+                    }
+                  }
+                }
+              }
           }
 
           & div {
@@ -652,6 +712,8 @@ const ArticlePage = () => {
                 <div dangerouslySetInnerHTML={{ __html: topic.content }} />
               </div>
             ))}
+
+{/* dangerouslySetInnerHTML={{ __html: topic.content }} */}
 
             <aside className="cta-final-blog">
               <h1>Se você constrói em Steel Frame e procura um fornecedor de confiança para comprar perfis de Steel Frame com qualidade, entre em contato conosco!</h1>

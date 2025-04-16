@@ -90,18 +90,21 @@ const Blogs = () => {
     const fetchBlogs = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "Blog"));
-        if (querySnapshot.empty) {
-          console.warn("Nenhum documento na coleção 'Blog'.");
-          setFilteredArticles([]); // Garante que o estado seja atualizado
-        } else {
-          const blogs = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-          }));
-          console.log("Documentos encontrados:", blogs); // Verifica os dados
-          setFilteredArticles(blogs);
-          console.log("Estado atualizado:", blogs); // Verifica o estado após atualização
-        }
+        const blogs = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(), // supondo que doc.data().data seja a string "DD/MM/YYYY"
+        }));
+  
+        // Ordena do mais recente para o mais antigo
+        const sortedBlogs = blogs.sort((a, b) => {
+          const [dayA, monthA, yearA] = a.data.split('/');
+          const [dayB, monthB, yearB] = b.data.split('/');
+          const dateA = new Date(yearA, monthA - 1, dayA);
+          const dateB = new Date(yearB, monthB - 1, dayB);
+          return dateB - dateA;
+        });
+  
+        setFilteredArticles(sortedBlogs);
       } catch (error) {
         console.error("Erro ao buscar blogs:", error);
       }
@@ -109,6 +112,7 @@ const Blogs = () => {
   
     fetchBlogs();
   }, []);
+  
 
   const handleRedirect = (link) => {
     navigate(`/blog/${link}`);
