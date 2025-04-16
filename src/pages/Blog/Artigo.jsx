@@ -488,7 +488,7 @@ const ArtigoLeft = styled.div`
 
 const ArtigoRight = styled.div`
     width: 30%;
-    height: 90vh;
+    height: 100vh;
     background-color: #00000010;
     border-radius: 30px;
     padding: 10px;
@@ -511,7 +511,8 @@ const ArtigoRight = styled.div`
     
     & > div:nth-child(1){
         width: 100%;
-        height: 40%;
+        min-height: 30%;
+        height: auto;
         border-radius: 25px;
         background-color: var(--color--white);
         padding: 20px;
@@ -599,7 +600,7 @@ const ArtigoCarrossel = styled.div`
 `
 
 const ArtigoRelacionados = styled.div`
-    height: 25%;
+    height: 35%;
     width: 100%;
     border-radius: 20px;
     display: flex;
@@ -608,26 +609,46 @@ const ArtigoRelacionados = styled.div`
     flex-direction: column;
     padding: 20px;
     position: relative;
+    gap: 15px;
     background-color: var(--color--white);
 
     & > div{
         width: 100%;
-        height: auto;
+        height: 100%;
         display: flex;
         flex-direction: column;
         gap: 10px;
+        justify-content: flex-end;
         align-items: flex-start;
+        position: relative;
+        padding: 10px;
+        background: linear-gradient(45deg, #000 10%, rgba(0, 0, 0, 0.00) 90%);
+        border-radius: 20px;
+
+        & > img {
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          border-radius: 20px;
+          opacity: 0.5;
+        }
 
         & > h2{
             font-size: 16px;
             font-weight: 500;
-            margin: 5px 0;
+            position: relative;
+            z-index: 1;
+            color: #fff;
         }
 
         & > p {
             font-size: 12px;
             font-weight: 400;
-            opacity: calc().8;
+            color: #fff;
+            margin-top: -5px;
+            margin-bottom: 5px;
         }
 
         & > button{
@@ -650,16 +671,18 @@ const ArticlePage = () => {
     useEffect(() => {
       const fetchArticle = async () => {
         try {
+          // 1) Busca o artigo atual pelo slug
           const articlesRef = collection(db, "Artigos");
-          const q = query(articlesRef, where("slug", "==", slug));
-          const querySnapshot = await getDocs(q);
-  
-          if (!querySnapshot.empty) {
-            const doc = querySnapshot.docs[0];
+          const qArticle = query(articlesRef, where("slug", "==", slug));
+          const snapArticle = await getDocs(qArticle);
+    
+          if (!snapArticle.empty) {
+            const doc = snapArticle.docs[0];
             const fetchedArticle = { id: doc.id, ...doc.data() };
             setArticle(fetchedArticle);
-  
-            fetchRelatedArticles(fetchedArticle.tags);
+    
+            // 2) Agora chama o related passando o topico
+            fetchRelatedArticles(fetchedArticle.topico);
           } else {
             setError("Artigo não encontrado.");
           }
@@ -670,23 +693,31 @@ const ArticlePage = () => {
           setLoading(false);
         }
       };
-  
-      const fetchRelatedArticles = async (tags) => {
+    
+      const fetchRelatedArticles = async (topico) => {
         try {
           const articlesRef = collection(db, "Artigos");
-          const q = query(articlesRef, where("tags", "array-contains-any", tags));
-          const querySnapshot = await getDocs(q);
-  
-          const related = querySnapshot.docs
+    
+          // Consulta apenas os documentos cujo campo "topico" seja igual ao do artigo atual
+          const qRel = query(
+            articlesRef,
+            where("topico", "==", topico),
+            // opcional: limitar o número de relacionados
+            // limit(3)
+          );
+          const snapRel = await getDocs(qRel);
+    
+          const related = snapRel.docs
             .map((doc) => ({ id: doc.id, ...doc.data() }))
-            .filter((relatedArticle) => relatedArticle.slug !== slug);
-  
+            // Remove o próprio artigo da lista
+            .filter((a) => a.slug !== slug);
+    
           setRelatedArticles(related);
         } catch (err) {
           console.error("Erro ao buscar artigos relacionados:", err);
         }
       };
-  
+    
       fetchArticle();
     }, [slug]);
   
@@ -816,8 +847,15 @@ const ArticlePage = () => {
               {relatedArticles.length > 0 ? (
                 relatedArticles.map((related, index) => (
                   <div key={index}>
+                    <img src={related.imagemPrincipal} alt="" loading="lazy" />
                     <h2>{related.title}</h2>
-                    <p>{related.description}</p>
+                    <p>
+                      {related.descricao.length > 80
+                        ? `${related.descricao.slice(0, 80)}...`
+                        : related.descricao
+                      }
+                    </p>
+
                     <Button05
                       children="Leia mais"
                       onClick={() => navigate(`/blog/${related.slug}`)}
