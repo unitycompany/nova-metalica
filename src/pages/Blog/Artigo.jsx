@@ -43,6 +43,10 @@ const ArtigoLeft = styled.div`
     padding-right: 1.5%;
     padding-top: 1%;
     overflow-y: auto;
+
+    & a {
+      color: var(--color--blue);
+    }
     
     @media (max-width: 768px){
       width: 100%;
@@ -152,6 +156,10 @@ const ArtigoLeft = styled.div`
             font-weight: 400;
             color: var(--color--black);
 
+            & a {
+              color: var(--color--blue);
+            }
+
             & > b {
                 font-weight: 500;
                 color: var(--color--blue);
@@ -257,6 +265,10 @@ const ArtigoLeft = styled.div`
 
             & > p {
               margin-top: -10px;
+            }
+
+            & a {
+              color: var(--color--blue);
             }
 
             & > div {
