@@ -645,9 +645,10 @@ const ArtigoRelacionados = styled.div`
 
         & > p {
             font-size: 12px;
+            opacity: 1;
             font-weight: 400;
             color: #fff;
-            margin-top: -5px;
+            margin-top: -3px;
             margin-bottom: 5px;
         }
 
@@ -720,6 +721,15 @@ const ArticlePage = () => {
     
       fetchArticle();
     }, [slug]);
+
+    const getHtmlSnippet = (htmlString, maxLength) => {
+      // Se passar do limite, corta e adiciona '...'
+      const snippet =
+        htmlString.length > maxLength
+          ? htmlString.slice(0, maxLength) + "..."
+          : htmlString;
+      return snippet;
+    };
   
     if (loading) {
       return <p>Carregando artigo...</p>;
@@ -767,6 +777,7 @@ const ArticlePage = () => {
             </aside>
           </ArtigoLeft>
           
+                     
           <ArtigoRight>
             <div>
               <h3>Sumário</h3>
@@ -849,12 +860,11 @@ const ArticlePage = () => {
                   <div key={index}>
                     <img src={related.imagemPrincipal} alt="" loading="lazy" />
                     <h2>{related.title}</h2>
-                    <p>
-                      {related.descricao.length > 80
-                        ? `${related.descricao.slice(0, 80)}...`
-                        : related.descricao
-                      }
-                    </p>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: getHtmlSnippet(related.descricao, 80)
+                      }}
+                    />
 
                     <Button05
                       children="Leia mais"

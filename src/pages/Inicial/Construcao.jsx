@@ -48,6 +48,7 @@ const ConstrucaoText = styled.div`
         font-size: 16px;
         color: var(--color--black);
         opacity: .8;
+        text-align: center;
 
         @media (max-width: 768px) {
             text-align: center;
