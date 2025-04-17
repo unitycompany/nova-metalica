@@ -1,0 +1,38 @@
+# .htaccess para o domínio novametalica.com.br
+# Ativar o módulo de reescrita
+RewriteEngine On
+
+# Redirecionar HTTP para HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Forçar domínio www.novametalica.com.br
+RewriteCond %{HTTP_HOST} !^www\.novametalica\.com\.br$ [NC]
+RewriteRule ^ https://www.novametalica.com.br%{REQUEST_URI} [L,R=301]
+
+# Definir arquivos de índice padrão
+DirectoryIndex index.php index.html
+
+# Impedir acesso direto ao próprio .htaccess
+<Files ".htaccess">
+    Require all denied
+</Files>
+
+# Desabilitar listagem de diretórios
+Options -Indexes
+
+# Configurações adicionais (descomente e ajuste conforme necessidade):
+# Proteger arquivos de configuração e backup
+# <FilesMatch "\.(env|config|sql|bak)$">
+#     Require all denied
+# </FilesMatch>
+
+# Habilitar cache de navegador para arquivos estáticos
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+</IfModule>
