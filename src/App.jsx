@@ -101,7 +101,7 @@ function App() {
   return (
     <Router>
       <MainApp />
-      <CookieConsent />
+      {/* <CookieConsent /> */}
     </Router>
   );
 }
