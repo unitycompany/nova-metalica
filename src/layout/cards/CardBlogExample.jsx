@@ -61,9 +61,14 @@ const CardAll = styled.div`
             width: 100%;
             object-fit: cover;
             min-height: 270px;
-            height: 100% auto;
+            max-height: 300px;
+            height: auto;
             border-radius: 20px;
             transition: all .5s linear;
+
+            @media (max-width: 768px){
+                max-height: 100%;
+            }
 
             &:hover {
                 filter: brightness(105%) contrast(105%);

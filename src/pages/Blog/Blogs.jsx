@@ -42,7 +42,7 @@ const BlogsAll = styled.section`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
 
     @media (max-width: 768px){
@@ -51,15 +51,17 @@ const BlogsAll = styled.section`
 
     & > div {
       width: 100%;
+      padding-right: 15px;
       overflow-y: scroll;
-      height: 90%;
+      height: 95%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: space-between;
       gap: 30px;
 
       @media (max-width: 768px){
+          width: 100%;
       }
     }
   }

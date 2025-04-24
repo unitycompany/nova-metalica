@@ -21,7 +21,8 @@ const HomeAll = styled.section`
 
     @media (max-width: 768px){
         flex-direction: column;
-        padding: 20% 2.5% 0% 2.5%;
+        padding: 10% 2.5% 0% 2.5%;
+        height: 7.5vh;
     }
 `
 
@@ -43,6 +44,7 @@ const HomeLeft = styled.div`
         width: 100%;
         padding: 20px;
         border-image: 0 fill linear-gradient(90deg, #00000070, #0000);  
+        display: none;
     }
 
     & > div {
@@ -96,6 +98,7 @@ const HomeRight = styled.div`
 
     @media (max-width: 768px){
         width: 100%;
+        display: none;
     }
 
     & > div:nth-child(1){
@@ -170,7 +173,6 @@ const HomeRight = styled.div`
         overflow: hidden;
 
         @media (max-width: 768px){
-            border: 1px solid red;
             width: 100%;
         }
 
