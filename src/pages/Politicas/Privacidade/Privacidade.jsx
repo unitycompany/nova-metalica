@@ -104,6 +104,7 @@ const TableWrapper = styled.div`
   margin: 2rem 0;
   position: relative;
   overflow-x: auto; 
+  
   &::after {
     content: 'Arraste para o lado →';
     position: absolute;

@@ -49,7 +49,7 @@ const ArtigoLeft = styled.div`
     }
     
     @media (max-width: 768px){
-      width: 100%;
+      width: 100%!important;
       gap: 30px;
       height: auto;
     }
@@ -204,6 +204,11 @@ const ArtigoLeft = styled.div`
         justify-content: flex-start;
         gap: 20px;
 
+        @media (max-width: 768px){
+          max-width: 100%!important;
+          position: relative;
+        }
+
         & > h1 {
           font-size: 24px;
           color: var(--color--blue);
@@ -311,6 +316,43 @@ const ArtigoLeft = styled.div`
                   }
                 }
               }
+          }
+
+          & .table-responsive {
+            position: relative;
+            overflow-x: auto;
+            height: 100%;
+            width: 100%;
+
+            @media(max-width: 768px){
+              width: 95vw;
+            }
+
+            & table {
+            border-collapse: collapse;
+            height: 100%;
+            width: 100%;
+            border: 1px solid var(--color--black);
+            overflow-x: scroll;
+
+            @media (max-width: 768px) {
+              overflow-x: hidden;
+            }
+
+            & th,
+            & td {
+              border: 1px solid var(--color--black);
+              padding: 8px;
+            }
+
+            & thead th {
+              color: var(--color--blue);
+            }
+
+            & td:first-child {
+              font-weight: 400;
+            }
+          }
           }
 
           & div {
@@ -668,6 +710,14 @@ const ArticlePage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const sidebarRef = useRef(null);
+    const [selected, setSelected] = useState(null);
+
+    useEffect(() => {
+      if (relatedArticles.length > 0) {
+        const randomIndex = Math.floor(Math.random() * relatedArticles.length);
+        setSelected(relatedArticles[randomIndex]);
+      }
+    }, [relatedArticles]);
   
     useEffect(() => {
       const fetchArticle = async () => {
@@ -855,23 +905,23 @@ const ArticlePage = () => {
   
             <ArtigoRelacionados>
               <h3>Artigos Relacionados</h3>
-              {relatedArticles.length > 0 ? (
-                relatedArticles.map((related, index) => (
-                  <div key={index}>
-                    <img src={related.imagemPrincipal} alt="" loading="lazy" />
-                    <h2>{related.title}</h2>
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: getHtmlSnippet(related.descricao, 80)
-                      }}
-                    />
-
-                    <Button05
-                      children="Leia mais"
-                      onClick={() => navigate(`/blog/${related.slug}`)}
-                    />
-                  </div>
-                ))
+              {selected ? (
+                <div>
+                  <img
+                    src={selected.imagemPrincipal}
+                    alt={selected.title}
+                    loading="lazy"
+                  />
+                  <h2>{selected.title}</h2>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: getHtmlSnippet(selected.descricao, 80),
+                    }}
+                  />
+                  <Button05 onClick={() => navigate(`/blog/${selected.slug}`)}>
+                    Leia mais
+                  </Button05>
+                </div>
               ) : (
                 <p>Nenhum artigo relacionado encontrado.</p>
               )}
