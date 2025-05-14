@@ -87,7 +87,7 @@ const BlogSwiper = styled.div`
     }
 
     & > h4 {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 500;
     }
 
