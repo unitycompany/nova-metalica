@@ -33,7 +33,7 @@ const ArtigoAll = styled.section`
 
 const ArtigoLeft = styled.div`
     width: 70%;
-    height: 95vh;
+    height: auto;
     padding-left: 0;
     display: flex;
     flex-direction: column;
@@ -134,9 +134,9 @@ const ArtigoLeft = styled.div`
         align-items: flex-start;
         justify-content: flex-start;
         flex-direction: column;
-        height: 80vh;
+        height: auto;
         gap: 20px;
-        margin-bottom: 50px;
+        margin-bottom: 0px;
 
         @media (max-width: 768px){
           margin-bottom: 10px;
@@ -174,7 +174,7 @@ const ArtigoLeft = styled.div`
 
         & > img {
             width: 100%;
-            height: 70%;
+            height: 450px;
             object-fit: cover;
             border-radius: 30px;
             
@@ -530,7 +530,7 @@ const ArtigoLeft = styled.div`
 
 const ArtigoRight = styled.div`
     width: 30%;
-    height: 100vh;
+    height: auto;
     background-color: #00000010;
     border-radius: 30px;
     padding: 10px;
@@ -604,7 +604,7 @@ const ArtigoRight = styled.div`
 
     & > div:nth-child(2){
         width: 100%;
-        height: 10%;
+        height: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -812,7 +812,11 @@ const ArticlePage = () => {
             {article.sumario?.map((topic, index) => (
               <div key={index} id={topic.id}>
                 <h1>{topic.title}</h1>
-                <div dangerouslySetInnerHTML={{ __html: topic.content }} />
+                <div>
+                  <p>O custo de uma construção em <a href="https://novametalica.com.br/blog/o-que-e-steel-frame"><i>Steel Frame</i></a> depende de vários fatores, como o tamanho do projeto, a escolha dos materiais e a localização da obra. Apesar de um investimento inicial levemente superior à Alvenaria, o sistema oferece economia em mão de obra, tempo de execução e manutenção, além de um excelente retorno a longo prazo.</p>
+
+                  <p>Se você busca eficiência, modernidade e sustentabilidade, o <a href="https://novametalica.com.br/blog/o-que-e-steel-frame"><i>Steel Frame</i></a> é uma opção que vale a pena considerar. Com ele, é possível aliar qualidade, agilidade e economia em um único sistema construtivo.</p>
+                </div>
               </div>
             ))}
 

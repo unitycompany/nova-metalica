@@ -60,6 +60,7 @@ const CardAll = styled.div`
         & > img {
             width: 100%;
             object-fit: cover;
+            object-position: center;
             min-height: 270px;
             max-height: 300px;
             height: auto;
