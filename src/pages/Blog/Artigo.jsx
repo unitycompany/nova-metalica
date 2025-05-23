@@ -91,7 +91,7 @@ const ArtigoLeft = styled.div`
         }
       }
 
-      & button {
+      & a {
         cursor: pointer;
         background-color: var(--color--blue);
         padding: 5px 5px 5px 15px;
@@ -820,10 +820,10 @@ const ArticlePage = () => {
 
             <aside className="cta-final-blog">
               <h1>Se você constrói em Steel Frame e procura um fornecedor de confiança para comprar perfis de Steel Frame com qualidade, entre em contato conosco!</h1>
-              <button onClick={() => navigate('/#Form')}>
+              <a href="https://www.novametalica.com.br/?utm_source=blog&utm_medium=organic#Form">
                 Entrar em contato
                 <BsArrowRight />  
-              </button>
+              </a>
             </aside>
           </ArtigoLeft>
           
