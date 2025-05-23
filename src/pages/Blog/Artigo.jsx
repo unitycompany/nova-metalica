@@ -812,11 +812,7 @@ const ArticlePage = () => {
             {article.sumario?.map((topic, index) => (
               <div key={index} id={topic.id}>
                 <h1>{topic.title}</h1>
-                <div>
-                  <p>O custo de uma construção em <a href="https://novametalica.com.br/blog/o-que-e-steel-frame"><i>Steel Frame</i></a> depende de vários fatores, como o tamanho do projeto, a escolha dos materiais e a localização da obra. Apesar de um investimento inicial levemente superior à Alvenaria, o sistema oferece economia em mão de obra, tempo de execução e manutenção, além de um excelente retorno a longo prazo.</p>
-
-                  <p>Se você busca eficiência, modernidade e sustentabilidade, o <a href="https://novametalica.com.br/blog/o-que-e-steel-frame"><i>Steel Frame</i></a> é uma opção que vale a pena considerar. Com ele, é possível aliar qualidade, agilidade e economia em um único sistema construtivo.</p>
-                </div>
+                <div dangerouslySetInnerHTML={{ __html: topic.content }} />
               </div>
             ))}
 
