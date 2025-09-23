@@ -21,6 +21,7 @@ const PaginaParceria = lazy(() => import("./pages/Parcerias/Inicial"));
 const PaginaBlog = lazy(() => import("./pages/Blog/Inicial"));
 const LpPaginaParcerias = lazy(() => import("./pages/Parcerias/LP/Inicial"));
 const ArticlePage = lazy(() => import("./pages/Blog/Artigo"));
+const PaginaSteelFrame = lazy(() => import("./pages/Steel Frame/Inicial"));
 const TermosCondicoes = lazy(() => import("./pages/Politicas/Termos/Termos"));
 const PoliticaDados = lazy(() => import("./pages/Politicas/Dados/Dados"));
 const PoliticaPrivacidade = lazy(() => import("./pages/Politicas/Privacidade/Privacidade"));
@@ -83,6 +84,7 @@ function AnimatedRoutes() {
           {/* <Route path="/produtos/drywall" element={<PageDrywall />} />
           <Route path="/produtos/steel-frame" element={<PageSteelFrame />} /> */}
           <Route path="/parcerias" element={<PaginaParceria />} />
+          <Route path="/steelframe" element={<PaginaSteelFrame />} />
           <Route path="/blog" element={<PaginaBlog />} />
           <Route path="/blog/:slug" element={<ArticlePage />} />
           <Route path="/lpparcerias" element={<LpPaginaParcerias />} />

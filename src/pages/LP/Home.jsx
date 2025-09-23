@@ -600,11 +600,11 @@ const Home = () => {
     return (
         <>
             <HomeAll id="form">
-                <HomeFaixa data-aos="fade-down" data-aos-delay="100">
+                {/* <HomeFaixa data-aos="fade-down" data-aos-delay="100">
                     <h1>
                         <BsTruck /> <b>VENDAS NO ATACADO</b> COM PEDIDO MÍNIMO DE <span>1500 PEÇAS</span> DIRETO DA FÁBRICA
                     </h1>    
-                </HomeFaixa>    
+                </HomeFaixa>     */}
 
                 <HomeContainer>
                     <HomeLeft>
