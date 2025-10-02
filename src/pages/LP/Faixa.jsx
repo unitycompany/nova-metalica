@@ -90,6 +90,18 @@ const Faixa = () => {
           };
       }, []);
   
+  const quality = [
+    { id: 1, topic: "Melhor preço do mercado" },
+    { id: 2, topic: "Perfis 100% normatizados" },
+    { id: 3, topic: "Condições de compra diferenciadas" },
+    { id: 4, topic: "Precisão e qualidades garantidas" },
+    { id: 5, topic: "Perfis engenheirados ou stick" },
+    { id: 6, topic: "Tecnologia de ponta na fabricação" },
+    { id: 7, topic: "Parceria com CSN e ArcelloMittal" },
+    { id: 8, topic: "Produtos 100% rastreáveis" },
+    { id: 9, topic: "Fabricados com aço nacional" },
+    { id: 10, topic: "Cálculo estrutural garantido" },
+  ];
 
   return (
     <Container data-aos="fade-in">
@@ -103,6 +115,9 @@ const Faixa = () => {
         spaceBetween={50} // Espaço entre os slides
         slidesPerView={3} // Exibe 4 slides por vez no desktop
         freeMode={true} // Habilita o modo de transição contínua
+        freeModeMomentum={false} // Desativa o momentum para controle total
+        freeModeSticky={true} // Faz com que o slide pare em posições fixas
+        loopedSlides={quality.length} // Garante que todos os slides sejam clonados para o loop
         speed={3000} // Controla a velocidade do movimento contínuo// Inclui os módulos Autoplay, FreeMode e Pagination
         pagination={false} // Adiciona a paginação
         breakpoints={{
@@ -116,35 +131,15 @@ const Faixa = () => {
             },
         }}
       >
-        <SwiperSlide>
-          <div>
-            <h3>Steel Frame na Nova Metálica</h3>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <div>
-            <h3>Steel Frame na Nova Metálica</h3>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <div>
-            <h3>Steel Frame na Nova Metálica</h3>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <div>
-            <h3>Steel Frame na Nova Metálica</h3>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <div>
-            <h3>Steel Frame na Nova Metálica</h3>
-          </div>
-        </SwiperSlide>
+        {
+          quality.map(i => (
+            <SwiperSlide key={i.id}>
+              <div>
+                <h3>{i.topic}</h3>
+              </div>
+            </SwiperSlide>
+          ))
+        }
       </Swiper>
     </Container>
   );

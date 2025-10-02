@@ -495,9 +495,9 @@ const Header = () => {
           <NavLink to="/sobre" activeClassName="active">
             Sobre nós
           </NavLink>
-          <NavLink to="/steelframe" activeClassName="active">
+          {/* <NavLink to="/steelframe" activeClassName="active">
             Steel Frame
-          </NavLink>
+          </NavLink> */}
           
           {/* <div>
             <RedirectDropdown />

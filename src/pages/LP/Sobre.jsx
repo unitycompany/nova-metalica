@@ -79,7 +79,16 @@ const SobreRight = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 30px;
+    gap: 24px;
+
+    & > div {
+        width: 100%;
+        background-color: #00000010;
+        padding: 16px 12px;
+        color: #1d1d1b;
+        margin-top: -10px;
+        border-left: 2px solid var(--color--blue);
+    }
 
     @media (max-width:768px){
         width: 100%;
@@ -122,7 +131,7 @@ const SobreRight = styled.div`
             width: 80%;
         }
     }
-`
+` 
 
 const Sobre = () => {
     return (
@@ -140,14 +149,23 @@ const Sobre = () => {
                             loading="lazy"
                         />
                         <h1 data-aos="fade-up" data-aos-delay="200">
-                            Confiança e qualidade tem nome
+                            Nova Metálica: Confiança e qualidade têm nome
                         </h1>
-                        <p data-aos="fade-up" data-aos-delay="300">
-                            Somos a primeira fábrica de perfis para Steel Frame e Drywall do Rio de Janeiro, uma referência em qualidade e tecnologia para o setor da construção civil.
-                            <br /><br />
-                            Com a missão de oferecer perfis metálicos normatizados e fabricados com aço 100% nacional, estamos equipados com tecnologia de ponta, como as avançadas máquinas F325iT Framecad para Steel Frame e equipamentos Metalso de última geração para Drywall, garantindo maior precisão, eficiência e agilidade no processo de produção.
-                            <br /><br />
-                            Escolher a Nova Metálica é optar por inovação, custo-benefício e uma parceria que coloca a qualidade em primeiro lugar.
+                        <p>
+                            Somos referência em perfis para Steel Frame e Drywall, unindo qualidade e tecnologia de ponta para elevar o padrão da construção civil em todo o Brasil.
+                        </p>
+                        <div>
+                            <p>
+                            Nossa missão é fornecer perfis metálicos normatizados, fabricados com aço 100% nacional, assegurando qualidade e desempenho em todo projeto.
+                            </p>
+                        </div>
+                        <div>
+                        <p>
+                            Contamos com as avançadas máquinas Framecad para Steel Frame e Metalso para Drywall, o que nos permite entregar perfis com precisão milimétrica e eficiência.
+                        </p>
+                        </div>
+                        <p>
+                            Escolher a Nova Metálica é optar por inovação e uma parceria que coloca a qualidade em primeiro lugar.
                         </p>
                         <ButtonLP2 />
                     </SobreRight>

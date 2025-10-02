@@ -489,21 +489,6 @@ const Home = () => {
         }
     };
 
-    // Handlers para o segundo FormSelect
-    const handleOptionClick2 = (option) => {
-        setSelectedOption2(option);
-        setShowOtherInput2(false);
-        setOtherInput2("");
-        setIsOpen2(false);
-    };
-
-    const handleOtherInput2 = (e) => {
-        if (e.key === "Enter") {
-        setSelectedOption2(`Outro: ${otherInput2}`);
-        setIsOpen2(false);
-        }
-    };
-
     const handleSubmit = (event) => {
         event.preventDefault();
       
@@ -516,10 +501,9 @@ const Home = () => {
       
         // Verifica os valores dos estados para os campos de seleção
         const sistema = selectedOption || '';
-        const motivoContato = selectedOption2 || '';
       
         // Validação básica
-        if (!name || !email || !whatsapp || !cidade || !estado || !sistema || !motivoContato) {
+        if (!name || !email || !whatsapp || !cidade || !estado || !sistema) {
           alert('Por favor, preencha todos os campos corretamente.');
           return;
         }
@@ -557,7 +541,6 @@ const Home = () => {
               cidade: cidade,
               estado: estado,
               sistema: sistema,
-              motivoContato: motivoContato,
               last_conversion: {
                 source: utmSource,
                 data: dataAtual,
@@ -610,10 +593,10 @@ const Home = () => {
                     <HomeLeft>
                         <HomeTitle>
                             <h1 data-aos="fade-left" data-aos-delay="100">
-                                Reduza os custos e <b>otimize</b> os seus projetos:
+                                Perfis normatizados <b>direto da fábrica</b> para sua obra
                             </h1>
                             <h6 data-aos="fade-up-right" data-aos-delay="100">
-                                Fabricamos perfis de <b>Steel Frame</b> sob medida, com qualidade de ponta e benefícios exclusivos para você.
+                                Steel Frame certificado com preço de fábrica e entrega em todo Brasil.
                             </h6>
                         </HomeTitle>
                         <HomeForm id="contactForm" data-aos="fade-up" data-aos-delay="100" onSubmit={handleSubmit}>
@@ -666,46 +649,6 @@ const Home = () => {
                                     Steel Frame e Drywall
                                 </span>
                                 
-                                </div>
-                            </FormSelectWrapper>
-
-                            <FormSelectWrapper isOpen={isOpen2}>
-                                <label>
-                                Qual motivo do seu contato?
-                                <div onClick={() => setIsOpen2((prev) => !prev)}>
-                                    <span>{selectedOption2 || "Selecione uma opção"}</span>
-                                    <BsArrowDownShort />
-                                </div>
-
-                                </label>
-                                <div className="dropdown">
-                                <span onClick={() => handleOptionClick2("Estou buscando um fornecedor para pedidos no atacado")}>
-                                    Estou buscando um fornecedor para pedidos no atacado
-                                </span>
-                                <span onClick={() => handleOptionClick2("Quero solicitar um orcamento para revenda")}>
-                                    Quero solicitar um orçamento para revenda
-                                </span>
-                                <span onClick={() => handleOptionClick2("Tenho interesse em conhecer os produtos e condicoes para parceria.")}>
-                                    Tenho interesse em conhecer os produtos e condições para parceria.
-                                </span>
-                                <span onClick={() => handleOptionClick2("Gostaria de saber mais informacoes antes de tomar uma decisao.")}>
-                                    Gostaria de saber mais informações antes de tomar uma decisão.
-                                </span>
-                                <span onClick={() => handleOptionClick2("Busco produtos para a construção do meu cliente")}>
-                                    Busco produtos para a construção do meu cliente
-                                </span>
-                                <span onClick={() => setShowOtherInput2(true)}>
-                                    Outro (especifique):
-                                    {showOtherInput2 && (
-                                    <input
-                                        type="text"
-                                        placeholder="Digite seu motivo e pressione Enter"
-                                        value={otherInput2}
-                                        onChange={(e) => setOtherInput2(e.target.value)}
-                                        onKeyDown={handleOtherInput2}
-                                    />
-                                    )}
-                                </span>
                                 </div>
                             </FormSelectWrapper>
 

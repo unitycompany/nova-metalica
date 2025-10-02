@@ -22,17 +22,18 @@ const PaginaInicial = () => {
             <All>
             <Home />
                 <Black />
-                    <Carrossel />  
-                        <Faixa />
-                            <Produtos />
-                                <Faixa />
-                                    <Galpao />
-                                        <Faixa />
-                                            <Sobre />
-                                                <Faixa />
-                                                    <Perfis />
-                                                        <FAQ />
-            </All>
+                    <Faixa />
+                        <Perfis />  
+                        {/* <Carrossel />   */}
+                            <Faixa />
+                                <Produtos />
+                                    <Faixa />
+                                        {/* <Galpao /> */}
+                                            {/* <Faixa /> */}
+                                                <Sobre />
+                                                    {/* <Faixa /> */}
+                                                        {/* <FAQ /> */}
+                </All>
         </>
     )
 }

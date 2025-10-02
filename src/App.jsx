@@ -84,7 +84,7 @@ function AnimatedRoutes() {
           {/* <Route path="/produtos/drywall" element={<PageDrywall />} />
           <Route path="/produtos/steel-frame" element={<PageSteelFrame />} /> */}
           <Route path="/parcerias" element={<PaginaParceria />} />
-          <Route path="/steelframe" element={<PaginaSteelFrame />} />
+          {/* <Route path="/steelframe" element={<PaginaSteelFrame />} /> */}
           <Route path="/blog" element={<PaginaBlog />} />
           <Route path="/blog/:slug" element={<ArticlePage />} />
           <Route path="/lpparcerias" element={<LpPaginaParcerias />} />
