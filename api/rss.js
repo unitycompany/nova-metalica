@@ -1,6 +1,8 @@
 // Vercel Serverless Function: RSS feed for Nova Metálica Blog
 // Fetches Firestore documents via REST and emits an RSS 2.0 feed
 
+export const config = { runtime: 'edge' };
+
 const PROJECT_ID = 'novametalica-bb05f';
 // Fallback to the public API key in repo if env var not set
 const API_KEY = process.env.FIREBASE_API_KEY || 'AIzaSyCm0N9VNANfmzK_GfJxx1regbzmmHJt2jo';
@@ -65,9 +67,9 @@ const buildRss = (items) => {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel>\n    <title>Nova Metálica — Blog</title>\n    <link>${SITE_URL}</link>\n    <description>Artigos sobre Steel Frame e construção.</description>\n    <language>pt-BR</language>${rssItems}\n  </channel>\n</rss>`;
 };
 
-module.exports = async (req, res) => {
+export default async function handler() {
   try {
-    const results = await Promise.allSettled(collections.map(fetchCollection));
+    const results = await Promise.allSettled(collections.map((c) => fetchCollection(c)));
     const all = results
       .filter((r) => r.status === 'fulfilled')
       .flatMap((r) => r.value)
@@ -77,13 +79,23 @@ module.exports = async (req, res) => {
     all.sort((a, b) => b.pubDate - a.pubDate);
 
     const rss = buildRss(all);
-    res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8');
-    res.status(200).send(rss);
+    return new Response(rss, {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/rss+xml; charset=utf-8',
+        'Cache-Control': 'public, max-age=60, s-maxage=300'
+      }
+    });
   } catch (err) {
     console.error('RSS error:', err);
-    res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8');
     // serve minimal, non-empty feed to avoid "fonte vazia"
     const fallback = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel>\n    <title>Nova Metálica — Blog</title>\n    <link>${SITE_URL}</link>\n    <description>Feed temporariamente indisponível.</description>\n    <language>pt-BR</language>\n  </channel>\n</rss>`;
-    res.status(200).send(fallback);
+    return new Response(fallback, {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/rss+xml; charset=utf-8',
+        'Cache-Control': 'no-store'
+      }
+    });
   }
-};
+}
