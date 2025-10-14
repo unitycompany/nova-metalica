@@ -1,0 +1,15 @@
+# AI crawling policy for Nova Metálica
+# Reference: https://aiprotocol.org/ai.txt (convenção de facto)
+
+User-Agent: *
+Allow: /
+Crawl-Delay: 2
+
+# Descoberta de recursos para LLMs
+Notebook: https://novametalica.com.br/site-notebook.ipynb
+Sitemap: https://nm.novametalica.com.br/sitemap.xml
+Policy: https://novametalica.com.br/politica-de-privacidade
+Terms: https://novametalica.com.br/termos-de-condicoes
+
+# Contato para uso de dados
+Contact: contato@novametalica.com.br

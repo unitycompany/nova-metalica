@@ -722,18 +722,28 @@ const ArticlePage = () => {
     useEffect(() => {
       const fetchArticle = async () => {
         try {
-          // 1) Busca o artigo atual pelo slug
-          const articlesRef = collection(db, "Artigos");
-          const qArticle = query(articlesRef, where("slug", "==", slug));
-          const snapArticle = await getDocs(qArticle);
-    
-          if (!snapArticle.empty) {
-            const doc = snapArticle.docs[0];
-            const fetchedArticle = { id: doc.id, ...doc.data() };
-            setArticle(fetchedArticle);
-    
-            // 2) Agora chama o related passando o topico
-            fetchRelatedArticles(fetchedArticle.topico);
+          // Tenta resolver o artigo por várias chaves e coleções
+          const tryCollections = ["Artigos", "Blog"]; // compatibilidade
+          const tryFields = ["slug", "link", "id"]; // diferentes formas de identificar
+
+          let found = null;
+          for (const col of tryCollections) {
+            if (found) break;
+            const articlesRef = collection(db, col);
+            for (const field of tryFields) {
+              const qArticle = query(articlesRef, where(field, "==", slug));
+              const snap = await getDocs(qArticle);
+              if (!snap.empty) {
+                const doc = snap.docs[0];
+                found = { id: doc.id, ...doc.data() };
+                break;
+              }
+            }
+          }
+
+          if (found) {
+            setArticle(found);
+            fetchRelatedArticles(found.topico);
           } else {
             setError("Artigo não encontrado.");
           }
@@ -744,7 +754,7 @@ const ArticlePage = () => {
           setLoading(false);
         }
       };
-    
+
       const fetchRelatedArticles = async (topico) => {
         try {
           const articlesRef = collection(db, "Artigos");

@@ -88,6 +88,19 @@ const Blogs = () => {
   const [visibleArticles, setVisibleArticles] = useState(5); // Quantos artigos mostrar inicialmente
   const navigate = useNavigate(); // Para redirecionamento
 
+  // Fallback: cria um slug a partir do título quando o campo link/slug vier vazio
+  const slugify = (text) => {
+    if (!text || typeof text !== 'string') return '';
+    return text
+      .normalize('NFD')
+      .replace(/\p{Diacritic}+/gu, '') // remove acentos
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9\s-]/g, '') // remove caracteres não alfanuméricos
+      .replace(/\s+/g, '-') // espaços -> hífen
+      .replace(/-+/g, '-'); // evita múltiplos hífens
+  };
+
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -116,8 +129,9 @@ const Blogs = () => {
   }, []);
   
 
-  const handleRedirect = (link) => {
-    navigate(`/blog/${link}`);
+  const handleRedirect = (article) => {
+    const candidate = article?.link || article?.slug || slugify(article?.titulo) || article?.id;
+    navigate(`/blog/${candidate}`);
   };
 
   return (
@@ -130,7 +144,7 @@ const Blogs = () => {
         <div>
           {filteredArticles.length > 0 ? (
             filteredArticles.slice(0, visibleArticles).map((article) => (
-              <div key={article.id} onClick={() => handleRedirect(article.link)} style={{ cursor: 'pointer' }}>
+              <div key={article.id} onClick={() => handleRedirect(article)} style={{ cursor: 'pointer' }}>
                 <CardExample
                   topico={article.topico}
                   titulo={article.titulo}
