@@ -7,6 +7,7 @@ Crawl-Delay: 2
 
 # Descoberta de recursos para LLMs
 Notebook: https://novametalica.com.br/site-notebook.ipynb
+RSS: https://novametalica.com.br/api/rss
 Sitemap: https://nm.novametalica.com.br/sitemap.xml
 Policy: https://novametalica.com.br/politica-de-privacidade
 Terms: https://novametalica.com.br/termos-de-condicoes
