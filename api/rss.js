@@ -12,7 +12,8 @@ const slugify = (text) => {
   if (!text || typeof text !== 'string') return '';
   return text
     .normalize('NFD')
-    .replace(/\p{Diacritic}+/gu, '')
+    // remove diacritics using explicit unicode range for combining marks
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .trim()
     .replace(/[^a-z0-9\s-]/g, '')
