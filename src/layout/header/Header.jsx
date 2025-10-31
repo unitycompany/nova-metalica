@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Navigate, NavLink, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button04 from "../../components/buttons/Button04";
-import { BsTelephone, BsEnvelopeCheck, BsGeo, BsBook, BsCartCheck, BsHouse, BsX, BsGrid3X3GapFill, BsArrowRight } from "react-icons/bs";
+import { BsTelephone, BsEnvelopeCheck, BsGeo, BsBook, BsCartCheck, BsHouse, BsX, BsGrid3X3GapFill, BsArrowRight, BsChevronDown } from "react-icons/bs";
 import { HiBars3, HiOutlineBars4 } from "react-icons/hi2";
 import RedirectDropdown from "../../components/buttons/Select";
 
@@ -261,6 +261,169 @@ const MenuButton = styled.button`
   }
 `;
 
+// Dropdown Styles
+const DropdownWrapper = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
+const DropdownButton = styled.div`
+  font-size: 14px;
+  padding: 15px 20px;
+  color: var(--color--black);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  svg {
+    transition: transform 0.3s ease;
+    font-size: 12px;
+  }
+
+  &.active {
+    border-bottom: 2px solid var(--color--dark--blue);
+    color: var(--color--dark--blue);
+    transform: scale(1.05);
+  }
+
+  &::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color--dark--blue);
+    transition: 0.5s ease;
+    display: block;
+    z-index: -1;
+  }
+
+  &:hover::before {
+    width: 120%;
+    padding: 30px 10px;
+  }
+
+  &:hover {
+    color: var(--color--white);
+    font-weight: 500;
+
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+`;
+
+const DropdownMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--color--white);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  min-width: 220px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 100;
+  margin-top: 8px;
+
+  ${DropdownWrapper}:hover & {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+`;
+
+const DropdownItem = styled.div`
+  padding: 14px 20px;
+  color: var(--color--black);
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: var(--color--blue);
+    color: var(--color--white);
+    padding-left: 24px;
+  }
+
+  &:first-child {
+    border-radius: 8px 8px 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 8px 8px;
+  }
+`;
+
+// Mobile Dropdown
+const MobileDropdownWrapper = styled.div`
+  width: 100%;
+`;
+
+const MobileDropdownButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  color: var(--color--black);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  svg {
+    transition: transform 0.3s ease;
+    transform: ${props => props.isOpen ? 'rotate(180deg)' : 'rotate(0)'};
+  }
+`;
+
+const MobileDropdownMenu = styled.div`
+  max-height: ${props => props.isOpen ? '200px' : '0'};
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: #f8f8f8;
+  border-radius: 0 0 8px 8px;
+`;
+
+const MobileDropdownItem = styled.div`
+  padding: 12px 20px;
+  color: var(--color--black);
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &:hover {
+    background: var(--color--blue);
+    color: var(--color--white);
+    padding-left: 24px;
+  }
+
+  svg {
+    font-size: 12px;
+  }
+`;
+
 const Sidebar = styled.div`
   position: fixed;
   top: 0;
@@ -414,6 +577,7 @@ const SidebarFooter = styled.div`
 const Header = () => {
   const [scrollingDown, setScrollingDown] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(true); // Sempre aberto no mobile
   const location = useLocation();
   const Navigate = useNavigate();
 
@@ -495,6 +659,20 @@ const Header = () => {
           <NavLink to="/sobre" activeClassName="active">
             Sobre nós
           </NavLink>
+          <DropdownWrapper>
+            <DropdownButton className={location.pathname.includes('/solucoes') ? 'active' : ''}>
+              Soluções
+              <BsChevronDown />
+            </DropdownButton>
+            <DropdownMenu>
+              <DropdownItem onClick={() => Navigate('/solucoes/galpao')}>
+                Kit Galpão
+              </DropdownItem>
+              <DropdownItem onClick={() => Navigate('/solucoes/banheiros')}>
+                Kit Banheiro Pronto
+              </DropdownItem>
+            </DropdownMenu>
+          </DropdownWrapper>
           {/* <NavLink to="/steelframe" activeClassName="active">
             Steel Frame
           </NavLink> */}
@@ -551,7 +729,23 @@ const Header = () => {
         <SidebarLinks>
           <NavLink to="/" activeClassName="active">Início <BsArrowRight /></NavLink>
           <NavLink to="/sobre" activeClassName="active">Sobre nós <BsArrowRight /></NavLink>
-          <NavLink to="/steelframe" activeClassName="active">Steel Frame <BsArrowRight /></NavLink>
+          <MobileDropdownWrapper>
+            <MobileDropdownButton isOpen={mobileDropdownOpen} onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}>
+              Soluções
+              <BsChevronDown />
+            </MobileDropdownButton>
+            <MobileDropdownMenu isOpen={mobileDropdownOpen}>
+              <MobileDropdownItem onClick={() => { Navigate('/solucoes/galpao'); setSidebarOpen(false); }}>
+                <BsArrowRight />
+                Kit Galpão
+              </MobileDropdownItem>
+              <MobileDropdownItem onClick={() => { Navigate('/solucoes/banheiros'); setSidebarOpen(false); }}>
+                <BsArrowRight />
+                Kit Banheiro Pronto
+              </MobileDropdownItem>
+            </MobileDropdownMenu>
+          </MobileDropdownWrapper>
+          {/* <NavLink to="/steelframe" activeClassName="active">Steel Frame <BsArrowRight /></NavLink> */}
           {/* <div>
             <RedirectDropdown />
           </div> */}

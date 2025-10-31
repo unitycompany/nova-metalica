@@ -13,6 +13,10 @@ import "./styles/global.css";
 import "./styles/reset.css";
 import "./styles/variables.css";
 import CookieConsent from "./pages/Politicas/CookieConsent";
+import LpGalpao from "./pages/LP/Galpao";
+import KitGalpao from "./pages/Solucoes/Galpao";
+import KitBanheiro from "./pages/Solucoes/Banheiro";
+import Solucoes from "./pages/Solucoes";
 
 // Lazy loading das páginas
 const PaginaInicial = lazy(() => import("./pages/Inicial/Inicial"));
@@ -84,6 +88,9 @@ function AnimatedRoutes() {
           {/* <Route path="/produtos/drywall" element={<PageDrywall />} />
           <Route path="/produtos/steel-frame" element={<PageSteelFrame />} /> */}
           <Route path="/parcerias" element={<PaginaParceria />} />
+          <Route path="/solucoes" element={<Solucoes />} />
+          <Route path="/solucoes/galpao" element={<KitGalpao />} />
+          <Route path="/solucoes/banheiros" element={<KitBanheiro />} />
           {/* <Route path="/steelframe" element={<PaginaSteelFrame />} /> */}
           <Route path="/blog" element={<PaginaBlog />} />
           <Route path="/blog/:slug" element={<ArticlePage />} />
