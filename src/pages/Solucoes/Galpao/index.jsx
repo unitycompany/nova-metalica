@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Button02 from "../../../components/buttons/Button02";
 import { useNavigate } from "react-router-dom";
+import Form from "../../Inicial/Form";
 
 const PageWrapper = styled.section`
     width: 100%;
@@ -357,41 +358,14 @@ const ListItem = styled.li`
     }
 `
 
-const CTASection = styled.div`
-    background: var(--color--black);
-    color: var(--color--white);
-    padding: 80px 5%;
-    margin: 80px -5% 0 -5%;
-    text-align: center;
-
-    h3 {
-        font-size: 36px;
-        font-weight: 600;
-        margin-bottom: 20px;
-
-        @media (max-width: 768px){
-            font-size: 28px;
-        }
-    }
-
-    p {
-        font-size: 18px;
-        opacity: 0.8;
-        margin-bottom: 40px;
-        font-weight: 300;
-
-        @media (max-width: 768px){
-            font-size: 16px;
-            margin-bottom: 32px;
-        }
-    }
-`
-
 export default function Galpao() {
     const navigate = useNavigate();
 
-    const handleOrcamento = () => {
-        navigate('/contato');
+    const scrollToForm = () => {
+        const formElement = document.getElementById('form-orcamento');
+        if (formElement) {
+            formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     };
 
     return (
@@ -421,6 +395,9 @@ export default function Galpao() {
                             Fabricado com tecnologia e precisão, o Kit Galpão entrega uma montagem 
                             rápida, reduzindo os custos operacionais e otimizando o tempo de execução.
                         </p>
+                        <div style={{ marginTop: '24px' }}>
+                            <Button02 onClick={scrollToForm}>Solicitar Orçamento</Button02>
+                        </div>
                     </HeroContent>
                     <HeroMedia>
                         <video 
@@ -468,6 +445,9 @@ export default function Galpao() {
                                 Isolante Lã de Rocha Gesla — para um desempenho termoacústico superior
                             </ListItem>
                         </List>
+                        <div style={{ marginTop: '32px', textAlign: 'center' }}>
+                            <Button02 onClick={scrollToForm}>Solicitar Orçamento</Button02>
+                        </div>
                     </ContentSection>
                 </ListSection>
 
@@ -499,7 +479,14 @@ export default function Galpao() {
                             </CardText>
                         </Card>
                     </Grid>
+                    <div style={{ marginTop: '32px', textAlign: 'center' }}>
+                        <Button02 onClick={scrollToForm}>Solicitar Orçamento</Button02>
+                    </div>
                 </ContentSection>
+
+                <div id="form-orcamento">
+                    <Form />
+                </div>
             </Container>
         </PageWrapper>
     );
