@@ -2,6 +2,12 @@ import styled from "styled-components";
 import Button02 from "../../../components/buttons/Button02";
 import { useNavigate } from "react-router-dom";
 import Form from "../../Inicial/Form";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { useState, useEffect } from 'react';
 
 const PageWrapper = styled.section`
     width: 100%;
@@ -360,6 +366,18 @@ const ListItem = styled.li`
 
 export default function Galpao() {
     const navigate = useNavigate();
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     const scrollToForm = () => {
         const formElement = document.getElementById('form-orcamento');
@@ -412,28 +430,65 @@ export default function Galpao() {
                     </HeroMedia>
                 </HeroSection>
 
-                <ImageGrid data-aos="fade-up" data-aos-delay="250">
-                    <Image height="600px">
-                        <img 
-                            src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6b656ba6-8405-41bb-cbfd-c83297492700/public" 
-                            alt="Estrutura Galpão" 
-                        />
-                    </Image>
-                    <ImageColumn>
-                        <Image height="290px">
+                {isMobile ? (
+                    <div data-aos="fade-up" data-aos-delay="250" style={{ marginBottom: '40px' }}>
+                        <Swiper
+                            modules={[Navigation, Pagination, Autoplay]}
+                            spaceBetween={20}
+                            slidesPerView={1}
+                            pagination={{ clickable: true }}
+                            autoplay={{ delay: 3000 }}
+                        >
+                            <SwiperSlide>
+                                <Image height="300px">
+                                    <img 
+                                        src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6b656ba6-8405-41bb-cbfd-c83297492700/public" 
+                                        alt="Estrutura Galpão" 
+                                    />
+                                </Image>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Image height="300px">
+                                    <img 
+                                        src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/e7e0ed6a-d2db-4b0e-6c70-ea855d90fe00/public" 
+                                        alt="Detalhe Treliça" 
+                                    />
+                                </Image>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Image height="300px">
+                                    <img 
+                                        src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/f0f3fb05-5222-4bab-8791-2ebd303f1000/public" 
+                                        alt="Isolamento Térmico" 
+                                    />
+                                </Image>
+                            </SwiperSlide>
+                        </Swiper>
+                    </div>
+                ) : (
+                    <ImageGrid data-aos="fade-up" data-aos-delay="250">
+                        <Image height="600px">
                             <img 
-                                src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/e7e0ed6a-d2db-4b0e-6c70-ea855d90fe00/public" 
-                                alt="Detalhe Treliça" 
+                                src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/6b656ba6-8405-41bb-cbfd-c83297492700/public" 
+                                alt="Estrutura Galpão" 
                             />
                         </Image>
-                        <Image height="290px">
-                            <img 
-                                src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/f0f3fb05-5222-4bab-8791-2ebd303f1000/public" 
-                                alt="Isolamento Térmico" 
-                            />
-                        </Image>
-                    </ImageColumn>
-                </ImageGrid>
+                        <ImageColumn>
+                            <Image height="290px">
+                                <img 
+                                    src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/e7e0ed6a-d2db-4b0e-6c70-ea855d90fe00/public" 
+                                    alt="Detalhe Treliça" 
+                                />
+                            </Image>
+                            <Image height="290px">
+                                <img 
+                                    src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/f0f3fb05-5222-4bab-8791-2ebd303f1000/public" 
+                                    alt="Isolamento Térmico" 
+                                />
+                            </Image>
+                        </ImageColumn>
+                    </ImageGrid>
+                )}
 
                 <ListSection>
                     <ContentSection data-aos="fade-up">
@@ -453,32 +508,73 @@ export default function Galpao() {
 
                 <ContentSection data-aos="fade-up" data-aos-delay="300">
                     <SectionTitle>Por que escolher o Kit Galpão da Nova Metálica?</SectionTitle>
-                    <Grid>
-                        <Card>
-                            <CardIcon>✓</CardIcon>
-                            <CardTitle>Alta resistência e durabilidade</CardTitle>
-                            <CardText>
-                                Estruturas projetadas para durar décadas, com materiais de 
-                                primeira qualidade e engenharia de precisão.
-                            </CardText>
-                        </Card>
-                        <Card>
-                            <CardIcon>✓</CardIcon>
-                            <CardTitle>Conforto térmico e acústico garantido</CardTitle>
-                            <CardText>
-                                Isolamento de alta performance que garante um ambiente mais 
-                                produtivo e confortável.
-                            </CardText>
-                        </Card>
-                        <Card>
-                            <CardIcon>✓</CardIcon>
-                            <CardTitle>Personalização conforme suas necessidades</CardTitle>
-                            <CardText>
-                                Soluções adaptadas para atender as especificações únicas de 
-                                cada projeto e cliente.
-                            </CardText>
-                        </Card>
-                    </Grid>
+                    {isMobile ? (
+                        <Swiper
+                            modules={[Navigation, Pagination, Autoplay]}
+                            spaceBetween={20}
+                            slidesPerView={1}
+                            pagination={{ clickable: true }}
+                            autoplay={{ delay: 4000 }}
+                        >
+                            <SwiperSlide>
+                                <Card>
+                                    <CardIcon>✓</CardIcon>
+                                    <CardTitle>Alta resistência e durabilidade</CardTitle>
+                                    <CardText>
+                                        Estruturas projetadas para durar décadas, com materiais de 
+                                        primeira qualidade e engenharia de precisão.
+                                    </CardText>
+                                </Card>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Card>
+                                    <CardIcon>✓</CardIcon>
+                                    <CardTitle>Conforto térmico e acústico garantido</CardTitle>
+                                    <CardText>
+                                        Isolamento de alta performance que garante um ambiente mais 
+                                        produtivo e confortável.
+                                    </CardText>
+                                </Card>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Card>
+                                    <CardIcon>✓</CardIcon>
+                                    <CardTitle>Personalização conforme suas necessidades</CardTitle>
+                                    <CardText>
+                                        Soluções adaptadas para atender as especificações únicas de 
+                                        cada projeto e cliente.
+                                    </CardText>
+                                </Card>
+                            </SwiperSlide>
+                        </Swiper>
+                    ) : (
+                        <Grid>
+                            <Card>
+                                <CardIcon>✓</CardIcon>
+                                <CardTitle>Alta resistência e durabilidade</CardTitle>
+                                <CardText>
+                                    Estruturas projetadas para durar décadas, com materiais de 
+                                    primeira qualidade e engenharia de precisão.
+                                </CardText>
+                            </Card>
+                            <Card>
+                                <CardIcon>✓</CardIcon>
+                                <CardTitle>Conforto térmico e acústico garantido</CardTitle>
+                                <CardText>
+                                    Isolamento de alta performance que garante um ambiente mais 
+                                    produtivo e confortável.
+                                </CardText>
+                            </Card>
+                            <Card>
+                                <CardIcon>✓</CardIcon>
+                                <CardTitle>Personalização conforme suas necessidades</CardTitle>
+                                <CardText>
+                                    Soluções adaptadas para atender as especificações únicas de 
+                                    cada projeto e cliente.
+                                </CardText>
+                            </Card>
+                        </Grid>
+                    )}
                     <div style={{ marginTop: '32px', textAlign: 'center' }}>
                         <Button02 onClick={scrollToForm}>Solicitar Orçamento</Button02>
                     </div>

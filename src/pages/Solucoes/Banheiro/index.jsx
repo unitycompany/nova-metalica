@@ -2,6 +2,12 @@ import styled from "styled-components";
 import Button02 from "../../../components/buttons/Button02";
 import { useNavigate } from "react-router-dom";
 import Form from "../../Inicial/Form";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { useState, useEffect } from 'react';
 
 const PageWrapper = styled.section`
     width: 100%;
@@ -354,6 +360,18 @@ const ListItem = styled.li`
 
 export default function Banheiros() {
     const navigate = useNavigate();
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     const scrollToForm = () => {
         const formElement = document.getElementById('form-orcamento');
@@ -402,22 +420,51 @@ export default function Banheiros() {
                     </HeroMedia>
                 </HeroSection>
 
-                <ImageGrid data-aos="fade-up" data-aos-delay="250">
-                    <Image height="600px">
-                        <img 
-                            src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2e21ee20-2ad3-4fdd-4a3d-9884b7a89800/public" 
-                            alt="Banheiro Moderno" 
-                        />
-                    </Image>
-                    <ImageColumn>
+                {isMobile ? (
+                    <div data-aos="fade-up" data-aos-delay="250" style={{ marginBottom: '40px' }}>
+                        <Swiper
+                            modules={[Navigation, Pagination, Autoplay]}
+                            spaceBetween={20}
+                            slidesPerView={1}
+                            pagination={{ clickable: true }}
+                            autoplay={{ delay: 3000 }}
+                        >
+                            <SwiperSlide>
+                                <Image height="300px">
+                                    <img 
+                                        src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2e21ee20-2ad3-4fdd-4a3d-9884b7a89800/public" 
+                                        alt="Banheiro Moderno" 
+                                    />
+                                </Image>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Image height="300px">
+                                    <img 
+                                        src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/f767631c-5e70-4c6a-4cc4-b3442dc5c400/public" 
+                                        alt="Detalhe Acabamento" 
+                                    />
+                                </Image>
+                            </SwiperSlide>
+                        </Swiper>
+                    </div>
+                ) : (
+                    <ImageGrid data-aos="fade-up" data-aos-delay="250">
                         <Image height="600px">
                             <img 
-                                src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/f767631c-5e70-4c6a-4cc4-b3442dc5c400/public" 
-                                alt="Detalhe Acabamento" 
+                                src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2e21ee20-2ad3-4fdd-4a3d-9884b7a89800/public" 
+                                alt="Banheiro Moderno" 
                             />
                         </Image>
-                    </ImageColumn>
-                </ImageGrid>
+                        <ImageColumn>
+                            <Image height="600px">
+                                <img 
+                                    src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/f767631c-5e70-4c6a-4cc4-b3442dc5c400/public" 
+                                    alt="Detalhe Acabamento" 
+                                />
+                            </Image>
+                        </ImageColumn>
+                    </ImageGrid>
+                )}
 
                 <ListSection>
                     <ContentSection data-aos="fade-up">
@@ -441,36 +488,83 @@ export default function Banheiros() {
 
                 <ContentSection data-aos="fade-up" data-aos-delay="250">
                     <SectionTitle>Escolha entre diferentes opções de:</SectionTitle>
-                    <Grid>
-                        <Card>
-                            <CardIcon>✓</CardIcon>
-                            <CardTitle>Revestimentos cerâmicos ou vinílicos</CardTitle>
-                            <CardText>
-                                Ampla variedade de acabamentos para atender seu projeto.
-                            </CardText>
-                        </Card>
-                        <Card>
-                            <CardIcon>✓</CardIcon>
-                            <CardTitle>Louças e metais</CardTitle>
-                            <CardText>
-                                Diversas opções de marcas e modelos disponíveis.
-                            </CardText>
-                        </Card>
-                        <Card>
-                            <CardIcon>✓</CardIcon>
-                            <CardTitle>Iluminação</CardTitle>
-                            <CardText>
-                                Sistemas de iluminação eficientes e modernos.
-                            </CardText>
-                        </Card>
-                        <Card>
-                            <CardIcon>✓</CardIcon>
-                            <CardTitle>Espelhos e marcenaria</CardTitle>
-                            <CardText>
-                                Soluções personalizadas para completar o ambiente.
-                            </CardText>
-                        </Card>
-                    </Grid>
+                    {isMobile ? (
+                        <Swiper
+                            modules={[Navigation, Pagination, Autoplay]}
+                            spaceBetween={20}
+                            slidesPerView={1}
+                            pagination={{ clickable: true }}
+                            autoplay={{ delay: 4000 }}
+                        >
+                            <SwiperSlide>
+                                <Card>
+                                    <CardIcon>✓</CardIcon>
+                                    <CardTitle>Revestimentos cerâmicos ou vinílicos</CardTitle>
+                                    <CardText>
+                                        Ampla variedade de acabamentos para atender seu projeto.
+                                    </CardText>
+                                </Card>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Card>
+                                    <CardIcon>✓</CardIcon>
+                                    <CardTitle>Louças e metais</CardTitle>
+                                    <CardText>
+                                        Diversas opções de marcas e modelos disponíveis.
+                                    </CardText>
+                                </Card>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Card>
+                                    <CardIcon>✓</CardIcon>
+                                    <CardTitle>Iluminação</CardTitle>
+                                    <CardText>
+                                        Sistemas de iluminação eficientes e modernos.
+                                    </CardText>
+                                </Card>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <Card>
+                                    <CardIcon>✓</CardIcon>
+                                    <CardTitle>Espelhos e marcenaria</CardTitle>
+                                    <CardText>
+                                        Soluções personalizadas para completar o ambiente.
+                                    </CardText>
+                                </Card>
+                            </SwiperSlide>
+                        </Swiper>
+                    ) : (
+                        <Grid>
+                            <Card>
+                                <CardIcon>✓</CardIcon>
+                                <CardTitle>Revestimentos cerâmicos ou vinílicos</CardTitle>
+                                <CardText>
+                                    Ampla variedade de acabamentos para atender seu projeto.
+                                </CardText>
+                            </Card>
+                            <Card>
+                                <CardIcon>✓</CardIcon>
+                                <CardTitle>Louças e metais</CardTitle>
+                                <CardText>
+                                    Diversas opções de marcas e modelos disponíveis.
+                                </CardText>
+                            </Card>
+                            <Card>
+                                <CardIcon>✓</CardIcon>
+                                <CardTitle>Iluminação</CardTitle>
+                                <CardText>
+                                    Sistemas de iluminação eficientes e modernos.
+                                </CardText>
+                            </Card>
+                            <Card>
+                                <CardIcon>✓</CardIcon>
+                                <CardTitle>Espelhos e marcenaria</CardTitle>
+                                <CardText>
+                                    Soluções personalizadas para completar o ambiente.
+                                </CardText>
+                            </Card>
+                        </Grid>
+                    )}
                     <div style={{ marginTop: '32px', textAlign: 'center' }}>
                         <Button02 onClick={scrollToForm}>Solicitar Orçamento</Button02>
                     </div>
