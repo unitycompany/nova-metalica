@@ -12,20 +12,19 @@ const PageWrapper = styled.section`
 const Container = styled.div`
     max-width: 1280px;
     margin: 0 auto;
-    padding: 60px 5% 100px 5%;
+    padding: 40px 5% 60px 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 
     @media (max-width: 768px){
-        padding: 40px 5% 80px 5%;
+        padding: 30px 5% 50px 5%;
+        gap: 30px;
     }
 `
 
 const Hero = styled.div`
     width: 100%;
-    margin-bottom: 80px;
-
-    @media (max-width: 768px){
-        margin-bottom: 60px;
-    }
 `
 
 const Breadcrumb = styled.div`
@@ -35,7 +34,7 @@ const Breadcrumb = styled.div`
     font-size: 14px;
     color: var(--color--black);
     opacity: 0.6;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     font-weight: 400;
 
     span {
@@ -58,12 +57,12 @@ const Title = styled.h1`
     font-size: 48px;
     font-weight: 700;
     color: var(--color--black);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     line-height: 110%;
 
     @media (max-width: 768px){
         font-size: 36px;
-        margin-bottom: 20px;
+        margin-bottom: 16px;
     }
 `
 
@@ -85,7 +84,6 @@ const MainImage = styled.div`
     height: 500px;
     border-radius: 0;
     overflow: hidden;
-    margin-bottom: 80px;
     position: relative;
 
     &::after {
@@ -106,15 +104,63 @@ const MainImage = styled.div`
 
     @media (max-width: 768px){
         height: 300px;
-        margin-bottom: 60px;
+    }
+`
+
+const HeroSection = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+
+    @media (max-width: 968px){
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+`
+
+const HeroContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    p {
+        font-size: 18px;
+        line-height: 180%;
+        color: var(--color--black);
+        opacity: 0.8;
+        font-weight: 300;
+
+        @media (max-width: 768px){
+            font-size: 16px;
+        }
+    }
+`
+
+const HeroMedia = styled.div`
+    width: 100%;
+    height: 500px;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+
+    img, video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    @media (max-width: 968px){
+        height: 350px;
+    }
+
+    @media (max-width: 768px){
+        height: 300px;
     }
 `
 
 const ContentSection = styled.div`
-    margin-bottom: 80px;
-
     @media (max-width: 768px){
-        margin-bottom: 60px;
     }
 `
 
@@ -122,7 +168,7 @@ const SectionTitle = styled.h2`
     font-size: 32px;
     font-weight: 600;
     color: var(--color--black);
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     position: relative;
     padding-left: 20px;
 
@@ -149,34 +195,31 @@ const Description = styled.div`
     color: var(--color--black);
     opacity: 0.8;
     font-weight: 300;
-    margin-bottom: 40px;
 
     p {
-        margin-bottom: 20px;
+        margin-bottom: 16px;
     }
 
     @media (max-width: 768px){
         font-size: 16px;
-        margin-bottom: 32px;
     }
 `
 
 const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 32px;
-    margin-bottom: 60px;
+    gap: 24px;
 
     @media (max-width: 768px){
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 20px;
     }
 `
 
 const Card = styled.div`
     background: var(--color--white);
     border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 32px;
+    padding: 28px;
     transition: all 0.3s ease;
     position: relative;
 
@@ -229,7 +272,6 @@ const ImageGrid = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 20px;
-    margin-bottom: 80px;
 
     @media (max-width: 968px){
         grid-template-columns: 1fr;
@@ -266,12 +308,11 @@ const Image = styled.div`
 
 const ListSection = styled.div`
     background: #fafafa;
-    padding: 60px 5%;
-    margin: 80px -5% 80px -5%;
+    padding: 50px 5%;
+    margin: 0 -5%;
 
     @media (max-width: 768px){
         padding: 40px 5%;
-        margin: 60px -5%;
     }
 `
 
@@ -350,31 +391,21 @@ export default function Banheiros() {
     return (
         <PageWrapper>
             <Container>
-                <Hero data-aos="fade-up">
-                    <Breadcrumb>
-                        <span onClick={() => navigate('/')}>Início</span>
-                        <span>/</span>
-                        <span onClick={() => navigate('/solucoes')}>Soluções</span>
-                        <span>/</span>
-                        <span style={{ opacity: 1 }}>Kit Banheiro Pronto</span>
-                    </Breadcrumb>
-                    <Title>Kit Banheiro Pronto</Title>
-                    <Subtitle>
-                        Solução modular completa com instalações hidráulica, elétrica, 
-                        revestimentos, louças e metais inclusos.
-                    </Subtitle>
-                </Hero>
+                <Breadcrumb data-aos="fade-up">
+                    <span onClick={() => navigate('/')}>Início</span>
+                    <span>/</span>
+                    <span onClick={() => navigate('/solucoes')}>Soluções</span>
+                    <span>/</span>
+                    <span style={{ opacity: 1 }}>Kit Banheiro Pronto</span>
+                </Breadcrumb>
 
-                <MainImage data-aos="fade-up" data-aos-delay="100">
-                    <img 
-                        src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a105ddd1-0c60-4d60-3ae4-2c7422212100/public" 
-                        alt="Kit Banheiro Nova Metálica" 
-                    />
-                </MainImage>
-
-                <ContentSection data-aos="fade-up" data-aos-delay="200">
-                    <SectionTitle>Sobre o Kit Banheiro Pronto</SectionTitle>
-                    <Description>
+                <HeroSection data-aos="fade-up" data-aos-delay="100">
+                    <HeroContent>
+                        <Title>Kit Banheiro Pronto</Title>
+                        <Subtitle>
+                            Solução modular completa com instalações hidráulica, elétrica, 
+                            revestimentos, louças e metais inclusos.
+                        </Subtitle>
                         <p>
                             O Kit Banheiro Pronto da Nova Metálica é uma solução modular entregue 
                             com todas as instalações completas: hidráulica, elétrica, revestimentos, 
@@ -383,31 +414,29 @@ export default function Banheiros() {
                         <p>
                             Indicado para hotéis, resorts, retrofit de edifícios, salas comerciais, 
                             hospitais e clínicas, o Kit Banheiro Pronto promove redução significativa 
-                            do tempo de obra, instalação rápida e simplificada, padrão de qualidade 
-                            industrial, economia em escala com menor custo de manutenção, além de 
-                            sustentabilidade e menor impacto ambiental.
+                            do tempo de obra, instalação rápida e simplificada.
                         </p>
-                    </Description>
-                </ContentSection>
+                    </HeroContent>
+                    <HeroMedia>
+                        <img 
+                            src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/a105ddd1-0c60-4d60-3ae4-2c7422212100/public" 
+                            alt="Kit Banheiro Nova Metálica" 
+                        />
+                    </HeroMedia>
+                </HeroSection>
 
                 <ImageGrid data-aos="fade-up" data-aos-delay="250">
                     <Image height="600px">
                         <img 
-                            src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/f767631c-5e70-4c6a-4cc4-b3442dc5c400/public" 
+                            src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2e21ee20-2ad3-4fdd-4a3d-9884b7a89800/public" 
                             alt="Banheiro Moderno" 
                         />
                     </Image>
                     <ImageColumn>
-                        <Image height="290px">
+                        <Image height="600px">
                             <img 
-                                src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/7f1bd05c-5d7c-45bb-9e8d-8dbef5beba00/public" 
+                                src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/f767631c-5e70-4c6a-4cc4-b3442dc5c400/public" 
                                 alt="Detalhe Acabamento" 
-                            />
-                        </Image>
-                        <Image height="290px">
-                            <img 
-                                src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/2e21ee20-2ad3-4fdd-4a3d-9884b7a89800/public" 
-                                alt="Instalação" 
                             />
                         </Image>
                     </ImageColumn>
