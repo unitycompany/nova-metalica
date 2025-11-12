@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Navigate, useNavigate } from "react-router-dom";
 
 import { BsPlayFill } from "react-icons/bs";
+import AlephsramosdevWidget from "../../components/AlephsramosdevWidget";
 
 const FooterAll = styled.section`
     width: 97.5%;
@@ -239,7 +240,7 @@ const Footer = () => {
 
                 <FooterPolitica>
                     <p  data-aos="fade-left" data-aos-delay="100">© 2025 Nova Metálica | Todos os direitos reservados |<a onClick={() => navigate ('/politica-de-privacidade')}>Política de Privacidade</a></p>
-                    <p  ata-aos="fade-left" data-aos-delay="100">Desenvolvido por <a href="https://alephsramos.com.br/" target="_blank"><img src="https://imagedelivery.net/1n9Gwvykoj9c9m8C_4GsGA/5360ae68-4678-4438-a170-893b230de700/public" /></a></p>
+                    <AlephsramosdevWidget />
                 </FooterPolitica>
             </FooterAll>
         </>
