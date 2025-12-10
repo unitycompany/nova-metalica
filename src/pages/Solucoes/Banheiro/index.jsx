@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { useState, useEffect } from 'react';
+import StructuredData from "../../../components/seo/StructuredData";
 
 const PageWrapper = styled.section`
     width: 100%;
@@ -362,6 +363,41 @@ export default function Banheiros() {
     const navigate = useNavigate();
     const [isMobile, setIsMobile] = useState(false);
 
+    const domain = "https://novametalica.com.br";
+    const url = `${domain}/solucoes/banheiros`;
+    const schema = [
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Kit Banheiro Pronto - Nova Metálica",
+            "url": url
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Início",
+                    "item": domain
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Soluções",
+                    "item": `${domain}/solucoes`
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Kit Banheiro Pronto",
+                    "item": url
+                }
+            ]
+        }
+    ];
+
     useEffect(() => {
         const checkMobile = () => {
             setIsMobile(window.innerWidth <= 768);
@@ -382,6 +418,7 @@ export default function Banheiros() {
 
     return (
         <PageWrapper>
+            <StructuredData data={schema} />
             <Container>
                 <Breadcrumb data-aos="fade-up">
                     <span onClick={() => navigate('/')}>Início</span>

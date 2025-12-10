@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import StructuredData from "../../components/seo/StructuredData";
 
 const SolucoesAll = styled.section`
     width: 100%;
@@ -162,6 +163,35 @@ const KitButton = styled.div`
 export default function Solucoes() {
     const navigate = useNavigate();
 
+    const domain = "https://novametalica.com.br";
+    const url = `${domain}/solucoes`;
+    const schema = [
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Soluções - Nova Metálica",
+            "url": url
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Início",
+                    "item": domain
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Soluções",
+                    "item": url
+                }
+            ]
+        }
+    ];
+
     const kits = [
         {
             id: 'galpao',
@@ -181,6 +211,7 @@ export default function Solucoes() {
 
     return (
         <SolucoesAll>
+            <StructuredData data={schema} />
             <Container>
                 <Header data-aos="fade-up">
                     <h1>Nossas soluções</h1>
