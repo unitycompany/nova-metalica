@@ -240,7 +240,6 @@ const Footer = () => {
 
                 <FooterPolitica>
                     <p  data-aos="fade-left" data-aos-delay="100">© 2025 Nova Metálica | Todos os direitos reservados |<a onClick={() => navigate ('/politica-de-privacidade')}>Política de Privacidade</a></p>
-                    <AlephsramosdevWidget />
                 </FooterPolitica>
             </FooterAll>
         </>
